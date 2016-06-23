@@ -141,8 +141,8 @@ collaboration.
     -   [Getting git connected to RStudio](http://r-pkgs.had.co.nz/git.html)
 -   [GitHub](http://github.com) is a web service for sharing git-versioned
     projects that has many great tools for collaboration. We have an
-    organizational account Setup GitHub account and ask **@toph** to add you and
-    to it and the [M&A
+    organizational account Setup GitHub account and ask
+    [Toph](allen@ecohealthalliance.org) to add you and to it and the [M&A
     Team](https://github.com/orgs/ecohealthalliance/teams/modeling-analytics/repositories).
 -   Avoid filename-based versioning (e.g., "data\_set\_v11\_final\_final\_NR")
 
