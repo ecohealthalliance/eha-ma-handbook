@@ -141,9 +141,11 @@ collaboration.
     -   [Getting git connected to RStudio](http://r-pkgs.had.co.nz/git.html)
 -   [GitHub](http://github.com) is a web service for sharing git-versioned
     projects that has many great tools for collaboration. We have an
-    organizational account Setup GitHub account and ask
-    [Toph](allen@ecohealthalliance.org) to add you and to it and the [M&A
-    Team](https://github.com/orgs/ecohealthalliance/teams/modeling-analytics/repositories).
+    [organizational EHA account](https://github.com/ecohealthalliance) for GitHub.
+    To be made a member, setup a *personal
+    account* and then Contact [Toph](allen@ecohealthalliance.org) (Tech),
+    or [Noam](ross@ecohealthalliance.org) (Modeling & Analytics) to be made a
+    member and be given access to the appropriate teams.
 -   Avoid filename-based versioning (e.g., "data\_set\_v11\_final\_final\_NR")
 
 Communication
@@ -154,7 +156,8 @@ Communication
 -   [Slack](https://eha.slack.com/) is our office chat tool and is good for
     day-to-day communication. Since it is organized by topical *channels*, it is
     good for keeping information from one project together in a way that can be
-    referenced later by new team members.
+    referenced later by new team members. Contact [Toph](allen@ecohealthalliance.org) (Tech),
+    or [Noam](ross@ecohealthalliance.org) (Modeling & Analytics) to get an account.
     -   We have an [\#r-discuss
         channel](https://eha.slack.com/messages/r-discuss/)
     -   Surrounding text by triple backticks ( ```` ``` ````) makes it easy to
