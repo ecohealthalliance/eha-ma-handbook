@@ -367,6 +367,8 @@ or both.
 -   Check out some [rOpenSci package review
     examples](https://github.com/ropensci/onboarding/issues?q=is%3Aissue+is%3Aclosed)
     to look at one kind of code review in action.
+-   Best practices for this are evolving. Check out [a recent conversation
+    among scientists on twitter on the topic](https://twitter.com/noamross/status/776087608468307970)
 
 Testing
 =======
