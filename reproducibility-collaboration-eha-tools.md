@@ -218,7 +218,7 @@ picked up by another user. Documentation includes the following:
 
 ### Install
 
--   [**ehastyle**](https://github.com/ecohealthalliance/ehastyle) is an
+-   (Very optional unless you are asked): [**ehastyle**](https://github.com/ecohealthalliance/ehastyle) is our
     internal EHA R package with R Markdown templates for some reports we produce.
 
 Data Management
