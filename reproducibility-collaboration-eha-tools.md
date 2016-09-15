@@ -157,7 +157,7 @@ Communication
     have a central hub for project management. E-mails can be forwarded
     to a channel.
 
--   GitHub [see below](#version-control-and-collaboration) has a good
+-   GitHub ([see below](#version-control-and-collaboration)) has a good
     issue-tracking system that accompanies each project and can be used
     for task management and general communication. This ties messages to
     a specific project and keeps a good long-term record, and can be
