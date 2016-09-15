@@ -219,7 +219,7 @@ picked up by another user. Documentation includes the following:
 ### Install
 
 -   [**ehastyle**](https://github.com/ecohealthalliance/ehastyle) is an
-    internal EHA R package for some reports we produce.
+    internal EHA R package with R Markdown templates for some reports we produce.
 
 Data Management
 ===============
@@ -256,7 +256,7 @@ struturing data makes iteroperability between tools easier.
     with R.
 -   [Nine simple ways to make it easier to (re)use your
     data](http://ojs.library.queensu.ca/index.php/IEE/article/view/4608/4898)
-    rounds some things out in terms of data sharing.
+    rounds some things out in terms of data sharing.  [This post](https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/) is nice, too.
 
 ### Install
 
