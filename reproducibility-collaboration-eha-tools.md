@@ -46,7 +46,7 @@ always attain. Remember:
 -   Don't let the perfect be the enemy of the good.
 -   Other teams and external partners have different workflows and we
     adjust as neccessary to collaborate.
--   Our goal is to good do science to advance conservation and human
+-   Our goal is to do good science to advance conservation and human
     health, not be slick programmers.
 
 You can find some slides from a previous presentation on this topic
