@@ -165,17 +165,17 @@ Communication
 -   Remember that your Slack and GitHub communications are part of the
     project and are likely to be seen by internal and
     external collaborators.
--   [ScreenHero](https://eha.slack.com/screenhero), is a screen-sharing
+-   [ScreenHero](https://eha.slack.com/screenhero) is a screen-sharing
     tool that enables dual control of computer and is part of Slack. It
     is great for walking through a project with someone remotely or
     across the office, and also debugging.
 
 ### Install
 
--   Get [Slack](https://eha.slack.com/) and
+-   Download and install [Slack](https://slack.com/downloads) and
     [ScreenHero](https://eha.slack.com/screenhero). Contact
-    [Toph](allen@ecohealthalliance.org) (Tech), or
-    [Noam](ross@ecohealthalliance.org) (Modeling & Analytics) to get
+    [Toph](mailto:allen@ecohealthalliance.org) (Tech), or
+    [Noam](mailto:ross@ecohealthalliance.org) (Modeling & Analytics) to get
     an account. Join any appropriate channels.
 -   There's also a mobile Slack app for
     [iOS](https://itunes.apple.com/us/app/slack-team-communication/id618783545?mt=8)
@@ -199,9 +199,9 @@ picked up by another user. Documentation includes the following:
     data in each field in a table.
 -   **Comments** in your computer code
 -   **Written descriptions** of your analyses. The primary medium for
-    this should be **R Markdown** documents, which allow you to comnbine
+    this should be **R Markdown** documents, which allow you to combine
     code, results, and descriptive text in an easy to update and
-    modify form. Shorter and ephermal results can be posted as plots to
+    modify form. Shorter ephermal results can be posted as plots to
     your project Slack rooms.
 
 ### Learn
@@ -240,16 +240,18 @@ analyses*?
     for easily distributing data internally and externally.
 
 We aim to generally work in a **tidy data** framework. This approach to
-struturing data makes iteroperability between tools easier.
+structuring data makes iteroperability between tools easier.
 
 ### Learn
 
--   Hadley Wickham's [tidy data
+-   Read Hadley Wickham's [tidy data
     paper](http://vita.had.co.nz/papers/tidy-data.pdf) for the
-    general concept.
+    general concept.  Note the *packages* in this paper are out of date,
+    but the structures and concepts apply.
 -   [R For Data Science](http://r4ds.had.co.nz/tidy-data.html) is a
     great online book to read and reference for working in
-    this framework.
+    this framework, and gives guidance for the most up-to-date packages
+    (**tidyr** being the latest analogue of **reshape** and **reshape2**).
 -   Data Carpentry has [a Lesson on spreadsheet
     organization](http://www.datacarpentry.org/spreadsheet-ecology-lesson/)
     for when you need to do some work in Excel but make it compatible
@@ -272,13 +274,15 @@ Version Control and Collaboration
 -   *Can others see changes others have made to the project and can I
     see theirs?*
 
--   **Version control** is essential to long-term project management
-    and collaboration. We primarily use git for this - we recommend it
-    for any project with more than one file of code.
+**Version control** is essential to long-term project management
+and collaboration. We primarily use git for this - we recommend it
+for any project with more than one file of code. It has a steep learning curve
+but is very powerful.
 
 -   [GitHub](http://github.com) is a web service for sharing
     git-versioned projects that has many great tools for collaboration.
-    We have an for GitHub.
+    We have an organizational GitHub account so we can have private repositories
+    and work in teams with shared projects.
 
 -   For projects with little code-based work, there are other options,
     as well:
@@ -291,11 +295,10 @@ Version Control and Collaboration
             elsewhere
         -   File histories are independent - does not track
             interrelated changes.
--   git version control should be used for any project that contains
-    more than one file of computer code. It has a steep learning curve
-    but is very powerful.
-    -   Avoid filename-based versioning
-        (e.g., "data\_set\_v11\_final\_final\_NR")
+            
+-   Avoid filename-based version control: 
+
+    ![](http://www.phdcomics.com/comics/archive/phd052810s.gif)
 
 ### Learn
 
@@ -314,8 +317,11 @@ learning rather than only trying to pick it up as you go along.
 ### Install
 
 -   Go through the installation steps [Happy Git with
-    R](http://happygitwithr.com/)'s installation and and connecting
+    R](http://happygitwithr.com/)'s "Installation" and "Connect"
     chapters and Appendix B
+-   Note when setting up your GitHub account that one account can have multiple
+    e-mail addresses associated with it, so you can split your work and personal
+    stuff without needing multiple accounts (see [here](https://help.github.com/articles/managing-notification-emails-for-organizations/)).
 -   Give [Noam](ross@ecohealthalliance.org) (Modeling & Analytics) or
     [Toph](allen@ecohealthalliance.org) (Tech), your GitHub username so
     they can make you a member of the [organizational EHA
@@ -361,14 +367,14 @@ or both.
 ### Learn
 
 -   Check out Fernando Perez's [tips for code review in the
-    lab](http://fperez.org/py4science/code_reviews.html)
+    lab](http://fperez.org/py4science/code_reviews.html).
 -   Read the [Mozilla Guide to Code Review in the
     Lab](https://mozillascience.github.io/codeReview/intro.html)
--   Check out some [rOpenSci package review
+-   Check out some [rOpenSci package review.
     examples](https://github.com/ropensci/onboarding/issues?q=is%3Aissue+is%3Aclosed)
     to look at one kind of code review in action.
 -   Best practices for this are evolving. Check out [a recent conversation
-    among scientists on twitter on the topic](https://twitter.com/noamross/status/776087608468307970)
+    among scientists on Rwitter on the topic](https://twitter.com/noamross/status/776087608468307970)
 
 Testing
 =======
@@ -385,9 +391,9 @@ as you expect and your data is checked for quality.
 
 -   [Test driven data
     analysis](http://www.tdda.info/pages/table-of-contents.html#table-of-contents)
-    is a neat blog on this subject
+    is a neat blog on this subject.
 -   There's a [testing chapter in the R Packages
-    book](http://r-pkgs.had.co.nz/tests.html)
+    book](http://r-pkgs.had.co.nz/tests.html).
 -   The vingettes and README files of the packages below are useful.
 
 ### Install
@@ -397,8 +403,7 @@ as you expect and your data is checked for quality.
     [**validate**](http://www.markvanderloo.eu/yaRb/2016/03/25/easy-data-validation-with-the-validate-package/)
     for testing that data meets criteria
     [**visdat**](https://github.com/njtierney/visdat) for visually
-    (though there are many ways to plot your data for inspection).
-    inspecting tabular data. [**testthat**]() for functions and
+    inspecting tabular data. (though there are many ways to plot your data for inspection). [**testthat**]() for functions and
     R packages.
 
 Running Big Analyses
@@ -421,7 +426,8 @@ Running Big Analyses
 ### Install
 
 -   Contact [Noam](mailto:ross@ecohealthalliance.org) for access to this
-    machine and he will create an account and password for you.
+    machine and he will create an account and password for you and give
+    you further instructions.
 -   You will use GitHub to move project work back and forth from your
     local machine. You will need to setup GitHub access from this
     machine using SSH keys as described in [Happy Git with R Chapter
@@ -471,9 +477,9 @@ Ongoing Help and Training
 
 We have an **\#r-discuss** channel on Slack to ask questions and also
 news about useful resources and packages. (There's also
-**python-discuss** and **\#stats-chat**.) We prefer that you ask
+**\#python-discuss** and **\#stats-chat**.) We prefer that you ask
 question on this channel rather than privately. This way you draw on the
-group's knowledge, and everyone can learn from things. In general, if
+group's knowledge, and everyone can learn from the conversation. In general, if
 you spend 20 minutes banging your head against your screen trying to
 figure something out, it's time to ask someone.
 
@@ -500,9 +506,9 @@ Also, outside EHA:
 
 -   Stack Overflow is a popular Q&A site for computer programming that a
     lot of [discussions about
-    R](stackoverflow.com/questions/tagged/r?sort=newest&pagesize=50).
+    R](https://stackoverflow.com/questions/tagged/r?sort=newest&pagesize=50).
 -   The [\#rstats hashtag](https://twitter.com/hashtag/rstats) on
-    Twitter is a good place for news and short questions.
+    Twitter is a good place for news and short questions, and general ranting.
 
 If there's a course, workshop, or conference you want to attend to
 improve these skills, speak with your supervisor, we can often support

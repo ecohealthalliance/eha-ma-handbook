@@ -215,12 +215,12 @@ $(document).ready(function () {
 <li><p><a href="https://eha.slack.com/">Slack</a> is our office chat tool and is good for day-to-day communication. Slack does not have to be an instant communication tool - some people prefer to check it a few times a day. Check with your supervisor about your project/team preferences. Slack’s main purpose is to organize our communication by <em>channels</em> specific to a topic or project. It is good for keeping information from one project together in a way that can be referenced later by new team members, rather than being lost in various e-mail inboxes. A channel can be linked to many other tools (Dropbox/Google Drive Folder, GitHub Repository), so as to have a central hub for project management. E-mails can be forwarded to a channel.</p></li>
 <li>GitHub (<a href="#version-control-and-collaboration">see below</a>) has a good issue-tracking system that accompanies each project and can be used for task management and general communication. This ties messages to a specific project and keeps a good long-term record, and can be connected to a slack channel or integrated with e-mail</li>
 <li>Remember that your Slack and GitHub communications are part of the project and are likely to be seen by internal and external collaborators.</li>
-<li><p><a href="https://eha.slack.com/screenhero">ScreenHero</a>, is a screen-sharing tool that enables dual control of computer and is part of Slack. It is great for walking through a project with someone remotely or across the office, and also debugging.</p></li>
+<li><p><a href="https://eha.slack.com/screenhero">ScreenHero</a> is a screen-sharing tool that enables dual control of computer and is part of Slack. It is great for walking through a project with someone remotely or across the office, and also debugging.</p></li>
 </ul>
 <div id="install-1" class="section level3">
 <h3>Install</h3>
 <ul>
-<li>Get <a href="https://eha.slack.com/">Slack</a> and <a href="https://eha.slack.com/screenhero">ScreenHero</a>. Contact <a href="allen@ecohealthalliance.org">Toph</a> (Tech), or <a href="ross@ecohealthalliance.org">Noam</a> (Modeling &amp; Analytics) to get an account. Join any appropriate channels.</li>
+<li>Download and install <a href="https://slack.com/downloads">Slack</a> and <a href="https://eha.slack.com/screenhero">ScreenHero</a>. Contact <a href="mailto:allen@ecohealthalliance.org">Toph</a> (Tech), or <a href="mailto:ross@ecohealthalliance.org">Noam</a> (Modeling &amp; Analytics) to get an account. Join any appropriate channels.</li>
 <li>There’s also a mobile Slack app for <a href="https://itunes.apple.com/us/app/slack-team-communication/id618783545?mt=8">iOS</a> and <a href="https://play.google.com/store/apps/details?id=com.Slack&amp;hl=en">Android</a>, which may be helpful if you are traveling.</li>
 </ul>
 </div>
@@ -233,7 +233,7 @@ $(document).ready(function () {
 <li>A <strong>README</strong> document in the top level of the project folder with a high-level explanation of project organization, purpose, and and contact info.</li>
 <li><strong>Metadata</strong> for your data set showing its origin and the type of data in each field in a table.</li>
 <li><strong>Comments</strong> in your computer code</li>
-<li><strong>Written descriptions</strong> of your analyses. The primary medium for this should be <strong>R Markdown</strong> documents, which allow you to comnbine code, results, and descriptive text in an easy to update and modify form. Shorter and ephermal results can be posted as plots to your project Slack rooms.</li>
+<li><strong>Written descriptions</strong> of your analyses. The primary medium for this should be <strong>R Markdown</strong> documents, which allow you to combine code, results, and descriptive text in an easy to update and modify form. Shorter ephermal results can be posted as plots to your project Slack rooms.</li>
 </ul>
 <div id="learn-2" class="section level3">
 <h3>Learn</h3>
@@ -257,12 +257,12 @@ $(document).ready(function () {
 <li>Metadata! Metadata! Document your data.</li>
 <li>For data sets that cross multiple projects, create data-only project folders for the master version. When these data sets are finalized, they can be deposited in public or private data repositories such as <a href="https://figshare.com/">figshare</a> and <a href="https://zenodo.org/">zenodo</a>. In some cases it makes sense for us to create data-only R packages for easily distributing data internally and externally.</li>
 </ul>
-<p>We aim to generally work in a <strong>tidy data</strong> framework. This approach to struturing data makes iteroperability between tools easier.</p>
+<p>We aim to generally work in a <strong>tidy data</strong> framework. This approach to structuring data makes iteroperability between tools easier.</p>
 <div id="learn-3" class="section level3">
 <h3>Learn</h3>
 <ul>
-<li>Hadley Wickham’s <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data paper</a> for the general concept.</li>
-<li><a href="http://r4ds.had.co.nz/tidy-data.html">R For Data Science</a> is a great online book to read and reference for working in this framework.</li>
+<li>Read Hadley Wickham’s <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data paper</a> for the general concept. Note the <em>packages</em> in this paper are out of date, but the structures and concepts apply.</li>
+<li><a href="http://r4ds.had.co.nz/tidy-data.html">R For Data Science</a> is a great online book to read and reference for working in this framework, and gives guidance for the most up-to-date packages (<strong>tidyr</strong> being the latest analogue of <strong>reshape</strong> and <strong>reshape2</strong>).</li>
 <li>Data Carpentry has <a href="http://www.datacarpentry.org/spreadsheet-ecology-lesson/">a Lesson on spreadsheet organization</a> for when you need to do some work in Excel but make it compatible with R.</li>
 <li><a href="http://ojs.library.queensu.ca/index.php/IEE/article/view/4608/4898">Nine simple ways to make it easier to (re)use your data</a> rounds some things out in terms of data sharing. <a href="https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/">This post</a> is nice, too.</li>
 </ul>
@@ -276,9 +276,11 @@ $(document).ready(function () {
 <h1>Version Control and Collaboration</h1>
 <ul>
 <li><em>Can I go back to before I made that mistake?</em></li>
-<li><p><em>Can others see changes others have made to the project and can I see theirs?</em></p></li>
-<li><p><strong>Version control</strong> is essential to long-term project management and collaboration. We primarily use git for this - we recommend it for any project with more than one file of code.</p></li>
-<li><p><a href="http://github.com">GitHub</a> is a web service for sharing git-versioned projects that has many great tools for collaboration. We have an for GitHub.</p></li>
+<li><em>Can others see changes others have made to the project and can I see theirs?</em></li>
+</ul>
+<p><strong>Version control</strong> is essential to long-term project management and collaboration. We primarily use git for this - we recommend it for any project with more than one file of code. It has a steep learning curve but is very powerful.</p>
+<ul>
+<li><p><a href="http://github.com">GitHub</a> is a web service for sharing git-versioned projects that has many great tools for collaboration. We have an organizational GitHub account so we can have private repositories and work in teams with shared projects.</p></li>
 <li>For projects with little code-based work, there are other options, as well:
 <ul>
 <li>Google Docs/Word Track Changes are limited to <em>single documents</em></li>
@@ -290,10 +292,11 @@ $(document).ready(function () {
 <li>File histories are independent - does not track interrelated changes.</li>
 </ul></li>
 </ul></li>
-<li>git version control should be used for any project that contains more than one file of computer code. It has a steep learning curve but is very powerful.
-<ul>
-<li>Avoid filename-based versioning (e.g., “data_set_v11_final_final_NR”)</li>
-</ul></li>
+<li><p>Avoid filename-based version control:</p>
+<div class="figure">
+<img src="data:text/html; charset=utf-8,%3Chtml%3E%3Chead%3E%3Ctitle%3ERequest%20Rejected%3C%2Ftitle%3E%3C%2Fhead%3E%3Cbody%3EThe%20requested%20URL%20was%20rejected%2E%20If%20you%20think%20this%20is%20an%20error%2C%20please%20contact%20the%20webmaster%2E%20%3Cbr%3E%3Cbr%3EYour%20support%20ID%20is%3A%2016514556369285881028%3C%2Fbody%3E%3C%2Fhtml%3E" />
+
+</div></li>
 </ul>
 <div id="learn-4" class="section level3">
 <h3>Learn</h3>
@@ -306,7 +309,8 @@ $(document).ready(function () {
 <div id="install-4" class="section level3">
 <h3>Install</h3>
 <ul>
-<li>Go through the installation steps <a href="http://happygitwithr.com/">Happy Git with R</a>’s installation and and connecting chapters and Appendix B</li>
+<li>Go through the installation steps <a href="http://happygitwithr.com/">Happy Git with R</a>’s “Installation” and “Connect” chapters and Appendix B</li>
+<li>Note when setting up your GitHub account that one account can have multiple e-mail addresses associated with it, so you can split your work and personal stuff without needing multiple accounts (see <a href="https://help.github.com/articles/managing-notification-emails-for-organizations/">here</a>).</li>
 <li>Give <a href="ross@ecohealthalliance.org">Noam</a> (Modeling &amp; Analytics) or <a href="allen@ecohealthalliance.org">Toph</a> (Tech), your GitHub username so they can make you a member of the <a href="https://github.com/ecohealthalliance">organizational EHA account</a> and be given access to the appropriate teams.</li>
 <li>Install Dropbox on your computer with your EHA account (note you can have separate personal and EHA Dropbox folders)</li>
 <li>Check that your EHA email gives you access to Google Drive. If you prefer it, or your supervisor specifies it, <a href="https://tools.google.com/dlpage/drive">install it locally on your computer</a></li>
@@ -333,10 +337,10 @@ $(document).ready(function () {
 <div id="learn-5" class="section level3">
 <h3>Learn</h3>
 <ul>
-<li>Check out Fernando Perez’s <a href="http://fperez.org/py4science/code_reviews.html">tips for code review in the lab</a></li>
+<li>Check out Fernando Perez’s <a href="http://fperez.org/py4science/code_reviews.html">tips for code review in the lab</a>.</li>
 <li>Read the <a href="https://mozillascience.github.io/codeReview/intro.html">Mozilla Guide to Code Review in the Lab</a></li>
-<li>Check out some <a href="https://github.com/ropensci/onboarding/issues?q=is%3Aissue+is%3Aclosed">rOpenSci package review examples</a> to look at one kind of code review in action.</li>
-<li>Best practices for this are evolving. Check out <a href="https://twitter.com/noamross/status/776087608468307970">a recent conversation among scientists on twitter on the topic</a></li>
+<li>Check out some <a href="https://github.com/ropensci/onboarding/issues?q=is%3Aissue+is%3Aclosed">rOpenSci package review. examples</a> to look at one kind of code review in action.</li>
+<li>Best practices for this are evolving. Check out <a href="https://twitter.com/noamross/status/776087608468307970">a recent conversation among scientists on Rwitter on the topic</a></li>
 </ul>
 </div>
 </div>
@@ -347,15 +351,15 @@ $(document).ready(function () {
 <div id="learn-6" class="section level3">
 <h3>Learn</h3>
 <ul>
-<li><a href="http://www.tdda.info/pages/table-of-contents.html#table-of-contents">Test driven data analysis</a> is a neat blog on this subject</li>
-<li>There’s a <a href="http://r-pkgs.had.co.nz/tests.html">testing chapter in the R Packages book</a></li>
+<li><a href="http://www.tdda.info/pages/table-of-contents.html#table-of-contents">Test driven data analysis</a> is a neat blog on this subject.</li>
+<li>There’s a <a href="http://r-pkgs.had.co.nz/tests.html">testing chapter in the R Packages book</a>.</li>
 <li>The vingettes and README files of the packages below are useful.</li>
 </ul>
 </div>
 <div id="install-5" class="section level3">
 <h3>Install</h3>
 <ul>
-<li>R packages: <a href="https://github.com/ropenscilabs/assertr/"><strong>assertr</strong></a> or <a href="http://www.markvanderloo.eu/yaRb/2016/03/25/easy-data-validation-with-the-validate-package/"><strong>validate</strong></a> for testing that data meets criteria <a href="https://github.com/njtierney/visdat"><strong>visdat</strong></a> for visually (though there are many ways to plot your data for inspection). inspecting tabular data. <a href><strong>testthat</strong></a> for functions and R packages.</li>
+<li>R packages: <a href="https://github.com/ropenscilabs/assertr/"><strong>assertr</strong></a> or <a href="http://www.markvanderloo.eu/yaRb/2016/03/25/easy-data-validation-with-the-validate-package/"><strong>validate</strong></a> for testing that data meets criteria <a href="https://github.com/njtierney/visdat"><strong>visdat</strong></a> for visually inspecting tabular data. (though there are many ways to plot your data for inspection). <a href><strong>testthat</strong></a> for functions and R packages.</li>
 </ul>
 </div>
 </div>
@@ -370,7 +374,7 @@ $(document).ready(function () {
 <div id="install-6" class="section level3">
 <h3>Install</h3>
 <ul>
-<li>Contact <a href="mailto:ross@ecohealthalliance.org">Noam</a> for access to this machine and he will create an account and password for you.</li>
+<li>Contact <a href="mailto:ross@ecohealthalliance.org">Noam</a> for access to this machine and he will create an account and password for you and give you further instructions.</li>
 <li>You will use GitHub to move project work back and forth from your local machine. You will need to setup GitHub access from this machine using SSH keys as described in <a href="http://happygitwithr.com/ssh-keys.html">Happy Git with R Chapter 12</a>. You’ll also have to set up your tokens <a href="http://happygitwithr.com/github-pat.html">Appendix B</a> again.</li>
 </ul>
 </div>
@@ -398,7 +402,7 @@ $(document).ready(function () {
 <div id="ongoing-help-and-training" class="section level1">
 <h1>Ongoing Help and Training</h1>
 <p><em>How do I solve this problem? How do I get my skills up to snuff?</em></p>
-<p>We have an <strong>#r-discuss</strong> channel on Slack to ask questions and also news about useful resources and packages. (There’s also <strong>python-discuss</strong> and <strong>#stats-chat</strong>.) We prefer that you ask question on this channel rather than privately. This way you draw on the group’s knowledge, and everyone can learn from things. In general, if you spend 20 minutes banging your head against your screen trying to figure something out, it’s time to ask someone.</p>
+<p>We have an <strong>#r-discuss</strong> channel on Slack to ask questions and also news about useful resources and packages. (There’s also <strong>#python-discuss</strong> and <strong>#stats-chat</strong>.) We prefer that you ask question on this channel rather than privately. This way you draw on the group’s knowledge, and everyone can learn from the conversation. In general, if you spend 20 minutes banging your head against your screen trying to figure something out, it’s time to ask someone.</p>
 <p>Some good questions for the Slack room:</p>
 <ul>
 <li>Which package should I use for [something]?</li>
@@ -412,8 +416,8 @@ $(document).ready(function () {
 <p>Our technology team are a tremendous resource for a number of computing topics (especially web technologies and development operations), but remember that they are our collaborators, not IT support. (We do have straight IT support, mostly for office network issues, through <a href="https://support.profoundcloud.com/home">Profound Cloud</a>)</p>
 <p>Also, outside EHA:</p>
 <ul>
-<li>Stack Overflow is a popular Q&amp;A site for computer programming that a lot of <a href="stackoverflow.com/questions/tagged/r?sort=newest&amp;pagesize=50">discussions about R</a>.</li>
-<li>The <a href="https://twitter.com/hashtag/rstats">#rstats hashtag</a> on Twitter is a good place for news and short questions.</li>
+<li>Stack Overflow is a popular Q&amp;A site for computer programming that a lot of <a href="https://stackoverflow.com/questions/tagged/r?sort=newest&amp;pagesize=50">discussions about R</a>.</li>
+<li>The <a href="https://twitter.com/hashtag/rstats">#rstats hashtag</a> on Twitter is a good place for news and short questions, and general ranting.</li>
 </ul>
 <p>If there’s a course, workshop, or conference you want to attend to improve these skills, speak with your supervisor, we can often support this.</p>
 </div>
