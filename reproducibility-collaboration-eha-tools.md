@@ -137,7 +137,7 @@ final products.
     projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
     are a good idea for project organization. Here's a [Software
     Carpentry Lesson on RStudio
-    projects](http://swcarpentry.github.io/r-novice-gapminder/02-project-intro.html).
+    projects](http://swcarpentry.github.io/r-novice-gapminder/02-project-intro/).
 
 Communication
 =============
