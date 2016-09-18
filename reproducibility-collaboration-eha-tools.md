@@ -307,9 +307,10 @@ learning rather than only trying to pick it up as you go along.
 
 -   Here is a good video course
     ([Part1](https://www.youtube.com/watch?v=IpUDlhh8I2E) /
-    [Part2](%5Bhttps://www.youtube.com/watch?v=S8TLL05qVFg)), based on
+    [Part2](https://www.youtube.com/watch?v=S8TLL05qVFg)), based on
     the [Software Carpentry
-    curriculum](http://software-carpentry.org/lessons/)
+    curriculum](http://software-carpentry.org/lessons/).  (Links to the syllabus
+    are in the notes below the videos.)
 -   [Happy Git with R](http://happygitwithr.com/) is a great reference
     for the nuts and bolts of connecting your git, GitHub and R
     workflows
