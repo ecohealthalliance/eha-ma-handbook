@@ -375,7 +375,7 @@ or both.
     examples](https://github.com/ropensci/onboarding/issues?q=is%3Aissue+is%3Aclosed)
     to look at one kind of code review in action.
 -   Best practices for this are evolving. Check out [a recent conversation
-    among scientists on Rwitter on the topic](https://twitter.com/noamross/status/776087608468307970)
+    among scientists on Twitter on the topic](https://twitter.com/noamross/status/776087608468307970)
 
 Testing
 =======
