@@ -464,7 +464,7 @@ Dependency Management
 *How do I make sure that all my software and configurations needed for a
 project are portable?*
 
--   [Packrat](https://rstudio.github.io/packrat/) for R packages
+-   [Packrat](https://rstudio.github.io/packrat/) or [checkpoint](https://CRAN.R-project.org/package=checkpoint) to fix R package versions.
 -   [Docker](https://www.docker.com/) for everything
     -   [A lesson in user Docker for an R
         project](http://ropenscilabs.github.io/r-docker-tutorial/)
