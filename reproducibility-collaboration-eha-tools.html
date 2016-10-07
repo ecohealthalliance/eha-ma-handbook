@@ -294,7 +294,7 @@ $(document).ready(function () {
 </ul></li>
 <li><p>Avoid filename-based version control:</p>
 <div class="figure">
-<img src="data:text/html; charset=utf-8,%3Chtml%3E%3Chead%3E%3Ctitle%3ERequest%20Rejected%3C%2Ftitle%3E%3C%2Fhead%3E%3Cbody%3EThe%20requested%20URL%20was%20rejected%2E%20If%20you%20think%20this%20is%20an%20error%2C%20please%20contact%20the%20webmaster%2E%20%3Cbr%3E%3Cbr%3EYour%20support%20ID%20is%3A%2016514556369705926800%3C%2Fbody%3E%3C%2Fhtml%3E" />
+<img src="data:text/html; charset=utf-8,%3Chtml%3E%3Chead%3E%3Ctitle%3ERequest%20Rejected%3C%2Ftitle%3E%3C%2Fhead%3E%3Cbody%3EThe%20requested%20URL%20was%20rejected%2E%20If%20you%20think%20this%20is%20an%20error%2C%20please%20contact%20the%20webmaster%2E%20%3Cbr%3E%3Cbr%3EYour%20support%20ID%20is%3A%2016514556369780721326%3C%2Fbody%3E%3C%2Fhtml%3E" />
 
 </div></li>
 </ul>
@@ -339,7 +339,7 @@ $(document).ready(function () {
 <ul>
 <li>Check out Fernando Perez’s <a href="http://fperez.org/py4science/code_reviews.html">tips for code review in the lab</a>.</li>
 <li>Read the <a href="https://mozillascience.github.io/codeReview/intro.html">Mozilla Guide to Code Review in the Lab</a></li>
-<li>Check out some <a href="https://github.com/ropensci/onboarding/issues?q=is%3Aissue+is%3Aclosed">rOpenSci package review. examples</a> to look at one kind of code review in action.</li>
+<li>Check out some <a href="https://github.com/ropensci/onboarding/issues?q=is%3Aissue+is%3Aclosed">rOpenSci package review examples</a> to look at one kind of code review in action.</li>
 <li>Best practices for this are evolving. Check out <a href="https://twitter.com/noamross/status/776087608468307970">a recent conversation among scientists on Twitter on the topic</a></li>
 </ul>
 </div>
@@ -367,14 +367,16 @@ $(document).ready(function () {
 <h1>Running Big Analyses</h1>
 <p><em>How can I make this giant beast of a model run faster?</em></p>
 <ul>
-<li>Our Aegypti server (aegypti.ecohealthalliance.org) has 40 cores and 250G of RAM, and can be accessed from anywhere, and has and easy-to-use RStudio interface. It’s a good go-to for most biggish analyses you might do.</li>
+<li>Our Aegypti server has 40 cores and 250G of RAM, and can be accessed from anywhere, and has and easy-to-use RStudio interface. It’s a good go-to for most biggish analyses you might do.</li>
 <li>The server is generally most useful if you can parallelize your R code across many processors . It’s also useful if you have jobs that need a large amount of memory (often big geospatial analyses), or just something that needs to run all weekend while your computer does other things.</li>
+<li>We have an #eha-servers Slack room, for coordinating use of this and other servers check in there if you have questions or before running a big job.</li>
 <li>We also have accounts for Amazon Web Services for appropriate projects.</li>
 </ul>
 <div id="install-6" class="section level3">
 <h3>Install</h3>
 <ul>
 <li>Contact <a href="mailto:ross@ecohealthalliance.org">Noam</a> for access to this machine and he will create an account and password for you and give you further instructions.</li>
+<li>Log on to the RStudio server interface by pointing your browser at <a href="http://aegypti.ecohealthalliance.org:8787/" class="uri">http://aegypti.ecohealthalliance.org:8787/</a>. For SSH-based access just use <code>aegypti.ecohealthalliace.org</code> from the terminal.</li>
 <li>You will use GitHub to move project work back and forth from your local machine. You will need to setup GitHub access from this machine using SSH keys as described in <a href="http://happygitwithr.com/ssh-keys.html">Happy Git with R Chapter 12</a>. You’ll also have to set up your tokens <a href="http://happygitwithr.com/github-pat.html">Appendix B</a> again.</li>
 </ul>
 </div>
@@ -383,6 +385,7 @@ $(document).ready(function () {
 <ul>
 <li><a href="https://csgillespie.github.io/efficientR/performance.html#performance-parallel">Chapter 7.4 of <em>Efficient R</em></a> provides a brief introduction to parallelization.</li>
 <li>Not everything can be done from the RStudio server interface on the server. If you are not familiar with the shell interface, brush up via <a href="http://swcarpentry.github.io/shell-novice/">this Software Carpentry lesson</a>. Look at this <a href="http://v4.software-carpentry.org/shell/ssh.html">chapter</a> from an old version of the lesson for instructions on using the Secure Shell (SSH) to login to the server remotely and setting up keys so you don’t have to enter your password every time.</li>
+<li>Other helpful things you might look into are <a href="https://tmux.github.io/">tmux</a> for keeping shell processes running when you log off (already installed), and <a href="http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/">SSH config files</a> for simplifying shell logon.</li>
 </ul>
 </div>
 </div>

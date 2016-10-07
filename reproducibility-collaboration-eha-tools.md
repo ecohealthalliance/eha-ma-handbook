@@ -371,7 +371,7 @@ or both.
     lab](http://fperez.org/py4science/code_reviews.html).
 -   Read the [Mozilla Guide to Code Review in the
     Lab](https://mozillascience.github.io/codeReview/intro.html)
--   Check out some [rOpenSci package review.
+-   Check out some [rOpenSci package review
     examples](https://github.com/ropensci/onboarding/issues?q=is%3Aissue+is%3Aclosed)
     to look at one kind of code review in action.
 -   Best practices for this are evolving. Check out [a recent conversation
@@ -412,7 +412,7 @@ Running Big Analyses
 
 *How can I make this giant beast of a model run faster?*
 
--   Our Aegypti server (aegypti.ecohealthalliance.org) has 40 cores and
+-   Our Aegypti server has 40 cores and
     250G of RAM, and can be accessed from anywhere, and has and
     easy-to-use RStudio interface. It's a good go-to for most biggish
     analyses you might do.
@@ -421,6 +421,9 @@ Running Big Analyses
     need a large amount of memory (often big geospatial analyses), or
     just something that needs to run all weekend while your computer
     does other things.
+-   We have an #eha-servers Slack room, for coordinating use of this and other
+    servers check in there if you have questions or before running a big
+    job.
 -   We also have accounts for Amazon Web Services for
     appropriate projects.
 
@@ -429,6 +432,8 @@ Running Big Analyses
 -   Contact [Noam](mailto:ross@ecohealthalliance.org) for access to this
     machine and he will create an account and password for you and give
     you further instructions.
+-   Log on to the RStudio server interface by pointing your browser at http://aegypti.ecohealthalliance.org:8787/.
+    For SSH-based access just use `aegypti.ecohealthalliace.org` from the terminal.
 -   You will use GitHub to move project work back and forth from your
     local machine. You will need to setup GitHub access from this
     machine using SSH keys as described in [Happy Git with R Chapter
@@ -449,6 +454,9 @@ Running Big Analyses
     old version of the lesson for instructions on using the Secure
     Shell (SSH) to login to the server remotely and setting up keys so
     you don't have to enter your password every time.
+-   Other helpful things you might look into are [tmux](https://tmux.github.io/)
+    for keeping shell processes running when you log off (already installed), and
+    [SSH config files](http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/) for simplifying shell logon.
 
 Dependency Management
 =====================
