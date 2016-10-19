@@ -1,12 +1,5 @@
----
-output: 
-  html_document:
-    keep_md: true
----
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 ## Converting Paperpile Citations in Google Docs to Endnote Citations in MS Word
 
