@@ -16,7 +16,7 @@ However, there are some situations where you may need to convert a Google Doc wi
 
 __But first, you must properly install the Paperpile Google Docs Add-on!__ 
 
-- Note: You may already have the Google Chrome Paperpile Extension installed, but you need the Google Docs Add-on as well. 
+- Note: You may already have the Google Chrome Paperpile Extension installed and be using it to create citations in your Google Doc, but you need the Google Docs Add-on for proper exporting. 
 
 To install this addon, follow the links from Paperpile's [website dedicated to Google Docs](https://paperpile.com/blog/free-google-docs-add-on/).
 
@@ -27,5 +27,5 @@ Now, when you open a document in Google Docs, you should see both menus for *Add
 
 Once you have the add-on sidebar open, you can follow Paperpile's [detailed guide](http://forum.paperpile.com/t/guide-export-a-google-document-to-word-endnote/777). 
 
-- Note: depending on your operating system and your edition of Microsoft Word, some of the Word menus may appear slightly different than the ones depicted in Paperpile's guide. However, the Paperpile menus should look *exactly the same*. 
+- Note: depending on your operating system and your edition of Microsoft Word, some of the Word menus may appear slightly different than the ones depicted in Paperpile's guide. However, the Paperpile images included in the guide should look *exactly the same*. 
 
