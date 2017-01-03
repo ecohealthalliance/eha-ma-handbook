@@ -328,6 +328,11 @@ learning rather than only trying to pick it up as you go along.
     they can make you a member of the [organizational EHA
     account](https://github.com/ecohealthalliance) and be given access
     to the appropriate teams.
+-   If you are using a GitHub account you previously created with another
+    e-mail, be sure to add your EHA e-mail under [Email Settings](https://github.com/settings/notifications)
+    and set "Custom Routing" under [your notification settings](https://github.com/settings/notifications)
+    so that notifications related to the EHA organization go to your EHA
+    e-mail.
 -   Install Dropbox on your computer with your EHA account (note you can
     have separate personal and EHA Dropbox folders)
 -   Check that your EHA email gives you access to Google Drive. If you
