@@ -1,4 +1,12 @@
-# EHA Modeling and Analytics Best Practices
+---
+title: "EHA Modeling and Analytics Best Practices"
+output:
+  html_document:
+    toc: TRUE
+    toc_depth: 2
+    keep_md: TRUE
+    clean: FALSE
+---
 
 *Edit this document
 [here](https://github.com/ecohealthalliance/eha-reproducibility/edit/gh-pages/reproducibility-collaboration-eha-tools.md)*.
