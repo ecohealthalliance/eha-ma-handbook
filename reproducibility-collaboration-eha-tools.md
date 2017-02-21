@@ -5,6 +5,7 @@ output:
     toc: TRUE
     toc_depth: 2
     keep_md: TRUE
+    self_contained: FALSE
 ---
 
 *Edit this document
