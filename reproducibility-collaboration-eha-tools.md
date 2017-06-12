@@ -431,7 +431,7 @@ Running Big Analyses
     machine and he will create an account and password for you and give
     you further instructions.
 -   Log on to the RStudio server interface by pointing your browser at http://aegypti.ecohealthalliance.org:8787/.
-    For SSH-based access just use `aegypti.ecohealthalliace.org` from the terminal.
+    For SSH-based access just use `aegypti.ecohealthalliance.org` from the terminal.
 -   You will use GitHub to move project work back and forth from your
     local machine. You will need to setup GitHub access from this
     machine using SSH keys as described in [Happy Git with R Chapter
