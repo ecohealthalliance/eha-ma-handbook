@@ -149,6 +149,11 @@ Communication
     tools (Dropbox/Google Drive Folder, GitHub Repository), so as to
     have a central hub for project management. E-mails can be forwarded
     to a channel.
+    
+        -   Slack also provides audio calling features and a screen-sharing
+    tool that enables dual control of computer. This latter feature
+    is great for walking through a project with someone remotely or
+    across the office, and also joint debugging.
 
 -   GitHub ([see below](#version-control-and-collaboration)) has a good
     issue-tracking system that accompanies each project and can be used
@@ -158,15 +163,10 @@ Communication
 -   Remember that your Slack and GitHub communications are part of the
     project and are likely to be seen by internal and
     external collaborators.
--   [ScreenHero](https://eha.slack.com/screenhero) is a screen-sharing
-    tool that enables dual control of computer and is part of Slack. It
-    is great for walking through a project with someone remotely or
-    across the office, and also debugging.
 
 ### Install
 
--   Download and install [Slack](https://slack.com/downloads) and
-    [ScreenHero](https://eha.slack.com/screenhero). Contact
+-   Download and install [Slack](https://slack.com/downloads). Contact
     [Toph](mailto:allen@ecohealthalliance.org) (Tech), or
     [Noam](mailto:ross@ecohealthalliance.org) (Modeling & Analytics) to get
     an account. Join any appropriate channels.
