@@ -1,0 +1,6 @@
+book_filename: "eha-ma-handbook"
+language:
+  ui:
+    chapter_name: "Chapter "
+output_dir: "docs"
+
