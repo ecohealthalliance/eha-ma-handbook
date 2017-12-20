@@ -1,7 +1,7 @@
 # Testing
 
 
-*Is this code doing what I think its doing? Is this data correct*
+*Is this code doing what I think its doing? Is this data correct?*
 
 Most code should be accompanied by some form of testing. This scales
 with the size and type of project. Your work should generally
