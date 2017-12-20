@@ -28,7 +28,7 @@ but is very powerful.
             
 -   Avoid filename-based version control: 
 
-    ![](phd052810s.gif)
+    ![](assets/phdcomics-filenames.gif)
 
 ## Learn
 

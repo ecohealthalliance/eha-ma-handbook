@@ -9,13 +9,13 @@ manipulation but a computer language, meaning that analsyes are
 *scripted* and thus can be automated, run again, built upon and
 extended.
 
-### Install
+## Install
 
 -   [R itself](https://cran.r-project.org/)
 -   [RStudio](https://www.rstudio.com/), the leading R
     development environment.
 
-### Learn
+## Learn
 
 Learning R is beyond the scope of this document, and you likely already
 have some experience in it, but some good starting points are:

@@ -16,3 +16,7 @@ pre code {
 .book.font-family-1 {
   font-family: "Nunito", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
+.title {
+  font-size: 3em;
+}

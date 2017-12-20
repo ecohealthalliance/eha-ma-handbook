@@ -5,7 +5,8 @@ bookdown::gitbook:
       scroll_highlight: yes
       collapse: section
       before: |
-        <li><strong>EHA M&A Handbook</strong></li>
+        <li><a href="http://www.ecohealthalliance.org" target="_blank"><img src="assets/eha_logo.png" style="max-width: 100%"></a></li>
+        <li><a href="./" style="text-align:center"><strong>Modeling & Analytics Handbook</strong><a/></li>
     sharing: null
     edit:
       link: https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s
@@ -14,9 +15,4 @@ bookdown::gitbook:
       theme: white
       family: sans
       id: 1
-bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
-  keep_tex: yes
+
