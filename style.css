@@ -17,6 +17,15 @@ pre code {
   font-family: "Nunito", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+#header {
+  text-align:center !important;
+}
 .title {
-  font-size: 3em;
+  font-size: 2.5em !important;
+}
+
+.subtitle {
+  font-size: 1.2em !important;
+  font-style: normal !important;
+  font-weight: normal !important;
 }
