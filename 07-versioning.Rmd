@@ -28,7 +28,7 @@ but is very powerful.
             
 -   Avoid filename-based version control: 
 
-    ![](http://www.phdcomics.com/comics/archive/phd052810s.gif)
+    ![](phd052810s.gif)
 
 ## Learn
 
