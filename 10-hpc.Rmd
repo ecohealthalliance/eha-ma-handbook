@@ -17,9 +17,14 @@
     job.
 -   We also have accounts for Amazon Web Services for
     appropriate projects.
-    
-<div><div style="width: 100%; text-align: center;"><div data-netdata="system.cpu" data-dimensions="user" data-chart-library="easypiechart" data-easypiechart-max-value="100" data-units="%" data-width="150px" data-after="-60" data-points="60" data-title="CPU Usage" data-units="%" data-colors="#FF5555"></div><div data-netdata="system.ram" data-dimensions="used|buffers|active|wired" data-append-options="percentage" data-chart-library="easypiechart" data-title="RAM Usage" data-units="%" data-easypiechart-max-value="100" data-width="150px" data-after="-60" data-points="60" data-colors="#66AA00"></div><div data-netdata="disk_space._" data-title="Hard Disk Usage" data-append-options="percentage" data-decimal-digits="0" data-dimensions="used" data-chart-library="easypiechart" data-width="150px" data-after="-60" data-points="60" data-easypiechart-max-value="100" data-units="%"></div></div>
+
+<div style="width: 100%; text-align: center;">
+<div data-netdata="system.cpu" data-dimensions="user" data-chart-library="easypiechart" data-easypiechart-max-value="100" data-units="%" data-width="150px" data-after="-60" data-points="60" data-title="CPU Usage" data-units="%" data-colors="#FF5555"></div>
+<div data-netdata="system.ram" data-dimensions="used|buffers|active|wired" data-append-options="percentage" data-chart-library="easypiechart" data-title="RAM Usage" data-units="%" data-easypiechart-max-value="100" data-width="150px" data-after="-60" data-points="60" data-colors="#66AA00"></div>
+<div data-netdata="disk_space._" data-title="Hard Disk Usage" data-append-options="percentage" data-decimal-digits="0" data-dimensions="used" data-chart-library="easypiechart" data-width="150px" data-after="-60" data-points="60" data-easypiechart-max-value="100" data-units="%"></div>
 <script type="text/javascript" src="http://aegypti.ecohealthalliance.org:22051/status/dashboard.js"></script>
+</div>
+
 
 ## Install
 
@@ -51,4 +56,3 @@
 -   Other helpful things you might look into are [tmux](https://tmux.github.io/)
     for keeping shell processes running when you log off (already installed), and
     [SSH config files](http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/) for simplifying shell logon.
-
