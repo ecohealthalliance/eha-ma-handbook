@@ -2,6 +2,10 @@ language: r
 sudo: required
 pandoc_version: 1.19.2.1
 
+branches:
+  only:
+    - master
+
 r_packages:
   - git2r
   - bookdown
