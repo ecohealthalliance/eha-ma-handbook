@@ -6,7 +6,9 @@ bookdown::pdf_book:
   keep_tex: yes
 bookdown::gitbook:
   css: style.css
-  edit:
-    link: https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s
-    text: "Edit this chapter"
+  config:
+    sharing: null
+    edit:
+      link: https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s
+      text: "Edit this chapter"
 

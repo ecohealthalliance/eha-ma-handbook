@@ -1,6 +1,6 @@
 --- 
-title: "EcoHealth Alliance Modeling and Analytics Handbook"
-subtitle: "An ever-evolving collection of some things we figured out"
+title: "EHA Modeling & Analytics Handbook"
+subtitle: "An ever-evolving collection of some things we kind of figured out"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib, packages.bib]
