@@ -9,7 +9,7 @@ git config --global user.email "ross@ecohealthalliance.org"
 git config --global user.name "Noam Ross"
 
 DOCS_DIR=docs
-REMOTE_URL=$(git config --get remote.origin.url)
+REMOTE_URL="https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git"
 
 mkdir -p ${DOCS_DIR}
 rm -rf ${DOCS_DIR}/.git
