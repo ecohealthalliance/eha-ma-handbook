@@ -6,10 +6,6 @@ branches:
   only:
     - master
 
-r_packages:
-  - git2r
-  - bookdown
-
 cache:
   packages: true
 

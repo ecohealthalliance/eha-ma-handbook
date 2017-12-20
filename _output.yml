@@ -2,8 +2,6 @@ bookdown::gitbook:
   css: style.css
   config:
     sharing: null
-    before: |
-        <link href="https://fonts.googleapis.com/css?family=Lato|Nunito" rel="stylesheet">
     edit:
       link: https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s
       text: "Edit this chapter"
