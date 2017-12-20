@@ -12,3 +12,7 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+.book.font-family-1 {
+  font-family: "Nunito", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

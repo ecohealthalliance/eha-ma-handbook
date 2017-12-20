@@ -1,14 +1,20 @@
+bookdown::gitbook:
+  css: style.css
+  config:
+    sharing: null
+    before: |
+        <link href="https://fonts.googleapis.com/css?family=Lato|Nunito" rel="stylesheet">
+    edit:
+      link: https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s
+      text: "Edit this chapter"
+    fontsettings:
+      theme: white
+      family: sans
+      id: 1
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
-bookdown::gitbook:
-  css: style.css
-  config:
-    sharing: null
-    edit:
-      link: https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s
-      text: "Edit this chapter"
 
