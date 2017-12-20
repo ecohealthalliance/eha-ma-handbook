@@ -21,8 +21,7 @@ Analytics team.
 
 This is a living document.  To make changes, just click the edit button
 (<i class="fa fa-edit"></i>) at the top of the page.  It will take you to the source editor for the
-chapter on GitHub, where you can make edits and submit your changes as a
-pull request.
+chapter on GitHub, where you can make edits and submit your changes.
 
 In general, we aim to produce sound analyses that are:
 
