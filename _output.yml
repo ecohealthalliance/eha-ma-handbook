@@ -1,4 +1,6 @@
 bookdown::gitbook:
+  includes:
+    in_header: in_header.html
   split_by: "chapter+number"
   number_sections: false
   css: style.css
