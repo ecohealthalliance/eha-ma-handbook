@@ -16,6 +16,6 @@ rm -rf ${DOCS_DIR}/.git
 git init ${DOCS_DIR}
 git -C ${DOCS_DIR} checkout --orphan gh-pages
 git -C ${DOCS_DIR} add .
-git -C ${DOCS_DIR} commit --no-verify -m "Update docs"
+git -C ${DOCS_DIR} commit --no-verify -m "Update docs (automated commit)"
 git -C ${DOCS_DIR} remote add origin -m "gh-pages" ${REMOTE_URL}
 git -C ${DOCS_DIR} push --force -u origin gh-pages
