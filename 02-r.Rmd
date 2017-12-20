@@ -1,0 +1,43 @@
+# R and Reproducible Analysis {#r}
+
+*Can everything be re-done easily if I change one data point in the
+inputs?*
+
+At EHA **R** is our primary, though not exclusive, tool for analysis and
+modeling work. R is not just a piece of software for statistics and data
+manipulation but a computer language, meaning that analsyes are
+*scripted* and thus can be automated, run again, built upon and
+extended.
+
+### Install
+
+-   [R itself](https://cran.r-project.org/)
+-   [RStudio](https://www.rstudio.com/), the leading R
+    development environment.
+
+### Learn
+
+Learning R is beyond the scope of this document, and you likely already
+have some experience in it, but some good starting points are:
+
+-   [The Software Carpentry
+    Lessons](http://swcarpentry.github.io/r-novice-gapminder/)
+-   [Swirl](http://swirlstats.com/), a set of interactive lessons run
+    right in R.
+-   [The JHU Courera
+    Series](https://www.coursera.org/specializations/jhu-data-science)
+
+-   [R for Data Science by Hadley Wickam](http://r4ds.had.co.nz/) is a
+    beginner/intermediate text that we highly recommend for getting up
+    to speed with the particular workflows we recommend and the most
+    recent packages that support them.
+
+-   [Advanced R (Wickham)](http://adv-r.had.co.nz/) is very good for
+    understanding how the language works.
+-   [Efficient R by Colin Gillespie and Robin
+    Lovelace](https://csgillespie.github.io/efficientR/) is helpful for
+    imporving workflows and speeding up code.
+-   [R Packages (Wickham)](http://r-pkgs.had.co.nz/) is good for
+    package development.
+-   [Cheatsheets](https://www.rstudio.com/resources/cheatsheets/) from
+    RStudio are a useful references for a number of things.

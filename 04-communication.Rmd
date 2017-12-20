@@ -1,0 +1,43 @@
+# Communication
+
+*How do we work together and keep a useful record of our interactions?*
+
+-   [Slack](https://eha.slack.com/) is our office chat tool and is good
+    for day-to-day communication. Slack does not have to be an instant
+    communication tool - some people prefer to check it a few times
+    a day. Check with your supervisor about your
+    project/team preferences. Slack's main purpose is to organize our
+    communication by *channels* specific to a topic or project. It is
+    good for keeping information from one project together in a way that
+    can be referenced later by new team members, rather than being lost
+    in various e-mail inboxes. A channel can be linked to many other
+    tools (Dropbox/Google Drive Folder, GitHub Repository), so as to
+    have a central hub for project management. E-mails can be forwarded
+    to a channel.
+
+-   GitHub ([see below](#version-control-and-collaboration)) has a good
+    issue-tracking system that accompanies each project and can be used
+    for task management and general communication. This ties messages to
+    a specific project and keeps a good long-term record, and can be
+    connected to a slack channel or integrated with e-mail
+-   Remember that your Slack and GitHub communications are part of the
+    project and are likely to be seen by internal and
+    external collaborators.
+-   [ScreenHero](https://eha.slack.com/screenhero) is a screen-sharing
+    tool that enables dual control of computer and is part of Slack. It
+    is great for walking through a project with someone remotely or
+    across the office, and also debugging.
+
+## Install
+
+-   Download and install [Slack](https://slack.com/downloads) and
+    [ScreenHero](https://eha.slack.com/screenhero). Contact
+    [Toph](mailto:allen@ecohealthalliance.org) (Tech), or
+    [Noam](mailto:ross@ecohealthalliance.org) (Modeling & Analytics) to get
+    an account. Join any appropriate channels.
+-   There's also a mobile Slack app for
+    [iOS](https://itunes.apple.com/us/app/slack-team-communication/id618783545?mt=8)
+    and
+    [Android](https://play.google.com/store/apps/details?id=com.Slack&hl=en),
+    which may be helpful if you are traveling.
+

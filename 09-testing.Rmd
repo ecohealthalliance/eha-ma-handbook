@@ -1,0 +1,30 @@
+# Testing
+
+
+*Is this code doing what I think its doing? Is this data correct*
+
+Most code should be accompanied by some form of testing. This scales
+with the size and type of project. Your work should generally
+accompanied with testing code or outputs that show that your models
+behave appropriately, are statisically sound, that your code is running
+as you expect and your data is checked for quality.
+
+## Learn
+
+-   [Test driven data
+    analysis](http://www.tdda.info/pages/table-of-contents.html#table-of-contents)
+    is a neat blog on this subject.
+-   There's a [testing chapter in the R Packages
+    book](http://r-pkgs.had.co.nz/tests.html).
+-   The vingettes and README files of the packages below are useful.
+
+## Install
+
+-   R packages: [**assertr**](https://github.com/ropenscilabs/assertr/)
+    or
+    [**validate**](http://www.markvanderloo.eu/yaRb/2016/03/25/easy-data-validation-with-the-validate-package/)
+    for testing that data meets criteria
+    [**visdat**](https://github.com/njtierney/visdat) for visually
+    inspecting tabular data. (though there are many ways to plot your data for inspection). [**testthat**]() for functions and
+    R packages.
+

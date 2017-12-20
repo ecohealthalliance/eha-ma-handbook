@@ -1,6 +1,11 @@
 bookdown::gitbook:
   css: style.css
   config:
+    toc:
+      scroll_highlight: yes
+      collapse: section
+      before: |
+        <li><strong>EHA M&A Handbook</strong></li>
     sharing: null
     edit:
       link: https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s
@@ -15,4 +20,3 @@ bookdown::pdf_book:
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes
-

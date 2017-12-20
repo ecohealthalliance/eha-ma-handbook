@@ -1,0 +1,40 @@
+# Ongoing Help and Training {#help}
+
+*How do I solve this problem? How do I get my skills up to snuff?*
+
+We have an **\#r-discuss** channel on Slack to ask questions and also
+news about useful resources and packages. (There's also
+**\#python-discuss** and **\#stats-chat**.) We prefer that you ask
+question on this channel rather than privately. This way you draw on the
+group's knowledge, and everyone can learn from the conversation. In general, if
+you spend 20 minutes banging your head against your screen trying to
+figure something out, it's time to ask someone.
+
+Some good questions for the Slack room:
+
+-   Which package should I use for [something]?
+-   Anyone have a good reference or tutorial for [package, method]?
+-   What does this error mean?
+
+Our technology team are a tremendous resource for a number of computing
+topics (especially web technologies and development operations), but
+remember that they are our collaborators, not IT support. (We do have
+straight IT support, mostly for office network issues, through [Profound
+Cloud](https://support.profoundcloud.com/home))
+
+Also, outside EHA:
+
+-   There's an almost-monthly [NYC R Meetup](https://www.meetup.com/nyhackr/) that EHA members sometimes attend.
+-   There's also an [R-Ladies NYC chapter](http://www.rladiesnyc.org/) that has
+    regular meetups.  One of our team members, Brooke Watson, is on the board.
+-   Stack Overflow is a popular Q&A site for computer programming that a
+    lot of [discussions about
+    R](https://stackoverflow.com/questions/tagged/r?sort=newest&pagesize=50).
+-   [R-Weekly](https://rweekly.org/) publishes a useful weekly newsletter on new
+    R developments, packages, and publications.
+-   The [\#rstats hashtag](https://twitter.com/hashtag/rstats) on
+    Twitter is a good place for news and short questions, and general ranting.
+
+If there's a course, workshop, or conference you want to attend to
+improve these skills, speak with your supervisor, we can often support
+this.

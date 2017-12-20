@@ -1,0 +1,46 @@
+# Data Management
+
+
+*Can the data be shared and published, and easily re-used in other
+analyses*?
+
+-   Store data in simple, cross-compatible formats such as CSV files.
+-   Microsoft Excel can be a useful tool for data entry and
+    organization, but limit its use to that, and organize your data in a
+    way that can be easily exported.
+-   Metadata! Metadata! Document your data.
+-   For data sets that cross multiple projects, create data-only project
+    folders for the master version. When these data sets are finalized,
+    they can be deposited in public or private data repositories such as
+    [figshare](https://figshare.com/) and [zenodo](https://zenodo.org/).
+    In some cases it makes sense for us to create data-only R packages
+    for easily distributing data internally and externally.
+
+We aim to generally work in a **tidy data** framework. This approach to
+structuring data makes iteroperability between tools easier.
+
+## Learn
+
+-   Read Hadley Wickham's [tidy data
+    paper](http://vita.had.co.nz/papers/tidy-data.pdf) for the
+    general concept.  Note the *packages* in this paper are out of date,
+    but the structures and concepts apply.
+-   [R For Data Science](http://r4ds.had.co.nz/tidy-data.html) is a
+    great online book to read and reference for working in
+    this framework, and gives guidance for the most up-to-date packages
+    (**tidyr** being the latest analogue of **reshape** and **reshape2**).
+-   Data Carpentry has [a Lesson on spreadsheet
+    organization](http://www.datacarpentry.org/spreadsheet-ecology-lesson/)
+    for when you need to do some work in Excel but make it compatible
+    with R.
+-   [Nine simple ways to make it easier to (re)use your
+    data](http://ojs.library.queensu.ca/index.php/IEE/article/view/4608/4898)
+    rounds some things out in terms of data sharing.  [This post](https://dynamicecology.wordpress.com/2016/08/22/ten-commandments-for-good-data-management/) is nice, too.
+
+## Install
+
+Get the
+[**tidyverse**](https://cran.r-project.org/web/packages/tidyverse/index.html)
+package for R using `install.packages("tidyverse")`. This will install
+several other relevant packages.
+
