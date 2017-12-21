@@ -18,6 +18,6 @@ touch ${DOCS_DIR}/.nojekyll
 git init ${DOCS_DIR}
 git -C ${DOCS_DIR} checkout --orphan gh-pages
 git -C ${DOCS_DIR} add .
-git -C ${DOCS_DIR} commit --no-verify -m "Update docs (automated commit)" || true
+git -C ${DOCS_DIR} commit --no-verify -m "Auto-build ($TRAVIS_COMMIT_MESSAGE)" || true
 git -C ${DOCS_DIR} remote add origin -m "gh-pages" ${REMOTE_URL}
 git -C ${DOCS_DIR} push --force -u origin gh-pages
