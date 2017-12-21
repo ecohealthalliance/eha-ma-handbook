@@ -1,7 +1,10 @@
 # Statistical Methods
 
 Statistical methods are a far larger subject than can be covered in this handbook.
-Our team uses a wide variety of methods that change by project and with new updates to
+Our team uses a wide variety of methods that differ by project and change via advances in the field.
+Nonetheless, here are some methods that we favor when they are appropriate.
+
+## Multivariate Regression
 
 -  We like Generalized Linear Models. Many of us approach these from a Bayesian perspective,
    and build and fit these models using [Stan](http://mc-stan.org/).  A great introduction to
@@ -11,3 +14,11 @@ Our team uses a wide variety of methods that change by project and with new upda
 -  For nonlinear models, we like Generalized Additive Models, for which we use the **mgcv** R package. Noam has
 [a bunch of materials](https://github.com/noamross/2017-11-14-noamross-gams-nyhackr) on this, including slides and exercises from a workshop he co-teaches, and the seminal text is [Generalizd Additive Models in R](https://www.amazon.com/Generalized-Additive-Models-Introduction-Statistical/dp/1498728332/ref=redir_mobile_desktop?_encoding=UTF8&%2AVersion%2A=1&%2Aentries%2A=0), by Simon Wood.  (Example- Host-Pathogen Phylogeny Project: [Paper](https://dx.doi.org/10.1038/nature22975), [GitHub](https://github.com/ecohealthalliance/HP3))
 -  When a multivariate analysis is primarily about prediction, and less about variable inference, machine-learning methods such as **boosted regression trees** are useful.  We make use of these through the **dismo** or **xgboost** packages. (Example - Hotspots 2: [Paper](https://www.nature.com/articles/s41467-017-00923-8), [GitHub](https://github.com/ecohealthalliance/hotspots2))
+
+## Networks
+
+## Species Distribution Modeling
+
+## Epidemic Simulation and Fitting
+
+
