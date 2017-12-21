@@ -11,7 +11,10 @@ bookdown::gitbook:
       before: |
         <li><a href="http://www.ecohealthalliance.org" target="_blank"><img src="assets/eha_logo.png" style="max-width: 100%"></a></li>
         <li><a href="./" style="text-align:center"><strong>Modeling & Analytics Handbook</strong><a/></li>
-    sharing: null
+    sharing:
+      twitter: yes
+      github: yes
+      facebook: no
     edit:
       link: https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s
       text: "Edit this chapter"
@@ -19,4 +22,3 @@ bookdown::gitbook:
       theme: white
       family: sans
       id: 1
-
