@@ -1,6 +1,7 @@
 book_filename: "eha-ma-handbook"
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: ""
 output_dir: "docs"
+repo: https://github.com/ecohealthalliance/eha-ma-handbook
 delete_merged_file: true

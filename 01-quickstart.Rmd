@@ -1,0 +1,16 @@
+# Quickstart for computing
+
+In addition to the standard computer setup provided by office admin (Email, MS Office, etc), M&A members should do the following.
+
+-   Download and install [Slack](https://slack.com/downloads/osx).  If you don't alread have an invite, get one from Noam.  Join the **r-discuss**, **#stats-talk**, and **#journal-club** channels and any others your supervisor suggests or are associated with projects you are assigned to.you
+-   If you don't already have one, sign up for an account on [GitHub](https://github.com/).  Provide Noam with your username so as to add you to the EcoHealth Alliance team.  If you already have a GitHub account using a personal email, [add your EHA email to your account](https://github.com/settings/emails) and [set up custom routing to direct EHA organization notifications to your EHA email](https://github.com/settings/notifications)
+-   Install R and then RStudio.  Links and instructions can be found [here](http://stat545.com/block000_r-rstudio-install.html)
+-   Install git and link it to RStudio and your GitHub account.  Instructions for all of this are found [here, in Sections 7-15 of _Happy Git with R_](http://happygitwithr.com/install-git.html).  If you get stuck along the way don't hesitate to ask for help (via the **r-discuss** channel on Slack!).
+
+## Optional
+
+In addition, the following programs may be helpful to install (all for Mac users):
+
+-   [Homebrew](https://brew.sh/) for general package management
+-   [iTerm2](https://www.iterm2.com/) for a better shell interface. (`brew cask install iterm2` using Homebrew in the shell)
+-   [mosh](https://mosh.org/) for connecting to our high-performance servers (`brew install mosh` using Homebrew in the shell)

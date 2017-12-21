@@ -2,7 +2,7 @@ bookdown::gitbook:
   includes:
     in_header: in_header.html
   split_by: "chapter+number"
-  number_sections: false
+  number_sections: true
   css: style.css
   config:
     toc:
