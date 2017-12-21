@@ -1,12 +1,12 @@
 # Quickstart for computing
 
 In addition to the standard computer setup provided by office admin (Email, MS
-Office, etc), M&A members should do the following.
+Office, etc), M&A members should do the following:
 
 -   Download and install [Slack](https://slack.com/downloads/osx). If you don't
     alread have an invite, get one from Noam. Join the **\#r-discuss**,
     **\#stats-talk**, and **\#journal-club** channels and any others your
-    supervisor suggests or are associated with projects you are assigned to.you
+    supervisor suggests or are associated with projects you are assigned to.
 -   If you don't already have one, sign up for an account on
     [GitHub](https://github.com/). Provide Noam with your username so as to add
     you to the EcoHealth Alliance team. If you already have a GitHub account
@@ -21,6 +21,11 @@ Office, etc), M&A members should do the following.
     R*](http://happygitwithr.com/install-git.html). If you get stuck along the
     way don't hesitate to ask for help (via the **\#r-discuss** channel on
     Slack!).
+-   Install Dropbox on your computer with your EHA account (note you can have
+    separate personal and EHA Dropbox folders)
+-   Check that your EHA email gives you access to Google Drive. If you prefer
+    it, or your supervisor specifies it, [install it locally on your
+    computer](https://tools.google.com/dlpage/drive)
 
 ## Optional
 
@@ -32,3 +37,4 @@ users):
     (`brew cask install iterm2` using Homebrew in the shell)
 -   [mosh](https://mosh.org/) for connecting to our high-performance servers
     (`brew install mosh` using Homebrew in the shell)
+-   [hub](https://hub.github.com/) for interacting with GitHub from the shell (`brew install hub`)

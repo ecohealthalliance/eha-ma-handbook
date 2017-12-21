@@ -1,4 +1,4 @@
-# Version Control and Collaboration
+# Version Control, Git and Github
 
 -   *Can I go back to before I made that mistake?*
 -   *Can others see changes others have made to the project and can I see
@@ -65,4 +65,3 @@ rather than only trying to pick it up as you go along.
 -   Check that your EHA email gives you access to Google Drive. If you prefer
     it, or your supervisor specifies it, [install it locally on your
     computer](https://tools.google.com/dlpage/drive)
-

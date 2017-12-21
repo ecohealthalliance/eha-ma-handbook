@@ -1,4 +1,4 @@
-# Documentation
+# Documentation and Outputs
 
 *Will someone understand this thing when I hand it over?*
 
@@ -34,4 +34,3 @@ another user. Documentation includes the following:
     [**ehastyle**](https://github.com/ecohealthalliance/ehastyle) is our
     internal EHA R package with R Markdown templates for some reports we
     produce.
-

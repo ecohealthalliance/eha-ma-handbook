@@ -4,7 +4,7 @@
 
 At EHA **R** is our primary, though not exclusive, tool for analysis and
 modeling work. R is not just a piece of software for statistics and data
-manipulation but a computer language, meaning that analsyes are *scripted* and
+manipulation but a computer language, meaning that our analyses are *scripted*.  This means they
 thus can be automated, run again, built upon and extended.
 
 ## Install
@@ -39,4 +39,9 @@ some experience in it, but some good starting points are:
 -   [Cheatsheets](https://www.rstudio.com/resources/cheatsheets/) from RStudio
     are a useful references for a number of things.
 
+[DataCamp courses](https://www.datacamp.com/onboarding/learn?from=home&technology=r) are also potentially useful.
+If you feel they would match your learning style and needs, discuss EHA purchasing a subscription for you with your supervisor.
 
+These resources are largely about the mechanics of programming in R, rather
+than using it for statistical analyses.  This is a far larger subject, but see
+the [Statistical Methods] section for a jumping-off point.  

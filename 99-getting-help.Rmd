@@ -36,4 +36,5 @@ Also, outside EHA:
     good place for news and short questions, and general ranting.
 
 If there's a course, workshop, or conference you want to attend to improve these
-skills, speak with your supervisor, we can often support this.
+skills, speak with your supervisor, we can often support this.  [DataCamp courses](https://www.datacamp.com/onboarding/learn?from=home&technology=r) are also potentially useful.
+If you feel they would match your learning style and needs, discuss EHA purchasing a subscription for you with your supervisor.
