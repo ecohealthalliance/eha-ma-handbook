@@ -2,26 +2,27 @@
 
 ## Teams and Work Cycles
 
-At EHA _projects_ are typically months-to-years-long workstreams centered around
-a main analytical or research problem.  A program, grant or contract may have
+At EHA *projects* are typically months-to-years-long workstreams centered around
+a main analytical or research problem. A program, grant or contract may have
 multiple projects, and a project may have multiple outputs such as reports,
-scientific publications, or apps. A project typically has  a small (2-5 person
+scientific publications, or apps. A project typically has a small (2-5 person
 team) with a project lead and possibly a project administrative point of contact
 (APOC).
 
-We organize projects into _work cycles_ of 4-8 weeks.  For each cycle, a team
+We organize projects into *work cycles* of 4-8 weeks. For each cycle, a team
 should define day-to-week scale tasks, assign tasks to members, determine the
 percentage of time team members will put towards the project in that cycle,
 given other workloads, and plan travel, reporting, collaboration, or other
 deadlines.
 
 Teams report out their progress at the end (and start) of each work cycle at our
-weekly M&A meetings.  Report-outs should include
+weekly M&A meetings. Report-outs should include
 
 -   Progress on tasks assigned and completed in previous cycle
 -   Substantive report-out of results and products
 -   Draft plan for tasks and goals for the coming cycle
--   Team assignments for the next cycle and level of involvement (high (>50%), medium (25%-50%, low (<25%)) of team memberss over the cycle.
+-   Team assignments for the next cycle and level of involvement (high
+    (&gt;50%), medium (25%-50%, low (&lt;25%)) of team memberss over the cycle.
 -   Any additional deadlines or reporting anticipated in that time frame,
     including plans for other internal presentations or feedback sessions.
 
@@ -29,16 +30,16 @@ During report-outs, the M&A group will provide feedback for the upcoming cycle
 and set a date for the next one.
 
 Teams track work cycle progress through various mechanisms based on team
-preferences.  One option is GitHub Milestones
-([Example](https://github.com/ecohealthalliance/asl2050-ai/milestones)).  Others
-use Google Spreadsheets, [Asana](https://asana.com/), or other systems.  Teams
+preferences. One option is GitHub Milestones
+([Example](https://github.com/ecohealthalliance/asl2050-ai/milestones)). Others
+use Google Spreadsheets, [Asana](https://asana.com/), or other systems. Teams
 may choose what they prefer as long as their system
 
 -   Shows current tasks, deadlines, and assignments Tracks past tasks,
     deadlines, and assignments
--   Includes top-level summaries for a reporting
-    period
--   Is available in "real time" online rather than stored on individual machines and e-mailed
+-   Includes top-level summaries for a reporting period
+-   Is available in "real time" online rather than stored on individual machines
+    and e-mailed
 -   Can be made accessible to other staff via a URL but kept private within EHA
 
 ## Setup and materials Organization
@@ -46,15 +47,15 @@ may choose what they prefer as long as their system
 An M&A project lasting more than one work cycle should typically have a Slack
 channel for communication, a GitHub repo for data and analysis code, or Dropbox
 or Google Drive folder for documents or materials not appropriate for git-based
-version control.  In addition, it may have a Paperpile folder for references.
-In general, one URL (often the GitHub README) should be the starting point from
+version control. In addition, it may have a Paperpile folder for references. In
+general, one URL (often the GitHub README) should be the starting point from
 which one can reach all project materials.
 
 ### Code organization
 
 In general, one should aim to set up the analysis portion of a project in a
 self-contained way, with clear separation between raw data, processed data,
-exploratory analyses, and final products.  In organizing a project folder, ask
+exploratory analyses, and final products. In organizing a project folder, ask
 
 -   *If I copied this whole folder onto someone else's computer, could they pick
     up the project?*
@@ -63,17 +64,23 @@ exploratory analyses, and final products.  In organizing a project folder, ask
 -   There are some exceptions for large data sets or rapidly changing data sets.
     In these cases, data can be organized as a separate folder or project, and
     large data sets can be store in an Amazon Web Services S3 bucket.
-    
-- In many cases it is actually best for data to be organized as a *separate
-  repository* from analysis. This allows multiple analysis projects to rely on
-  the same upstream data project, avoiding multiple versions of data. In these
-  cases the "data" project should include raw data, aggregation and cleaning,
-   and its output will be cleaned but complete (not summarized data). Analysis
-   projects can import this data as a first step.
+
+-   In many cases it is actually best for data to be organized as a *separate
+    repository* from analysis. This allows multiple analysis projects to rely on
+    the same upstream data project, avoiding multiple versions of data. In these
+    cases the "data" project should include raw data, aggregation and cleaning,
+    and its output will be cleaned but complete (not summarized data). Analysis
+    projects can import this data as a first step.
 
 #### Resources
 
--   Here is [a nice blog post about project structure](http://nicercode.github.io/blog/2013-05-17-organising-my-project/)
--   and a few more [alternatives](https://discuss.ropensci.org/t/resources-on-project-directory-organization/340).
--   For anything using R, [RStudio projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
--   are a good idea for project organization. Here's a [Software Carpentry Lesson on RStudio projects](http://swcarpentry.github.io/r-novice-gapminder/02-project-intro/).
+-   Here is [a nice blog post about project
+    structure](http://nicercode.github.io/blog/2013-05-17-organising-my-project/)
+-   and a few more
+    [alternatives](https://discuss.ropensci.org/t/resources-on-project-directory-organization/340).
+-   For anything using R, [RStudio
+    projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
+-   are a good idea for project organization. Here's a [Software Carpentry
+    Lesson on RStudio
+    projects](http://swcarpentry.github.io/r-novice-gapminder/02-project-intro/).
+

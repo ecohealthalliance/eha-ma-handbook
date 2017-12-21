@@ -1,30 +1,27 @@
 # Reviewing Analyses and Code
 
--   *Has my work recieved feedback? Has a second set of eyes checked it
-    for correctness?*
+-   *Has my work recieved feedback? Has a second set of eyes checked it for
+    correctness?*
 -   *Have I learned from my colleagues' work?*
 
 Just like any piece of writing that you do, your analysis code should be
-reviewed by a peer or supervisor. There are generally two types of code
-reviews we engage in:
+reviewed by a peer or supervisor. There are generally two types of code reviews
+we engage in:
 
--   **Unit reviews** are reviews of discrete, small parts of a project.
-    This might be an analysis that you took a few days or a couple of
-    weeks to complete, and consists of 1-2 files or a few dozen to
-    hundred lines of code. When you complete such a discrete unit, you
-    should solicit feedback.
--   **Project reviews** are reviews of a whole project as it wraps up,
-    such as prior to the submission of a manuscript. These reviews aim
-    to check that the project is complete, understandable
-    and reproducible.
+-   **Unit reviews** are reviews of discrete, small parts of a project. This
+    might be an analysis that you took a few days or a couple of weeks to
+    complete, and consists of 1-2 files or a few dozen to hundred lines of code.
+    When you complete such a discrete unit, you should solicit feedback.
+-   **Project reviews** are reviews of a whole project as it wraps up, such as
+    prior to the submission of a manuscript. These reviews aim to check that the
+    project is complete, understandable and reproducible.
 
 Reviews can be either
 
--   **In person reviews** where you go over your code with your team or
-    at our informal science meetings. ScreenHero can also be used
-    for this.
--   **Written reviews** where a peers place comments in your code or use
-    the commenting and reviewing features on GitHub.
+-   **In person reviews** where you go over your code with your team or at our
+    informal science meetings. ScreenHero can also be used for this.
+-   **Written reviews** where a peers place comments in your code or use the
+    commenting and reviewing features on GitHub.
 
 or both.
 
@@ -37,6 +34,7 @@ or both.
 -   Check out some [rOpenSci package review
     examples](https://github.com/ropensci/onboarding/issues?q=is%3Aissue+is%3Aclosed)
     to look at one kind of code review in action.
--   Best practices for this are evolving. Check out [a recent conversation
-    among scientists on Twitter on the topic](https://twitter.com/noamross/status/776087608468307970)
+-   Best practices for this are evolving. Check out [a recent conversation among
+    scientists on Twitter on the
+    topic](https://twitter.com/noamross/status/776087608468307970)
 

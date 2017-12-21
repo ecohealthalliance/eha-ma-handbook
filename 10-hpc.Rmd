@@ -1,58 +1,74 @@
 # High-Performance Servers
 
-
 *How can I make this giant beast of a model run faster?*
 
--   Our Aegypti server has 40 cores and
-    250G of RAM, and can be accessed from anywhere, and has and
-    easy-to-use RStudio interface. It's a good go-to for most biggish
-    analyses you might do.
--   The server is generally most useful if you can parallelize your R
-    code across many processors . It's also useful if you have jobs that
-    need a large amount of memory (often big geospatial analyses), or
-    just something that needs to run all weekend while your computer
-    does other things.
--   We have an #eha-servers Slack room, for coordinating use of this and other
-    servers check in there if you have questions or before running a big
-    job.
--   We also have accounts for Amazon Web Services for
-    appropriate projects.
+-   Our Aegypti server has 40 cores and 250G of RAM, and can be accessed from
+    anywhere, and has and easy-to-use RStudio interface. It's a good go-to for
+    most biggish analyses you might do.
+-   The server is generally most useful if you can parallelize your R code
+    across many processors . It's also useful if you have jobs that need a large
+    amount of memory (often big geospatial analyses), or just something that
+    needs to run all weekend while your computer does other things.
+-   We have an \#eha-servers Slack room, for coordinating use of this and other
+    servers check in there if you have questions or before running a big job.
+-   We also have accounts for Amazon Web Services for appropriate projects.
 
 <div style="width: 100%; text-align: center;">
-<div data-netdata="system.cpu" data-dimensions="user" data-chart-library="easypiechart" data-easypiechart-max-value="100" data-units="%" data-width="150px" data-after="-60" data-points="60" data-title="CPU Usage" data-units="%" data-colors="#FF5555"></div>
-<div data-netdata="system.ram" data-dimensions="used|buffers|active|wired" data-append-options="percentage" data-chart-library="easypiechart" data-title="RAM Usage" data-units="%" data-easypiechart-max-value="100" data-width="150px" data-after="-60" data-points="60" data-colors="#66AA00"></div>
-<div data-netdata="disk_space._" data-title="Hard Disk Usage" data-append-options="percentage" data-decimal-digits="0" data-dimensions="used" data-chart-library="easypiechart" data-width="150px" data-after="-60" data-points="60" data-easypiechart-max-value="100" data-units="%"></div>
-<script type="text/javascript" src="http://aegypti.ecohealthalliance.org:22051/status/dashboard.js"></script>
+
+<div data-netdata="system.cpu" data-dimensions="user"
+data-chart-library="easypiechart" data-easypiechart-max-value="100"
+data-units="%" data-width="150px" data-after="-60" data-points="60"
+data-title="CPU Usage" data-units="%" data-colors="#FF5555">
+
 </div>
 
+<div data-netdata="system.ram" data-dimensions="used|buffers|active|wired"
+data-append-options="percentage" data-chart-library="easypiechart"
+data-title="RAM Usage" data-units="%" data-easypiechart-max-value="100"
+data-width="150px" data-after="-60" data-points="60" data-colors="#66AA00">
+
+</div>
+
+<div data-netdata="disk_space._" data-title="Hard Disk Usage"
+data-append-options="percentage" data-decimal-digits="0" data-dimensions="used"
+data-chart-library="easypiechart" data-width="150px" data-after="-60"
+data-points="60" data-easypiechart-max-value="100" data-units="%">
+
+</div>
+
+<script type="text/javascript" src="http://aegypti.ecohealthalliance.org:22051/status/dashboard.js"></script>
+
+</div>
 
 ## Install
 
--   Contact [Noam](mailto:ross@ecohealthalliance.org) for access to this
-    machine and he will create an account and password for you and give
-    you further instructions.
--   Log on to the RStudio server interface by pointing your browser at http://aegypti.ecohealthalliance.org:8787/.
-    For SSH-based access just use `aegypti.ecohealthalliace.org` from the terminal.
--   You will use GitHub to move project work back and forth from your
-    local machine. You will need to setup GitHub access from this
-    machine using SSH keys as described in [Happy Git with R Chapter
-    12](http://happygitwithr.com/ssh-keys.html). You'll also have to set
-    up your tokens [Appendix
-    B](http://happygitwithr.com/github-pat.html) again.
+-   Contact [Noam](mailto:ross@ecohealthalliance.org) for access to this machine
+    and he will create an account and password for you and give you further
+    instructions.
+-   Log on to the RStudio server interface by pointing your browser at
+    http://aegypti.ecohealthalliance.org:8787/. For SSH-based access just use
+    `aegypti.ecohealthalliace.org` from the terminal.
+-   You will use GitHub to move project work back and forth from your local
+    machine. You will need to setup GitHub access from this machine using SSH
+    keys as described in [Happy Git with R Chapter
+    12](http://happygitwithr.com/ssh-keys.html). You'll also have to set up your
+    tokens [Appendix B](http://happygitwithr.com/github-pat.html) again.
 
 ## Learn
 
 -   [Chapter 7.4 of *Efficient
     R*](https://csgillespie.github.io/efficientR/performance.html#performance-parallel)
     provides a brief introduction to parallelization.
--   Not everything can be done from the RStudio server interface on
-    the server. If you are not familiar with the shell interface, brush
-    up via [this Software Carpentry
-    lesson](http://swcarpentry.github.io/shell-novice/). Look at this
-    [chapter](http://v4.software-carpentry.org/shell/ssh.html) from an
-    old version of the lesson for instructions on using the Secure
-    Shell (SSH) to login to the server remotely and setting up keys so
-    you don't have to enter your password every time.
+-   Not everything can be done from the RStudio server interface on the server.
+    If you are not familiar with the shell interface, brush up via [this
+    Software Carpentry lesson](http://swcarpentry.github.io/shell-novice/). Look
+    at this [chapter](http://v4.software-carpentry.org/shell/ssh.html) from an
+    old version of the lesson for instructions on using the Secure Shell (SSH)
+    to login to the server remotely and setting up keys so you don't have to
+    enter your password every time.
 -   Other helpful things you might look into are [tmux](https://tmux.github.io/)
-    for keeping shell processes running when you log off (already installed), and
-    [SSH config files](http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/) for simplifying shell logon.
+    for keeping shell processes running when you log off (already installed),
+    and [SSH config
+    files](http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/)
+    for simplifying shell logon.
+

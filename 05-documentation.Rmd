@@ -2,29 +2,27 @@
 
 *Will someone understand this thing when I hand it over?*
 
-Documentation is essential to collaboration and continuity for our work.
-Your project should contain documentation to allow a project to be
-picked up by another user. Documentation includes the following:
+Documentation is essential to collaboration and continuity for our work. Your
+project should contain documentation to allow a project to be picked up by
+another user. Documentation includes the following:
 
 -   A **README** document in the top level of the project folder with a
-    high-level explanation of project organization, purpose, and and
-    contact info.
--   **Metadata** for your data set showing its origin and the type of
-    data in each field in a table.
+    high-level explanation of project organization, purpose, and and contact
+    info.
+-   **Metadata** for your data set showing its origin and the type of data in
+    each field in a table.
 -   **Comments** in your computer code
--   **Written descriptions** of your analyses. The primary medium for
-    this should be **R Markdown** documents, which allow you to combine
-    code, results, and descriptive text in an easy to update and
-    modify form. Shorter ephermal results can be posted as plots to
-    your project Slack rooms.
+-   **Written descriptions** of your analyses. The primary medium for this
+    should be **R Markdown** documents, which allow you to combine code,
+    results, and descriptive text in an easy to update and modify form. Shorter
+    ephermal results can be posted as plots to your project Slack rooms.
 
 ## Learn
 
--   R Markdown is pretty straightforward to learn. You can create your
-    first document and get the basics by going to File &gt; New
-    File &gt; R Markdown in the RStudio menu. When you have time, dive
-    in a bit more with [this great lesson on
-    it](http://rpubs.com/marschmi/RMarkdown) with accompanying
+-   R Markdown is pretty straightforward to learn. You can create your first
+    document and get the basics by going to File &gt; New File &gt; R Markdown
+    in the RStudio menu. When you have time, dive in a bit more with [this great
+    lesson on it](http://rpubs.com/marschmi/RMarkdown) with accompanying
     [video](https://www.youtube.com/watch?v=WFAHJ0NHOEQ&feature=youtu.be).
     Here's an [RStudio Reference
     Sheet](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
@@ -32,6 +30,8 @@ picked up by another user. Documentation includes the following:
 
 ## Install
 
--   (Very optional unless you are asked): [**ehastyle**](https://github.com/ecohealthalliance/ehastyle) is our
-    internal EHA R package with R Markdown templates for some reports we produce.
+-   (Very optional unless you are asked):
+    [**ehastyle**](https://github.com/ecohealthalliance/ehastyle) is our
+    internal EHA R package with R Markdown templates for some reports we
+    produce.
 
