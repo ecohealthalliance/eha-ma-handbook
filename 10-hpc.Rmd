@@ -61,7 +61,9 @@ data-points="60" data-easypiechart-max-value="100" data-units="%">
     provides a brief introduction to parallelization.
 -   Not everything can be done from the RStudio server interface on the server.
     If you are not familiar with the shell interface, brush up via [this
-    Software Carpentry lesson](http://swcarpentry.github.io/shell-novice/). Look
+    Software Carpentry lesson](http://swcarpentry.github.io/shell-novice/).  Here's a useful
+    [cheat sheet](https://www.git-tower.com/blog/command-line-cheat-sheet/) on the topic.
+-   Look
     at this [chapter](http://v4.software-carpentry.org/shell/ssh.html) from an
     old version of the lesson for instructions on using the Secure Shell (SSH)
     to login to the server remotely and setting up keys so you don't have to
