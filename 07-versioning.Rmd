@@ -39,6 +39,7 @@ rather than only trying to pick it up as you go along.
     (Links to the syllabus are in the notes below the videos.)
 -   [Happy Git with R](http://happygitwithr.com/) is a great reference for the
     nuts and bolts of connecting your git, GitHub and R workflows
+-   Here is a useful git [cheat sheet](https://www.git-tower.com/blog/git-cheat-sheet/)
 
 ## Install
 
