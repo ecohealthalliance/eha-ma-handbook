@@ -74,3 +74,14 @@ data-points="60" data-easypiechart-max-value="100" data-units="%">
     files](http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/)
     for simplifying shell logon.
 
+## Cloud computing with Amazon Web Services
+
+-  EHA has an organizational Amazon Web Services account that may be useful for some
+   projects.  AWS S3 storage is useful for hosting large data files.  AWS EC2 cloud
+   computers may be appropriate for a hosting a web app or databse, automated regular processes,
+   or other analytical projects.
+-  Contact Noam for access to the AWS account, to discuss whether AWS will be
+   useful for your project, or to discuss other cloud resources.
+-  All resources used on AWS need to be tagged with a `project:PROJECTNAME` tag
+   in order to assign costs to the appropriate EHA projects.
+-  Be judicious with AWS service usage.  It is easy to run up costs.
