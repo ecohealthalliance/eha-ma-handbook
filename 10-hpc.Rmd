@@ -91,9 +91,28 @@ data-points="60" data-easypiechart-max-value="100" data-units="%">
 
 ## Being a good neighbor
 
-- Aegypti is a shared EHA resource, so good communication and responsible use are paramount to keeping everything running smoothly.
-- We have a lot of RAM (256GB!), but in general, we need at least as much disk space free as RAM, as RStudio keeps temporary copies of your R session on-disk in case of a crash. We have a relatively small disk (1 TB), because it is a very high performance SSD.
-    - This means that
+- Aegypti is a shared EHA resource, so good communication and responsible use are paramount to keeping it up and running smoothly for all of us. As mentioned before, we have an \#eha-servers Slack room, for coordinating use of our servers. Check in there if you have questions or before running a big job.
+
+### Hard Disk Space Limits
+- We have a lot of RAM (256GB!), but in general, we need at least as much free disk space as RAM, since RStudio keeps temporary copies of your R session on-disk in case of a crash. We have a relatively small disk (1 TB), because it is a very high performance SSD.
+    - It is very easy to generate LOTS of temporary data so take that into consideration. This is especially true for spatial analyses using raster files. The default settings on aegypti have been configured to delete these raster temp files quickly, but keep this in mind if you are performing spatial analyses and are running out of hard disk space -- raster temp files may be the culprit.
+    - Aegypti is for temporary, in-progress projects, not long-term storage:
+        - Keep project code on Github.
+        - Use a shared directory, `storr`, or GRASS GIS for big shared data sets.
+        - Unused files need to be downloaded and stored locally or on our NAS backup.
+    - There are several memory-related points to keep in mind when using RStudio on Aegypti:
+        - `.Rdata` files can take up a lot of space. You can explicitly save important objects you create individually with `saveRDS(object, "filename")` and load them with `objects <- readRDS("filename")`.
+        - `.Rproj.user` directories in each of your R projects hold large clones of your sessions. They might be orphaned after a session crash -- these files can be safely deleted.
+        - In general, your RStudio options should NOT save your environment. 
+- To explore your Aegypti directories and manage your large files, you can use `ncdu` from the terminal.
+
+### Managing RAM Usage
+- Aegypti has a lot of RAM (256GB), but with several projects running at once, we sometimes reach this upper limit. When we do hit the upper limit, the next process that requests memory over that limit will likely be the process that gets terminated. This means that if you run a very large job and are not aware of current memory usage, you may accidentally trigger the termination of someone else's process -- a process that might have been running for hours, days, or weeks!
+- For this reason, it's good to know how much RAM is currently in use, and how much you think you will be using:
+    - To check on the current state of Aegypti, use `htop` by typing `htop` into an aegypti-connected terminal window. This program graphically shows the status of all 40 cores, along with the amount of RAM in use and all the processes currently being run.
+- When thinking about how much RAM you might need, remember that many implementations of paralellized code will make copies of the objects being manipulated to send to each core. This potentially multiplies your RAM usage by the number of cores you run on: if you were only using 8GB, but parallelize to 20 cores, you could end up taking up 160GB of space! Before running a large job over many cores, it makes sense to take a look at its memory footprint on just one core. As always, if you need advice
+- Your RStudio environment can take up considerable RAM, so please clear it when not in use. Exiting the browser window from an RStudio session will not immediately quit your session, and you will still be holding on to memory from the objects in your environment. To explicitly exit your RStudio session in a browser, go to `File -> Quit Session` in the menu bar. This will quit your session and free up RAM space for other users. 
+
 
 
 
