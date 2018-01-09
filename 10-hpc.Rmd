@@ -1,3 +1,4 @@
+
 # High-Performance Servers
 
 *How can I make this giant beast of a model run faster?*
@@ -10,7 +11,9 @@
     amount of memory (often big geospatial analyses), or just something that
     needs to run all weekend while your computer does other things.
 -   We have an \#eha-servers Slack room, for coordinating use of this and other
-    servers check in there if you have questions or before running a big job.
+    servers. Check in there if you have questions or before running a big job.
+-   There is no privacy on Aegypti - system admins can, and do, go into everyone's
+    file systems for maintenance purposes.
 -   We also have accounts for Amazon Web Services for appropriate projects.
 
 <div style="width: 100%; text-align: center;">
@@ -47,7 +50,7 @@ data-points="60" data-easypiechart-max-value="100" data-units="%">
     instructions.
 -   Log on to the RStudio server interface by pointing your browser at
     http://aegypti.ecohealthalliance.org:8787/. For SSH-based access just use
-    `aegypti.ecohealthalliace.org` from the terminal.
+    `ssh aegypti.ecohealthalliace.org` from the terminal.
 -   You will use GitHub to move project work back and forth from your local
     machine. You will need to setup GitHub access from this machine using SSH
     keys as described in [Happy Git with R Chapter
@@ -78,10 +81,19 @@ data-points="60" data-easypiechart-max-value="100" data-units="%">
 
 -  EHA has an organizational Amazon Web Services account that may be useful for some
    projects.  AWS S3 storage is useful for hosting large data files.  AWS EC2 cloud
-   computers may be appropriate for a hosting a web app or databse, automated regular processes,
+   computers may be appropriate for a hosting a web app or database, automating regular processes,
    or other analytical projects.
 -  Contact Noam for access to the AWS account, to discuss whether AWS will be
    useful for your project, or to discuss other cloud resources.
 -  All resources used on AWS need to be tagged with a `project:PROJECTNAME` tag
    in order to assign costs to the appropriate EHA projects.
 -  Be judicious with AWS service usage.  It is easy to run up costs.
+
+## Being a good neighbor
+
+- Aegypti is a shared EHA resource, so good communication and responsible use are paramount to keeping everything running smoothly.
+- We have a lot of RAM (256GB!), but in general, we need at least as much disk space free as RAM, as RStudio keeps temporary copies of your R session on-disk in case of a crash. We have a relatively small disk (1 TB), because it is a very high performance SSD.
+    - This means that
+
+
+
