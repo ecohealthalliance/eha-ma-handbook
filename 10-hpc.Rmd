@@ -50,7 +50,7 @@ data-points="60" data-easypiechart-max-value="100" data-units="%">
     instructions.
 -   Log on to the RStudio server interface by pointing your browser at
     http://aegypti.ecohealthalliance.org:8787/. For SSH-based access just use
-    `ssh aegypti.ecohealthalliace.org` from the terminal.
+    `ssh aegypti.ecohealthalliance.org` from the terminal.
 -   You will use GitHub to move project work back and forth from your local
     machine. You will need to setup GitHub access from this machine using SSH
     keys as described in [Happy Git with R Chapter
