@@ -77,18 +77,6 @@ data-points="60" data-easypiechart-max-value="100" data-units="%">
     files](http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/)
     for simplifying shell logon.
 
-## Cloud computing with Amazon Web Services
-
--  EHA has an organizational Amazon Web Services account that may be useful for some
-   projects.  AWS S3 storage is useful for hosting large data files.  AWS EC2 cloud
-   computers may be appropriate for a hosting a web app or database, automating regular processes,
-   or other analytical projects.
--  Contact Noam for access to the AWS account, to discuss whether AWS will be
-   useful for your project, or to discuss other cloud resources.
--  All resources used on AWS need to be tagged with a `project:PROJECTNAME` tag
-   in order to assign costs to the appropriate EHA projects.
--  Be judicious with AWS service usage.  It is easy to run up costs.
-
 ## Being a good neighbor
 
 - Aegypti is a shared EHA resource, so good communication and responsible use are paramount to keeping it up and running smoothly for all of us. As mentioned before, we have an \#eha-servers Slack room, for coordinating use of our servers. Check in there if you have questions or before running a big job.
@@ -98,8 +86,8 @@ data-points="60" data-easypiechart-max-value="100" data-units="%">
     - It is very easy to generate LOTS of temporary data so take that into consideration. This is especially true for spatial analyses using raster files. The default settings on aegypti have been configured to delete these raster temp files quickly, but keep this in mind if you are performing spatial analyses and are running out of hard disk space -- raster temp files may be the culprit.
     - Aegypti is for temporary, in-progress projects, not long-term storage:
         - Keep project code on Github.
-        - Use a shared directory, `storr`, or GRASS GIS for big shared data sets.
-        - Unused files need to be downloaded and stored locally or on our NAS backup.
+        - Use a shared directory, `storr`, GRASS GIS for big shared data sets.
+        - Unused files need to be downloaded and stored locally, on our NAS backup, or on Amazon S3 buckets (see below)
     - There are several memory-related points to keep in mind when using RStudio on Aegypti:
         - `.Rdata` files can take up a lot of space. You can explicitly save important objects you create individually with `saveRDS(object, "filename")` and load them with `objects <- readRDS("filename")`.
         - `.Rproj.user` directories in each of your R projects hold large clones of your sessions. They might be orphaned after a session crash -- these files can be safely deleted.
@@ -114,5 +102,16 @@ data-points="60" data-easypiechart-max-value="100" data-units="%">
 - Your RStudio environment can take up considerable RAM, so please clear it when not in use. Exiting the browser window from an RStudio session will not immediately quit your session, and you will still be holding on to memory from the objects in your environment. To explicitly exit your RStudio session in a browser, go to `File -> Quit Session` in the menu bar. This will quit your session and free up RAM space for other users. 
 
 
+## Cloud computing with Amazon Web Services
+
+-  EHA has an organizational Amazon Web Services account that may be useful for some
+   projects.  AWS S3 storage is useful for hosting large data files.  AWS EC2 cloud
+   computers may be appropriate for a hosting a web app or database, automating regular processes,
+   or other analytical projects.
+-  Contact Noam for access to the AWS account, to discuss whether AWS will be
+   useful for your project, or to discuss other cloud resources.
+-  All resources used on AWS need to be tagged with a `project:PROJECTNAME` tag
+   in order to assign costs to the appropriate EHA projects.
+-  Be judicious with AWS service usage.  It is easy to run up costs.
 
 
