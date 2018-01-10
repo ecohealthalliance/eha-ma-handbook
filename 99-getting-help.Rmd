@@ -11,8 +11,8 @@ against your screen trying to figure something out, it's time to ask someone.
 
 Some good questions for the Slack room:
 
--   Which package should I use for \[something\]?
--   Anyone have a good reference or tutorial for \[package, method\]?
+-   Which package should I use for **`something`**?
+-   Anyone have a good reference or tutorial for **`package, method`**?
 -   What does this error mean?
 
 Our technology team are a tremendous resource for a number of computing topics
