@@ -51,7 +51,7 @@ attain. Remember:
     be slick programmers.
 
 You can find some slides from a previous presentation on this topic
-[here](selfish-reproducibility-NR-2016-01-26.pdf).
+[here](assets/selfish-reproducibility-NR-2016-01-26.pdf).
 
 The philosophy and guidelines in this document owe an enormous amount to the
 work of the [Software and Data Carpentry](http://software-carpentry.org/) and
