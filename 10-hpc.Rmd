@@ -50,12 +50,16 @@ data-points="60" data-easypiechart-max-value="100" data-units="%">
     instructions.
 -   Log on to the RStudio server interface by pointing your browser at
     http://aegypti.ecohealthalliance.org:8787/. For SSH-based access just use
-    `ssh aegypti.ecohealthalliance.org` from the terminal.
+    `ssh aegypti.ecohealthalliance.org` from the terminal.  You can also access
+    the terminal via under the "Tools" menu in the RStudio interface.
 -   You will use GitHub to move project work back and forth from your local
     machine. You will need to setup GitHub access from this machine using SSH
     keys as described in [Happy Git with R Chapter
     12](http://happygitwithr.com/ssh-keys.html). You'll also have to set up your
     tokens [Appendix B](http://happygitwithr.com/github-pat.html) again.
+-   We run different "versions" of Aegypti as virtual Docker machines on different
+    ports.  Your files are shared across these, but sometimes they have different
+    versions of R or other programs available.  
 
 ## Learn
 
