@@ -14,7 +14,7 @@ favicon: "favicon.png"
 
 # Introduction {#introduction .unnumbered}
 
-This handbook describes best practices and guidelines for project manamgment,
+This handbook describes best practices and guidelines for project management,
 organization, modeling and and programming we aim for our on the EHA Modeling &
 Analytics team.
 
