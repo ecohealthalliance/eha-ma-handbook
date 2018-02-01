@@ -21,7 +21,7 @@ some experience in it, but some good starting points are:
     Lessons](http://swcarpentry.github.io/r-novice-gapminder/)
 -   [Swirl](http://swirlstats.com/), a set of interactive lessons run right
     in R.
--   [The JHU Courera
+-   [The JHU Coursera
     Series](https://www.coursera.org/specializations/jhu-data-science)
 
 -   [R for Data Science by Hadley Wickam](http://r4ds.had.co.nz/) is a
