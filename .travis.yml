@@ -10,6 +10,7 @@ cache:
   packages: true
 
 before_script:
+  - git fetch --unshallow
   - chmod +x ./_build.sh
   - chmod +x ./_deploy.sh
 
