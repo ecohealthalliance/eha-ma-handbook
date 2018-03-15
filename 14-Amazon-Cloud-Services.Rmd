@@ -1,0 +1,186 @@
+# Amazon Web Services 
+
+- _What if my data files are too big to hold in Github?_
+- _Where is the latest IUCN/MODIS/LANDSAT shapefile?_
+- _What if I need more CPUs than even Aegypti has?_
+
+
+EHA has an organizational Amazon Web Services account that may be useful for some projects. **AWS S3 storage** is useful for hosting large data files. AWS EC2 cloud computers may be appropriate for a hosting a web app or database, automating regular processes, or other analytical projects.
+
+- Contact Noam for access to the AWS account, to discuss whether AWS will be useful for your project, or to discuss other cloud resources.
+- All resources used on AWS need to be tagged with a project:PROJECTNAME tag in order to assign costs to the appropriate EHA projects.
+- Be judicious with AWS service usage. It is easy to run up costs.
+
+## Log on
+
+Once you've gotten your credentials from Noam, log on to [ehatek.signin.aws.amazon.com/console/](ehatek.signin.aws.amazon.com/console/). `ehatek` should be already entered in the "Account ID or alias" field. You will be asked to change your password after the first time you log on. 
+
+## Generate an access key
+
+Navigate to your IAM (Identity and Access Management) page to generate an access key. This will allow you to download data from private S3 buckets, for example, via R. 
+
+![](assets/AWS-IAM-1.png)
+
+```{r, echo=FALSE}
+if(!require(emo)) devtools::install_github("hadley/emo", quiet = TRUE)
+```
+
+
+You should see a `r emo::ji("white_check_mark")` next to "rotate your access keys." Click "Manage User Access Keys" after expanding the access key subheading.  (If you see an `r emo::ji("x")`, check in with Noam that you have the appropriate S3 privileges.) 
+
+![](assets/AWS-IAM-2.png)
+
+Click the "Security credentials" panel and scroll down to the "create access key" button. 
+
+![](assets/AWS-access-key.png) 
+
+Your access key will have a `key ID` - a long string of letters and numbers - and a `*~*secret*~* access key` - a longer string of letters and numbers. Press "show" and hang onto it somewhere until you are sure your `~/.aws/credentials` file is working as intended. It will look something like this, but you **shouldn't actually share your secret key with anyone**. (This access key has been deleted.)
+
+![](assets/AWS-access-key-2.png) 
+
+If you lose it before you use it, you can delete it and make another one. *Deleting* a key is different from making a key *inactive* - you might reach your access key limit pretty quickly, so you'll probably have to do the former if you have keys that you don't use. 
+
+## Create a credentials file 
+
+Open a blank text file in a text editor and paste your key ID and secret key as follows. Using the example above, it will look like this:
+
+```
+[default]
+AKIAICO2AWN2NT2IIYOQ
++kY4xFfDCQF0MED4RI07EUKfl5uDQhK0PqC679KS
+AWS_DEFAULT_REGION=us-east-1"
+```
+Create a folder called `~/.aws`, and put the `credentials` file in it. 
+
+**YES**, currently, you need that trailing `"` after `us-east-1` if you want to include the AWS_DEFAULT_REGION in your credentials file, because the `aws.signature` is using a strange parser. If this throws errors, you can delete that line and set it locally inside your R environment like this: 
+
+```{r, eval = FALSE}
+Sys.setenv("AWS_DEFAULT_REGION" = "us-east-1")
+```
+
+## Testing your Key 
+
+Open an R session to make sure your credentials file works. 
+
+```{r, eval = FALSE}
+if (!require(aws.s3)) devtools::install_github("cloudyr/aws.s3")
+if (!require(aws.signature)) devtools::install_github("cloudyr/aws.signature")
+
+library(aws.s3)
+
+# load credentials from your credentials file 
+aws.signature::use_credentials()
+
+# check list of aws S3 buckets 
+head(aws.s3::bucketlist())
+```
+
+If you get a '403 Forbidden' error, your credentials aren't working. 
+
+### Alternate credentialing method 
+
+If you have Done Your Googles and are still having trouble setting your AWS credentials, you can set them inside your R environment. The advantage of using an `~/.aws/credentials` file is that your key will then work across all platforms - R, Python, the command line, etc. However, if you're only connecting to AWS through R, the code below will be enough. 
+
+```{r, eval = FALSE}
+Sys.setenv("AWS_ACCESS_KEY_ID" = "mykey",
+           "AWS_SECRET_ACCESS_KEY" = "mysecretkey",
+           "AWS_DEFAULT_REGION" = "us-east-1",)
+```
+
+## Exploring S3 buckets
+
+You used `bucketlist` above to list all the buckets associated with your account. To look at everything inside a specific bucket, use `get_bucket`.
+
+Note that Amazon **charges per Gigabyte for downloading and uploading files.** Use things as needed for your project, but don't get crazy and put a file download inside a for loop that you're running a thousand times a day. Why would you do this?
+
+To test privacy privileges are working are intended, we'll use a very small private bucket with ~4 KB in it - Two small subsets of the Social Security Administration's baby names dataset from the `babynames` package. 
+
+```{r, eval = FALSE}
+# check list of aws S3 buckets 
+bucketlist()
+
+# aws.s3::bucketlist()
+pb <- "eha-ma-practice-bucket"
+b <- get_bucket(pb)
+b
+```
+
+## Getting objects from buckets  
+
+You can then `get` a specific object out of the bucket. 
+
+```{r, eval = FALSE}
+bns <- get_object(b[[1]], bucket = pb)
+```
+
+The raw output of `get_object` will be likely at first be unrecognizable. 
+
+For most filetypes (.csv, .xml, .zip, etc.), rawToChar will be needed convert the file first before reading it in with `read_csv`, `readxml` or other functions used to read files into R. (See also the `get_object` help file). 
+
+This 
+
+```{r, eval = FALSE}
+library(tidyverse) 
+
+babynames_subset <- read_csv(rawToChar(bns))
+```
+
+## Saving objects 
+
+To `put` something back into the bucket, use `put_object` or `s3save`. `put_object` is more useful to save something from your computer (or from a temp file) like a .csv or .zip file, while `s3save` saves it directly as an S3 object. 
+
+In this example, we'll make a change to the `babynames_subset` and save it as a new file (`babynames_subset2`). We'll save it as both an S3 object and a .csv to show that the objects are the same. 
+
+```{r, eval = FALSE}
+babynames_subset2 <- babynames_subset %>% 
+    group_by(name) %>% 
+    summarize(n = sum(n)) %>% 
+    filter(n < 100) 
+
+# to save as s3 
+s3save(babynames_subset2, object = "babynames_subset2", bucket = pb)
+```
+
+Alternately, we could save as a .csv. We'll do both in this example to demonstrate that they're the same. 
+
+```{r, eval = FALSE}
+# to save as some other kind of object wihtout saving to your computer permanently 
+tmp <- tempfile()
+on.exit(unlink(tmp))
+write.csv(babynames_subset2, file = tmp, row.names = FALSE)
+
+put_object(tmp, object = "babynames_subset2.csv", bucket = pb) # if the object already exists on your computer, you just need this line 
+
+```
+
+So now we have a data frame in memory called `babynames_subset2`, an S3 object in AWS called `babynames_subset2`, and a .csv in AWS called `babynames_subset2.csv`. We'll pull them all back into memory to make sure they're the same. 
+
+To do this, we have to first copy over `babynames_subset2` to a new object in memory and remove it so that when we load the version from AWS, it doesn't overwrite it. 
+
+```{r, eval = FALSE}
+babynames_subset_R <- babynames_subset2 
+rm(babynames_subset2)
+
+# read the .csv object the same way as before 
+bns <- get_object(b[[3]], bucket = pb)
+babynames_subset2_csv <- read_csv(rawToChar(bns))
+
+```
+
+If the object is an S3 object, you don't have to use `charToRaw` when reading it in. Instead, you will need to wrap it in `load(rawConnection( object ))`. For example: 
+
+```{r, eval = FALSE}
+# GET the raw object from AWS and load it into memory 
+bs3 <- get_object(b[[2]], bucket = pb)
+# bs3 <- get_object("babynames_subset2", bucket = "eha-ma-practice-bucket") # explicitly
+load(rawConnection(bs3))
+
+
+```
+
+Finally, we can check that the object in memory, the .csv in AWS, and the S3 object in AWS are all the same. 
+
+```{r, eval = FALSE}
+assertthat::are_equal(babynames_subset_R, babynames_subset2)
+assertthat::are_equal(babynames_subset_R, babynames_subset2_csv)
+```
