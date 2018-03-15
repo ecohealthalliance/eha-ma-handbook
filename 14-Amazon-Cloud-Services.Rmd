@@ -21,6 +21,11 @@ Navigate to your IAM (Identity and Access Management) page to generate an access
 
 ![](assets/AWS-IAM-1.png)
 
+```{r, echo=FALSE}
+if(!require(emo)) devtools::install_github("hadley/emo", quiet = TRUE)
+```
+
+
 You should see a `r emo::ji("white_check_mark")` next to "rotate your access keys." Click "Manage User Access Keys" after expanding the access key subheading.  (If you see an `r emo::ji("x")`, check in with Noam that you have the appropriate S3 privileges.) 
 
 ![](assets/AWS-IAM-2.png)
