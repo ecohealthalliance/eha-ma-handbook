@@ -1,27 +1,32 @@
-# Amazon Web Services 
+# Cloud Computing Services
 
 - _What if my data files are too big to hold in Github?_
 - _Where is the latest IUCN/MODIS/LANDSAT shapefile?_
 - _What if I need more CPUs than even Aegypti has?_
 
 
-EHA has an organizational Amazon Web Services account that may be useful for some projects. **AWS S3 storage** is useful for hosting large data files. **AWS EC2 cloud computers** may be appropriate for a hosting a web app or database, automating regular processes, or other analytical projects.
+EHA has an organizational Amazon Web Services account that may be useful for some projects. **AWS S3 storage** is useful for hosting large data files, especially if they are shared across projects. **AWS EC2 cloud computers** may be appropriate for a hosting a web app or database, automating regular processes, or other analytical projects.
 
-- Contact Noam for access to the AWS account, to discuss whether AWS will be useful for your project, or to discuss other cloud resources.
+If you think you need cloud resources for your project, contact Noam or Toph for access to the AWS account, to discuss what services or other providers may be useful.
+
+If you are using AWS, remember:
+
 - All resources used on AWS need to be tagged with a project:PROJECTNAME tag in order to assign costs to the appropriate EHA projects.
 - Be judicious with AWS service usage. It is easy to run up costs.
 
 ## Setting up Amazon Credentials 
 
-Once you've gotten your credentials from Noam, log on to [ehatek.signin.aws.amazon.com/console/](ehatek.signin.aws.amazon.com/console/). `ehatek` should be already entered in the "Account ID or alias" field. You will be asked to change your password after the first time you log on. 
+To connect to AWS via program like R, you will net to set up an access access credientials.
+
+Once you've gotten your credentials, log on to [ehatek.signin.aws.amazon.com/console/](ehatek.signin.aws.amazon.com/console/). `ehatek` should be already entered in the "Account ID or alias" field. You will be asked to change your password after the first time you log on.
 
 ### Generate an access key
 
-Navigate to your IAM (Identity and Access Management) page to generate an access key. This will allow you to download data from private S3 buckets, for example, via R. 
+Navigate to your IAM (Identity and Access Management) page to generate an access key.
 
 ![](assets/AWS-IAM-1.png)
 
-You should see a `r emo::ji("white_check_mark")` next to "rotate your access keys." Click "Manage User Access Keys" after expanding the access key subheading.  (If you see an `r emo::ji("x")`, check in with Noam that you have the appropriate S3 privileges.) 
+You should see a `r emo::ji("white_check_mark")` next to "rotate your access keys." Click "Manage User Access Keys" after expanding the access key subheading.  (If you see an `r emo::ji("x")`, ask whoever created your account if you have the appropriate S3 privileges.) 
 
 ![](assets/AWS-IAM-2.png)
 
@@ -31,7 +36,7 @@ Click the "Security credentials" panel and scroll down to the "create access key
 
 Your access key will have a `key ID` - a long string of letters and numbers - and a `*~*secret*~* access key` - a longer string of letters and numbers. Press "show" and hang onto it somewhere until you are sure your `~/.aws/credentials` file is working as intended. **Don't share your secret key with anyone**. 
 
-If you lose it before you use it, you can delete it and make another one. *Deleting* a key is different from making a key *inactive* - you might reach your access key limit pretty quickly, so you'll probably have to do the former if you have keys that you don't use. 
+If you lose it before you use it, you can delete your and make another one. *Deleting* a key is different from making a key *inactive* - you might reach your access key limit pretty quickly, so you'll probably have to do the former if you have keys that you don't use. 
 
 ### Create a credentials file 
 
@@ -39,9 +44,9 @@ Open a blank text file in a text editor and paste your key ID and secret key as 
 
 ```
 [default]
-your_key_id
-your_secret_access_key
-AWS_DEFAULT_REGION=us-east-1"
+aws_access_key_id = your_key_id
+aws_secret_access_key = your_secret_access_key
+aws_default_region = us-east-1"
 ```
 
 Replace `your_key_id` and `your_secret_access_key` with the values you see in the AWS browser.
@@ -59,6 +64,7 @@ Sys.setenv("AWS_DEFAULT_REGION" = "us-east-1")
 Open an R session to make sure your credentials file works. 
 
 ```{r, eval = FALSE}
+# install the AWS packages if you need them
 if (!require(aws.s3)) devtools::install_github("cloudyr/aws.s3")
 if (!require(aws.signature)) devtools::install_github("cloudyr/aws.signature")
 
@@ -75,11 +81,11 @@ If you get a '403 Forbidden' error, your credentials aren't working.
 
 ### Alternate credentialing method 
 
-If you have Done Your Googles and are still having trouble setting your AWS credentials, you can set them in your .Renviron. The advantage of using an `~/.aws/credentials` file is that your key will then work across all platforms - R, Python, the command line, etc. However, if you're only connecting to AWS through R, having your key in your .Renviron will be enough.
+If you have Done Your Googles and are still having trouble setting your AWS credentials, you can set them in your `.Renviron` file. The advantage of using an `~/.aws/credentials` file is that your key will then work across all platforms - R, Python, the command line, etc. However, if you're only connecting to AWS through R, having your key in your `.Renviron` will be enough.
 
 
 ```{r, eval = FALSE}
-# If you don't know how to find your .Renviron, do the following to open it:  
+# If you don't know how to find your .Renviron file, do the following to open it:  
 if(!require(usethis)) install.packages("usethis")
 usethis::edit_r_environ()
 
@@ -131,7 +137,7 @@ dir("data")
 
 ### Upload objects from your machine to S3
 
-To `put` a file from your computer back into the bucket, use `put_object`. This will be less common than downloading and saving objects *from* S3 - as a general rule, we want everyone working with the same versions of large datasets like IUCN or  . However, if you've made a large rasterfile that your colleagues will use, you can upload it  
+To `put` a file from your computer back into the bucket, use `put_object`. This will be less common than downloading and saving objects *from* S3 - as a general rule, we want everyone working with the same versions of large datasets.  If you've made a large rasterfile that your colleagues will use, you can upload it,
 
 In this example, we'll make a change to the `babynames_subset` and save it as a new file (`babynames_subset2`).  
 
@@ -151,7 +157,7 @@ if(!("babynames_subset2.csv" %in% dplyr::pull(get_bucket_df(pb), "Key") ) {
 
 ```
 
-So now we have a data frame in memory called `babynames_subset2` and a .csv in AWS called `babynames_subset2.csv`. We'll pull the AWS csv back into memory to make sure they're the same. 
+So now we have a data frame in memory called `babynames_subset2` and a .csv in the AWS `eha-ma-practice-bucket` called `babynames_subset2.csv`. We'll pull the AWS csv back into memory to make sure they're the same. 
 
 To do this, we have to first copy over `babynames_subset2` to a new object in memory and remove it so that when we load the version from AWS, it doesn't overwrite it. 
 
