@@ -1,3 +1,19 @@
+rmd_files: 
+    - "index.Rmd"
+    - "quickstart.Rmd"
+    - "projects.Rmd"
+    - "r.Rmd"
+    - "communication.Rmd"
+    - "documentation.Rmd"
+    - "data.Rmd"
+    - "versioning.Rmd"
+    - "review.Rmd"
+    - "testing.Rmd"
+    - "hpc.Rmd"
+    - "dependencies.Rmd"
+    - "stats-methods.Rmd"
+    - "references.Rmd"
+    - "getting-help.Rmd"
 book_filename: "eha-ma-handbook"
 repo: https://github.com/ecohealthalliance/eha-ma-handbook/
 language:
