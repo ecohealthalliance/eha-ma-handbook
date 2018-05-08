@@ -32,10 +32,10 @@ favor when they are appropriate.
     [GitHub](https://github.com/ecohealthalliance/hotspots2))
 
 ## Networks
--   We like networks for both descriptive visualizations and quantitative analyses. R is full of packages to achieve both of these goals, check out **ggnetwork**.   
+-   We like networks for both descriptive visualizations and quantitative analyses. R is full of packages to achieve both of these goals, check out **ggnetwork** and **bipartite**.   
 -   We assess individual components within networks looking for high-impact individuals due to their high *degree*, *centrality*, or ability to bridge different communities.  For a tutorial on basic metrics check out Randi Griffin's [tutorial on primate social networks](http://rgriff23.github.io/2017/04/26/primate-social-networks-in-igraph.html) which utilizes the **igraph** package.  
 -  Often, our networks are bipartite, meaning the networks shows interactions between two type of nodes. For us, these are usually viruses and hosts. You can look at example networks in two PREDICT publications: [Figure 4 in Anthony et al. 2017](https://academic.oup.com/view-large/figure/88156911/vex012f4.tif/Global%20patterns%20in%20coronavirus%20diversity) and [Figure 3 in Willoughby et al. 2017](http://www.mdpi.com/1424-2818/9/3/35/htm). 
-- To assess overall network structure and identify communities, we measure the *modularity*. The modularity of a network model is one type of clustering analysis. For bipartite networks, we like the Barber's modularity (*Q*), calculated through the **lpbrim** package. Alternatives to modularity could be X or Y. 
+- To assess overall network structure and identify communities, we measure the *modularity*. The modularity of a network model is a type of network partitioning into subgroups or *modules*. This is an alternative to clustering alogrithms. For bipartite networks, we like the Barber's modularity (*Q*), calculated through the **lpbrim** package. Alternatives modularity algorithms include NetCarto which uses a simulated annealing (SA) algorithm or using a map equation (ME) algorithm. 
 
 ## Bioinformatics and Sequence Analysis
 
