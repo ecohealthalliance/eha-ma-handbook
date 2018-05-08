@@ -6,7 +6,10 @@ means you can easily add citations on shared documents. Many teams and projects
 use Paperpile to organize and share references. If you need a paperpile account,
 request a key from Megan Walsh. Be sure to associate the Paperpile with your EHA
 Google account, not a personal one.
-Many people in the office use [EndNote] which can be offline on your desktop or online. A nice feature of Endnote is the traveling libraries export from word documents. You will need a license for this, so contact Megan Walsh. 
+
+Many people in the office use [EndNote](https://endnote.com/) which can be offline on your desktop or online. 
+A nice feature of Endnote is the traveling libraries export from word documents. You 
+will need a license for this, so contact Megan Walsh. 
 
 ## Converting Paperpile Citations in Google Docs to Endnote Citations in MS Word
 
