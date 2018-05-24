@@ -10,3 +10,4 @@ R packages that host data on wildlife trade.
 emergence effects of disease. 
 -   [FLIRT](https://flirt.eha.io/), the Flight Risk Tracker, contains information on airline travel patterns as well as 
 simulations of human travel using those patterns.
+-   [EIDITH](https://eidith.org/), the Emerging Infectious Diseases Technology Hub, is the shared database for the PREDICT project.  The [eidith](https://ecohealthalliance.github.io/eidith/) R package is how we interface with it for analysis.
