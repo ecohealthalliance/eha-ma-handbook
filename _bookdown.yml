@@ -13,6 +13,7 @@ rmd_files:
     - "cloud-services.Rmd"
     - "dependencies.Rmd"
     - "stats-methods.Rmd"
+    - "data-sources.Rmd"
     - "references.Rmd"
     - "getting-help.Rmd"
 book_filename: "eha-ma-handbook"

@@ -1,0 +1,12 @@
+# Data Sources
+
+Here are some key data sources we have built and use across many projects:
+
+-   [awesome-parasite](https://github.com/ecohealthalliance/awesome-parasite) is our curated list of sourcs for host/parasite/pathogen associations and associated taxonomies.
+-   [HP3Extended](https://airtable.com/tbloDTO9atue4dlmN/viw1qWYHRT9Sprz5S) in an internal EHA database of host-virus associations.  It is hosted on AirTable and requires an EHA login.
+-   [lemis](https://github.com/ecohealthalliance/lemis) and [cites](https://github.com/ecohealthalliance/cites) are 
+R packages that host data on wildlife trade.
+-   [EIDR](https://eidr.ecohealthalliance.org/) is our emerging infectious disease repository and hosts data on first
+emergence effects of disease. 
+-   [FLIRT](https://flirt.eha.io/), the Flight Risk Tracker, contains information on airline travel patterns as well as 
+simulations of human travel using those patterns.
