@@ -38,7 +38,7 @@ another user. Documentation includes the following:
 ## Library 
 *For the increase and diffusion of knowledge...* Smithsonian Mission 
 
-Once your project has been published, you should include the output in our EHA Library. Simply submit through [this google form](https://goo.gl/forms/pnJr4SGvlY8gyi2I3). The library database, along with full texts of both media and science publications, is stored on [DropBox](https://www.dropbox.com/sh/cdt1tvxddogw90m/AACH3HT9L5WDbpf2K_sOpy6Ta?dl=0). The purpose of the EHA Library is to store our work in a searchable, systematic database. A centralized location of EHA work is of use to our science and development teams. Additionaly, this will create easy reporting to our board, our funding bodies, and the public. We have found this database particularly useful in the on-boarding of new staff. 
+Once your project has been published, you should include the output in our EHA Library. Simply submit through [this google form](https://goo.gl/forms/pnJr4SGvlY8gyi2I3). The library database, along with full texts of both media and science publications, is stored on [DropBox](https://www.dropbox.com/sh/cdt1tvxddogw90m/AACH3HT9L5WDbpf2K_sOpy6Ta?dl=0). The purpose of the EHA Library is to store our work in a searchable, systematic database. A centralized location of EHA work is of use to our science and development teams. Additionaly, standardized analyses (stored in the [eha-library github repository](https://github.com/ecohealthalliance/eha-library)) create easy reporting to our board, our funding bodies, and the public. We have found this database particularly useful in the on-boarding of new staff. 
 
 The current scope of the Library includes:
 
