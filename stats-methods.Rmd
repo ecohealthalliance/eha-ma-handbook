@@ -46,6 +46,21 @@ favor when they are appropriate.
 ## Species Distribution Modeling
 
 ## Epidemic Simulation and Fitting
+#### Author: [matteo-V](https://github.com/matteo-V)
+-   For epidemic modeling using Differential Equations (ODEs, PDEs, DDEs) in R, the most commonly used package is [**deSolve**](https://cran.r-project.org/web/packages/deSolve/index.html) which provides access to low-level Fortran implementations of various forward integration methods (Euler-Mayaruma, 4th order Runge-Kutta, etc.). In order to speed up simulation code (for large systems), equations can be written in a compiled language such as Fortran or C/C++. 
+
+-   Stochastic models are often simluated using Gillespie's Stochastic Simulation Algorithm (SSA) or a varaition thereof (such as the tau-leaping approximation) which provides a statistically accurate trajectory of a stochastic model. For complicated systems, the SSA can be written directly or you can use the [**GillespieSSA**](https://cran.r-project.org/web/packages/GillespieSSA/index.html) package. 
+
+-   *Optional*: Though more advanced, you can simultaneously simulate the data generating (unobserved) and data observation processes in a single framework using Partially-Observed Markov Processes (Hidden Markov Models) as implemented in the package [**pomp**](https://cran.r-project.org/web/packages/pomp/index.html). The documentation/vignettes in CRAN provide a good introduction to the use of these models. 
+
+-   Fitting epidemiological models to time series incidence data using least-squares can be performed using the in-built R function optim. This requires defining a function to simulate the model under a given set of parameters $\theta$ and to calculate the squared residuals between the model prediction and data; that is $(\hat{y} - y)^2$. 
+
+-   For more advanced likelihood-based fitting (for models with several parameters to be estimated) a good method (borrowed from statistical physics) is the **Monte Carlo Parameter Sweep** (random grid search) method as described in [Statistical Data Analysis](https://global.oup.com/academic/product/statistical-data-analysis-9780198501558?cc=us&lang=en&) by Glen Cowan. A benefit of this method is that confidence intervals are easily calculabe without the mathematical gymastics required to explicity derive the Jacobian and Hessian matricies for the system. 
 
 ## Phylogenetics
+#### Author: [matteo-V](https://github.com/matteo-V)
+-   The seminal package providing efficient data structures and essential function for phylogenetics in R is [**ape**](https://cran.r-project.org/web/packages/ape/index.html). A great resource for getting started with phylogenetics in R is the eponymous [Analysis of Phylogenetics and Evolution with R](https://www.springer.com/us/book/9781461417422) by Emmanuel Paradis. The author's [website](http://ape-package.ird.fr/APER.html) provides access to the data used in examples throughout the book. 
 
+-   [**treedater**](https://cran.r-project.org/web/packages/treedater/index.html) is a package used for estimating times of common ancestry (TMRCAs), molecular clock analyses and reconstruction of chronograms (phylogenetic trees with calendar unit branch lengths). A good introduction to the use of this package is the [vignette](https://cran.r-project.org/web/packages/treedater/vignettes/h3n2.html) included in CRAN.   
+
+-   For a more comprehensive introduction to phylogenetic analyses, [**The Phylogenetic Handbook: A Practical Approach to Phylogenetic Analysis and Hypothesis Testing**](http://admin.cambridge.org/fk/academic/subjects/life-sciences/genomics-bioinformatics-and-systems-biology/phylogenetic-handbook-practical-approach-phylogenetic-analysis-and-hypothesis-testing-2nd-edition) by Lemey, Salemi and Vandamme is an authoratative reference on the subject.  
