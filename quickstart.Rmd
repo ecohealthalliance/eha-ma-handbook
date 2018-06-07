@@ -4,9 +4,10 @@ In addition to the standard computer setup provided by office admin (Email, MS
 Office, etc), M&A members should do the following:
 
 -   Download and install [Slack](https://slack.com/downloads/osx). If you don't
-    alread have an invite, get one from Noam. Join the **\#r-discuss**,
-    **\#stats-talk**, and **\#journal-club** channels and any others your
+    alread have an invite, get one from Noam. Join the **\#data-sci-discuss**
+    and **\#journal-club** channels any others your
     supervisor suggests or are associated with projects you are assigned to.
+    (Don't forget **\#random** and **\#out-of-office-fun**!)
 -   If you don't already have one, sign up for an account on
     [GitHub](https://github.com/). Provide Noam with your username so as to add
     you to the EcoHealth Alliance team. If you already have a GitHub account
