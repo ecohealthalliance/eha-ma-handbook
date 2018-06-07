@@ -2,10 +2,9 @@
 
 *How do I solve this problem? How do I get my skills up to snuff?*
 
-We have an **\#r-discuss** channel on Slack to ask questions and also news about
-useful resources and packages. (There's also **\#python-discuss** and
-**\#stats-chat**.) We prefer that you ask question on this channel rather than
-privately. This way you draw on the group's knowledge, and everyone can learn
+We have an **\#data-sci-discuss** channel on Slack to ask questions and also news about
+useful resources and packages. We prefer that you ask question on this channel rather than
+privately. This way you draw on the group's knowledge and everyone can learn
 from the conversation. In general, if you spend 20 minutes banging your head
 against your screen trying to figure something out, it's time to ask someone.
 
