@@ -27,8 +27,8 @@
 ## Install
 
 -   Download and install [Slack](https://slack.com/downloads/osx). If you don't
-    alread have an invite, get one from Noam. Join the **\#r-discuss**,
-    **\#stats-talk**, and **\#journal-club** channels and any others your
+    alread have an invite, get one from Noam. Join the **\#data-sci-discuss**
+    and **\#journal-club** channels and any others your
     supervisor suggests or are associated with projects you are assigned to.
 -   There's also a mobile Slack app for
     [iOS](https://itunes.apple.com/us/app/slack-team-communication/id618783545?mt=8)
