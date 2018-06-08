@@ -20,7 +20,7 @@ Office, etc), M&A members should do the following:
 -   Install git and link it to RStudio and your GitHub account. Instructions for
     all of this are found [here, in Sections 7-15 of *Happy Git with
     R*](http://happygitwithr.com/install-git.html). If you get stuck along the
-    way don't hesitate to ask for help (via the **\#r-discuss** channel on
+    way don't hesitate to ask for help (via the **\#data-sci-discuss** channel on
     Slack!).
 -   Install Dropbox on your computer with your EHA account (note you can have
     separate personal and EHA Dropbox folders)
