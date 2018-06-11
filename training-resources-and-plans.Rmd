@@ -1,0 +1,84 @@
+# Training Resources and Plans
+
+If you are planning on spending significant time improving your data science and modeling skills, you will want to create a _training plan_.  A training plan is required if you
+would like to use EHA's Data Camp account.  Data Camp provides excellent modular courses comprised of both video and interactive, automatically graded exercises to learn data science and coding.  
+
+## Training plan components
+
+-  A description of your goals for the training plans and to which EHA projects
+   and activities you will apply your skills
+-  A list of courses/tutorials your plan to complete
+-  The total time the courses will take to complete.  We find the estimated times of Data Camp courses are roughly accurrate. 
+-  The time frame over which you expect to complete them
+-  The name of a _peer learner_.  You should have a peer learner at EcoHealth who will be a partner over the course of your training.  This may be someone working on a similar training plan or someone with knowledge of the material already.  They should play some or all of these roles:
+    -   Accountability: Your peer learner should know about your training plan and its time frame, and check in on how you are doing.
+    -   Co-learning: Your learning peer and you may want to schedule times to watch course
+        videos and complete exercises together
+    -   Review: Especially for materials without automating like Data Camp, your peer learner should be able to look at your work and provide feedback
+    -   Motivation:  Your peer learner should make your training fun and tell you that you rock. 
+
+When your supervisor signs off on your training plan, contact Megan Walsh to
+provide you with a Data Camp subscription for the period you need it.
+
+## Training Plan 
+
+_I request that if you take a course not on this list, you add it with your commentary
+on its utility_
+
+### Better Managing Project Data
+
+-  [DataCamp: Introduction to the Tidyverse](https://www.datacamp.com/courses/introduction-to-the-tidyverse) (4 hours) will get you started immediately working with data in R, and puts the following items in context.
+
+-  Work through the [Data Carpentry lesson on spreadsheet organization](http://www.datacarpentry.org/spreadsheet-ecology-lesson/) (~2 hours) and
+read [Hadley Wickham's paper on tidy data](https://www.jstatsoft.org/article/view/v059i10) (~1 hour)
+
+- [DataCamp: Importing Data in R (Part 1)](https://www.datacamp.com/courses/importing-data-in-r-part-1), (3 hours)
+
+- [DataCamp: Cleaning Data in R](https://www.datacamp.com/courses/cleaning-data-in-r) (4 hours)
+
+### Version Control and Git
+
+- Read through and work through the examples in [Happy Git with R](http://happygitwithr.com/).
+
+-  There is a Data Camp course [Introduction to Git for Data Science](https://www.datacamp.com/courses/introduction-to-git-for-data-science) (4 hours).  This is a more detailed  introduction that teaches you more about _how_ git works and features
+we use less in our workflow.  It may be appropriate once you have jumped into a project
+that uses git more elaborately.
+
+### Improving Your Statistical Fundamentals
+
+- [DataCamp: Introduction to Data](https://www.datacamp.com/courses/introduction-to-data) (4 hours) is a good starter course you have not much or any training in statistics in school and want to get familiar with the language and concepts.
+
+- [DataCamp: Foundations of Probability in R](https://www.datacamp.com/courses/foundations-of-probability-in-r) (4 hours)
+
+- [Statistical Rethinking: A Bayesian Course](https://xcelab.net/rm/statistical-rethinking/). This is an excellent book [and video lecture series](https://www.youtube.com/playlist?list=PLDcUM9US4XdM9_N6XUUFrhghGJ4K25bFc) that gives builds great foundations for doing many types of modeling.  Prerequisites are Intermediate R, some experience with linear regression and probability (for which the DataCamp course above is a good basis).  This course has about 19 hours of video.  We recommend 2-3 months for going through the book, video, and exercises.
+
+### Improving your data visualization
+
+# Visualization
+
+-  [Data Visualization with ggplot2 (Parts 1 + 2)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1) (5 + 5 hours).  Part 3 covers
+   topics not generally needed.
+   
+-   [Fundamentals of Data Visualization](http://serialmentor.com/dataviz/) by Claus Wilke is an excellent guide to making high-quality figures, focusing more on design than mechanics of programming. R code is available for all of its examples.  If you feel you have a solid
+grasp of **ggplot2** but want to improve the quality of your figures, we recommend reading this e-book, and using the accompanying code in [its GitHub repository](https://github.com/clauswilke/dataviz) to reproduce figures. 
+
+-   [Reporting with R Markdown
+](https://www.datacamp.com/courses/reporting-with-r-markdown) (3 hours)
+
+### R Programming
+
+-   [DataCamp: Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) is a good place to back up a bit to fill in concepts if you are missing things to help understand other course sequences. 
+
+-   [DataCamp: Intermediate R](https://www.datacamp.com/courses/intermediate-r) (6 hours) or [DataCamp: Writing Functions in R](https://www.datacamp.com/courses/writing-functions-in-r)/ (4 hours) are both good courses to improve your skills if you find yourself managing a more
+complex workflow or working on an R package with someone at EHA
+
+### Map-making and geospatial analysis in R
+
+-   [Spatial Analysis in R with sf and raster](https://www.datacamp.com/courses/spatial-analysis-in-r-with-sf-and-raster) (4 hours)
+
+-   [Interactive Maps with leaflet in R
+](https://www.datacamp.com/courses/interactive-maps-with-leaflet-in-r) (4 hours).  You should take a course or have knowledge of R Markdown prior to taking this course.
+
+-   [Geocomputation in R](https://geocompr.robinlovelace.net/)
+
+
