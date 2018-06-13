@@ -20,10 +20,9 @@ would like to use EHA's Data Camp account.  Data Camp provides excellent modular
 When your supervisor signs off on your training plan, contact Megan Walsh to
 provide you with a Data Camp subscription for the period you need it.
 
-## Training Plan 
+## Training Plans
 
-_I request that if you take a course not on this list, you add it with your commentary
-on its utility_
+These are some suggestions for assembling resources and courses into training plans.  This is of course a small fraction of the many learning and teaching resources available, including [many more Data Camp courses](https://www.datacamp.com/courses).  Consult your peers, supervisor, and the **\#data-sci-discuss** Slack channel to find courses or resources on the topics you require. If you use a new resource or course, please add to to this page so others can learn from your impressions of it!
 
 ### Better Managing Data
 
