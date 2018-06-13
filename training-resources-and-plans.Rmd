@@ -73,7 +73,7 @@ grasp of **ggplot2** but want to improve the quality of your figures, we recomme
 
 ### Map-making and geospatial analysis in R
 
--   [Geocomputation in R](https://geocompr.robinlovelace.net/) is a comprehensive guide for understanding geographic data, mapping, and conducting spatial analysis in R. Likely, the most relevant chapters for your purposes are 1-8, 10-11. 
+-   [Geocomputation in R](https://geocompr.robinlovelace.net/) is a comprehensive guide for understanding geographic data, mapping, and conducting spatial analysis in R. Likely, the most relevant chapters for your purposes are 1-8, 10-11. A chapter might take you 2-4 hours to work through, depending on how in depth you want to get and the number of exercises that you complete.
 
 -   [Making Maps with R](http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html) is a quick-start guide to mapping with **ggplot2**. It also introduces the **gmap**, **maps**, and **mapdata** packages for providing basemaps on which to overlay your spatial data.  
 
