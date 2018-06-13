@@ -54,8 +54,6 @@ that uses git more elaborately.
 
 ### Improving your data visualization
 
-# Visualization
-
 -  [Data Visualization with ggplot2 (Parts 1 + 2)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1) (5 + 5 hours).  Part 3 covers
    topics not generally needed.
    

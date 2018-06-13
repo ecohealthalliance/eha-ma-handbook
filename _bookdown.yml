@@ -15,6 +15,7 @@ rmd_files:
     - "stats-methods.Rmd"
     - "data-sources.Rmd"
     - "references.Rmd"
+    -  "training-resources-and-plans.Rmd"
     - "getting-help.Rmd"
     - "training-resources-and-plans.Rmd"
 book_filename: "eha-ma-handbook"
