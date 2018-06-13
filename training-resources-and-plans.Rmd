@@ -27,7 +27,7 @@ on its utility_
 
 ### Better Managing Data
 
--  [DataCamp: Introduction to the Tidyverse](https://www.datacamp.com/courses/introduction-to-the-tidyverse) (4 hours) will get you started immediately working with data in R, and puts the following items in context.  It's a good introduction for everyone with little to no experience.  If you have _no_ experience, including no EHA workshop, take [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) (4 hours, though there will be some redundancy).  
+-  [DataCamp: Introduction to the Tidyverse](https://www.datacamp.com/courses/introduction-to-the-tidyverse) (4 hours) will get you started immediately working with data in R, and puts the following items in context.  It's a good introduction for everyone with little to no experience.  If you have _no_ experience, including no EHA workshop, take [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r), as well (4 hours, though there will be some redundancy).  
 
 -  If you are mostly working in spreadhseets but collaborating with R or Python users, or just trying to organize a lot of spreadsheet data for your projects, work through the [Data Carpentry lesson on spreadsheet organization](http://www.datacarpentry.org/spreadsheet-ecology-lesson/) (~2 hours) and
 read [Hadley Wickham's paper on tidy data](https://www.jstatsoft.org/article/view/v059i10) (~1 hour)
