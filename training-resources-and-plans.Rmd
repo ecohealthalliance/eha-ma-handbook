@@ -25,16 +25,14 @@ provide you with a Data Camp subscription for the period you need it.
 _I request that if you take a course not on this list, you add it with your commentary
 on its utility_
 
-### Better Managing Project Data
+### Better Managing Data
 
--  [DataCamp: Introduction to the Tidyverse](https://www.datacamp.com/courses/introduction-to-the-tidyverse) (4 hours) will get you started immediately working with data in R, and puts the following items in context.
+-  [DataCamp: Introduction to the Tidyverse](https://www.datacamp.com/courses/introduction-to-the-tidyverse) (4 hours) will get you started immediately working with data in R, and puts the following items in context.  It's a good introduction for everyone with little to no experience.  If you have _no_ experience, including no EHA workshop, take [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) (4 hours, though there will be some redundancy).  
 
--  Work through the [Data Carpentry lesson on spreadsheet organization](http://www.datacarpentry.org/spreadsheet-ecology-lesson/) (~2 hours) and
+-  If you are mostly working in spreadhseets but collaborating with R or Python users, or just trying to organize a lot of spreadsheet data for your projects, work through the [Data Carpentry lesson on spreadsheet organization](http://www.datacarpentry.org/spreadsheet-ecology-lesson/) (~2 hours) and
 read [Hadley Wickham's paper on tidy data](https://www.jstatsoft.org/article/view/v059i10) (~1 hour)
 
-- [DataCamp: Importing Data in R (Part 1)](https://www.datacamp.com/courses/importing-data-in-r-part-1), (3 hours)
-
-- [DataCamp: Cleaning Data in R](https://www.datacamp.com/courses/cleaning-data-in-r) (4 hours)
+- Both [DataCamp: Importing Data in R (Part 1)](https://www.datacamp.com/courses/importing-data-in-r-part-1), (3 hours) and  [DataCamp: Cleaning Data in R](https://www.datacamp.com/courses/cleaning-data-in-r) (4 hours) will be useful if you are doing a database aggregation or building project.
 
 ### Version Control and Git
 
@@ -44,24 +42,25 @@ read [Hadley Wickham's paper on tidy data](https://www.jstatsoft.org/article/vie
 we use less in our workflow.  It may be appropriate once you have jumped into a project
 that uses git more elaborately.
 
+### Reproducible reporting
+
+-   [Reporting with R Markdown](https://www.datacamp.com/courses/reporting-with-r-markdown) (3 hours) covers making the reproducible reports some teams like for rapid iteration.  Take this if you are writing an Emerging Disease Insights report, and if you team is using R Markdown for communication.
+
 ### Improving Your Statistical Fundamentals
 
 - [DataCamp: Introduction to Data](https://www.datacamp.com/courses/introduction-to-data) (4 hours) is a good starter course you have not much or any training in statistics in school and want to get familiar with the language and concepts.
 
-- [DataCamp: Foundations of Probability in R](https://www.datacamp.com/courses/foundations-of-probability-in-r) (4 hours)
+- [DataCamp: Foundations of Probability in R](https://www.datacamp.com/courses/foundations-of-probability-in-r) (4 hours) covers many of the important concepts that those doing Bayesian model work at EHA discuss.  Take this if you are just getting started interacting with or reading this work and you don't have a probability background.
 
 - [Statistical Rethinking: A Bayesian Course](https://xcelab.net/rm/statistical-rethinking/). This is an excellent book [and video lecture series](https://www.youtube.com/playlist?list=PLDcUM9US4XdM9_N6XUUFrhghGJ4K25bFc) that gives builds great foundations for doing many types of modeling.  Prerequisites are Intermediate R, some experience with linear regression and probability (for which the DataCamp course above is a good basis).  This course has about 19 hours of video.  We recommend 2-3 months for going through the book, video, and exercises.
 
 ### Improving your data visualization
 
--  [Data Visualization with ggplot2 (Parts 1 + 2)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1) (5 + 5 hours).  Part 3 covers
+-  [Data Visualization with ggplot2 (Parts 1 + 2)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1) (5 + 5 hours).  These will take you much further than the basic visualization you learn in Intro to the Tidyverse.  Take them if you aren't able to make the plots you need based on the knowledge you learn in that.  Part 3 covers
    topics not generally needed.
    
 -   [Fundamentals of Data Visualization](http://serialmentor.com/dataviz/) by Claus Wilke is an excellent guide to making high-quality figures, focusing more on design than mechanics of programming. R code is available for all of its examples.  If you feel you have a solid
 grasp of **ggplot2** but want to improve the quality of your figures, we recommend reading this e-book, and using the accompanying code in [its GitHub repository](https://github.com/clauswilke/dataviz) to reproduce figures. 
-
--   [Reporting with R Markdown
-](https://www.datacamp.com/courses/reporting-with-r-markdown) (3 hours)
 
 ### R Programming
 
