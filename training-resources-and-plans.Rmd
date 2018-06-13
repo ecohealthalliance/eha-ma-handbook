@@ -71,13 +71,14 @@ grasp of **ggplot2** but want to improve the quality of your figures, we recomme
 
 ### Map-making and geospatial analysis in R
 
--   [Geocomputation in R](https://geocompr.robinlovelace.net/) is a comprehensive guide for understanding geographic data, mapping, and conducting spatial analysis in R. Likely, the most relevant chapters for your purposes are 1-8, 10-11. A chapter might take you 2-4 hours to work through, depending on how in depth you want to get and the number of exercises that you complete.
+-   [Geocomputation in R](https://geocompr.robinlovelace.net/) is a comprehensive guide for understanding geographic data, mapping, and conducting spatial analysis in R. Likely, the most relevant chapters for your purposes are 1-8, 10-11. A chapter might take you 1-3 hours to work through, depending on how in depth you want to get and the number of exercises that you complete.
 
--   [Making Maps with R](http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html) is a quick-start guide to mapping with **ggplot2**. It also introduces the **gmap**, **maps**, and **mapdata** packages for providing basemaps on which to overlay your spatial data.  
+-  DataCamp also has courses on spatial analysis using R, notably [Spatial Analysis in R with sf and raster](https://www.datacamp.com/courses/spatial-analysis-in-r-with-sf-and-raster) (4 hours).  It covers
+some of the material from Geomputation in R in less depth, and gives you fewer tools for hooking into the multiple geospatial data systems available in R.  Take this if you are more time-limited and are going to do less in terms of spatial statistics.
 
--  [Leaflet for R](https://rstudio.github.io/leaflet/) is a manual on the use of the R **leaflet** package to harness (Leaflet)[https://leafletjs.com/], an open-source JS library for creating _interactive_ maps. Leaflet maps particularly useful for exploring and visualizing spatial data, and are easily embedded into R Markdown documents.  
+-   [Making Maps with R](http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html) is a quick-start guide to mapping with **ggplot2**. It also introduces the **gmap**, **maps**, and **mapdata** packages for providing basemaps on which to overlay your spatial data.  It is good for getting a map together quickly but if you are going to be doing things on a regular basis we suggest the resources above, which give you a better foundation on geographic data.
 
--  DataCamp also has courses on spatial analysis using R, notably [Spatial Analysis in R with sf and raster](https://www.datacamp.com/courses/spatial-analysis-in-r-with-sf-and-raster) (4 hours) and [Interactive Maps with leaflet in R
-](https://www.datacamp.com/courses/interactive-maps-with-leaflet-in-r) (4 hours).  You should take a course or have knowledge of R Markdown prior to taking this course.
+-  [Leaflet for R](https://rstudio.github.io/leaflet/) is a manual on the use of the R **leaflet** package to harness (Leaflet)[https://leafletjs.com/], an open-source JS library for creating _interactive_ maps. Leaflet maps particularly useful for exploring and visualizing spatial data, and are easily embedded into R Markdown documents.   You should take a course or have knowledge of R Markdown prior to taking this course.
+
 
 
