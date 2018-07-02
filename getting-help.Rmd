@@ -25,7 +25,7 @@ Also, outside EHA:
 -   There's an almost-monthly [NYC R Meetup](https://www.meetup.com/nyhackr/)
     and even rarer [Data Visualization Meetup](https://www.meetup.com/DataVisualization/) that EHA members sometimes attend.
 -   There's also an [R-Ladies NYC chapter](http://www.rladiesnyc.org/) that has
-    regular meetups. One of our team members, Brooke Watson, is on the board. [WiMLDS](http://wimlds.org/chapters/about-nyc/) offers 
+    regular meetups and a Slack Chat room. [WiMLDS](http://wimlds.org/chapters/about-nyc/) offers 
     support to attend machine learning and data science conferences. 
 -   Stack Overflow is a popular Q&A site for computer programming that a lot of
     [discussions about
