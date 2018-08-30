@@ -74,9 +74,11 @@ grasp of **ggplot2** but want to improve the quality of your figures, we recomme
 -  DataCamp also has courses on spatial analysis using R, notably [Spatial Analysis in R with sf and raster](https://www.datacamp.com/courses/spatial-analysis-in-r-with-sf-and-raster) (4 hours).  It covers
 some of the material from Geomputation in R in less depth, and gives you fewer tools for hooking into the multiple geospatial data systems available in R.  Take this if you are more time-limited and are going to do less in terms of spatial statistics.
 
+- Data Carpentry has a [course on using R for spatial data](https://datacarpentry.org/geospatial-workshop/).  Like other \*Carpentry lessons its designed as a workshop lesson plan but can be self-taught. It presumes very little R knowledge at all, and includes stuff like setting a project in RStudio.  This is a good place to start people or students with little R experience to get them making maps right away.  If you just want to get a quick feel for R spatial data types, jump into Chapter 3.
+
 -   [Making Maps with R](http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html) is a quick-start guide to mapping with **ggplot2**. It also introduces the **gmap**, **maps**, and **mapdata** packages for providing basemaps on which to overlay your spatial data.  It is good for getting a map together quickly but if you are going to be doing things on a regular basis we suggest the resources above, which give you a better foundation on geographic data.
 
--  [Leaflet for R](https://rstudio.github.io/leaflet/) is a manual on the use of the R **leaflet** package to harness (Leaflet)[https://leafletjs.com/], an open-source JS library for creating _interactive_ maps. Leaflet maps particularly useful for exploring and visualizing spatial data, and are easily embedded into R Markdown documents.   You should take a course or have knowledge of R Markdown prior to taking this course.
+-  [Leaflet for R](https://rstudio.github.io/leaflet/) is a manual on the use of the R **leaflet** package to harness [Leaflet](https://leafletjs.com/), an open-source JS library for creating _interactive_ maps. Leaflet maps particularly useful for exploring and visualizing spatial data, and are easily embedded into R Markdown documents.   You should take a course or have knowledge of R Markdown prior to taking this course.
 
 
 
