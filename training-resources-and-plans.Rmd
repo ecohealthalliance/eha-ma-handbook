@@ -1,5 +1,7 @@
 # Training Resources and Plans
 
+***This section under revision as we consider alternate resources.***
+
 If you are planning on spending significant time improving your data science and modeling skills, you will want to create a _training plan_.  A training plan is required if you
 would like to use EHA's Data Camp account.  Data Camp provides excellent modular courses comprised of both video and interactive, automatically graded exercises to learn data science and coding.  
 
