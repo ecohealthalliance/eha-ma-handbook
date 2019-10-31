@@ -1,0 +1,95 @@
+# Encryption
+
+- _How do we share data in git repositories that needs to be secure?_
+
+Sometimes we need to store and share secure information, such as API keys to
+paid online service accounts.  One of our methods of choice for this is to
+keep these files stored in git/GitHub repositories, but to encrypt them.  We
+do this using PGP (Pretty Good Privacy) encryption, implemented by the program
+[`git-crypt`](https://github.com/AGWA/git-crypt).  It takes a bit to set up
+but once activated makes sharing secure and seamless.
+
+Instructions for setting this up are below.  They assume you are using MacOS
+for local work, but are mostly right for other cases, too.
+
+### Make a public/private PGP key pair
+
+The PGP encryption scheme involves making a _public_ key that you share and
+a _private_ key that you use do decrypt data encrypted with your public key.
+A good way to set up a widely-usaable and trusted key pair is to sign up
+for [Keybase](https://keybase.io/), which lets you publish and therefore verify
+the legitimacy of your public key through multiple accounts and devices. Sign
+up for / install Keybase on your computer and verify your key through as many services as you use.
+
+_Remember your Keypase passcode!_
+
+### Install `gpg` and `git-crypt`
+
+`gpg` is the program that implements encryption, and `git-crypt` sets up git
+repos for encrypted sharing.  These are aleady installed on EHA servers.  To install
+them on a mac, use `homebrew`.  You should also install `pinentry`.
+
+### Create or import your Keybase keys 
+
+If you are just starting to use keybase, you can generate new keys for use on
+your computer using [this guide](https://github.com/pstadler/keybase-gpg-github).
+The guide also helps set up using your key to sign GitHub commits, which you
+should do for added security.
+
+If you have a Keybase account set and keys already generated, you can now import
+your Keybase keys to use.  Instruction are found [here](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/). Do set
+your keys to maximum trust level.
+
+### Also import your keys to the EHA server
+
+You will probably want the ability to decrypt files when working remotely,
+so place them on the EHA server.  You can do this by copying over your whole
+`gpg` keys directory to the server, like so:
+
+    scp -rp ~/.gnupg url.of.server:
+
+Note that the main EHA analysis servers share user file systems so you only
+have to do this on one of them.
+
+You may have to edit the file `~/.gnupg/gpg-agent.conf` on the server.  If
+its first line is `pinentry-program /usr/local/bin/pinentry-mac`, change it to
+`pinentry-program /usr/bin/pinentry`.
+
+### Use git-crypt
+
+The [`git-crypt` README](https://github.com/AGWA/git-crypt) outlines the basics
+of using `git-crypt` to add encrypted files to a git repository.  If you are
+using an encrypted repository someone else set up, they should have added your
+public key to the repo, and all you need to do after pulling/cloning is run
+
+    git-crypt unlock
+    
+in the repository folder.  After that encryption and decryption for pushing and
+pulling should happen automatically.
+
+One key area missing is how to import the public keys of your team members to
+your local keychain. Visit their Keybase profiles (e.g., <https://keybase.io/noamross>) and click on the key - it will show several ways to import 
+
+### Extra: Use a symmetric key for automated processes
+
+If you are using continuous integration on a repository with encrypted files,
+you'll need to provide a way for the CI system to unlock them.  An easy, but
+not _most_ secure way is to provide a _symmetric key_.  You can generate
+this by running this in your project directory.
+
+    git-crypt export-key git_crypt_key.key
+
+`git_crypt_key.key` can now be used to decrypt the repository, and you can provide
+it to the CI system as an environment variable.  However, since it is binary data,
+you'll need to convert it to base64 first.  So run something like:
+
+    cat git_crypt_key.key | base64 | pbcopy
+
+To convert this file to base64 data, then paste it in your CI system's environment
+variable field as something like `GIT_CRYPT_KEY64`.
+
+To use the key later, you'll need (1) `git-crypt` and `gpg` installed in the CI
+system image, and to run these commands after the CI clones your repository:
+
+    echo $GIT_ENCRYPT_KEY64 > git_crypt_key.key64 && base64 -d git_crypt_key.key64 > git_crypt_key.key && git-crypt unlock git_crypt_key.key
+   
