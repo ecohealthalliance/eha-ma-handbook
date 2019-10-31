@@ -6,3 +6,4 @@ Imports:
   git2r,
   bookdown,
   emo
+Remotes: hadley/emo
