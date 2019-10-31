@@ -68,7 +68,7 @@ in the repository folder.  After that encryption and decryption for pushing and
 pulling should happen automatically.
 
 One key area missing is how to import the public keys of your team members to
-your local keychain. Visit their Keybase profiles (e.g., <https://keybase.io/noamross>) and click on the key - it will show several ways to import 
+your local keychain. Visit their Keybase profiles (e.g., <https://keybase.io/noamross>) and click on the key - it will show several ways to import the keys.
 
 ### Extra: Use a symmetric key for automated processes
 
@@ -85,11 +85,11 @@ you'll need to convert it to base64 first.  So run something like:
 
     cat git_crypt_key.key | base64 | pbcopy
 
-To convert this file to base64 data, then paste it in your CI system's environment
+to convert this file to base64 data, then paste it in your CI system's environment
 variable field as something like `GIT_CRYPT_KEY64`.
 
 To use the key later, you'll need (1) `git-crypt` and `gpg` installed in the CI
-system image, and to run these commands after the CI clones your repository:
+system image, and (2) to run these commands after the CI clones your repository:
 
     echo $GIT_ENCRYPT_KEY64 > git_crypt_key.key64 && base64 -d git_crypt_key.key64 > git_crypt_key.key && git-crypt unlock git_crypt_key.key
    
