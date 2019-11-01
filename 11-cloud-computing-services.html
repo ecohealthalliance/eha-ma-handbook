@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>11 Cloud Computing Services | EHA Modeling &amp; Analytics Handbook</title>
+  <meta name="description" content="11 Cloud Computing Services | EHA Modeling &amp; Analytics Handbook" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="11 Cloud Computing Services | EHA Modeling &amp; Analytics Handbook" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="11 Cloud Computing Services | EHA Modeling &amp; Analytics Handbook" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<link rel="prev" href="10-high-performance-servers.html"/>
+<link rel="next" href="12-encryption.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<script type="text/javascript" src="https://aegypti.ecohealthalliance.org:22051/status/dashboard.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://www.ecohealthalliance.org" target="_blank"><img src="assets/eha_logo.png" style="max-width: 100%"></a></li>
+<li><a href="./" style="text-align:center"><strong>Modeling & Analytics Handbook</strong><a/></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="1-quickstart-for-computing.html"><a href="1-quickstart-for-computing.html"><i class="fa fa-check"></i><b>1</b> Quickstart for computing</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-quickstart-for-computing.html"><a href="1-quickstart-for-computing.html#optional"><i class="fa fa-check"></i><b>1.1</b> Optional</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-projects.html"><a href="2-projects.html"><i class="fa fa-check"></i><b>2</b> Project Management</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-projects.html"><a href="2-projects.html#teams-and-work-cycles"><i class="fa fa-check"></i><b>2.1</b> Teams and Work Cycles</a></li>
+<li class="chapter" data-level="2.2" data-path="2-projects.html"><a href="2-projects.html#setup-and-materials-organization"><i class="fa fa-check"></i><b>2.2</b> Setup and materials Organization</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="2-projects.html"><a href="2-projects.html#code-organization"><i class="fa fa-check"></i><b>2.2.1</b> Code organization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-r.html"><a href="3-r.html"><i class="fa fa-check"></i><b>3</b> R and Reproducible Analysis</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-r.html"><a href="3-r.html#install"><i class="fa fa-check"></i><b>3.1</b> Install</a></li>
+<li class="chapter" data-level="3.2" data-path="3-r.html"><a href="3-r.html#learn"><i class="fa fa-check"></i><b>3.2</b> Learn</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-eha-team-communication.html"><a href="4-eha-team-communication.html"><i class="fa fa-check"></i><b>4</b> EHA Team Communication</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-eha-team-communication.html"><a href="4-eha-team-communication.html#install-1"><i class="fa fa-check"></i><b>4.1</b> Install</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-documentation-and-outputs.html"><a href="5-documentation-and-outputs.html"><i class="fa fa-check"></i><b>5</b> Documentation and Outputs</a><ul>
+<li class="chapter" data-level="5.1" data-path="5-documentation-and-outputs.html"><a href="5-documentation-and-outputs.html#learn-1"><i class="fa fa-check"></i><b>5.1</b> Learn</a></li>
+<li class="chapter" data-level="5.2" data-path="5-documentation-and-outputs.html"><a href="5-documentation-and-outputs.html#install-2"><i class="fa fa-check"></i><b>5.2</b> Install</a></li>
+<li class="chapter" data-level="5.3" data-path="5-documentation-and-outputs.html"><a href="5-documentation-and-outputs.html#library"><i class="fa fa-check"></i><b>5.3</b> Library</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-data-management.html"><a href="6-data-management.html"><i class="fa fa-check"></i><b>6</b> Data Management</a><ul>
+<li class="chapter" data-level="6.1" data-path="6-data-management.html"><a href="6-data-management.html#learn-2"><i class="fa fa-check"></i><b>6.1</b> Learn</a></li>
+<li class="chapter" data-level="6.2" data-path="6-data-management.html"><a href="6-data-management.html#install-3"><i class="fa fa-check"></i><b>6.2</b> Install</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7-version-control-git-and-github.html"><a href="7-version-control-git-and-github.html"><i class="fa fa-check"></i><b>7</b> Version Control, Git and Github</a><ul>
+<li class="chapter" data-level="7.1" data-path="7-version-control-git-and-github.html"><a href="7-version-control-git-and-github.html#learn-3"><i class="fa fa-check"></i><b>7.1</b> Learn</a></li>
+<li class="chapter" data-level="7.2" data-path="7-version-control-git-and-github.html"><a href="7-version-control-git-and-github.html#install-4"><i class="fa fa-check"></i><b>7.2</b> Install</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="8-reviewing-analyses-and-code.html"><a href="8-reviewing-analyses-and-code.html"><i class="fa fa-check"></i><b>8</b> Reviewing Analyses and Code</a><ul>
+<li class="chapter" data-level="8.1" data-path="8-reviewing-analyses-and-code.html"><a href="8-reviewing-analyses-and-code.html#learn-4"><i class="fa fa-check"></i><b>8.1</b> Learn</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="9-testing.html"><a href="9-testing.html"><i class="fa fa-check"></i><b>9</b> Testing</a><ul>
+<li class="chapter" data-level="9.1" data-path="9-testing.html"><a href="9-testing.html#learn-5"><i class="fa fa-check"></i><b>9.1</b> Learn</a></li>
+<li class="chapter" data-level="9.2" data-path="9-testing.html"><a href="9-testing.html#install-5"><i class="fa fa-check"></i><b>9.2</b> Install</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="10-high-performance-servers.html"><a href="10-high-performance-servers.html"><i class="fa fa-check"></i><b>10</b> High-Performance Servers</a></li>
+<li class="chapter" data-level="11" data-path="11-cloud-computing-services.html"><a href="11-cloud-computing-services.html"><i class="fa fa-check"></i><b>11</b> Cloud Computing Services</a><ul>
+<li class="chapter" data-level="11.1" data-path="11-cloud-computing-services.html"><a href="11-cloud-computing-services.html#setting-up-amazon-credentials"><i class="fa fa-check"></i><b>11.1</b> Setting up Amazon Credentials</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="11-cloud-computing-services.html"><a href="11-cloud-computing-services.html#generate-an-access-key"><i class="fa fa-check"></i><b>11.1.1</b> Generate an access key</a></li>
+<li class="chapter" data-level="11.1.2" data-path="11-cloud-computing-services.html"><a href="11-cloud-computing-services.html#create-a-credentials-file"><i class="fa fa-check"></i><b>11.1.2</b> Create a credentials file</a></li>
+<li class="chapter" data-level="11.1.3" data-path="11-cloud-computing-services.html"><a href="11-cloud-computing-services.html#test-your-key"><i class="fa fa-check"></i><b>11.1.3</b> Test your Key</a></li>
+<li class="chapter" data-level="11.1.4" data-path="11-cloud-computing-services.html"><a href="11-cloud-computing-services.html#alternate-credentialing-method"><i class="fa fa-check"></i><b>11.1.4</b> Alternate credentialing method</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="11-cloud-computing-services.html"><a href="11-cloud-computing-services.html#using-amazon-s3-storage-from-r"><i class="fa fa-check"></i><b>11.2</b> Using Amazon S3 Storage from R</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="11-cloud-computing-services.html"><a href="11-cloud-computing-services.html#save-objects-from-s3-to-your-machine"><i class="fa fa-check"></i><b>11.2.1</b> Save objects from S3 to your machine</a></li>
+<li class="chapter" data-level="11.2.2" data-path="11-cloud-computing-services.html"><a href="11-cloud-computing-services.html#upload-objects-from-your-machine-to-s3"><i class="fa fa-check"></i><b>11.2.2</b> Upload objects from your machine to S3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="12-encryption.html"><a href="12-encryption.html"><i class="fa fa-check"></i><b>12</b> Encryption</a><ul>
+<li class="chapter" data-level="12.0.1" data-path="12-encryption.html"><a href="12-encryption.html#set-up-keybase"><i class="fa fa-check"></i><b>12.0.1</b> Set up Keybase</a></li>
+<li class="chapter" data-level="12.0.2" data-path="12-encryption.html"><a href="12-encryption.html#install-gpg-and-git-crypt"><i class="fa fa-check"></i><b>12.0.2</b> Install <code>gpg</code> and <code>git-crypt</code></a></li>
+<li class="chapter" data-level="12.0.3" data-path="12-encryption.html"><a href="12-encryption.html#create-your-keybase-keys"><i class="fa fa-check"></i><b>12.0.3</b> Create your Keybase keys</a></li>
+<li class="chapter" data-level="12.0.4" data-path="12-encryption.html"><a href="12-encryption.html#import-your-keys-to-your-local-keychain"><i class="fa fa-check"></i><b>12.0.4</b> Import your keys to your local keychain</a></li>
+<li class="chapter" data-level="12.0.5" data-path="12-encryption.html"><a href="12-encryption.html#also-import-your-keys-to-the-eha-server"><i class="fa fa-check"></i><b>12.0.5</b> Also import your keys to the EHA server</a></li>
+<li class="chapter" data-level="12.0.6" data-path="12-encryption.html"><a href="12-encryption.html#use-git-crypt"><i class="fa fa-check"></i><b>12.0.6</b> Use git-crypt</a></li>
+<li class="chapter" data-level="12.0.7" data-path="12-encryption.html"><a href="12-encryption.html#extra-use-a-symmetric-key-for-automated-processes"><i class="fa fa-check"></i><b>12.0.7</b> Extra: Use a symmetric key for automated processes</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="13-dependencies.html"><a href="13-dependencies.html"><i class="fa fa-check"></i><b>13</b> Dependency Management</a></li>
+<li class="chapter" data-level="14" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html"><i class="fa fa-check"></i><b>14</b> Statistical Methods</a><ul>
+<li class="chapter" data-level="14.1" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html#multivariate-regression"><i class="fa fa-check"></i><b>14.1</b> Multivariate Regression</a></li>
+<li class="chapter" data-level="14.2" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html#networks"><i class="fa fa-check"></i><b>14.2</b> Networks</a></li>
+<li class="chapter" data-level="14.3" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html#bioinformatics-and-sequence-analysis"><i class="fa fa-check"></i><b>14.3</b> Bioinformatics and Sequence Analysis</a></li>
+<li class="chapter" data-level="14.4" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html#species-distribution-modeling"><i class="fa fa-check"></i><b>14.4</b> Species Distribution Modeling</a></li>
+<li class="chapter" data-level="14.5" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html#epidemic-simulation-and-fitting"><i class="fa fa-check"></i><b>14.5</b> Epidemic Simulation and Fitting</a></li>
+<li class="chapter" data-level="14.6" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html#phylogenetics"><i class="fa fa-check"></i><b>14.6</b> Phylogenetics</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="15-data-sources.html"><a href="15-data-sources.html"><i class="fa fa-check"></i><b>15</b> Data Sources</a></li>
+<li class="chapter" data-level="16" data-path="16-references.html"><a href="16-references.html"><i class="fa fa-check"></i><b>16</b> References</a><ul>
+<li class="chapter" data-level="16.1" data-path="16-references.html"><a href="16-references.html#converting-paperpile-citations-in-google-docs-to-endnote-citations-in-ms-word"><i class="fa fa-check"></i><b>16.1</b> Converting Paperpile Citations in Google Docs to Endnote Citations in MS Word</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html"><i class="fa fa-check"></i><b>17</b> Training Resources and Plans</a><ul>
+<li class="chapter" data-level="17.1" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#training-plan-components"><i class="fa fa-check"></i><b>17.1</b> Training plan components</a></li>
+<li class="chapter" data-level="17.2" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#training-plans"><i class="fa fa-check"></i><b>17.2</b> Training Plans</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#better-managing-data"><i class="fa fa-check"></i><b>17.2.1</b> Better Managing Data</a></li>
+<li class="chapter" data-level="17.2.2" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#version-control-and-git"><i class="fa fa-check"></i><b>17.2.2</b> Version Control and Git</a></li>
+<li class="chapter" data-level="17.2.3" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#reproducible-reporting"><i class="fa fa-check"></i><b>17.2.3</b> Reproducible reporting</a></li>
+<li class="chapter" data-level="17.2.4" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#improving-your-statistical-fundamentals"><i class="fa fa-check"></i><b>17.2.4</b> Improving Your Statistical Fundamentals</a></li>
+<li class="chapter" data-level="17.2.5" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#improving-your-data-visualization"><i class="fa fa-check"></i><b>17.2.5</b> Improving your data visualization</a></li>
+<li class="chapter" data-level="17.2.6" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#r-programming"><i class="fa fa-check"></i><b>17.2.6</b> R Programming</a></li>
+<li class="chapter" data-level="17.2.7" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#map-making-and-geospatial-analysis-in-r"><i class="fa fa-check"></i><b>17.2.7</b> Map-making and geospatial analysis in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="18-help.html"><a href="18-help.html"><i class="fa fa-check"></i><b>18</b> Getting Help</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">EHA Modeling &amp; Analytics Handbook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="cloud-computing-services" class="section level1">
+<h1><span class="header-section-number">11</span> Cloud Computing Services</h1>
+<ul>
+<li><em>What if my data files are too big to hold in Github?</em></li>
+<li><em>Where is the latest IUCN/MODIS/LANDSAT shapefile?</em></li>
+<li><em>What if I need more CPUs than even our servers have?</em></li>
+</ul>
+<p>EHA has an organizational Amazon Web Services and Microsoft Azure accounts that may be useful for some projects. <strong>AWS S3 storage</strong> or <strong>Azure Blog Storage</strong> are useful for hosting large data files, especially if they are shared across projects. <strong>AWS EC2 cloud computers</strong> or <strong>Azure Virtual Machines</strong> may be appropriate for a hosting a web app or database, automating regular processes, or other analytical projects.</p>
+<p>If you think you need cloud resources for your project, contact Noam or Toph for access to the AWS account, to discuss what services or other providers may be useful.</p>
+<p>If you are using AWS, remember:</p>
+<ul>
+<li>All resources used on AWS need to be tagged with a project:PROJECTNAME tag in order to assign costs to the appropriate EHA projects.</li>
+<li>Be judicious with AWS service usage. It is easy to run up costs.</li>
+</ul>
+<div id="setting-up-amazon-credentials" class="section level2">
+<h2><span class="header-section-number">11.1</span> Setting up Amazon Credentials</h2>
+<p>To connect to AWS via program like R, you will net to set up an access access credientials.</p>
+<p>Once you’ve gotten your credentials, log on to <a href="ehatek.signin.aws.amazon.com/console/" class="uri">ehatek.signin.aws.amazon.com/console/</a>. <code>ehatek</code> should be already entered in the “Account ID or alias” field. You will be asked to change your password after the first time you log on.</p>
+<div id="generate-an-access-key" class="section level3">
+<h3><span class="header-section-number">11.1.1</span> Generate an access key</h3>
+<p>Navigate to your IAM (Identity and Access Management) page to generate an access key.</p>
+<div class="figure">
+<img src="assets/AWS-IAM-1.png" />
+
+</div>
+<p>You should see a ✅ next to “rotate your access keys.” Click “Manage User Access Keys” after expanding the access key subheading. (If you see an ❌, ask whoever created your account if you have the appropriate S3 privileges.)</p>
+<div class="figure">
+<img src="assets/AWS-IAM-2.png" />
+
+</div>
+<p>Click the “Security credentials” panel and scroll down to the “create access key” button.</p>
+<div class="figure">
+<img src="assets/AWS-access-key.png" />
+
+</div>
+<p>Your access key will have a <code>key ID</code> - a long string of letters and numbers - and a <code>*~*secret*~* access key</code> - a longer string of letters and numbers. Press “show” and hang onto it somewhere until you are sure your <code>~/.aws/credentials</code> file is working as intended. <strong>Don’t share your secret key with anyone</strong>.</p>
+<p>If you lose it before you use it, you can delete your and make another one. <em>Deleting</em> a key is different from making a key <em>inactive</em> - you might reach your access key limit pretty quickly, so you’ll probably have to do the former if you have keys that you don’t use.</p>
+</div>
+<div id="create-a-credentials-file" class="section level3">
+<h3><span class="header-section-number">11.1.2</span> Create a credentials file</h3>
+<p>Open a blank text file in a text editor and paste your key ID and secret key as follows. It will look like this:</p>
+<pre><code>[default]
+aws_access_key_id = your_key_id
+aws_secret_access_key = your_secret_access_key
+aws_default_region = us-east-1&quot;</code></pre>
+<p>Replace <code>your_key_id</code> and <code>your_secret_access_key</code> with the values you see in the AWS browser.</p>
+<p>Create a folder called <code>~/.aws</code>, and put the <code>credentials</code> file in it.</p>
+<p>(<strong>YES</strong>, currently, you need that trailing <code>&quot;</code> after <code>us-east-1</code> if you want to include the AWS_DEFAULT_REGION in your credentials file, because the <code>aws.signature</code> is using a strange parser.) If you get errors related to the AWS default region, you can delete that line and set it locally inside your R environment like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">Sys.setenv</span>(<span class="st">&quot;AWS_DEFAULT_REGION&quot;</span> =<span class="st"> &quot;us-east-1&quot;</span>)</code></pre></div>
+</div>
+<div id="test-your-key" class="section level3">
+<h3><span class="header-section-number">11.1.3</span> Test your Key</h3>
+<p>Open an R session to make sure your credentials file works.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install the AWS packages if you need them</span>
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(aws.s3)) devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;cloudyr/aws.s3&quot;</span>)
+<span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(aws.signature)) devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;cloudyr/aws.signature&quot;</span>)
+
+<span class="kw">library</span>(aws.s3)
+
+<span class="co"># load credentials from your credentials file</span>
+aws.signature<span class="op">::</span><span class="kw">use_credentials</span>()
+
+<span class="co"># check list of aws S3 buckets</span>
+<span class="kw">head</span>(aws.s3<span class="op">::</span><span class="kw">bucketlist</span>())</code></pre></div>
+<p>If you get a ‘403 Forbidden’ error, your credentials aren’t working.</p>
+</div>
+<div id="alternate-credentialing-method" class="section level3">
+<h3><span class="header-section-number">11.1.4</span> Alternate credentialing method</h3>
+<p>If you have Done Your Googles and are still having trouble setting your AWS credentials, you can set them in your <code>.Renviron</code> file. The advantage of using an <code>~/.aws/credentials</code> file is that your key will then work across all platforms - R, Python, the command line, etc. However, if you’re only connecting to AWS through R, having your key in your <code>.Renviron</code> will be enough.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># If you don&#39;t know how to find your .Renviron file, do the following to open it:  </span>
+<span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(usethis)) <span class="kw">install.packages</span>(<span class="st">&quot;usethis&quot;</span>)
+usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()
+
+<span class="co"># add the following to your .Renviron, replacing your_key_id and your_secret_access_key with their actual values. Save your .Renviron and restart R.</span>
+<span class="st">&quot;AWS_ACCESS_KEY_ID&quot;</span> =<span class="st"> </span>your_key_id
+<span class="st">&quot;AWS_SECRET_ACCESS_KEY&quot;</span> =<span class="st"> </span>your_secret_access_key
+<span class="st">&quot;AWS_DEFAULT_REGION&quot;</span> =<span class="st"> </span>us<span class="op">-</span>east<span class="op">-</span><span class="dv">1</span></code></pre></div>
+<p>After you restart R, test that your credentials are working with <code>aws.s3::bucketlist()</code>.</p>
+</div>
+</div>
+<div id="using-amazon-s3-storage-from-r" class="section level2">
+<h2><span class="header-section-number">11.2</span> Using Amazon S3 Storage from R</h2>
+<p>Above, you used <code>bucketlist</code> above to list all the buckets associated with your account. To look at everything inside a specific bucket, use <code>get_bucket</code>.</p>
+<p>Note that Amazon <strong>charges per Gigabyte for downloading and uploading files.</strong> Use things as needed for your project, but don’t get crazy and put a file download inside a for loop that you’re running a thousand times a day.</p>
+<p>To test privacy privileges are working are intended, we’ll use a very small private bucket with ~4 KB in it - Two small subsets of the Social Security Administration’s baby names dataset from the <code>babynames</code> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># check list of aws S3 buckets</span>
+<span class="kw">bucketlist</span>()
+
+<span class="co"># aws.s3::bucketlist()</span>
+pb &lt;-<span class="st"> &quot;eha-ma-practice-bucket&quot;</span>
+b &lt;-<span class="st"> </span><span class="kw">get_bucket</span>(pb)</code></pre></div>
+<div id="save-objects-from-s3-to-your-machine" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> Save objects from S3 to your machine</h3>
+<p>One of the main reasons we use Amazon S3 is to make sure everyone is working with the same large data files. Usually, you’ll download the large files you need one time and keep them on your local machine for analyses. This can be done with <code>save_object</code>. Wrapping <code>save_object</code> in an <code>if()</code> clause checks to see if the dataset exists first before downloading.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># make a data folder if this is the first dataset you&#39;re downloading into this project</span>
+<span class="cf">if</span>(<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) {
+  <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)
+}
+
+<span class="co"># save the babynames_subset.csv object (b[[1]]) into local memory</span>
+<span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&quot;data/babynames_subset.csv&quot;</span>)) {
+  <span class="kw">save_object</span>(<span class="dt">object =</span> b[[<span class="dv">1</span>]], <span class="dt">bucket =</span> pb, <span class="dt">file =</span> <span class="st">&quot;data/babynames_subset.csv&quot;</span>)
+}
+
+<span class="kw">dir</span>(<span class="st">&quot;data&quot;</span>)</code></pre></div>
+<p><code>babynames_subset.csv</code> is now in your <code>data</code> directory.You can then read it into memory as you would normally.</p>
+</div>
+<div id="upload-objects-from-your-machine-to-s3" class="section level3">
+<h3><span class="header-section-number">11.2.2</span> Upload objects from your machine to S3</h3>
+<p>To <code>put</code> a file from your computer back into the bucket, use <code>put_object</code>. This will be less common than downloading and saving objects <em>from</em> S3 - as a general rule, we want everyone working with the same versions of large datasets. If you’ve made a large rasterfile that your colleagues will use, you can upload it,</p>
+<p>In this example, we’ll make a change to the <code>babynames_subset</code> and save it as a new file (<code>babynames_subset2</code>).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">babynames_subset2 &lt;-<span class="st"> </span>babynames_subset <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">group_by</span>(name) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">sum</span>(n)) <span class="op">%&gt;%</span>
+<span class="st">    </span><span class="kw">filter</span>(n <span class="op">&lt;</span><span class="st"> </span><span class="dv">100</span>)
+
+<span class="co"># save to csv</span>
+<span class="kw">write.csv</span>(babynames_subset2, <span class="dt">file =</span> <span class="st">&quot;data/babynames_subset2.csv&quot;</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)
+
+<span class="co"># check whether an object with this name is in the bucket, and if it isn&#39;t, put it in there</span>
+<span class="cf">if</span>(<span class="op">!</span>(<span class="st">&quot;babynames_subset2.csv&quot;</span> <span class="op">%in%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">pull</span>(<span class="kw">get_bucket_df</span>(pb), <span class="st">&quot;Key&quot;</span>) ) {
+  <span class="kw">put_object</span>(<span class="dt">file =</span> <span class="st">&quot;data/babynames_subset2.csv&quot;</span>, <span class="dt">object =</span> <span class="st">&quot;babynames_subset2.csv&quot;</span>, <span class="dt">bucket =</span> pb, <span class="dt">acl =</span> <span class="st">&quot;private&quot;</span>)
+}</code></pre></div>
+<p>So now we have a data frame in memory called <code>babynames_subset2</code> and a .csv in the AWS <code>eha-ma-practice-bucket</code> called <code>babynames_subset2.csv</code>. We’ll pull the AWS csv back into memory to make sure they’re the same.</p>
+<p>To do this, we have to first copy over <code>babynames_subset2</code> to a new object in memory and remove it so that when we load the version from AWS, it doesn’t overwrite it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">babynames_subset_R &lt;-<span class="st"> </span>babynames_subset2
+<span class="kw">rm</span>(babynames_subset2)
+
+<span class="co"># save the .csv object using &quot;save_object&quot;</span>
+tmp =<span class="st"> </span><span class="kw">tempdir</span>()
+file =<span class="st"> </span><span class="kw">paste0</span>(tmp, <span class="st">&quot;/babynames_subset2.csv&quot;</span>)
+<span class="kw">save_object</span>(<span class="st">&quot;babynames_subset2.csv&quot;</span>, <span class="dt">bucket =</span> pb, <span class="dt">file =</span> file)
+
+<span class="co"># read the csv file into memory</span>
+babynames_subset2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(file)</code></pre></div>
+<p>Finally, we can check that the object in memory and the .csv in AWS are the same.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">assertthat<span class="op">::</span><span class="kw">are_equal</span>(babynames_subset_R, babynames_subset2)</code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="10-high-performance-servers.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="12-encryption.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2,
+"id": 1
+},
+"edit": {
+"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/cloud-services.Rmd",
+"text": "Edit this chapter"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
