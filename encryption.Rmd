@@ -80,6 +80,12 @@ pulling should happen automatically.
 One key area missing is how to import the public keys of your team members to
 your local keychain. Visit their Keybase profiles (e.g., <https://keybase.io/noamross>) and click on the key - it will show several ways to import the keys.
 
+Another common source of errors is that the text entry for `gpg` isn't set properly. You can fix this by setting the `GPG_TTY` environment variable like so:
+
+    export GPG_TTY=$(tty)
+    
+Add this to your `.profile`, `.bashrc`, `.zshrc` or other settigns file.
+
 ### Extra: Use a symmetric key for automated processes
 
 If you are using continuous integration on a repository with encrypted files,
