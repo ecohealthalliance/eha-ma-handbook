@@ -11,7 +11,7 @@ rmd_files:
     - "testing.Rmd"
     - "hpc.Rmd"
     - "cloud-services.Rmd"
-    - "gpg-keys.Rmd"
+    - "encryption.Rmd"
     - "dependencies.Rmd"
     - "stats-methods.Rmd"
     - "data-sources.Rmd"

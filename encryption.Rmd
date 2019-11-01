@@ -9,19 +9,18 @@ do this using PGP (Pretty Good Privacy) encryption, implemented by the program
 [`git-crypt`](https://github.com/AGWA/git-crypt).  It takes a bit to set up
 but once activated makes sharing secure and seamless.
 
+The PGP encryption scheme involves making a _public_ key that you share and
+a _private_ key that you use do decrypt data encrypted with your public key.
+We like  and use [Keybase](https://keybase.io/), a service that helps you publish and
+verify a public key for this purpose.
+
 Instructions for setting this up are below.  They assume you are using MacOS
 for local work, but are mostly right for other cases, too.
 
-### Make a public/private PGP key pair
+### Set up Keybase
 
-The PGP encryption scheme involves making a _public_ key that you share and
-a _private_ key that you use do decrypt data encrypted with your public key.
-A good way to set up a widely-usaable and trusted key pair is to sign up
-for [Keybase](https://keybase.io/), which lets you publish and therefore verify
-the legitimacy of your public key through multiple accounts and devices. Sign
-up for / install Keybase on your computer and verify your key through as many services as you use.
-
-_Remember your Keypase passcode!_
+Sign up for [Keybase](https://keybase.io/), and follow the instructions for 
+installing it on your laptop.
 
 ### Install `gpg` and `git-crypt`
 
@@ -29,16 +28,26 @@ _Remember your Keypase passcode!_
 repos for encrypted sharing.  These are aleady installed on EHA servers.  To install
 them on a mac, use `homebrew`.  You should also install `pinentry`.
 
-### Create or import your Keybase keys 
+### Create your Keybase keys 
 
 If you are just starting to use keybase, you can generate new keys for use on
 your computer using [this guide](https://github.com/pstadler/keybase-gpg-github).
 The guide also helps set up using your key to sign GitHub commits, which you
 should do for added security.
 
+Do create a password associated with your keys when asked.  You can store
+this in a service such as LastPass if desired.
+
+At this point you can go to your Keybase account and verify your keys via as
+many other services, devices, or online identities as you want.  We suggest
+at least three.
+
+### Import your keys to your local keychain
+
 If you have a Keybase account set and keys already generated, you can now import
 your Keybase keys to use.  Instruction are found [here](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/). Do set
 your keys to maximum trust level.
+
 
 ### Also import your keys to the EHA server
 
@@ -53,7 +62,8 @@ have to do this on one of them.
 
 You may have to edit the file `~/.gnupg/gpg-agent.conf` on the server.  If
 its first line is `pinentry-program /usr/local/bin/pinentry-mac`, change it to
-`pinentry-program /usr/bin/pinentry`.
+`pinentry-program /usr/bin/pinentry`. Note that it may not exist at all, which
+is fine - it means the program is just using default behavior.
 
 ### Use git-crypt
 
