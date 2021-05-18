@@ -48,7 +48,7 @@ rather than only trying to pick it up as you go along.
     stuff without needing multiple accounts (see
     [here](https://help.github.com/articles/managing-notification-emails-for-organizations/)).
 -   Give [Noam](ross@ecohealthalliance.org) (Modeling & Analytics) or
-    [Toph](allen@ecohealthalliance.org) (Tech), your GitHub username so they can
+    [Robert Young](young@ecohealthalliance.org) (Tech), your GitHub username so they can
     make you a member of the [organizational EHA
     account](https://github.com/ecohealthalliance) and be given access to the
     appropriate teams.
