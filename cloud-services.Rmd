@@ -6,7 +6,7 @@
 
 EHA has an organizational Amazon Web Services and Microsoft Azure accounts that may be useful for some projects. **AWS S3 storage** or **Azure Blog Storage** are useful for hosting large data files, especially if they are shared across projects. **AWS EC2 cloud computers** or **Azure Virtual Machines** may be appropriate for a hosting a web app or database, automating regular processes, or other analytical projects.
 
-If you think you need cloud resources for your project, contact Noam or Toph for access to the AWS account, to discuss what services or other providers may be useful.
+If you think you need cloud resources for your project, contact Noam or [Robert Young](young@ecohealthalliance.org) for access to the AWS account, to discuss what services or other providers may be useful.
 
 If you are using AWS, remember:
 
