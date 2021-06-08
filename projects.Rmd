@@ -63,7 +63,7 @@ exploratory analyses, and final products. In organizing a project folder, ask
 
 -   There are some exceptions for large data sets or rapidly changing data sets.
     In these cases, data can be organized as a separate folder or project, and
-    large data sets can be store in an Amazon Web Services S3 bucket.
+    large data sets can be stored in an Amazon Web Services S3 bucket.
 
 -   In many cases it is actually best for data to be organized as a *separate
     repository* from analysis. This allows multiple analysis projects to rely on
