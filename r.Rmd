@@ -41,3 +41,8 @@ If you feel they would match your learning style and needs, discuss EHA purchasi
 These resources are largely about the mechanics of programming in R, rather
 than using it for statistical analyses.  This is a far larger subject, but see
 the [Statistical Methods] section for a jumping-off point.  
+
+## Additional Resources
+
+For more information on **trouble shooting** your code see [Getting Help]. 
+
