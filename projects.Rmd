@@ -32,7 +32,7 @@ and set a date for the next one.
 Teams track work cycle progress through various mechanisms based on team
 preferences. One option is GitHub Milestones
 ([Example](https://github.com/ecohealthalliance/asl2050-ai/milestones)). Others
-use Google Spreadsheets, [Asana](https://asana.com/), [Air tables](https://airtable.com/), or other systems. Teams
+use Google Spreadsheets,  [Air tables](https://airtable.com/), or other systems. Teams
 may choose what they prefer as long as their system
 
 -   Shows current tasks, deadlines, and assignments Tracks past tasks,
@@ -41,6 +41,8 @@ may choose what they prefer as long as their system
 -   Is available in "real time" online rather than stored on individual machines
     and e-mailed
 -   Can be made accessible to other staff via a URL but kept private within EHA
+
+*note*: historically teams had used [Asana](https://asana.com/)
 
 ## Setup and materials Organization
 
