@@ -44,5 +44,8 @@ the [Statistical Methods] section for a jumping-off point.
 
 ## Additional Resources
 
-For more information on **trouble shooting** your code see [Getting Help]. 
+**Trouble shooting your code**: [Getting Help]. 
 
+**User groups/communities of practice**: [R Meetups](https://www.meetup.com/pro/r-user-groups)
+
+**Specific domains**: [Training Plans]
