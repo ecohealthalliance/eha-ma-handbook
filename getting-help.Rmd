@@ -38,3 +38,15 @@ Also, outside EHA:
 If there's a course, workshop, or conference you want to attend to improve these
 skills, speak with your supervisor, we can often support this.  [DataCamp courses](https://www.datacamp.com/onboarding/learn?from=home&technology=r) are also potentially useful.
 If you feel they would match your learning style and needs, discuss EHA purchasing a subscription for you with your supervisor.
+
+## Minimal reproducible examples - helping others help you
+
+Minimal reproducible examples are small, self-contained code and data packets 
+that will allow others to recreate the issue you are experiencing on their 
+machine. The [reprex package](https://reprex.tidyverse.org/articles/articles/learn-reprex.html) is
+really helpful for creating preformatted code for github, stackoverflow, or slack. 
+This [stackoverflow answer](https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example) provides a succinct walk through of how to create a 
+minimal reproducible example. 
+
+
+
