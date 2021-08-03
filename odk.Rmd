@@ -253,3 +253,34 @@ This will be the case for ODK Collect. Since you have changed the default langua
 
 It should be noted, however, that this language localisation only affects the text in the ODK Collect application. This language localisation will not affect the default language that is set in the forms that are loaded into ODK Collect. So, for example, if a form that is created in English is loaded onto ODK Collect that is localised in Arabic, the form will still show in English and not in Arabic. In order for this form to be localised into Arabic, the form should have been authored in both English and Arabic and then the language settings for the form is set into Arabic.
 
+## XLSForm {#xlsform}
+
+[XLSForm](https://xlsform.org/en/) is a form standard created to help simplify the authoring of forms in Excel. Authoring is done in a human readable format using a familiar tool that almost everyone knows - Excel. XLSForms provide a practical standard for sharing and collaborating on authoring forms. They are simple to get started with but allow for the authoring of complex forms by someone familiar with the syntax described [here](https://xlsform.org/en/).
+
+The [XLSForm](https://xlsform.org/en/) is then converted to an ODK XForm, a popular open form standard, that allows you to author a form with complex functionality like skip logic in a consistent way across a number of web and mobile data collection platforms.
+
+Extensive documentation on the XLSForm standard can be found [here](https://xlsform.org/en/).
+
+Here is a list of some XLSForms that provide good examples of specific approaches to form authoring for particular uses/applications:
+
+1. A basic XLSForm that shows most of the useful parameters for authoring and shows basic question types
+
+The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1DiSC_dOz0GOCC912z_5xfaHq_p2WUOI8J8Q0Hj6rC-E/edit?usp=sharing).
+
+2. An XLSForm that demonstrates the various question types available using this form standard
+
+The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1DiSC_dOz0GOCC912z_5xfaHq_p2WUOI8J8Q0Hj6rC-E/edit?usp=sharing)
+
+3. An XLSForm that performs randomisation of options for select_one or select_multiple types of questions
+
+The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1K3V6OkzcsUZjxwZFEpBXqoHiroQ2K7JWajUW5FmPlTQ/edit?usp=sharing)
+
+4. An XLSForm that demonstrates the use of the rank widget which allows the ranking of responses to select_multiple question types
+
+The XLSForm an be viewed [here](https://docs.google.com/spreadsheets/d/15OW_VEvvrcz8crhJL8z7xrEKeXeGNk2XKzOmLB79nRc/edit?usp=sharing)
+
+5. Grid style layout that mimics an actual paper form
+
+This XLSForm theme is specifically for use on a web client rather than on ODK Collect and presents the form as if it was a paper-based form with questions or fields laid out in a grid.
+
+The XLSForm can be viewed [here])https://docs.google.com/spreadsheets/d/1e-1pnNG6p_WbzuKcHoKBUdfSNAED3LPUw7JX6eXckQI/edit?usp=sharing).
