@@ -252,3 +252,4 @@ Setting the default language of your device to a specific language will affect a
 This will be the case for ODK Collect. Since you have changed the default language of your device, ODK Collect will now use that language as the default language for the application. This means that the menus and the text in ODK Collect will now all be in the language you chose.
 
 It should be noted, however, that this language localisation only affects the text in the ODK Collect application. This language localisation will not affect the default language that is set in the forms that are loaded into ODK Collect. So, for example, if a form that is created in English is loaded onto ODK Collect that is localised in Arabic, the form will still show in English and not in Arabic. In order for this form to be localised into Arabic, the form should have been authored in both English and Arabic and then the language settings for the form is set into Arabic.
+
