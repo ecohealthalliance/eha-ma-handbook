@@ -80,9 +80,9 @@ There maybe occasions where you are unable to use the QR code functionality to c
 
 ## Other useful ODK Collect configurations
 
-Once ODK Collect has been installed on the mobile device/s that you will be using for data collection, you may want to configure it's settings to fully maximise its use and also to make it as easy as possible to use by your enumerators. Depending on how involved you want your enumerators to be in the management of the data collection process, you may want to make available or limit certain settings or functions of ODK Collect.
+Once ODK Collect has been installed on the mobile device/s that you will be using for data collection, you may want to configure it's settings to fully maximize its use and also to make it as easy as possible to use by your enumerators. Depending on how involved you want your enumerators to be in the management of the data collection process, you may want to make available or limit certain settings or functions of ODK Collect.
 
-This tutorial describes how to setup the various configuration options of ODK Collect with the aim of minimising possible unintended interference by enumerators on the various settings that might be detrimental to your data collection campaign. These include the options to load blank forms and change the settings of the server platform (if you are using any). This guide is aimed at IT administrators and/or survey coordinators/managers who will be setting up ODK Collect prior to distribution of the mobile devices to enumerators.
+This tutorial describes how to setup the various configuration options of ODK Collect with the aim of minimizing possible unintended interference by enumerators on the various settings that might be detrimental to your data collection campaign. These include the options to load blank forms and change the settings of the server platform (if you are using any). This guide is aimed at IT administrators and/or survey coordinators/managers who will be setting up ODK Collect prior to distribution of the mobile devices to enumerators.
 This tutorial assumes that ODK Collect is already installed on your mobile devices. The following tutorial shows how to install ODK Collect on mobile devices.
 
 1. Open ODK Collect
@@ -112,9 +112,9 @@ Next, configure your 'Google accont' if you have one. This is not absolutely nec
 2.2 Configure Auto Send settings
 Now you can configure Auto Send settings. There are two settings to setup: 'Auto send with Wi-Fi' (1) and 'Auto send with network' (2).
 
-By default, these options are unchecked. It is recommended that you keep the default (unchecked) settings in place. This would mean that completed and finalised forms will be saved onto the device memory even when the device is connected on Wi-Fi and will not be sent unless the user specifically sends the forms for submission over the internet. It is good to have it this way because this allows for some type of checking of forms on the tablets themselves before they are sent to the server.
+By default, these options are unchecked. It is recommended that you keep the default (unchecked) settings in place. This would mean that completed and finalized forms will be saved onto the device memory even when the device is connected on Wi-Fi and will not be sent unless the user specifically sends the forms for submission over the internet. It is good to have it this way because this allows for some type of checking of forms on the tablets themselves before they are sent to the server.
 
-This is also good when there is no reliable Wi-Fi and/or network connection or if no server has been setup for the data collection campaign. The option to send the forms by Wi-Fi or over the network can be done later on when there is reliable network and/or when a server has been setup. Otherwise, manual sending of finalised forms via direct mobile device to computer connection can be done.
+This is also good when there is no reliable Wi-Fi and/or network connection or if no server has been setup for the data collection campaign. The option to send the forms by Wi-Fi or over the network can be done later on when there is reliable network and/or when a server has been setup. Otherwise, manual sending of finalized forms via direct mobile device to computer connection can be done.
 
 2.3 Configure User Interface settings
 Now you can configure the 'User Interface' settings. Following are the settings that you can configure or change:
