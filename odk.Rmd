@@ -109,7 +109,7 @@ You will then see the following options on your screen. Here you can specify the
 
 Next, configure your 'Google account' if you have one. This is not absolutely necessary and should be configured if you want to connect your ODK Collect with your Google account (if you have one). The advantage of doing this is that your data can be backed up to your Google account.
 
-2.2 Configure Auto Send settings
+2.2 Configure Auto Send settings (not recommended)
 Now you can configure Auto Send settings. There are two settings to setup: 'Auto send with Wi-Fi' (1) and 'Auto send with network' (2). 
 
 By default, these options are unchecked. It is recommended that you keep the default (unchecked) settings in place. This would mean that completed and finalized forms will be saved onto the device memory even when the device is connected on Wi-Fi and will not be sent unless the user specifically sends the forms for submission over the internet. It is good to have it this way because this allows for some type of checking of forms on the tablets themselves before they are sent to the server.
