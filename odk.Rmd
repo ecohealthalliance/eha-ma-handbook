@@ -164,6 +164,8 @@ Now, configure the 'User Can Access Change Settings Items' settings.
 
 The first five settings are shown here (1-5). It is recommended that all of these be unchecked to avoid unintended changing of settings.
 
+<!-- will there be screen shots here when this renders? -->
+
 The next set of settings are shown here (6-14). All these settings should be unchecked except for 'Text font size'. This will avoid unintended changing of settings.
 
 3.5 Configure User Can Access Form Entry Items settings
@@ -172,7 +174,9 @@ Now you can configure 'User Can Access Form Entry Items' settings.
 
 The settings are shown below (1-6). All options should be kept checked except for 'Name this Form' which should be unchecked.
 
-4. Reminders
+4. Important Notes on Order of Operations 
+
+<!-- Consider moving up this to the top since doing this out of order could cause an issue. It also may be good to provide an abbreviated list or diagram of the order of operations   -->
 
 You should configure the General Settings first before you change the Admin Settings. This is because the menu items needed to configure General Settings will not be available to you anymore one you have changed the Admin Settings as per recommendation above.
 
@@ -226,11 +230,11 @@ Choose the language that you want to use for the form.
 
 You can now check the language being used by the form by tapping on the forward button again from the 'cover page'. You will now see that the form is displayed in the language that you have chosen.
 
-### Localising ODK Collect
+### Localizing ODK Collect
 
 The ODK Collect application for devices running Android can be localized into several different languages. Currently, the application has been fully translated into 11 different languages and is partly translated into 41 other languages.
 
-ODK Collect language localisation is dependent on the language localisation of the mobile device to which ODK Collect is installed in. The language to which the mobile device is set will be the language to which ODK Collect will localize to.
+ODK Collect language localization is dependent on the language localization of the mobile device to which ODK Collect is installed in. The language to which the mobile device is set will be the language to which ODK Collect will localize to.
 
 This tutorial shows how to change the language settings of a mobile device running Android. 
 1. Go to settings
@@ -249,11 +253,11 @@ You will then see the following Language options on your screen.
 
 Change the language to the language you want to set the device to.
 
-Setting the default language of your device to a specific language will affect applications installed in your mobile device that also have language localisation features. For these applications, their default language will change to the language of the mobile device.
+Setting the default language of your device to a specific language will affect applications installed in your mobile device that also have language localization features. For these applications, their default language will change to the language of the mobile device.
 
 This will be the case for ODK Collect. Since you have changed the default language of your device, ODK Collect will now use that language as the default language for the application. This means that the menus and the text in ODK Collect will now all be in the language you chose.
 
-It should be noted, however, that this language localisation only affects the text in the ODK Collect application. This language localisation will not affect the default language that is set in the forms that are loaded into ODK Collect. So, for example, if a form that is created in English is loaded onto ODK Collect that is localized in Arabic, the form will still show in English and not in Arabic. In order for this form to be localized into Arabic, the form should have been authored in both English and Arabic and then the language settings for the form is set into Arabic.
+It should be noted, however, that this language localization only affects the text in the ODK Collect application. This language localization will not affect the default language that is set in the forms that are loaded into ODK Collect. So, for example, if a form that is created in English is loaded onto ODK Collect that is localized in Arabic, the form will still show in English and not in Arabic. In order for this form to be localized into Arabic, the form should have been authored in both English and Arabic and then the language settings for the form is set into Arabic.
 
 ## XLSForm {#xlsform}
 
