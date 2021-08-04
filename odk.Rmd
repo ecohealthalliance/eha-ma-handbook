@@ -101,16 +101,16 @@ In 'Server Settings', there are three main settings that will need configuring: 
 
 First, tap on Platform (1).
 
-You will then be presented with various platform options that you can select depending on the type of server that you are using for your data collection campaign. ODK Aggregate is the default platform. For anything other than the default ODK Aggregate platform that is provided on ODK Collect by default, you will most likley need to select Other option so that you can specify your own platform for your data collection server.
+You will then be presented with various platform options that you can select depending on the type of server that you are using for your data collection campaign. ODK Aggregate is the default platform. For anything other than the default ODK Aggregate platform that is provided on ODK Collect by default, you will most likely need to select the `Other` option so that you can specify your own platform for your data collection server.
 
 Next, tap on 'Configure platform settings' (2).
 
 You will then see the following options on your screen. Here you can specify the settings of the server used by your platform specifically the URL of your server (1), the username (2) and password (3) use to login to your server. If you do not know these settings, you should ask your IT administrator or whoever setup your server platform to provide you with these settings. For most service providers offering servers for use by ODK, these settings are made explicit within your account so all you might need to do is to login to your account and find these settings.
 
-Next, configure your 'Google accont' if you have one. This is not absolutely necessary and should be configured if you want to connect your ODK Collect with your Google account (if you have one). The advantage of doing this is that your data can be backed up to your Google account.
+Next, configure your 'Google account' if you have one. This is not absolutely necessary and should be configured if you want to connect your ODK Collect with your Google account (if you have one). The advantage of doing this is that your data can be backed up to your Google account.
 
 2.2 Configure Auto Send settings
-Now you can configure Auto Send settings. There are two settings to setup: 'Auto send with Wi-Fi' (1) and 'Auto send with network' (2).
+Now you can configure Auto Send settings. There are two settings to setup: 'Auto send with Wi-Fi' (1) and 'Auto send with network' (2). 
 
 By default, these options are unchecked. It is recommended that you keep the default (unchecked) settings in place. This would mean that completed and finalized forms will be saved onto the device memory even when the device is connected on Wi-Fi and will not be sent unless the user specifically sends the forms for submission over the internet. It is good to have it this way because this allows for some type of checking of forms on the tablets themselves before they are sent to the server.
 
@@ -119,9 +119,9 @@ This is also good when there is no reliable Wi-Fi and/or network connection or i
 2.3 Configure User Interface settings
 Now you can configure the 'User Interface' settings. Following are the settings that you can configure or change:
 
-* Constraint processing behaviour (1) - this is the option that determines how ODK Collect processes the check and constraints that have been specified in your form. There are two options here. The first option is for ODK Collect to process the constraints at the end of the form when you are about to finalise the form. The second option is for ODK Collect to process the constraints everytime you move to the next question in the form. The default behaviour is to process the constraints after every question. It is recommended that the default option be kept (Validate upon forward swipe).
+* Constraint processing behavior (1) - this is the option that determines how ODK Collect processes the check and constraints that have been specified in your form. There are two options here. The first option is for ODK Collect to process the constraints at the end of the form when you are about to finalist the form. The second option is for ODK Collect to process the constraints every time you move to the next question in the form. The default behavior is to process the constraints after every question. It is recommended that the default option be kept (Validate upon forward swipe).
 
-* Navigation (2) - this is the option that determines how the user can move from one question to the next in a form. The default behaviour is to use horizontal swipes. It is recommended that the option for use of forward/backward buttons be selected instead. Swiping is very user dependent and not all find it easy to use swiping gestures to move to the next question. Buttons, however, is universally acceptable and easy to train enumerators on using.
+* Navigation (2) - this is the option that determines how the user can move from one question to the next in a form. The default behavior is to use horizontal swipes. It is recommended that the option for use of forward/backward buttons be selected instead. Swiping is very user dependent and not all find it easy to use swiping gestures to move to the next question. Buttons, however, is universally acceptable and easy to train enumerators on using.
 
 * Text font size (3) - this is the option to change the font size used in ODK Collect. By default, this is set to Medium. This default is more than adequate and can be kept as is.
 
@@ -160,7 +160,7 @@ Now to configure the 'User Can Access Main Menu Items' settings.
 3.4 Configure User Can Access Change Settings Items settings
 Now, configure the 'User Can Access Change Settings Items' settings.
 
-The first five settings are shown here (1-5). It is recommended that all of these be unchecked to avoid unintend changing of settings.
+The first five settings are shown here (1-5). It is recommended that all of these be unchecked to avoid unintended changing of settings.
 
 The next set of settings are shown here (6-14). All these settings should be unchecked except for 'Text font size'. This will avoid unintended changing of settings.
 
@@ -204,7 +204,7 @@ After tapping on the form you want to use in ODK Collect, you will be presented 
 
 Tap on the forward button (or do a forward swipe) to see the first page of the form and to have an idea of what the form's default language is (3).
 
-You now get to see the first page (1) of the form that you have selected. ODK Collect will always dispaly the form in the default language set for the form. Hence, the language that you see being used in the form in the first page is the default language of the form.
+You now get to see the first page (1) of the form that you have selected. ODK Collect will always display the form in the default language set for the form. Hence, the language that you see being used in the form in the first page is the default language of the form.
 
 Now, tap on the backward button (2) to get back to the 'cover page' of the form.
 
@@ -226,9 +226,9 @@ You can now check the language being used by the form by tapping on the forward 
 
 ### Localising ODK Collect
 
-The ODK Collect application for devices running Android can be localised into several different languages. Currently, the application has been fully translated into 11 different languages and is partly translated into 41 other languages.
+The ODK Collect application for devices running Android can be localized into several different languages. Currently, the application has been fully translated into 11 different languages and is partly translated into 41 other languages.
 
-ODK Collect language localisation is dependent on the language localisation of the mobile device to which ODK Collect is installed in. The language to which the mobile device is set will be the language to which ODK Collect will localise to.
+ODK Collect language localisation is dependent on the language localisation of the mobile device to which ODK Collect is installed in. The language to which the mobile device is set will be the language to which ODK Collect will localize to.
 
 This tutorial shows how to change the language settings of a mobile device running Android. 
 1. Go to settings
@@ -251,7 +251,7 @@ Setting the default language of your device to a specific language will affect a
 
 This will be the case for ODK Collect. Since you have changed the default language of your device, ODK Collect will now use that language as the default language for the application. This means that the menus and the text in ODK Collect will now all be in the language you chose.
 
-It should be noted, however, that this language localisation only affects the text in the ODK Collect application. This language localisation will not affect the default language that is set in the forms that are loaded into ODK Collect. So, for example, if a form that is created in English is loaded onto ODK Collect that is localised in Arabic, the form will still show in English and not in Arabic. In order for this form to be localised into Arabic, the form should have been authored in both English and Arabic and then the language settings for the form is set into Arabic.
+It should be noted, however, that this language localisation only affects the text in the ODK Collect application. This language localisation will not affect the default language that is set in the forms that are loaded into ODK Collect. So, for example, if a form that is created in English is loaded onto ODK Collect that is localized in Arabic, the form will still show in English and not in Arabic. In order for this form to be localized into Arabic, the form should have been authored in both English and Arabic and then the language settings for the form is set into Arabic.
 
 ## XLSForm {#xlsform}
 
@@ -271,7 +271,7 @@ The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1DiSC_dO
 
 The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1DiSC_dOz0GOCC912z_5xfaHq_p2WUOI8J8Q0Hj6rC-E/edit?usp=sharing)
 
-3. An XLSForm that performs randomisation of options for select_one or select_multiple types of questions
+3. An XLSForm that performs randomization of options for select_one or select_multiple types of questions
 
 The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1K3V6OkzcsUZjxwZFEpBXqoHiroQ2K7JWajUW5FmPlTQ/edit?usp=sharing)
 
