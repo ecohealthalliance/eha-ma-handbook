@@ -43,23 +43,23 @@ This tutorial assumes that:
 
 There are situations in which access to the Google Play Store might be limited for a variety reasons.
 
-* You may not have a Google account which is required to be able to access the Google Play Store;
+A) You may not have a Google account which is required to be able to access the Google Play Store;
 
-* There may be region or country-specific limitations to accessing either your Google account or Google Play Store or both; or,
+B) There may be region or country-specific limitations to accessing either your Google account or Google Play Store or both; or,
 
-* There is simply no internet connectivity in the area you are located in.
+C) There is simply no internet connectivity in the area you are located in.
 
 Such situations would limit your ability to install applications including ODK Collect. This is a problem when the mobile devices you are going to use for your data collection are not yet configured and ODK Collect not yet installed.
 
-This tutorial addresses the problem described in situation 1 and 2 above where access to Google account and/or Google Play Store is limited but access to internet is not.
-For situation 3, steps 2 to 4 of this tutorial will still apply but it would require that you have already done step 1 ahead of time where access to internet is available which will allow you to download a copy of the application to be installed.
+This tutorial addresses the problem described in situation A and B above where access to Google account and/or Google Play Store is limited but access to internet is not.
+For situation C, steps 2 to 4 of this tutorial will still apply but it would require that you have already done step 1 ahead of time where access to internet is available which will allow you to download a copy of the application to be installed.
 
 This tutorial shows how to install ODK Collect without using Google Play Store (and without requiring a Google account). Instead, the Open Data Kit application package is downloaded onto a computer and then transferred to the tablet for installation.
 
 This process requires a computer and a USB to micro-USB cable to connect the tablet to the computer.
 
 1. Download Open Data Kit APK
-First you need to download the Open Data Kit APK on your computer. APK is short for Android application package which is the package file format used by the Android operating system for distribution and installation of mobile applications. Here are the steps to download the Open Data Kit APK onto your computer.
+First you need to download the [Open Data Kit APK](https://github.com/getodk/collect/releases/latest) on your computer. APK is short for Android application package which is the package file format used by the Android operating system for distribution and installation of mobile applications. Here are the steps to download the Open Data Kit APK onto your computer.
 
 2. Transfer the ODK Collect APK to your tablet
 You will now need to transfer the ODK Collect APK to your tablet. This can be done by following these steps.
