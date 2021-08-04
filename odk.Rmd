@@ -80,7 +80,7 @@ There maybe occasions where you are unable to use the QR code functionality to c
 
 ## Other useful ODK Collect configurations
 
-Once ODK Collect has been installed on the mobile device/s that you will be using for data collection, you may want to configure it's settings so as to be able to fully maximise its use and also to make it as easy as possible to use by your enumerators. Depending on how involved you aim your enumerators to be in the management of the data collection process, you may want to make available or limit certain settings or functions of ODK Collect.
+Once ODK Collect has been installed on the mobile device/s that you will be using for data collection, you may want to configure it's settings to fully maximise its use and also to make it as easy as possible to use by your enumerators. Depending on how involved you want your enumerators to be in the management of the data collection process, you may want to make available or limit certain settings or functions of ODK Collect.
 
 This tutorial describes how to setup the various configuration options of ODK Collect with the aim of minimising possible unintended interference by enumerators on the various settings that might be detrimental to your data collection campaign. These include the options to load blank forms and change the settings of the server platform (if you are using any). This guide is aimed at IT administrators and/or survey coordinators/managers who will be setting up ODK Collect prior to distribution of the mobile devices to enumerators.
 This tutorial assumes that ODK Collect is already installed on your mobile devices. The following tutorial shows how to install ODK Collect on mobile devices.
