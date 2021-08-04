@@ -127,7 +127,7 @@ Now you can configure the 'User Interface' settings. Following are the settings 
 
 * Default to finalized (4) - this is the option of whether all forms are by default finalized when you reach the end of the questionnaire. This is checked by default.  When you reach the end of your questionnaire, you will see a prompt asking whether you want to mark the form as finalized. This option will be checked automatically because of this setting. It is recommended to keep this setting as is.
 
-* Delete after send (5) - this is the option of whether forms should be deleted after it has been sent to the server. By default this is unchecked. It is recommended that this option be kept unchecked as it is useful to have the forms kept on the devices as backup which can be retrieved later on manually via mobile device to computer connection as a form of backup. This is especially important in settings where internet is unreliable and that a backup of the data on the device is crucial.
+* Delete after send (5) - this is the option of whether forms should be deleted after it has been sent to the server. By default this is unchecked. It is recommended that this option be kept unchecked as it is useful to have the forms kept on the devices as backup. Forms can be retrieved later on manually via mobile device to computer connection. This is especially important in settings where internet is unreliable and a backup of the data on the device is crucial.
 
 * Enable hi-res video (6) - this is the option of whether hi-res video playback is required. Unless you require video for your forms, it is recommended to uncheck this option.
 
@@ -140,7 +140,7 @@ Now, you should configure the 'Admin Settings' (3).
 The 'Admin Settings' allow you to control what kinds of items are made available to the user of ODK Collect.
 
 3.1 Setting an Admin password
-If you would like to block access to the 'Admin Settings' on the ODK Collect, it would be recommended to set a password for access.
+An Admin password restricts access to the 'Admin Settings' on ODK Collect. Setting a password blocks access to 'Admin Settings' to those users who do not have the password.  
 
 3.2 Form processing logic
 'Form processing logic' settings should be kept as default.
@@ -155,7 +155,9 @@ Now to configure the 'User Can Access Main Menu Items' settings.
 
 * Get Blank Form (3) - this is checked by default. Uncheck this option. Unchecking this will hide it from the Main Menu. This will prevent unintended pulling of forms from the server that is not needed for your current data collection campaign.
 
-* Delete Saved Form (4) - this is checked by default. Uncheck this option. Unchecking this will hide is from the Main Menu. This will prevent unintended deletion of forms from the ODK Collect.
+* Delete Saved Form (4) - this is checked by default. Uncheck this option. Unchecking this will hide it from the Main Menu. This will prevent unintended deletion of forms from ODK Collect.
+
+<!-- is it "the ODK Collect" or "ODK Collect"?  -->
 
 3.4 Configure User Can Access Change Settings Items settings
 Now, configure the 'User Can Access Change Settings Items' settings.
