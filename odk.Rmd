@@ -21,6 +21,12 @@ EHA hosts its own [ODK Central](https://docs.getodk.org/central-intro/#) server.
 The ODK official documentation provides extensive and detailed information on how to use ODK Central - https://docs.getodk.org/central-using/.
 <!-- Are there any common tasks we expect them to do with odk central? -->
 
+### Setting up a project
+
+### Fetching Data
+
+### Monitoring the progress of projects
+
 ## ODK Collect {#collect}
 
 [ODK Collect](https://docs.getodk.org/collect-intro/) is an open source Android app that replaces paper forms used in survey-based data gathering. It supports a wide range of question and answer types, and is designed to work well without network connectivity.
