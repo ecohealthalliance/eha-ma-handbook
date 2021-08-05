@@ -273,24 +273,12 @@ Extensive documentation on the XLSForm standard can be found [here](https://xlsf
 
 Here is a list of some XLSForms that provide good examples of specific approaches to form authoring for particular uses/applications:
 
-1. A basic XLSForm that shows most of the useful parameters for authoring and shows basic question types
+1. A basic XLSForm that shows most of the useful parameters for authoring and shows basic question types - The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1DiSC_dOz0GOCC912z_5xfaHq_p2WUOI8J8Q0Hj6rC-E/edit?usp=sharing).
 
-The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1DiSC_dOz0GOCC912z_5xfaHq_p2WUOI8J8Q0Hj6rC-E/edit?usp=sharing).
+2. An XLSForm that demonstrates the various question types available using this form standard - The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1DiSC_dOz0GOCC912z_5xfaHq_p2WUOI8J8Q0Hj6rC-E/edit?usp=sharing)
 
-2. An XLSForm that demonstrates the various question types available using this form standard
+3. An XLSForm that performs randomization of options for select_one or select_multiple types of questions - The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1K3V6OkzcsUZjxwZFEpBXqoHiroQ2K7JWajUW5FmPlTQ/edit?usp=sharing)
 
-The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1DiSC_dOz0GOCC912z_5xfaHq_p2WUOI8J8Q0Hj6rC-E/edit?usp=sharing)
+4. An XLSForm that demonstrates the use of the rank widget which allows the ranking of responses to select_multiple question types - The XLSForm an be viewed [here](https://docs.google.com/spreadsheets/d/15OW_VEvvrcz8crhJL8z7xrEKeXeGNk2XKzOmLB79nRc/edit?usp=sharing)
 
-3. An XLSForm that performs randomization of options for select_one or select_multiple types of questions
-
-The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1K3V6OkzcsUZjxwZFEpBXqoHiroQ2K7JWajUW5FmPlTQ/edit?usp=sharing)
-
-4. An XLSForm that demonstrates the use of the rank widget which allows the ranking of responses to select_multiple question types
-
-The XLSForm an be viewed [here](https://docs.google.com/spreadsheets/d/15OW_VEvvrcz8crhJL8z7xrEKeXeGNk2XKzOmLB79nRc/edit?usp=sharing)
-
-5. Grid style layout that mimics an actual paper form
-
-This XLSForm theme is specifically for use on a web client rather than on ODK Collect and presents the form as if it was a paper-based form with questions or fields laid out in a grid.
-
-The XLSForm can be viewed [here])https://docs.google.com/spreadsheets/d/1e-1pnNG6p_WbzuKcHoKBUdfSNAED3LPUw7JX6eXckQI/edit?usp=sharing).
+5. Grid style layout that mimics an actual paper form. This XLSForm theme is specifically for use on a web client rather than on ODK Collect and presents the form as if it was a paper-based form with questions or fields laid out in a grid - The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1e-1pnNG6p_WbzuKcHoKBUdfSNAED3LPUw7JX6eXckQI/edit?usp=sharing).
