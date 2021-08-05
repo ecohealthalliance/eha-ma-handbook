@@ -1,6 +1,10 @@
 # Open Data Kit {#odk}
 
-This chapter covers documentation on the use and deployment of [Open Data Kit](https://getodk.org)(ODK) for data collection. This chapter is divided into: 1) a section on ODK Central, the ODK server type used by EHA for aggregating data collected from forms deployed on mobile devices and/or on the web (using Enketo Express); 2) a section on ODK Collect, the Android-based mobile application used for offline data collection which interfaces with ODK Central; and, 3) a section on XLSForm, a form standard created to help simplify the authoring of forms in Microsoft Excel and/or in any other spreadsheet applications.
+This chapter covers documentation on the use and deployment of [Open Data Kit](https://getodk.org)(ODK) for data collection. This chapter is divided into three sections: 
+
+1) [A section on ODK Central](#central), the ODK server type used by EHA for aggregating data collected from forms deployed on mobile devices and/or on the web (using Enketo Express)
+2) [A section on ODK Collect](#collect), the Android-based mobile application used for offline data collection which interfaces with ODK Central 
+3) [A section on XLSForm](#xlsform), a form standard created to help simplify the authoring of forms in Microsoft Excel and/or in any other spreadsheet applications.
 
 Most of the material presented in this chapter are summarised from/based on [ODK](https://getodk.org)'s [official documentation](https://docs.getodk.org). Wherever appropriate, links to a specific topic on the [official documentation](https://docs.getodk.org) are provided as additinal resource. For further details on what has been discussed here, please refer to this resource as it is updated regularly with the latest updates and features of [ODK](https://getodk.org).
 
