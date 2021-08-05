@@ -200,7 +200,7 @@ This tutorial describes how to change the ODK Collect language settings. This tu
 
 This tutorial is aimed at IT administrators and/or survey managers or coordinators to allow them to change language settings on ODK Collect in time for data collection.
 
-1. Open a blank form that supports multiple languages
+**1. Open a blank form that supports multiple languages**
 
 Tap on ODK Collect then tap on 'Fill Blank Form'.
 
@@ -218,19 +218,19 @@ You now get to see the first page (1) of the form that you have selected. ODK Co
 
 Now, tap on the backward button (2) to get back to the 'cover page' of the form.
 
-2. Go to ODK Collect's Change Language settings
+**2. Go to ODK Collect's Change Language settings**
 
 Once you are back to the 'cover page', look at the top right corner of the screen. Here you will see an icon with three square dots on top of each other (1). This is the button that allows you to change the settings of ODK Collect including the 'Change Language' settings (2).
 
 Once you have located this, tap on 'Change Language'.
 
-3. Select language you want to use for your form
+**3. Select language you want to use for your form**
 
 You will then see the following dialog box giving options of the languages supported by the form. The selected language is the language that is currently being used by the form. 
 
 Choose the language that you want to use for the form.
 
-4. Check the language now used by the form
+**4. Check the language now used by the form**
 
 You can now check the language being used by the form by tapping on the forward button again from the 'cover page'. You will now see that the form is displayed in the language that you have chosen.
 
@@ -241,19 +241,19 @@ The ODK Collect application for devices running Android can be localized into se
 ODK Collect language localization is dependent on the language localization of the mobile device to which ODK Collect is installed in. The language to which the mobile device is set will be the language to which ODK Collect will localize to.
 
 This tutorial shows how to change the language settings of a mobile device running Android. 
-1. Go to settings
+**1. Go to settings**
 
 On your tablet device, tap on the 'Settings'.
 
 You will then see the following on your tablet screen. There are four (4) tabs on top of the screen named 1) Connections; 2) Device; 3) Controls; and 4) General. These are the four settings categories that can be configured as needed.
 
-2. Tap on 'Controls'
+**2. Tap on 'Controls'**
 
 To change language settings, tap 'Controls' (1), then tap on 'Language and input' (2) and then tap on 'Language' (3)
 
 You will then see the following Language options on your screen.
 
-3. Select language to set device to
+**3. Select language to set device to**
 
 Change the language to the language you want to set the device to.
 
