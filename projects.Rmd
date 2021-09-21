@@ -94,7 +94,5 @@ are some resources for getting started with `targets`
 
 In general we also prefer that R analyses be set up as [RStudio projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
 
- - Here's a [Software Carpentry
-    Lesson on RStudio
-    projects](http://swcarpentry.github.io/r-novice-gapminder/02-project-intro/).
+ - Here's a [Software Carpentry Lesson on RStudio projects](http://swcarpentry.github.io/r-novice-gapminder/02-project-intro/)
 
