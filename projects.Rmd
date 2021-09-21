@@ -84,17 +84,15 @@ are some resources for getting started with `targets`
 [Slides](https://ecohealthalliance.github.io/targets-example/outputs/targets-presentation.html#1),
 [Example Repository on GitHub](https://github.com/ecohealthalliance/targets-example))
 
--   The targets manual: <https://books.ropensci.org/targets/>, including
+-   The targets [manual](https://books.ropensci.org/targets/), including
     a [walkthrough](https://books.ropensci.org/targets/walkthrough.html)
 
--   A good intro talk (\~90 mins with questions) by Miles McBain on
-    using targets and getting a good workflow:
-    <https://www.youtube.com/watch?v=jU1Zv21GvT4>
+-   [A good intro talk](https://www.youtube.com/watch?v=jU1Zv21GvT4)(\~90 mins
+    with questions) by Miles McBain on using targets and getting a good workflow
 
--   A great introductory video series: 5 30-minute lessons:
-    <https://www.youtube.com/watch?v=pbc6NX1n01Q&list=PLvgdJdJDL-APJqHy5CXs6m4N7hUVp5rb4>
+-   A great [introductory video series](https://www.youtube.com/watch?v=pbc6NX1n01Q&list=PLvgdJdJDL-APJqHy5CXs6m4N7hUVp5rb4) (5 30-minute lessons as a YouTubePlaylist)
 
-In general we also prefer that R analyses be set up as [RStudio projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
+In general we also prefer that R analyses be set up as [RStudio projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
 
  - Here's a [Software Carpentry
     Lesson on RStudio
