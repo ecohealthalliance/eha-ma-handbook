@@ -1,8 +1,8 @@
 ---
 title: "EHA Modeling & Analytics Handbook"
-subtitle: |
-  "These aren't rules, just some things that we figured out."  -- [Michael Reno Harrel](https://www.youtube.com/watch?v=66VtriAxcyw) \
-  Last edit `r as.character(as.Date(git2r::when(git2r::commits()[[1]])))` by `r git2r::commits()[[1]]$author$name`
+# subtitle: |
+#  "These aren't rules, just some things that we figured out."  -- [Michael Reno # Harrel](https://www.youtube.com/watch?v=66VtriAxcyw) \
+#  Last edit `r as.character(as.Date(git2r::when(git2r::commits()[[1]])))` by `r # git2r::commits()[[1]]$author$name`
 site: bookdown::bookdown_site
 github-repo: ecohealthalliance/eha-ma-handbook
 documentclass: book
