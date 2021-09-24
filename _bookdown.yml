@@ -20,7 +20,7 @@ rmd_files:
     - "getting-help.Rmd"
     - "training-resources-and-plans.Rmd"
 book_filename: "eha-ma-handbook"
-repo: https://github.com/ecohealthalliance/eha-ma-handbook/
+repo: https://github.com/collinschwantes/eha-ma-handbook/
 language:
   ui:
     chapter_name: ""
