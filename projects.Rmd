@@ -81,7 +81,7 @@ and tracks your functions and objects to ensure everything is up-to-date.  Here
 are some resources for getting started with `targets`
 
 -  An internal presentation on using `targets` at EHA: ([Video (via password at internal AirTable)](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwgVEpgZnmyrILmZ/recNumz1XdgbOtuaQ?blocks=hide),
-[Slides](https://ecohealthalliance.github.io/targets-example/outputs/targets-presentation.html#1),
+[Slides](https://ecohealthalliance.github.io/targets-renv-example/outputs/targets-presentation.html#1),
 [Example Repository on GitHub](https://github.com/ecohealthalliance/targets-example))
 
 -   The targets [manual](https://books.ropensci.org/targets/), including
