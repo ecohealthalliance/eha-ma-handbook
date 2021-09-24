@@ -31,6 +31,7 @@ jobs:
           restore-keys: bookdown-
 
       - name: Build site
+        run: Rscript -e 'install.packages("bookdown")'
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
 
       - name: Deploy to GitHub pages 🚀
