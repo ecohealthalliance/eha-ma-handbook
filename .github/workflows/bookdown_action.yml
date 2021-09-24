@@ -32,6 +32,15 @@ jobs:
 
       - name: Install bookdown
         run: Rscript -e 'install.packages("bookdown")'
+      
+      - name: Install git2r
+        run: Rscript -e 'install.packages("git2r")'
+        
+      - name: Install remotes
+        run: Rscript -e 'install.packages("remotes")'
+      
+      - name: Install emo
+        run: Rscript -e 'remotes::install_github("hadley/emo")'
 
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
