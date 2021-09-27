@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>17 Training Resources and Plans | EHA Modeling &amp; Analytics Handbook</title>
   <meta name="description" content="17 Training Resources and Plans | EHA Modeling &amp; Analytics Handbook" />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="17 Training Resources and Plans | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
@@ -31,7 +31,8 @@
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 <link rel="prev" href="16-references.html"/>
 <link rel="next" href="18-help.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -47,48 +48,78 @@
 
 
 
-
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <script type="text/javascript" src="https://aegypti.ecohealthalliance.org:22051/status/dashboard.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -120,6 +151,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="3-r.html"><a href="3-r.html"><i class="fa fa-check"></i><b>3</b> R and Reproducible Analysis</a><ul>
 <li class="chapter" data-level="3.1" data-path="3-r.html"><a href="3-r.html#install"><i class="fa fa-check"></i><b>3.1</b> Install</a></li>
 <li class="chapter" data-level="3.2" data-path="3-r.html"><a href="3-r.html#learn"><i class="fa fa-check"></i><b>3.2</b> Learn</a></li>
+<li class="chapter" data-level="3.3" data-path="3-r.html"><a href="3-r.html#additional-resources"><i class="fa fa-check"></i><b>3.3</b> Additional Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-eha-team-communication.html"><a href="4-eha-team-communication.html"><i class="fa fa-check"></i><b>4</b> EHA Team Communication</a><ul>
 <li class="chapter" data-level="4.1" data-path="4-eha-team-communication.html"><a href="4-eha-team-communication.html#install-1"><i class="fa fa-check"></i><b>4.1</b> Install</a></li>
@@ -191,7 +223,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="17.2.7" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#map-making-and-geospatial-analysis-in-r"><i class="fa fa-check"></i><b>17.2.7</b> Map-making and geospatial analysis in R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="18-help.html"><a href="18-help.html"><i class="fa fa-check"></i><b>18</b> Getting Help</a></li>
+<li class="chapter" data-level="18" data-path="18-help.html"><a href="18-help.html"><i class="fa fa-check"></i><b>18</b> Getting Help</a><ul>
+<li class="chapter" data-level="18.1" data-path="18-help.html"><a href="18-help.html#minimal-reproducible-examples---helping-others-help-you"><i class="fa fa-check"></i><b>18.1</b> Minimal reproducible examples - helping others help you</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -212,23 +246,27 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="training-resources-and-plans" class="section level1">
 <h1><span class="header-section-number">17</span> Training Resources and Plans</h1>
 <p><strong><em>This section under revision as we consider alternate resources.</em></strong></p>
-<p>If you are planning on spending significant time improving your data science and modeling skills, you will want to create a <em>training plan</em>. A training plan is required if you would like to use EHA’s Data Camp account. Data Camp provides excellent modular courses comprised of both video and interactive, automatically graded exercises to learn data science and coding.</p>
+<p>If you are planning on spending significant time improving your data science and modeling skills, you will want to create a <em>training plan</em>. A training plan is required if you
+would like to use EHA’s Data Camp account. Data Camp provides excellent modular courses comprised of both video and interactive, automatically graded exercises to learn data science and coding.</p>
 <div id="training-plan-components" class="section level2">
 <h2><span class="header-section-number">17.1</span> Training plan components</h2>
 <ul>
-<li>A description of your goals for the training plans and to which EHA projects and activities you will apply your skills</li>
+<li>A description of your goals for the training plans and to which EHA projects
+and activities you will apply your skills</li>
 <li>A list of courses/tutorials your plan to complete</li>
 <li>The total time the courses will take to complete. We find the estimated times of Data Camp courses are roughly accurrate.</li>
 <li>The time frame over which you expect to complete them</li>
 <li>The name of a <em>peer learner</em>. You should have a peer learner at EcoHealth who will be a partner over the course of your training. This may be someone working on a similar training plan or someone with knowledge of the material already. They should play some or all of these roles:
 <ul>
 <li>Accountability: Your peer learner should know about your training plan and its time frame, and check in on how you are doing.</li>
-<li>Co-learning: Your learning peer and you may want to schedule times to watch course videos and complete exercises together</li>
+<li>Co-learning: Your learning peer and you may want to schedule times to watch course
+videos and complete exercises together</li>
 <li>Review: Especially for materials without automating like Data Camp, your peer learner should be able to look at your work and provide feedback</li>
 <li>Motivation: Your peer learner should make your training fun and tell you that you rock.</li>
 </ul></li>
 </ul>
-<p>When your supervisor signs off on your training plan, contact Megan Walsh to provide you with a Data Camp subscription for the period you need it.</p>
+<p>When your supervisor signs off on your training plan, contact Megan Walsh to
+provide you with a Data Camp subscription for the period you need it.</p>
 </div>
 <div id="training-plans" class="section level2">
 <h2><span class="header-section-number">17.2</span> Training Plans</h2>
@@ -237,7 +275,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">17.2.1</span> Better Managing Data</h3>
 <ul>
 <li><p><a href="https://www.datacamp.com/courses/introduction-to-the-tidyverse">DataCamp: Introduction to the Tidyverse</a> (4 hours) will get you started immediately working with data in R, and puts the following items in context. It’s a good introduction for everyone with little to no experience. If you have <em>no</em> experience, including no EHA workshop, take <a href="https://www.datacamp.com/courses/free-introduction-to-r">Introduction to R</a>, as well (4 hours, though there will be some redundancy).</p></li>
-<li><p>If you are mostly working in spreadhseets but collaborating with R or Python users, or just trying to organize a lot of spreadsheet data for your projects, work through the <a href="http://www.datacarpentry.org/spreadsheet-ecology-lesson/">Data Carpentry lesson on spreadsheet organization</a> (~2 hours) and read <a href="https://www.jstatsoft.org/article/view/v059i10">Hadley Wickham’s paper on tidy data</a> (~1 hour)</p></li>
+<li><p>If you are mostly working in spreadhseets but collaborating with R or Python users, or just trying to organize a lot of spreadsheet data for your projects, work through the <a href="http://www.datacarpentry.org/spreadsheet-ecology-lesson/">Data Carpentry lesson on spreadsheet organization</a> (~2 hours) and
+read <a href="https://www.jstatsoft.org/article/view/v059i10">Hadley Wickham’s paper on tidy data</a> (~1 hour)</p></li>
 <li><p>Both <a href="https://www.datacamp.com/courses/importing-data-in-r-part-1">DataCamp: Importing Data in R (Part 1)</a>, (3 hours) and <a href="https://www.datacamp.com/courses/cleaning-data-in-r">DataCamp: Cleaning Data in R</a> (4 hours) will be useful if you are doing a database aggregation or building project.</p></li>
 </ul>
 </div>
@@ -245,7 +284,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">17.2.2</span> Version Control and Git</h3>
 <ul>
 <li><p>Read through and work through the examples in <a href="http://happygitwithr.com/">Happy Git with R</a>.</p></li>
-<li><p>There is a Data Camp course <a href="https://www.datacamp.com/courses/introduction-to-git-for-data-science">Introduction to Git for Data Science</a> (4 hours). This is a more detailed introduction that teaches you more about <em>how</em> git works and features we use less in our workflow. It may be appropriate once you have jumped into a project that uses git more elaborately.</p></li>
+<li><p>There is a Data Camp course <a href="https://www.datacamp.com/courses/introduction-to-git-for-data-science">Introduction to Git for Data Science</a> (4 hours). This is a more detailed introduction that teaches you more about <em>how</em> git works and features
+we use less in our workflow. It may be appropriate once you have jumped into a project
+that uses git more elaborately.</p></li>
 </ul>
 </div>
 <div id="reproducible-reporting" class="section level3">
@@ -265,8 +306,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="improving-your-data-visualization" class="section level3">
 <h3><span class="header-section-number">17.2.5</span> Improving your data visualization</h3>
 <ul>
-<li><p><a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1">Data Visualization with ggplot2 (Parts 1 + 2)</a> (5 + 5 hours). These will take you much further than the basic visualization you learn in Intro to the Tidyverse. Take them if you aren’t able to make the plots you need based on the knowledge you learn in that. Part 3 covers topics not generally needed.</p></li>
-<li><p><a href="http://serialmentor.com/dataviz/">Fundamentals of Data Visualization</a> by Claus Wilke is an excellent guide to making high-quality figures, focusing more on design than mechanics of programming. R code is available for all of its examples. If you feel you have a solid grasp of <strong>ggplot2</strong> but want to improve the quality of your figures, we recommend reading this e-book, and using the accompanying code in <a href="https://github.com/clauswilke/dataviz">its GitHub repository</a> to reproduce figures.</p></li>
+<li><p><a href="https://www.datacamp.com/courses/data-visualization-with-ggplot2-1">Data Visualization with ggplot2 (Parts 1 + 2)</a> (5 + 5 hours). These will take you much further than the basic visualization you learn in Intro to the Tidyverse. Take them if you aren’t able to make the plots you need based on the knowledge you learn in that. Part 3 covers
+topics not generally needed.</p></li>
+<li><p><a href="http://serialmentor.com/dataviz/">Fundamentals of Data Visualization</a> by Claus Wilke is an excellent guide to making high-quality figures, focusing more on design than mechanics of programming. R code is available for all of its examples. If you feel you have a solid
+grasp of <strong>ggplot2</strong> but want to improve the quality of your figures, we recommend reading this e-book, and using the accompanying code in <a href="https://github.com/clauswilke/dataviz">its GitHub repository</a> to reproduce figures.</p></li>
 </ul>
 </div>
 <div id="r-programming" class="section level3">
@@ -280,7 +323,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h3><span class="header-section-number">17.2.7</span> Map-making and geospatial analysis in R</h3>
 <ul>
 <li><p><a href="https://geocompr.robinlovelace.net/">Geocomputation in R</a> is a comprehensive guide for understanding geographic data, mapping, and conducting spatial analysis in R. Likely, the most relevant chapters for your purposes are 1-8, 10-11. A chapter might take you 1-3 hours to work through, depending on how in depth you want to get and the number of exercises that you complete.</p></li>
-<li><p>DataCamp also has courses on spatial analysis using R, notably <a href="https://www.datacamp.com/courses/spatial-analysis-in-r-with-sf-and-raster">Spatial Analysis in R with sf and raster</a> (4 hours). It covers some of the material from Geomputation in R in less depth, and gives you fewer tools for hooking into the multiple geospatial data systems available in R. Take this if you are more time-limited and are going to do less in terms of spatial statistics.</p></li>
+<li><p>DataCamp also has courses on spatial analysis using R, notably <a href="https://www.datacamp.com/courses/spatial-analysis-in-r-with-sf-and-raster">Spatial Analysis in R with sf and raster</a> (4 hours). It covers
+some of the material from Geomputation in R in less depth, and gives you fewer tools for hooking into the multiple geospatial data systems available in R. Take this if you are more time-limited and are going to do less in terms of spatial statistics.</p></li>
 <li><p>Data Carpentry has a <a href="https://datacarpentry.org/geospatial-workshop/">course on using R for spatial data</a>. Like other *Carpentry lessons its designed as a workshop lesson plan but can be self-taught. It presumes very little R knowledge at all, and includes stuff like setting a project in RStudio. This is a good place to start people or students with little R experience to get them making maps right away. If you just want to get a quick feel for R spatial data types, jump into Chapter 3.</p></li>
 <li><p><a href="http://eriqande.github.io/rep-res-web/lectures/making-maps-with-R.html">Making Maps with R</a> is a quick-start guide to mapping with <strong>ggplot2</strong>. It also introduces the <strong>gmap</strong>, <strong>maps</strong>, and <strong>mapdata</strong> packages for providing basemaps on which to overlay your spatial data. It is good for getting a map together quickly but if you are going to be doing things on a regular basis we suggest the resources above, which give you a better foundation on geographic data.</p></li>
 <li><p><a href="https://rstudio.github.io/leaflet/">Leaflet for R</a> is a manual on the use of the R <strong>leaflet</strong> package to harness <a href="https://leafletjs.com/">Leaflet</a>, an open-source JS library for creating <em>interactive</em> maps. Leaflet maps particularly useful for exploring and visualizing spatial data, and are easily embedded into R Markdown documents. You should take a course or have knowledge of R Markdown prior to taking this course.</p></li>
@@ -299,7 +343,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -314,12 +357,12 @@ gitbook.start({
 "github": true,
 "facebook": false,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -335,7 +378,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -349,7 +400,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))

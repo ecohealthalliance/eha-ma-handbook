@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 R and Reproducible Analysis | EHA Modeling &amp; Analytics Handbook</title>
   <meta name="description" content="3 R and Reproducible Analysis | EHA Modeling &amp; Analytics Handbook" />
-  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 R and Reproducible Analysis | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
@@ -31,7 +31,8 @@
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 <link rel="prev" href="2-projects.html"/>
 <link rel="next" href="4-eha-team-communication.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -47,48 +48,78 @@
 
 
 
-
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <script type="text/javascript" src="https://aegypti.ecohealthalliance.org:22051/status/dashboard.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -120,6 +151,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3" data-path="3-r.html"><a href="3-r.html"><i class="fa fa-check"></i><b>3</b> R and Reproducible Analysis</a><ul>
 <li class="chapter" data-level="3.1" data-path="3-r.html"><a href="3-r.html#install"><i class="fa fa-check"></i><b>3.1</b> Install</a></li>
 <li class="chapter" data-level="3.2" data-path="3-r.html"><a href="3-r.html#learn"><i class="fa fa-check"></i><b>3.2</b> Learn</a></li>
+<li class="chapter" data-level="3.3" data-path="3-r.html"><a href="3-r.html#additional-resources"><i class="fa fa-check"></i><b>3.3</b> Additional Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-eha-team-communication.html"><a href="4-eha-team-communication.html"><i class="fa fa-check"></i><b>4</b> EHA Team Communication</a><ul>
 <li class="chapter" data-level="4.1" data-path="4-eha-team-communication.html"><a href="4-eha-team-communication.html#install-1"><i class="fa fa-check"></i><b>4.1</b> Install</a></li>
@@ -191,7 +223,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="17.2.7" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#map-making-and-geospatial-analysis-in-r"><i class="fa fa-check"></i><b>17.2.7</b> Map-making and geospatial analysis in R</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="18-help.html"><a href="18-help.html"><i class="fa fa-check"></i><b>18</b> Getting Help</a></li>
+<li class="chapter" data-level="18" data-path="18-help.html"><a href="18-help.html"><i class="fa fa-check"></i><b>18</b> Getting Help</a><ul>
+<li class="chapter" data-level="18.1" data-path="18-help.html"><a href="18-help.html#minimal-reproducible-examples---helping-others-help-you"><i class="fa fa-check"></i><b>18.1</b> Minimal reproducible examples - helping others help you</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -212,7 +246,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="r" class="section level1">
 <h1><span class="header-section-number">3</span> R and Reproducible Analysis</h1>
 <p><em>Can everything be re-done easily if I change one data point in the inputs?</em></p>
-<p>At EHA <strong>R</strong> is our primary, though not exclusive, tool for analysis and modeling work. R is not just a piece of software for statistics and data manipulation but a computer language, meaning that our analyses are <em>scripted</em>. This means they thus can be automated, run again, built upon and extended.</p>
+<p>At EHA <strong>R</strong> is our primary, though not exclusive, tool for analysis and
+modeling work. R is not just a piece of software for statistics and data
+manipulation but a computer language, meaning that our analyses are <em>scripted</em>. This means they
+thus can be automated, run again, built upon and extended.</p>
 <div id="install" class="section level2">
 <h2><span class="header-section-number">3.1</span> Install</h2>
 <ul>
@@ -222,19 +259,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="learn" class="section level2">
 <h2><span class="header-section-number">3.2</span> Learn</h2>
-<p>Learning R is beyond the scope of this document, and you likely already have some experience in it, but some good starting points are:</p>
+<p>Learning R is beyond the scope of this document, and you likely already have
+some experience in it, but some good starting points are:</p>
 <ul>
 <li><a href="http://swcarpentry.github.io/r-novice-gapminder/">The Software Carpentry Lessons</a></li>
-<li><a href="http://swirlstats.com/">Swirl</a>, a set of interactive lessons run right in R.</li>
+<li><a href="http://swirlstats.com/">Swirl</a>, a set of interactive lessons run right
+in R.</li>
 <li><a href="https://www.coursera.org/specializations/jhu-data-science">The JHU Coursera Series</a></li>
-<li><a href="http://r4ds.had.co.nz/">R for Data Science by Hadley Wickam</a> is a beginner/intermediate text that we highly recommend for getting up to speed with the particular workflows we recommend and the most recent packages that support them.</li>
-<li><a href="http://adv-r.had.co.nz/">Advanced R (Wickham)</a> is very good for understanding how the language works.</li>
-<li><a href="https://csgillespie.github.io/efficientR/">Efficient R by Colin Gillespie and Robin Lovelace</a> is helpful for imporving workflows and speeding up code.</li>
-<li><a href="http://r-pkgs.had.co.nz/">R Packages (Wickham)</a> is good for package development.</li>
-<li><a href="https://www.rstudio.com/resources/cheatsheets/">Cheatsheets</a> from RStudio are a useful references for a number of things.</li>
+<li><a href="http://r4ds.had.co.nz/">R for Data Science by Hadley Wickam</a> is a
+beginner/intermediate text that we highly recommend for getting up to speed
+with the particular workflows we recommend and the most recent packages that
+support them.</li>
+<li><a href="http://adv-r.had.co.nz/">Advanced R (Wickham)</a> is very good for
+understanding how the language works.</li>
+<li><a href="https://csgillespie.github.io/efficientR/">Efficient R by Colin Gillespie and Robin
+Lovelace</a> is helpful for
+imporving workflows and speeding up code.</li>
+<li><a href="http://r-pkgs.had.co.nz/">R Packages (Wickham)</a> is good for package
+development.</li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/">Cheatsheets</a> from RStudio
+are a useful references for a number of things.</li>
 </ul>
-<p><a href="https://www.datacamp.com/onboarding/learn?from=home&amp;technology=r">DataCamp courses</a> are also potentially useful. If you feel they would match your learning style and needs, discuss EHA purchasing a subscription for you with your supervisor.</p>
-<p>These resources are largely about the mechanics of programming in R, rather than using it for statistical analyses. This is a far larger subject, but see the <a href="14-statistical-methods.html#statistical-methods">Statistical Methods</a> section for a jumping-off point.</p>
+<p><a href="https://www.datacamp.com/onboarding/learn?from=home&amp;technology=r">DataCamp courses</a> are also potentially useful.
+If you feel they would match your learning style and needs, discuss EHA purchasing a subscription for you with your supervisor.</p>
+<p>These resources are largely about the mechanics of programming in R, rather
+than using it for statistical analyses. This is a far larger subject, but see
+the <a href="14-statistical-methods.html#statistical-methods">Statistical Methods</a> section for a jumping-off point.</p>
+</div>
+<div id="additional-resources" class="section level2">
+<h2><span class="header-section-number">3.3</span> Additional Resources</h2>
+<p><strong>Trouble shooting your code</strong>: <a href="18-help.html#help">Getting Help</a>.</p>
+<p><strong>User groups/communities of practice</strong>: <a href="https://www.meetup.com/pro/r-user-groups">R Meetups</a></p>
+<p><strong>Specific domains</strong>: <a href="17-training-resources-and-plans.html#training-plans">Training Plans</a></p>
 
 </div>
 </div>
@@ -248,7 +304,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -263,12 +318,12 @@ gitbook.start({
 "github": true,
 "facebook": false,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -284,7 +339,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -298,7 +361,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "";
+    var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
