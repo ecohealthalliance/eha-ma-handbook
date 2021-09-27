@@ -20,7 +20,7 @@ weekly M&A meetings. Report-outs should include
 
 -   Progress on tasks assigned and completed in previous cycle
 -   Substantive report-out of results and products
--   Draft plan for tasks and goals for the coming cycle
+-   Draft plan for tasks and goals for the coming cycle 
 -   Team assignments for the next cycle and level of involvement (high
     (&gt;50%), medium (25%-50%, low (&lt;25%)) of team memberss over the cycle.
 -   Any additional deadlines or reporting anticipated in that time frame,
@@ -32,7 +32,7 @@ and set a date for the next one.
 Teams track work cycle progress through various mechanisms based on team
 preferences. One option is GitHub Milestones
 ([Example](https://github.com/ecohealthalliance/asl2050-ai/milestones)). Others
-use Google Spreadsheets, [Asana](https://asana.com/), or other systems. Teams
+use Google Spreadsheets,  [Air tables](https://airtable.com/), or other systems. Teams
 may choose what they prefer as long as their system
 
 -   Shows current tasks, deadlines, and assignments Tracks past tasks,
@@ -41,6 +41,8 @@ may choose what they prefer as long as their system
 -   Is available in "real time" online rather than stored on individual machines
     and e-mailed
 -   Can be made accessible to other staff via a URL but kept private within EHA
+
+*note*: historically teams had used [Asana](https://asana.com/)
 
 ## Setup and materials Organization
 
@@ -63,7 +65,7 @@ exploratory analyses, and final products. In organizing a project folder, ask
 
 -   There are some exceptions for large data sets or rapidly changing data sets.
     In these cases, data can be organized as a separate folder or project, and
-    large data sets can be store in an Amazon Web Services S3 bucket.
+    large data sets can be stored in an Amazon Web Services S3 bucket.
 
 -   In many cases it is actually best for data to be organized as a *separate
     repository* from analysis. This allows multiple analysis projects to rely on
