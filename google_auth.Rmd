@@ -105,10 +105,10 @@ in the GCP project.
 ### Securely managing your tokens for Packages
 
 So now you have this super secret key but need to make it accessible to your
-R project. We can use the `sodium` package as well as functions in `gargle` to 
-password protect the JSON file that stores our key. We can then store the password
-as an environmental variable in the project. Notice that we are using the `:::` in
-function calls. 
+R project. We can use the `sodium` package as well as functions in `gargle` to
+password protect the JSON file that stores our key. We can then store the
+password as an environmental variable in the project. Notice that we are using
+the `:::` in function calls. See [this article](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) for more details.
 
 
 #### Generate a password name
@@ -185,4 +185,8 @@ gs4_auth(path = "keybase://private/myname/longComplicatedFile.json")
 read_sheet("https://docs.google.com/spreadsheets/that/i/definitely/shared/with/the/service-account")
 
 ```
+
+
+Resources:
+
 
