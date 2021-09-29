@@ -176,7 +176,7 @@ gs4_auth(path = "keybase://private/myname/longComplicatedFile.json")
 
 ```
 
-### read in your sheet
+### Read in your sheet
 
 **Make sure your sheet is shared with the service account...**
 
@@ -186,7 +186,6 @@ read_sheet("https://docs.google.com/spreadsheets/that/i/definitely/shared/with/t
 
 ```
 
-
-Resources:
-
+Additional Resources:
+**TODO**
 
