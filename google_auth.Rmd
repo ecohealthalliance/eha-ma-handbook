@@ -102,7 +102,7 @@ sensitive information and we should treat it like a username and password combo.
 in the GCP project. 
 
 
-### Securely managing your tokens
+### Securely managing your tokens for Packages
 
 So now you have this super secret key but need to make it accessible to your
 R project. We can use the `sodium` package as well as functions in `gargle` to 
@@ -113,7 +113,7 @@ function calls.
 
 #### Generate a password name
 
-```{r}
+```{r eval=FALSE}
 library(sodium)
 library(gargle)
 library(usethis)
@@ -133,13 +133,56 @@ pw <- gargle:::secret_pw_gen()
 #> someSecretComplicatedPassword
 ```
 
-#### Add to your Environmental variables
+#### Add PW and PW_NAME to your Environmental variables
 
 - It is strongly recommended that this live in the user level environment to avoid
 accidentally passing the variable to a git repo. 
-```{r}
+```{r eval=FALSE}
 usethis::edit_r_environ(scope = "user")
 ```
 
+#### Give the env variable to services (Optional)
 
+If you're running this process on a service like [RSConnect](https://blog.rstudio.com/2018/03/02/rstudio-connect-v1-5-14/#:~:text=Environment%20variables%20for%20executable%20content,and%20are%20encrypted%20at%20rest.) or [Github Actions](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets),
+you must provide it to the service. 
+
+#### Encrypt the Secret File
+
+```{r eval=FALSE}
+gargle:::secret_write(
+  package = "myCoolPackage",
+  name = "sheets-demo-key.json",
+  input = "keybase://private/myname/longComplicatedFile.json"
+)
+
+```
+
+#### Test that you can decrypt
+
+```{r eval=FALSE}
+if(gargle:::secret_can_decrypt("myCoolPackage")){
+  json<- gargle:::secret_read("sheets-demo-key.json")
+  googlesheets4::gs4_auth(path = rawToChar(json))
+}
+```
+
+### Provide a service account token for Projects
+
+**TODO**: expand to include git-crypt example or use of github secrets to store json in remote location.
+
+```{r eval=FALSE}
+library(googlesheets4)
+gs4_auth(path = "keybase://private/myname/longComplicatedFile.json")
+
+```
+
+### read in your sheet
+
+**Make sure your sheet is shared with the service account...**
+
+```{r eval=FALSE}
+
+read_sheet("https://docs.google.com/spreadsheets/that/i/definitely/shared/with/the/service-account")
+
+```
 
