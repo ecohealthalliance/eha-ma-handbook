@@ -27,9 +27,6 @@ jobs:
 # potentially drop to keep from locking package versions
 # look into how this impacts build 
       - uses: r-lib/actions/setup-renv@v1
-      
-      - name: Install libgit2
-        run: sudo apt install libgit2-dev
 
       - name: Install libgit2
         run: sudo apt install libgit2-dev
