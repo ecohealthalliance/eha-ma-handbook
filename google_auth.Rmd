@@ -1,0 +1,145 @@
+# Google Authorization and R
+
+EcoHealth Alliance regularly uses google drive and google sheets in particular to
+store and collaborate on files. Working with googles drive based files in R is 
+relatively painless thanks to the [`googledrive`](https://googledrive.tidyverse.org/), [`googlesheets4`](https://googlesheets4.tidyverse.org/index.html), and 
+[`gargel`](https://gargle.r-lib.org/index.html) packages. 
+
+## Google Drive
+
+The [`googledrive`](https://googledrive.tidyverse.org/) package allows you to
+interact with files stored in google drive from R. You can download, share, delete,
+copy, publish and otherwise manipulate files on your drive using this package. 
+
+Package vignettes can be found [here](https://googledrive.tidyverse.org/articles/index.html)
+
+## Google Sheets 
+
+The [`googlesheets4`](https://googlesheets4.tidyverse.org/index.html) package allows
+you to directly interact with google sheets in R. You can read, write, reformat, 
+create formulas, and otherwise manipulate the sheet of interest. 
+
+Package vignettes can be found [here](https://googlesheets4.tidyverse.org/articles/index.html)
+
+## Gargle
+
+The [`gargel`](https://gargle.r-lib.org/index.html) package focuses entirely on 
+managing credentials for the google api. Vignettes for the package can be found
+[here](https://gargle.r-lib.org/articles/index.html). 
+
+We are going to focus on setting up an automate workflow in R for google sheets
+that does not require interactive authentication. This largely follows the 
+[non-interactive auth vignette](https://gargle.r-lib.org/articles/non-interactive-auth.html). 
+
+Basically we want to either provide a token directly or make a token discoverable. 
+Remember that tokens, secrets, and api keys should be stored in a secure fashion,
+especially if they are going to be pushed to github and used in RSConnect or Github
+Actions to automate report generation. 
+
+We are going to follow the recommended (as of 29 September 2021) strategy of 
+providing a service account token directly to hand auth. A newer approach called
+workload identity federation exists as of writing but is not fully implemented 
+in the `gargle` package.  
+
+###  Get a service account and download the token. 
+
+[GCP Service Account Docs](https://cloud.google.com/iam/docs/service-accounts?_ga=2.215917847.-1040593195.1558621244)
+
+- Setup/View your [google cloud account](https://console.cloud.google.com/)
+- Create a project on google cloud to hold your credentials 
+![gcp console](./assets/gcp_console.png)
+![gcp project init](./assets/gcp_create_proj.png)
+- The GCP console is your destination for monitoring and modifying your projects
+
+
+### Enable APIs
+
+- In the leftside, navigate to APIs& Services > Library 
+![naviate to Library](./assets/gcp_nav_lib.png)
+- Choose your api of interest. For this example it is google sheets.
+![find sheets](./assets/gcp_find_sheets.png)
+- Enable the api of interest. *If you need to enable more api's later you can
+always come back*
+![enable sheets](./assets/gcp_enable_sheets.png)
+
+### Billing (?)
+
+Not an issue for sheets or drive but you do need a linked billing account for 
+BigQuery and Maps. 
+
+If you're new to GCP as of 29 Sept 2021 you get $300 of credits in the Free
+Tier. If you use the $300 in credits GCP will ask for consent before billing. 
+
+### Create a Service Account Token 
+
+- Navigate back to your project homepage
+- In the left sidebar go to IAM & Admin > Service Accounts
+![gcp_nav_service](assets/gcp_nav_service.png)
+- Click create service account
+- Give it a good name and description
+![gcp_create_service_acnt](./assets/gcp_create_service_acnt.png)
+- For google sheets, we do not need to assign our account service a role
+  - Roles can be established to perform tests and otherwise manage the service
+  but are not necessary
+- Also not necessary to grant user access for this example
+  - You may have a need for this with more complicated services
+  - It may also be a good idea to get some redundancy in your workflow
+![gcp_service_setup](./assets/gcp_service_setup.png)
+
+# Create a Key
+
+This is what we have been waiting for. Remember that this key will hold very
+sensitive information and we should treat it like a username and password combo.
+
+- Click on the appropriate item in the service accounts table. *Notice that it says no key*
+![gcp_nav_key](./assets/gcp_nav_key.png)
+- Click on the keys tab, then click on **ADD KEY**
+![gcp_add_key](./assets/gcp_add_key.png)
+- Select Create new key and download the JSON file. This file can be stored in Keybase, Bitwarden or another encrypted file storage system. 
+![gcp_get_key](./assets/gcp_get_key.png)
+
+- You should now see that there is an active key associated with your service account
+in the GCP project. 
+
+
+### Securely managing your tokens
+
+So now you have this super secret key but need to make it accessible to your
+R project. We can use the `sodium` package as well as functions in `gargle` to 
+password protect the JSON file that stores our key. We can then store the password
+as an environmental variable in the project. Notice that we are using the `:::` in
+function calls. 
+
+
+#### Generate a password name
+
+```{r}
+library(sodium)
+library(gargle)
+library(usethis)
+
+pw_name <- gargle:::secret_pw_name("gargle")
+
+```
+
+#### Generate a random password
+
+***KEEP THIS SECRET IN YOUR PROJECT*** 
+
+
+```{r eval=FALSE}
+pw <- gargle:::secret_pw_gen()
+
+#> someSecretComplicatedPassword
+```
+
+#### Add to your Environmental variables
+
+- It is strongly recommended that this live in the user level environment to avoid
+accidentally passing the variable to a git repo. 
+```{r}
+usethis::edit_r_environ(scope = "user")
+```
+
+
+
