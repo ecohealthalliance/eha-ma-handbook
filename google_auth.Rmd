@@ -179,20 +179,59 @@ if(gargle:::secret_can_decrypt("myCoolPackage")){
 
 #### Symetrically encrypt your file
 
-** add section on sodium **
+We are creating a secret passphrase to encrypt our very secret token file. Do not publish this code in your repo. 
+
+```{r}
+library(cyphr)
+library(sodium)
+library(usethis)
+
+## Generate a secret password and store it in you local environment
+
+usethis::edit_r_environ(scope = "user")
+
+## in the .Renviron file
+# GOOGLE_AUTH_JSON_PW=Your-Generated-Secret-Passphrase7
+
+get_sodium_key <- function(env_name = "GOOGLE_AUTH_JSON_PW"){
+
+pw <- Sys.getenv("GOOGLE_AUTH_JSON_PW")
+
+k <- sodium::hash(charToRaw(pw))
+
+key <- cyphr::key_sodium(k)
+
+return(key)
+
+}
+
+key <- get_sodium_key()
+
+dir.create("./inst/tokens",recursive = T)
+
+cyphr::encrypt_file(path = "keybase://private/myname/longComplicatedFile.json",dest = "./inst/tokens/longComplicatedFile.json", key = key)
+
+# to get a string version of the key 
+sodium::bin2hex(key$key())
+
+
+
+```
 
 #### Provide token to auth function
 
-
-
-Point the `gs4_auth` function to the location of your file and 
-
-**TODO**: expand to include git-crypt example and/or use of github secrets to store json in remote location.
+Point the `gs4_auth` function to the de-encrypted json string
 
 ```{r eval=FALSE}
 library(googlesheets4)
 
-gs4_auth(path = "keybase://private/myname/longComplicatedFile.json")
+key <- get_sodium_key()
+
+jsonRaw <- cyphr:::decrypt_file("../inst/tokens/longComplicatedFile.json",key = key)
+
+jsonChar <- rawToChar(jsonRaw)
+
+googlesheets4::gs4_auth(path = jsonChar)
 
 ```
 
@@ -202,7 +241,8 @@ gs4_auth(path = "keybase://private/myname/longComplicatedFile.json")
 
 ```{r eval=FALSE}
 
-read_sheet("https://docs.google.com/spreadsheets/that/i/definitely/shared/with/the/service-account")
+googlesheets4::read_sheet("https://docs.google.com/spreadsheets/that/i/definitely/shared/with/the/service-account")
+
 
 ```
 
