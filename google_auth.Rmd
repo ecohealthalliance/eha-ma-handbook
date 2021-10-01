@@ -182,7 +182,7 @@ Inspired by the workflow described in [ROpenSci:Security](https://books.ropensci
 
 We are creating a secret passphrase to encrypt our very secret token file. Do not publish this code in your repo. 
 
-```{r}
+```{r eval=FALSE}
 library(cyphr)
 library(sodium)
 library(usethis)
