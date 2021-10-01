@@ -176,6 +176,7 @@ if(gargle:::secret_can_decrypt("myCoolPackage")){
 
 ### Provide a service account token for Projects
 
+Inspired by the workflow described in [ROpenSci:Security](https://books.ropensci.org/http-testing/security-chapter.html) with additional information from [sodium vignette](https://cran.r-project.org/web/packages/sodium/vignettes/intro.html) and [gargle vignette](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html).
 
 #### Symetrically encrypt your file
 
