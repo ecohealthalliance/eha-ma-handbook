@@ -1,6 +1,6 @@
 # Google Authorization and R
 
-EcoHealth Alliance regularly uses google drive and google sheets in particular to
+EcoHealth Alliance regularly uses google drive, and google sheets in particular, to
 store and collaborate on files. Working with googles drive based files in R is 
 relatively painless thanks to the [`googledrive`](https://googledrive.tidyverse.org/), [`googlesheets4`](https://googlesheets4.tidyverse.org/index.html), and 
 [`gargel`](https://gargle.r-lib.org/index.html) packages. 
@@ -27,11 +27,14 @@ The [`gargel`](https://gargle.r-lib.org/index.html) package focuses entirely on
 managing credentials for the google api. Vignettes for the package can be found
 [here](https://gargle.r-lib.org/articles/index.html). 
 
-We are going to focus on setting up an automate workflow in R for google sheets
+## Setting up non-interactive authentication for google sheets
+
+We are going to focus on setting up credentials used to automate a workflow in R for google sheets
 that does not require interactive authentication. This largely follows the 
 [non-interactive auth vignette](https://gargle.r-lib.org/articles/non-interactive-auth.html). 
+But diverges between package based and non-package based projects. 
 
-Basically we want to either provide a token directly or make a token discoverable. 
+Basically, to acheive non-interactive auth we want to either provide a token directly or make a token discoverable. 
 Remember that tokens, secrets, and api keys should be stored in a secure fashion,
 especially if they are going to be pushed to github and used in RSConnect or Github
 Actions to automate report generation. 
@@ -54,7 +57,7 @@ in the `gargle` package.
 
 ### Enable APIs
 
-- In the leftside, navigate to APIs& Services > Library 
+- In the leftside, navigate to APIs & Services > Library 
 ![naviate to Library](./assets/gcp_nav_lib.png)
 - Choose your api of interest. For this example it is google sheets.
 ![find sheets](./assets/gcp_find_sheets.png)
@@ -86,7 +89,7 @@ Tier. If you use the $300 in credits GCP will ask for consent before billing.
   - It may also be a good idea to get some redundancy in your workflow
 ![gcp_service_setup](./assets/gcp_service_setup.png)
 
-# Create a Key
+### Create a Key
 
 This is what we have been waiting for. Remember that this key will hold very
 sensitive information and we should treat it like a username and password combo.
@@ -101,15 +104,19 @@ sensitive information and we should treat it like a username and password combo.
 - You should now see that there is an active key associated with your service account
 in the GCP project. 
 
+### Share the google drive resources of interest with the service account
+
+- **Make sure your sheet is shared with the service account**
+
+Skip ahead to [Provide a service account token for Projects] if you are using the key in a project. 
 
 ### Securely managing your tokens for Packages
 
 So now you have this super secret key but need to make it accessible to your
-R project. We can use the `sodium` package as well as functions in `gargle` to
+R package. We can use the `sodium` package as well as functions in `gargle` to
 password protect the JSON file that stores our key. We can then store the
 password as an environmental variable in the project. Notice that we are using
 the `:::` in function calls. See [this article](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) for more details.
-
 
 #### Generate a password name
 
@@ -124,8 +131,9 @@ pw_name <- gargle:::secret_pw_name("gargle")
 
 #### Generate a random password
 
-***KEEP THIS SECRET IN YOUR PROJECT*** 
+***KEEP THIS PASSWORD A SECRET*** 
 
+- See the [Encryption](#encryption) chapter for more information about setting up encryption. You can use Keybase to setup encrypted storage on your machine. 
 
 ```{r eval=FALSE}
 pw <- gargle:::secret_pw_gen()
@@ -168,10 +176,22 @@ if(gargle:::secret_can_decrypt("myCoolPackage")){
 
 ### Provide a service account token for Projects
 
-**TODO**: expand to include git-crypt example or use of github secrets to store json in remote location.
+
+#### Symetrically encrypt your file
+
+** add section on sodium **
+
+#### Provide token to auth function
+
+
+
+Point the `gs4_auth` function to the location of your file and 
+
+**TODO**: expand to include git-crypt example and/or use of github secrets to store json in remote location.
 
 ```{r eval=FALSE}
 library(googlesheets4)
+
 gs4_auth(path = "keybase://private/myname/longComplicatedFile.json")
 
 ```
