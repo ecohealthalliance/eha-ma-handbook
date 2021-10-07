@@ -196,13 +196,13 @@ usethis::edit_r_environ(scope = "user")
 
 get_sodium_key <- function(env_name = "GOOGLE_AUTH_JSON_PW"){
 
-pw <- Sys.getenv("GOOGLE_AUTH_JSON_PW")
+  pw <- Sys.getenv(env_name)
 
-k <- sodium::hash(charToRaw(pw))
+  k <- sodium::hash(charToRaw(pw))
 
-key <- cyphr::key_sodium(k)
+  key <- cyphr::key_sodium(k)
 
-return(key)
+  return(key)
 
 }
 
