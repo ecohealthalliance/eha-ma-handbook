@@ -35,7 +35,7 @@ users):
 
 -   [Homebrew](https://brew.sh/) for general package management
 -   [iTerm2](https://www.iterm2.com/) for a better shell interface.
-    (`brew cask install iterm2` using Homebrew in the shell)
+    (`brew cask install iterm2` or `brew install --cask iterm2` using Homebrew in the shell)
 -   [mosh](https://mosh.org/) for connecting to our high-performance servers
     (`brew install mosh` using Homebrew in the shell)
 -   [hub](https://hub.github.com/) for interacting with GitHub from the shell (`brew install hub`)

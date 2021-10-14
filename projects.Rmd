@@ -20,7 +20,7 @@ weekly M&A meetings. Report-outs should include
 
 -   Progress on tasks assigned and completed in previous cycle
 -   Substantive report-out of results and products
--   Draft plan for tasks and goals for the coming cycle
+-   Draft plan for tasks and goals for the coming cycle 
 -   Team assignments for the next cycle and level of involvement (high
     (&gt;50%), medium (25%-50%, low (&lt;25%)) of team memberss over the cycle.
 -   Any additional deadlines or reporting anticipated in that time frame,
@@ -32,7 +32,7 @@ and set a date for the next one.
 Teams track work cycle progress through various mechanisms based on team
 preferences. One option is GitHub Milestones
 ([Example](https://github.com/ecohealthalliance/asl2050-ai/milestones)). Others
-use Google Spreadsheets, [Asana](https://asana.com/), or other systems. Teams
+use Google Spreadsheets,  [Air tables](https://airtable.com/), or other systems. Teams
 may choose what they prefer as long as their system
 
 -   Shows current tasks, deadlines, and assignments Tracks past tasks,
@@ -41,6 +41,8 @@ may choose what they prefer as long as their system
 -   Is available in "real time" online rather than stored on individual machines
     and e-mailed
 -   Can be made accessible to other staff via a URL but kept private within EHA
+
+*note*: historically teams had used [Asana](https://asana.com/)
 
 ## Setup and materials Organization
 
@@ -63,15 +65,22 @@ exploratory analyses, and final products. In organizing a project folder, ask
 
 -   There are some exceptions for large data sets or rapidly changing data sets.
     In these cases, data can be organized as a separate folder or project, and
-    large data sets can be store in an Amazon Web Services S3 bucket.
+    large data sets can be stored in an Amazon Web Services S3 bucket.
 
 -   In many cases it is actually best for data to be organized as a *separate
     resource* from analysis. This allows multiple analysis projects to rely on
     the same upstream data project, avoiding multiple versions of data. Data may
     also not be best stored in a git repository but in a project database to be
     pulled for analyses.
+    
+-   See EHA guidance on setting up data resources for a project [here](https://docs.google.com/document/d/1JxREs3jfQd_DP5PIJ6DJoLnAlj_OLhmdiMGTZ6gt-MA/edit#heading=h.cmsmucha2e9c)
  
- 
+#### RStudio Projects
+
+In general we also prefer that R analyses be set up as [RStudio projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
+
+ - Here's a [Software Carpentry Lesson on RStudio projects](http://swcarpentry.github.io/r-novice-gapminder/02-project-intro/)
+
 #### `targets`
 
 We recommend that analysis projects be set up using the
@@ -82,6 +91,7 @@ are some resources for getting started with `targets`
 
 -  An internal presentation on using `targets` at EHA: ([Video (via password at internal AirTable)](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwgVEpgZnmyrILmZ/recNumz1XdgbOtuaQ?blocks=hide),
 [Slides](https://ecohealthalliance.github.io/targets-renv-example/outputs/targets-presentation.html#1),
+
 [Example Repository on GitHub](https://github.com/ecohealthalliance/targets-renv-example))
 
 -   The targets [manual](https://books.ropensci.org/targets/), including
@@ -92,7 +102,15 @@ are some resources for getting started with `targets`
 
 -   A great [introductory video series](https://www.youtube.com/watch?v=pbc6NX1n01Q&list=PLvgdJdJDL-APJqHy5CXs6m4N7hUVp5rb4) (5 30-minute lessons as a YouTubePlaylist)
 
-In general we also prefer that R analyses be set up as [RStudio projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
 
- - Here's a [Software Carpentry Lesson on RStudio projects](http://swcarpentry.github.io/r-novice-gapminder/02-project-intro/)
+#### Package management with `renv`
 
+We strongly recommend that projects use the `renv` package to manage versions of
+R packages so that the project does not break when packages update or when run
+on machines that have different package versions installed.
+
+-  The [`renv` getting started guide](https://rstudio.github.io/renv/articles/renv.html)
+   tells you most of what you need to know.
+-  Here is a short presentation on using `renv` at EHA: ([Video (via password at internal AirTable)](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwgVEpgZnmyrILmZ/recFn7sg9rEiHC5gV?blocks=hide),
+[Slides](https://ecohealthalliance.github.io/targets-renv-example/outputs/renv-presentation.html#1),
+[Example Repository on GitHub](https://github.com/ecohealthalliance/targets-renv-example))
