@@ -70,6 +70,8 @@ exploratory analyses, and final products. In organizing a project folder, ask
     the same upstream data project, avoiding multiple versions of data. Data may
     also not be best stored in a git repository but in a project database to be
     pulled for analyses.
+    
+-   See EHA guidance on setting up data resources for a project [here](https://docs.google.com/document/d/1JxREs3jfQd_DP5PIJ6DJoLnAlj_OLhmdiMGTZ6gt-MA/edit#heading=h.cmsmucha2e9c)
  
  
 #### `targets`
