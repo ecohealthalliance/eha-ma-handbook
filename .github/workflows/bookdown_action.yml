@@ -1,0 +1,60 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+# github docs on actions https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions
+
+# borrowed caching and dependency install from https://github.com/ropenscilabs/statistical-software-review-book/blob/main/.github/workflows/main.yml
+on:
+  push:
+    branches: [main, master]
+
+name: bookdown
+
+jobs:
+  bookdown:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      AUTHOR: ${{ github.event.pusher.name }}
+    steps:
+# check for more recent versions
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-pandoc@v1
+
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          use-public-rspm: true
+# potentially drop to keep from locking package versions
+# look into how this impacts build 
+      - uses: r-lib/actions/setup-renv@v1
+
+      - name: Install libgit2
+        run: sudo apt install libgit2-dev
+        
+      - name: Cache bookdown results
+        uses: actions/cache@v2
+        with:
+          path: _bookdown_files
+          key: bookdown-${{ hashFiles('**/*Rmd') }}
+          restore-keys: bookdown-
+      
+      - name: Cache R packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: r-${{ hashFiles('DESCRIPTION') }}
+          restore-keys: r-
+      
+      - name: Install dependencies
+        run: Rscript -e 'install.packages("remotes")' -e 'remotes::install_deps(dependencies = TRUE)'
+      # should we build bookdown::gitbook vs default?
+      - name: Build site
+        run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+# generate pdf? see R open sci
+# Maelle - bootstrap 4 - nicer format (change output format )
+# see hand coded examples from Mark -
+      - name: Deploy to GitHub pages 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: _book #added folder but unclear if it will still be missing

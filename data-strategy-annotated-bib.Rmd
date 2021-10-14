@@ -1,0 +1,7 @@
+# Data Strategy Resources 
+
+### Developing a modern data workflow for regularly udpated data
+DOI: https://doi.org/10.1371/journal.pbio.3000125
+
+This paper provides a concise primer on automated data ingestion for field ecologist. They discusses the workflow of a long term (40 year) study that processes data coming from instruments and human observation at frequencies ranging from hours to years. They describe methods for appropriate attribution, establishing institutional practices, version control, qa/qc and automation. Continuous integration software like TRAVIS CI can be used to run automated tests. **The authors could provide additional resources on creating tests and understanding limitations** The authors also touch on automating metadata creation for sampling events using TRAVIS CI and github. Given the frequent changes made to these data, a data versioning system has to be employed in order to understand provenance. 
+
