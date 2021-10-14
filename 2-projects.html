@@ -307,24 +307,47 @@ up the project?</em></p></li>
 In these cases, data can be organized as a separate folder or project, and
 large data sets can be stored in an Amazon Web Services S3 bucket.</p></li>
 <li><p>In many cases it is actually best for data to be organized as a <em>separate
-repository</em> from analysis. This allows multiple analysis projects to rely on
-the same upstream data project, avoiding multiple versions of data. In these
-cases the “data” project should include raw data, aggregation and cleaning,
-and its output will be cleaned but complete (not summarized data). Analysis
-projects can import this data as a first step.</p></li>
+resource</em> from analysis. This allows multiple analysis projects to rely on
+the same upstream data project, avoiding multiple versions of data. Data may
+also not be best stored in a git repository but in a project database to be
+pulled for analyses.</p></li>
 </ul>
-<div id="resources" class="section level4">
-<h4><span class="header-section-number">2.2.1.1</span> Resources</h4>
+<div id="rstudio-projects" class="section level4">
+<h4><span class="header-section-number">2.2.1.1</span> RStudio Projects</h4>
+<p>In general we also prefer that R analyses be set up as <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">RStudio projects</a>.</p>
 <ul>
-<li>Here is <a href="http://nicercode.github.io/blog/2013-05-17-organising-my-project/">a nice blog post about project
-structure</a></li>
-<li>and a few more
-<a href="https://discuss.ropensci.org/t/resources-on-project-directory-organization/340">alternatives</a>.</li>
-<li>For anything using R, <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">RStudio
-projects</a></li>
-<li>are a good idea for project organization. Here’s a <a href="http://swcarpentry.github.io/r-novice-gapminder/02-project-intro/">Software Carpentry
-Lesson on RStudio
-projects</a>.</li>
+<li>Here’s a <a href="http://swcarpentry.github.io/r-novice-gapminder/02-project-intro/">Software Carpentry Lesson on RStudio projects</a></li>
+</ul>
+</div>
+<div id="targets" class="section level4">
+<h4><span class="header-section-number">2.2.1.2</span> <code>targets</code></h4>
+<p>We recommend that analysis projects be set up using the
+<a href="https://github.com/ecohealthalliance/targets-example"><code>targets</code></a> framework to
+define steps in the code. <code>targets</code> is a package for defining R project workflow
+and tracks your functions and objects to ensure everything is up-to-date. Here
+are some resources for getting started with <code>targets</code></p>
+<ul>
+<li><p>An internal presentation on using <code>targets</code> at EHA: (<a href="https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwgVEpgZnmyrILmZ/recNumz1XdgbOtuaQ?blocks=hide">Video (via password at internal AirTable)</a>,
+<a href="https://ecohealthalliance.github.io/targets-example/outputs/targets-presentation.html#1">Slides</a>,
+<a href="https://github.com/ecohealthalliance/targets-renv-example">Example Repository on GitHub</a>)</p></li>
+<li><p>The targets <a href="https://books.ropensci.org/targets/">manual</a>, including
+a <a href="https://books.ropensci.org/targets/walkthrough.html">walkthrough</a></p></li>
+<li><p><a href="https://www.youtube.com/watch?v=jU1Zv21GvT4">A good intro talk</a>(~90 mins
+with questions) by Miles McBain on using targets and getting a good workflow</p></li>
+<li><p>A great <a href="https://www.youtube.com/watch?v=pbc6NX1n01Q&amp;list=PLvgdJdJDL-APJqHy5CXs6m4N7hUVp5rb4">introductory video series</a> (5 30-minute lessons as a YouTubePlaylist)</p></li>
+</ul>
+</div>
+<div id="package-management-with-renv" class="section level4">
+<h4><span class="header-section-number">2.2.1.3</span> Package management with <code>renv</code></h4>
+<p>We strongly recommend that projects use the <code>renv</code> package to manage versions of
+R packages so that the project does not break when packages update or when run
+on machines that have different package versions installed.</p>
+<ul>
+<li>The <a href="https://rstudio.github.io/renv/articles/renv.html"><code>renv</code> getting started guide</a>
+tells you most of what you need to know.</li>
+<li>Here is a short presentation on using <code>renv</code> at EHA: (<a href="https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwgVEpgZnmyrILmZ/recFn7sg9rEiHC5gV?blocks=hide">Video (via password at internal AirTable)</a>,
+<a href="https://ecohealthalliance.github.io/targets-renv-example/outputs/renv-presentation.html#1">Slides</a>,
+<a href="https://github.com/ecohealthalliance/targets-renv-example">Example Repository on GitHub</a>)</li>
 </ul>
 
 </div>

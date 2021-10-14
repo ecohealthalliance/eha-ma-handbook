@@ -4,7 +4,9 @@ projects
 teams-and-work-cycles
 setup-and-materials-organization
 code-organization
-resources
+rstudio-projects
+targets
+package-management-with-renv
 r
 install
 learn
