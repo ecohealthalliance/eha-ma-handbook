@@ -68,21 +68,45 @@ exploratory analyses, and final products. In organizing a project folder, ask
     large data sets can be stored in an Amazon Web Services S3 bucket.
 
 -   In many cases it is actually best for data to be organized as a *separate
-    repository* from analysis. This allows multiple analysis projects to rely on
-    the same upstream data project, avoiding multiple versions of data. In these
-    cases the "data" project should include raw data, aggregation and cleaning,
-    and its output will be cleaned but complete (not summarized data). Analysis
-    projects can import this data as a first step.
+    resource* from analysis. This allows multiple analysis projects to rely on
+    the same upstream data project, avoiding multiple versions of data. Data may
+    also not be best stored in a git repository but in a project database to be
+    pulled for analyses.
+ 
+#### RStudio Projects
 
-#### Resources
+In general we also prefer that R analyses be set up as [RStudio projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
 
--   Here is [a nice blog post about project
-    structure](http://nicercode.github.io/blog/2013-05-17-organising-my-project/)
--   and a few more
-    [alternatives](https://discuss.ropensci.org/t/resources-on-project-directory-organization/340).
--   For anything using R, [RStudio
-    projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
--   are a good idea for project organization. Here's a [Software Carpentry
-    Lesson on RStudio
-    projects](http://swcarpentry.github.io/r-novice-gapminder/02-project-intro/).
+ - Here's a [Software Carpentry Lesson on RStudio projects](http://swcarpentry.github.io/r-novice-gapminder/02-project-intro/)
 
+#### `targets`
+
+We recommend that analysis projects be set up using the
+[`targets`](https://github.com/ecohealthalliance/targets-example) framework to
+define steps in the code.  `targets` is a package for defining R project workflow
+and tracks your functions and objects to ensure everything is up-to-date.  Here
+are some resources for getting started with `targets`
+
+-  An internal presentation on using `targets` at EHA: ([Video (via password at internal AirTable)](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwgVEpgZnmyrILmZ/recNumz1XdgbOtuaQ?blocks=hide),
+[Slides](https://ecohealthalliance.github.io/targets-example/outputs/targets-presentation.html#1),
+[Example Repository on GitHub](https://github.com/ecohealthalliance/targets-renv-example))
+
+-   The targets [manual](https://books.ropensci.org/targets/), including
+    a [walkthrough](https://books.ropensci.org/targets/walkthrough.html)
+
+-   [A good intro talk](https://www.youtube.com/watch?v=jU1Zv21GvT4)(\~90 mins
+    with questions) by Miles McBain on using targets and getting a good workflow
+
+-   A great [introductory video series](https://www.youtube.com/watch?v=pbc6NX1n01Q&list=PLvgdJdJDL-APJqHy5CXs6m4N7hUVp5rb4) (5 30-minute lessons as a YouTubePlaylist)
+
+#### Package management with `renv`
+
+We strongly recommend that projects use the `renv` package to manage versions of
+R packages so that the project does not break when packages update or when run
+on machines that have different package versions installed.
+
+-  The [`renv` getting started guide](https://rstudio.github.io/renv/articles/renv.html)
+   tells you most of what you need to know.
+-  Here is a short presentation on using `renv` at EHA: ([Video (via password at internal AirTable)](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwgVEpgZnmyrILmZ/recFn7sg9rEiHC5gV?blocks=hide),
+[Slides](https://ecohealthalliance.github.io/targets-renv-example/outputs/renv-presentation.html#1),
+[Example Repository on GitHub](https://github.com/ecohealthalliance/targets-renv-example))
