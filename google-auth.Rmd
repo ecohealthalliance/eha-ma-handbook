@@ -31,8 +31,7 @@ managing credentials for the Google api. Vignettes for the package can be found
 
 We are going to focus on setting up credentials used to automate a workflow in R for Google sheets
 that does not require interactive authentication. This largely follows the 
-[non-interactive auth vignette](https://gargle.r-lib.org/articles/non-interactive-auth.html). 
-But diverges between package based and non-package based projects. 
+[non-interactive auth vignette](https://gargle.r-lib.org/articles/non-interactive-auth.html), but diverges between package based and non-package based projects. 
 
 Basically, to achieve non-interactive auth we want to either provide a token directly or make a token discoverable. 
 Remember that tokens, secrets, and api keys should be stored in a secure fashion,
@@ -40,7 +39,7 @@ especially if they are going to be pushed to github and used in RSConnect or Git
 Actions to automate report generation. 
 
 We are going to follow the recommended (as of 29 September 2021) strategy of 
-providing a service account token directly to hand auth. A newer approach called
+providing a service account token directly to handle authorization. A newer approach called
 workload identity federation exists as of writing but is not fully implemented 
 in the `gargle` package.  
 
