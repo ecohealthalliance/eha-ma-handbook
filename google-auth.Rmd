@@ -34,7 +34,7 @@ that does not require interactive authentication. This largely follows the
 [non-interactive auth vignette](https://gargle.r-lib.org/articles/non-interactive-auth.html). 
 But diverges between package based and non-package based projects. 
 
-Basically, to acheive non-interactive auth we want to either provide a token directly or make a token discoverable. 
+Basically, to achieve non-interactive auth we want to either provide a token directly or make a token discoverable. 
 Remember that tokens, secrets, and api keys should be stored in a secure fashion,
 especially if they are going to be pushed to github and used in RSConnect or Github
 Actions to automate report generation. 
@@ -57,11 +57,11 @@ in the `gargle` package.
 
 ### Enable APIs
 
-- In the leftside, navigate to APIs & Services > Library 
+- In the left side, navigate to APIs & Services > Library 
 ![naviate to Library](./assets/gcp_nav_lib.png)
 - Choose your api of interest. For this example it is Google sheets.
 ![find sheets](./assets/gcp_find_sheets.png)
-- Enable the api of interest. *If you need to enable more api's later you can
+- Enable the api of interest. *If you need to enable more API's later you can
 always come back*
 ![enable sheets](./assets/gcp_enable_sheets.png)
 
