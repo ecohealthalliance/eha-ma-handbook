@@ -1,14 +1,14 @@
 # Google Authorization and R
 
-EcoHealth Alliance regularly uses google drive, and google sheets in particular, to
-store and collaborate on files. Working with googles drive based files in R is 
+EcoHealth Alliance regularly uses Google drive, and Google sheets in particular, to
+store and collaborate on files. Working with Google's drive based files in R is 
 relatively painless thanks to the [`googledrive`](https://googledrive.tidyverse.org/), [`googlesheets4`](https://googlesheets4.tidyverse.org/index.html), and 
 [`gargel`](https://gargle.r-lib.org/index.html) packages. 
 
 ## Google Drive
 
 The [`googledrive`](https://googledrive.tidyverse.org/) package allows you to
-interact with files stored in google drive from R. You can download, share, delete,
+interact with files stored in Google drive from R. You can download, share, delete,
 copy, publish and otherwise manipulate files on your drive using this package. 
 
 Package vignettes can be found [here](https://googledrive.tidyverse.org/articles/index.html)
@@ -16,7 +16,7 @@ Package vignettes can be found [here](https://googledrive.tidyverse.org/articles
 ## Google Sheets 
 
 The [`googlesheets4`](https://googlesheets4.tidyverse.org/index.html) package allows
-you to directly interact with google sheets in R. You can read, write, reformat, 
+you to directly interact with Google sheets in R. You can read, write, reformat, 
 create formulas, and otherwise manipulate the sheet of interest. 
 
 Package vignettes can be found [here](https://googlesheets4.tidyverse.org/articles/index.html)
@@ -24,12 +24,12 @@ Package vignettes can be found [here](https://googlesheets4.tidyverse.org/articl
 ## Gargle
 
 The [`gargel`](https://gargle.r-lib.org/index.html) package focuses entirely on 
-managing credentials for the google api. Vignettes for the package can be found
+managing credentials for the Google api. Vignettes for the package can be found
 [here](https://gargle.r-lib.org/articles/index.html). 
 
-## Setting up non-interactive authentication for google sheets
+## Setting up non-interactive authentication for Google sheets
 
-We are going to focus on setting up credentials used to automate a workflow in R for google sheets
+We are going to focus on setting up credentials used to automate a workflow in R for Google sheets
 that does not require interactive authentication. This largely follows the 
 [non-interactive auth vignette](https://gargle.r-lib.org/articles/non-interactive-auth.html). 
 But diverges between package based and non-package based projects. 
@@ -46,10 +46,10 @@ in the `gargle` package.
 
 ###  Get a service account and download the token. 
 
-[GCP Service Account Docs](https://cloud.google.com/iam/docs/service-accounts?_ga=2.215917847.-1040593195.1558621244)
+[GCP Service Account Docs](https://cloud.Google.com/iam/docs/service-accounts?_ga=2.215917847.-1040593195.1558621244)
 
-- Setup/View your [google cloud account](https://console.cloud.google.com/)
-- Create a project on google cloud to hold your credentials 
+- Setup/View your [Google cloud account](https://console.cloud.Google.com/)
+- Create a project on Google cloud to hold your credentials 
 ![gcp console](./assets/gcp_console.png)
 ![gcp project init](./assets/gcp_create_proj.png)
 - The GCP console is your destination for monitoring and modifying your projects
@@ -59,7 +59,7 @@ in the `gargle` package.
 
 - In the leftside, navigate to APIs & Services > Library 
 ![naviate to Library](./assets/gcp_nav_lib.png)
-- Choose your api of interest. For this example it is google sheets.
+- Choose your api of interest. For this example it is Google sheets.
 ![find sheets](./assets/gcp_find_sheets.png)
 - Enable the api of interest. *If you need to enable more api's later you can
 always come back*
@@ -81,7 +81,7 @@ Tier. If you use the $300 in credits GCP will ask for consent before billing.
 - Click create service account
 - Give it a good name and description
 ![gcp_create_service_acnt](./assets/gcp_create_service_acnt.png)
-- For google sheets, we do not need to assign our account service a role
+- For Google sheets, we do not need to assign our account service a role
   - Roles can be established to perform tests and otherwise manage the service
   but are not necessary
 - Also not necessary to grant user access for this example
@@ -104,7 +104,7 @@ sensitive information and we should treat it like a username and password combo.
 - You should now see that there is an active key associated with your service account
 in the GCP project. 
 
-### Share the google drive resources of interest with the service account
+### Share the Google drive resources of interest with the service account
 
 - **Make sure your sheet is shared with the service account**
 
@@ -242,7 +242,7 @@ googlesheets4::gs4_auth(path = jsonChar)
 
 ```{r eval=FALSE}
 
-googlesheets4::read_sheet("https://docs.google.com/spreadsheets/that/i/definitely/shared/with/the/service-account")
+googlesheets4::read_sheet("https://docs.Google.com/spreadsheets/that/i/definitely/shared/with/the/service-account")
 
 
 ```
