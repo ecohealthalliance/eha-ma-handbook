@@ -3,7 +3,7 @@
 EcoHealth Alliance regularly uses Google drive, and Google sheets in particular, to
 store and collaborate on files. Working with Google's drive based files in R is 
 relatively painless thanks to the [`googledrive`](https://googledrive.tidyverse.org/), [`googlesheets4`](https://googlesheets4.tidyverse.org/index.html), and 
-[`gargel`](https://gargle.r-lib.org/index.html) packages. 
+[`gargle`](https://gargle.r-lib.org/index.html) packages. 
 
 ## Google Drive
 
