@@ -33,7 +33,8 @@ We are going to focus on setting up credentials used to automate a workflow in R
 that does not require interactive authentication. This largely follows the 
 [non-interactive auth vignette](https://gargle.r-lib.org/articles/non-interactive-auth.html), but diverges between package-based and non-package based projects. 
 
-Basically, to achieve non-interactive auth we want to either provide a token directly or make a token discoverable. 
+To achieve non-interactive authorization, we want to either provide a _token_ directly or make a token discoverable.  A token is essentially a long password, designed to be exchanged by machines but too
+long, complexly formatted to be used by people, and often time-limited.
 Remember that tokens, secrets, and api keys should be stored in a secure fashion,
 especially if they are going to be pushed to github and used in RSConnect or Github
 Actions to automate report generation. 
