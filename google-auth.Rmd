@@ -23,7 +23,7 @@ Package vignettes can be found [here](https://googlesheets4.tidyverse.org/articl
 
 ## Gargle
 
-The [`gargel`](https://gargle.r-lib.org/index.html) package focuses entirely on 
+The [`gargle`](https://gargle.r-lib.org/index.html) package focuses entirely on 
 managing credentials for the Google api. Vignettes for the package can be found
 [here](https://gargle.r-lib.org/articles/index.html). 
 
