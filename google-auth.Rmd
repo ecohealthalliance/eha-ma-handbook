@@ -212,7 +212,7 @@ dir.create("./inst/tokens",recursive = T)
 
 cyphr::encrypt_file(path = "keybase://private/myname/longComplicatedFile.json",dest = "./inst/tokens/longComplicatedFile.json", key = key)
 
-# to get a string version of the key 
+# to get a string version of the key which can be copied, pasted, and stored as an environment variable.
 sodium::bin2hex(key$key())
 
 
