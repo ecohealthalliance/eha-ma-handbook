@@ -35,7 +35,7 @@ that does not require interactive authentication. This largely follows the
 
 To achieve non-interactive authorization, we want to either provide a _token_ directly or make a token discoverable.  A token is essentially a long password, designed to be exchanged by machines but too
 long, complexly formatted to be used by people, and often time-limited.
-Remember that tokens, secrets, and api keys should be stored in a secure fashion,
+Remember that tokens, secrets, and API keys should be stored in a secure fashion (NOT stored in the text of your code or in unencrypted files),
 especially if they are going to be pushed to github and used in RSConnect or Github
 Actions to automate report generation. 
 
