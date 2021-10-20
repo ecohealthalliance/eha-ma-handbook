@@ -194,7 +194,7 @@ usethis::edit_r_environ(scope = "user")
 ## in the .Renviron file
 # GOOGLE_AUTH_JSON_PW=Your-Generated-Secret-Passphrase7
 
-get_sodium_key <- function(env_name = "GOOGLE_AUTH_JSON_PW"){
+get_sodium_key <- function(env_var_name = "GOOGLE_AUTH_JSON_PW"){
 
   pw <- Sys.getenv(env_name)
 
