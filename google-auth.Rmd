@@ -18,46 +18,46 @@ creating credentials with API access that can be used in your R project or packa
 3) Create a service account so that you can access the APIs via credentials from R
 4) Encrypt credentials then add them to your R project so that you can still use git based work flows without leaking access to your service account 
 5) Share google based resources with the service account and check that credentials work as expected from R
+6) Add encryption key to RStudio Connect or Github as an environmental variable
 
 **Key Terms**
 
 - Authentication - Confirms the identity of an entity
 - Authorization - Permits an entity to do something
+  - Auth - short hand for authentication or authorization
 - Key - computer generated credentials that allow for authorization and authentication. In the R-google universe key and token are synonyms. You will see them used interchangeably in tutorials 
 - Token - Computer generated credentials that allow for authentication and authorization. Tokens and keys are communicated over the web using different methods. Google service accounts do not have tokens, they have keys
 - Symmetric encryption - A type of encryption that uses a single  key to encrypt and decrypt an object
+- Environment variable - A value stored in `.Renviron`. These values can be brought into your project using `Sys.getenv("Variable_Name")` and are very useful for storing sensitive information like tokens and keys.
+- Service - Functionality provided by another system i.e. serving data via an API. 
+- GCP - Google cloud platform. Web services from google.
 
-The [`gargle`](https://gargle.r-lib.org/index.html) package focuses entirely on 
-managing credentials for the Google api. Vignettes for the package can be found
-[here](https://gargle.r-lib.org/articles/index.html). 
 
-## Setting up non-interactive authentication for Google sheets
+*Disclaimer* This is one workflow for encryption. It is used to avoid setting up more complicated but more secure `git-crypt`. For projects that require 
+encrypted workflows, see chapter \@ref(encryption).  
 
-We are going to focus on setting up credentials used to automate a workflow in R for Google sheets
-that does not require interactive authentication. This largely follows the 
-[non-interactive auth vignette](https://gargle.r-lib.org/articles/non-interactive-auth.html), but diverges between package-based and non-package based projects. 
+*Credit* This chapter largely follows the  [non-interactive auth vignette](https://gargle.r-lib.org/articles/non-interactive-auth.html), but diverges for package and non-package focused projects. 
 
-To achieve non-interactive authorization, we want to either provide a _token_ directly or make a token discoverable.  A token is essentially a long password, designed to be exchanged by machines but too
-long, complexly formatted to be used by people, and often time-limited.
-Remember that tokens, secrets, and API keys should be stored in a secure fashion (NOT stored in the text of your code or in unencrypted files),
+**What about Billing?** Good question. This is not an issue for sheets or drive APIs but you do need a linked billing account for BigQuery and Maps APIs. If you're new to GCP as of 29 Sept 2021 you get $300 of credits in the Free Tier. If you use the $300 in credits GCP will ask for consent before billing.
 
 ## Setting up non-interactive authentication for Google sheets
 
-We are going to focus on setting up credentials used to automate a workflow in R for Google sheets that does not require interactive authentication. This largely follows the  [non-interactive auth vignette](https://gargle.r-lib.org/articles/non-interactive-auth.html), but diverges between package based and non-package based projects. 
-
-Basically, to achieve non-interactive auth we want to either provide a key directly or make a key discoverable. 
-Remember that keys, secrets, and tokens should be stored in a secure fashion,
-especially if they are going to be pushed to github and used in RSConnect or Github
-Actions to automate report generation. 
+In this chapter, we will walk through setting up credentials that can be used in R to access Google sheets without manual authentication. To achieve non-interactive authorization, we want to either provide a _token_ directly to a service or make a token discoverable for a service.  A token is essentially a long password, designed to be exchanged by machines but too long and complexly formatted to be used by people, and often time-limited. Remember that tokens, secrets, and API keys should be stored in a secure fashion (NOT stored in the text of your code or in unencrypted files). 
 
 We are going to follow the recommended (as of 29 September 2021) strategy of 
-providing a service account key directly to handle authorization. A newer approach called
+providing a service account _key_ directly to handle authorization. A newer approach called
 workload identity federation exists as of writing but is not fully implemented 
-in the `gargle` package.  
+in the `gargle` package.
 
-###  Get a service account and download the key. 
+###  Create a google cloud platform project
 
-[GCP Service Account Docs](https://cloud.Google.com/iam/docs/service-accounts?_ga=2.215917847.-1040593195.1558621244)
+"Google Cloud projects form the basis for creating, enabling, and using all Google Cloud services including managing APIs, enabling billing, adding and removing collaborators, and managing permissions for Google Cloud resources."
+
+In this instance we are using a GCP project to access the google sheets API via a service account. You do not need a profound understanding of GCP projects to setup a 
+service account. 
+
+[GCP Docs](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+
 
 - Setup/View your [Google cloud account](https://console.cloud.Google.com/)
 - Create a project on Google cloud to hold your credentials 
@@ -68,7 +68,10 @@ in the `gargle` package.
 
 ### Enable APIs
 
-- In the left side, navigate to APIs & Services > Library 
+GCP Projects are centered on the idea that a single project will contain a single application.
+In our case, the application we are creating relies on the google sheets API. You can enable API's for our application to access via the APIs & Services menu item. 
+
+- In the left side menu, navigate to APIs & Services > Library 
 ![naviate to Library](./assets/gcp_nav_lib.png)
 - Choose your api of interest. For this example it is Google sheets.
 ![find sheets](./assets/gcp_find_sheets.png)
@@ -76,15 +79,14 @@ in the `gargle` package.
 always come back*
 ![enable sheets](./assets/gcp_enable_sheets.png)
 
-### Billing (?)
+### Create a Service Account
 
-Not an issue for sheets or drive but you do need a linked billing account for 
-BigQuery and Maps. 
+Service accounts allow applications, like the GCP project we make, to access certain resources they need via authorized API calls. The service account's access can be limited such that
+it can only access specific resources in a certain way. 
 
-If you're new to GCP as of 29 Sept 2021 you get $300 of credits in the Free
-Tier. If you use the $300 in credits GCP will ask for consent before billing. 
+Importantly, service accounts are not part of the EHA workspace domain. You have to manually share resources like google sheets with a service account even if you have provided domain level access. 
 
-### Create a Service Account key 
+[GCP Service Account Docs](https://cloud.google.com/iam/docs/service-accounts)
 
 - Navigate back to your project homepage
 - In the left sidebar go to IAM & Admin > Service Accounts
@@ -100,7 +102,7 @@ Tier. If you use the $300 in credits GCP will ask for consent before billing.
   - It may also be a good idea to get some redundancy in your workflow
 ![gcp_service_setup](./assets/gcp_service_setup.png)
 
-### Create a Key
+### Create a Key for your service account
 
 This is what we have been waiting for. Remember that this key will hold very
 sensitive information and we should treat it like a username and password combo.
@@ -118,8 +120,20 @@ in the GCP project.
 ### Share the Google drive resources of interest with the service account
 
 - **Make sure your sheet is shared with the service account**
+- Remember that service accounts do not belong the EHA domain so there will be extra 
+prompts when sharing resources. 
 
-Skip ahead to [Provide a service account key for Projects] if you are using the key in a project. 
+
+
+### General approach to securely managing keys
+
+This workflow uses the relatively simple approach of symmetric encryption to securely store files on shared resources like a github repository.
+
+1) Unencrypted keys should NOT be stored in shared or public locations
+    - If possible store in an encrypted volume. Keybase, bitwarden, and other credential management storage systems generally allow you to store files in an encrypted manner. 
+2) 
+
+Skip ahead to [Provide a service account key for Projects] if you are using the key in a project that does not produce a package. 
 
 ### Securely managing your keys for Packages
 
@@ -278,6 +292,7 @@ Package vignettes can be found [here](https://googlesheets4.tidyverse.org/articl
 
 - Gargle
 
-The [`gargel`](https://gargle.r-lib.org/index.html) package focuses entirely on 
+The [`gargle`](https://gargle.r-lib.org/index.html) package focuses entirely on 
 managing credentials for the Google api. Vignettes for the package can be found
 [here](https://gargle.r-lib.org/articles/index.html). 
+
