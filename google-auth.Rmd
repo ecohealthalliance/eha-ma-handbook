@@ -8,7 +8,7 @@ relatively painless thanks to the [`googledrive`](https://googledrive.tidyverse.
 What is less straight forward is working with drive
 based files without having to manually authenticate
 your identity. In this chapter, we will walk through the process of
-creating credentials with API access that can be used in your R project or package. Ultimately, this could allow you to fully automate your Google centric data pipelines.
+creating credentials with API access that can be used in your R project or package. Ultimately, this could allow you to fully automate your Google-centric data pipelines.
 
 **The basic overview:**
 
