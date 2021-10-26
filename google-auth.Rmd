@@ -136,7 +136,7 @@ Skip ahead to [Securely managing your keys for Packages](#securely-managing-your
 
 ### Provide a service account key for Projects
 
-So now you have this super secret key for the service account and need to securely access it in an R project. We can use the `sodium`, `gargle`, and `cyphr` packages to encrypt the JSON file that stores our key, safely store the encrypted file in the R project, and securely store the encryption key as an environment variable. If additional files or data require encryption it is recommended that use the `git-crypt` approached described in chapter \@ref(encryption). 
+So now you have this super secret key for the service account and need to securely access it in an R project. We can use the `sodium`and `gargle` packages to encrypt the JSON file that stores our key, safely store the encrypted file in the R project, and securely store the encryption key as an environment variable. If additional files or data require encryption it is recommended that use the `git-crypt` approached described in chapter \@ref(encryption). 
 
 This section was inspired by the workflow described in [ROpenSci:Security](https://books.ropensci.org/http-testing/security-chapter.html) with additional information from the [sodium vignette](https://cran.r-project.org/web/packages/sodium/vignettes/intro.html) and [gargle vignette](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html).
 
@@ -151,9 +151,9 @@ accidentally passing the variable to a git repo
 
 ```{r create_store_pw, eval=FALSE}
 library(sodium)
-library(cyphr)
 library(gargle)
 library(usethis)
+library(readr)
 
 ## Name of Environment variable
 
@@ -179,22 +179,50 @@ usethis::edit_r_environ(scope = "user")
 ```
 
 
-#### Symetrically encrypt your file
+#### Create encryption key
 
-Now that we have a password stored as an environment variable, we can symmetrically encrypt our JSON file that stores the service account key. The encrypted file will live in `inst/tokens` within your working directory. After the file has been encrypted it is safe to push it to a remote git repository. 
+```{r Create Key, eval=FALSE}
 
-```{r eval=FALSE}
-
-get_sodium_key <- function(env_var_name = "SERVICE_ACCOUNT_PASSWORD"){
+make_sodium_key <- function(env_var_name = "SERVICE_ACCOUNT_PASSWORD"){
 
   pw <- Sys.getenv(env_name)
+  
+  # we use scrypt as our hashing function because it makes keys difficult
+  # to brute force. 
+  k <- sodium::scrypt(charToRaw(pw))
+  
+  return(k)
 
-  k <- sodium::hash(charToRaw(pw))
+}
 
-  key <- cyphr::key_sodium(k)
+key <- make_sodium_key()
 
-  return(key)
+# The key we just made is binary so it has to be converted to character in order
+# to be stored in .Renviron 
 
+sodium::bin2hex(key)
+
+usethis::edit_r_environ(scope = "user")
+
+########### .Renviron file ####################
+# 1 SERVICE_ACCOUNT_PASSWORD=someSecretComplicatedPassword
+# 2 SERVICE_ACCOUNT_NA_KEY=output_from_bin2hex_function 
+# 3
+
+# always leave an empty line at the end of the .Renviron file
+
+```
+
+#### Symmetrically encrypt your file
+
+Now that we have a sodium key stored as an environment variable, we can symmetrically encrypt our JSON file that stores the service account key. The encrypted file will live in `inst/tokens` within your working directory. After the file has been encrypted it is safe to push it to a remote git repository. 
+
+```{r Encrypt File, eval=FALSE}
+
+# get your sodium key from the environment variable
+get_sodium_key <- function(env_var_name = "SERVICE_ACCOUNT_NA_KEY"){
+  k <- sodium::hex2bin(Sys.getenv(env_var_name))
+  return(k)
 }
 
 key <- get_sodium_key()
@@ -202,19 +230,12 @@ key <- get_sodium_key()
 # Our encrypted file will live here
 dir.create("./inst/tokens",recursive = T)
 
-cyphr::encrypt_file(path = "My/directory/outside/the/project/longComplicatedFile.json",dest = "./inst/tokens/longComplicatedFile.json", key = key)
+binJSON <- readr::read_file_raw("My/directory/outside/the/project/service_account_key.json")
+
+cipher <- data_encrypt(msg = binJSON, key = key2,nonce = random(24))
 
 # The encrypted file in inst/tokens is now safe to push to a remote repository
-
-# Note - sodium keys can be converted from binary to hex and stored as environment varaibles. This is a convenient way to use the sodium key if you prefer to not deal with passwords. 
-
-hex_key <- sodium::bin2hex(key$key())
-
-# add to environment variables as above
-# retrieve from environment variables as
-
-bin_key <- sodium::hex2bin(hex_key)
-
+saveRDS(cipher, "./inst/tokens/service_account_key.rds")
 
 ```
 
@@ -227,7 +248,9 @@ library(googlesheets4)
 
 key <- get_sodium_key()
 
-jsonRaw <- cyphr:::decrypt_file("../inst/tokens/longComplicatedFile.json",key = key)
+service_account_token <- readRDS("./inst/tokens/service_account_key.rds")
+
+jsonRaw <- sodium:::data_decrypt(service_account_token,key = key)
 
 jsonChar <- rawToChar(jsonRaw)
 
