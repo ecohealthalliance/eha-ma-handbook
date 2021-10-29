@@ -11,6 +11,7 @@ rmd_files:
     - "testing.Rmd"
     - "hpc.Rmd"
     - "cloud-services.Rmd"
+    - "google-auth.Rmd"
     - "encryption.Rmd"
     - "dependencies.Rmd"
     - "stats-methods.Rmd"
