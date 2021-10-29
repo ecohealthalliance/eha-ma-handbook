@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>12 Encryption | EHA Modeling &amp; Analytics Handbook</title>
-  <meta name="description" content="12 Encryption | EHA Modeling &amp; Analytics Handbook" />
+  <title>13 Encryption | EHA Modeling &amp; Analytics Handbook</title>
+  <meta name="description" content="13 Encryption | EHA Modeling &amp; Analytics Handbook" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="12 Encryption | EHA Modeling &amp; Analytics Handbook" />
+  <meta property="og:title" content="13 Encryption | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="12 Encryption | EHA Modeling &amp; Analytics Handbook" />
+  <meta name="twitter:title" content="13 Encryption | EHA Modeling &amp; Analytics Handbook" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-<link rel="prev" href="11-cloud-computing-services.html"/>
-<link rel="next" href="13-dependencies.html"/>
+<link rel="prev" href="12-google-authorization-and-r.html"/>
+<link rel="next" href="14-dependencies.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -189,42 +189,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.2.2" data-path="11-cloud-computing-services.html"><a href="11-cloud-computing-services.html#upload-objects-from-your-machine-to-s3"><i class="fa fa-check"></i><b>11.2.2</b> Upload objects from your machine to S3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="12-encryption.html"><a href="12-encryption.html"><i class="fa fa-check"></i><b>12</b> Encryption</a><ul>
-<li class="chapter" data-level="12.0.1" data-path="12-encryption.html"><a href="12-encryption.html#set-up-keybase"><i class="fa fa-check"></i><b>12.0.1</b> Set up Keybase</a></li>
-<li class="chapter" data-level="12.0.2" data-path="12-encryption.html"><a href="12-encryption.html#install-gpg-and-git-crypt"><i class="fa fa-check"></i><b>12.0.2</b> Install <code>gpg</code> and <code>git-crypt</code></a></li>
-<li class="chapter" data-level="12.0.3" data-path="12-encryption.html"><a href="12-encryption.html#create-your-keybase-keys"><i class="fa fa-check"></i><b>12.0.3</b> Create your Keybase keys</a></li>
-<li class="chapter" data-level="12.0.4" data-path="12-encryption.html"><a href="12-encryption.html#import-your-keys-to-your-local-keychain"><i class="fa fa-check"></i><b>12.0.4</b> Import your keys to your local keychain</a></li>
-<li class="chapter" data-level="12.0.5" data-path="12-encryption.html"><a href="12-encryption.html#also-import-your-keys-to-the-eha-server"><i class="fa fa-check"></i><b>12.0.5</b> Also import your keys to the EHA server</a></li>
-<li class="chapter" data-level="12.0.6" data-path="12-encryption.html"><a href="12-encryption.html#use-git-crypt"><i class="fa fa-check"></i><b>12.0.6</b> Use git-crypt</a></li>
-<li class="chapter" data-level="12.0.7" data-path="12-encryption.html"><a href="12-encryption.html#extra-use-a-symmetric-key-for-automated-processes"><i class="fa fa-check"></i><b>12.0.7</b> Extra: Use a symmetric key for automated processes</a></li>
+<li class="chapter" data-level="12" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html"><i class="fa fa-check"></i><b>12</b> Google Authorization and R</a><ul>
+<li class="chapter" data-level="12.1" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#the-basic-overview"><i class="fa fa-check"></i><b>12.1</b> The basic overview:</a></li>
+<li class="chapter" data-level="12.2" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#key-terms"><i class="fa fa-check"></i><b>12.2</b> Key Terms</a></li>
+<li class="chapter" data-level="12.3" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#before-we-start"><i class="fa fa-check"></i><b>12.3</b> Before we start:</a></li>
+<li class="chapter" data-level="12.4" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#setting-up-non-interactive-authentication-for-google-sheets"><i class="fa fa-check"></i><b>12.4</b> Setting up non-interactive authentication for Google sheets</a><ul>
+<li class="chapter" data-level="12.4.1" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#create-a-google-cloud-platform-project"><i class="fa fa-check"></i><b>12.4.1</b> Create a Google cloud platform project</a></li>
+<li class="chapter" data-level="12.4.2" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#enable-apis"><i class="fa fa-check"></i><b>12.4.2</b> Enable APIs</a></li>
+<li class="chapter" data-level="12.4.3" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#create-a-service-account"><i class="fa fa-check"></i><b>12.4.3</b> Create a Service Account</a></li>
+<li class="chapter" data-level="12.4.4" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#create-a-key-for-your-service-account"><i class="fa fa-check"></i><b>12.4.4</b> Create a Key for your service account</a></li>
+<li class="chapter" data-level="12.4.5" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#share-the-google-drive-resources-of-interest-with-the-service-account"><i class="fa fa-check"></i><b>12.4.5</b> Share the Google drive resources of interest with the service account</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="13-dependencies.html"><a href="13-dependencies.html"><i class="fa fa-check"></i><b>13</b> Dependency Management</a></li>
-<li class="chapter" data-level="14" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html"><i class="fa fa-check"></i><b>14</b> Statistical Methods</a><ul>
-<li class="chapter" data-level="14.1" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html#multivariate-regression"><i class="fa fa-check"></i><b>14.1</b> Multivariate Regression</a></li>
-<li class="chapter" data-level="14.2" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html#networks"><i class="fa fa-check"></i><b>14.2</b> Networks</a></li>
-<li class="chapter" data-level="14.3" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html#bioinformatics-and-sequence-analysis"><i class="fa fa-check"></i><b>14.3</b> Bioinformatics and Sequence Analysis</a></li>
-<li class="chapter" data-level="14.4" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html#species-distribution-modeling"><i class="fa fa-check"></i><b>14.4</b> Species Distribution Modeling</a></li>
-<li class="chapter" data-level="14.5" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html#epidemic-simulation-and-fitting"><i class="fa fa-check"></i><b>14.5</b> Epidemic Simulation and Fitting</a></li>
-<li class="chapter" data-level="14.6" data-path="14-statistical-methods.html"><a href="14-statistical-methods.html#phylogenetics"><i class="fa fa-check"></i><b>14.6</b> Phylogenetics</a></li>
+<li class="chapter" data-level="12.5" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#general-approach-to-securely-managing-keys"><i class="fa fa-check"></i><b>12.5</b> General approach to securely managing keys</a><ul>
+<li class="chapter" data-level="12.5.1" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#provide-a-service-account-key-for-projects"><i class="fa fa-check"></i><b>12.5.1</b> Provide a service account key for projects</a></li>
+<li class="chapter" data-level="12.5.2" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#securely-managing-your-keys-for-packages"><i class="fa fa-check"></i><b>12.5.2</b> Securely managing your keys for Packages</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="15-data-sources.html"><a href="15-data-sources.html"><i class="fa fa-check"></i><b>15</b> Data Sources</a></li>
-<li class="chapter" data-level="16" data-path="16-references.html"><a href="16-references.html"><i class="fa fa-check"></i><b>16</b> References</a><ul>
-<li class="chapter" data-level="16.1" data-path="16-references.html"><a href="16-references.html#converting-paperpile-citations-in-google-docs-to-endnote-citations-in-ms-word"><i class="fa fa-check"></i><b>16.1</b> Converting Paperpile Citations in Google Docs to Endnote Citations in MS Word</a></li>
-</ul></li>
-<li class="chapter" data-level="17" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html"><i class="fa fa-check"></i><b>17</b> Training Resources and Plans</a><ul>
-<li class="chapter" data-level="17.1" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#training-plan-components"><i class="fa fa-check"></i><b>17.1</b> Training plan components</a></li>
-<li class="chapter" data-level="17.2" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#training-plans"><i class="fa fa-check"></i><b>17.2</b> Training Plans</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#better-managing-data"><i class="fa fa-check"></i><b>17.2.1</b> Better Managing Data</a></li>
-<li class="chapter" data-level="17.2.2" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#version-control-and-git"><i class="fa fa-check"></i><b>17.2.2</b> Version Control and Git</a></li>
-<li class="chapter" data-level="17.2.3" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#reproducible-reporting"><i class="fa fa-check"></i><b>17.2.3</b> Reproducible reporting</a></li>
-<li class="chapter" data-level="17.2.4" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#improving-your-statistical-fundamentals"><i class="fa fa-check"></i><b>17.2.4</b> Improving Your Statistical Fundamentals</a></li>
-<li class="chapter" data-level="17.2.5" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#improving-your-data-visualization"><i class="fa fa-check"></i><b>17.2.5</b> Improving your data visualization</a></li>
-<li class="chapter" data-level="17.2.6" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#r-programming"><i class="fa fa-check"></i><b>17.2.6</b> R Programming</a></li>
-<li class="chapter" data-level="17.2.7" data-path="17-training-resources-and-plans.html"><a href="17-training-resources-and-plans.html#map-making-and-geospatial-analysis-in-r"><i class="fa fa-check"></i><b>17.2.7</b> Map-making and geospatial analysis in R</a></li>
+<li class="chapter" data-level="12.6" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#additional-resources-1"><i class="fa fa-check"></i><b>12.6</b> Additional Resources</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#google-drive"><i class="fa fa-check"></i><b>12.6.1</b> Google Drive</a></li>
+<li class="chapter" data-level="12.6.2" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#google-sheets"><i class="fa fa-check"></i><b>12.6.2</b> Google Sheets</a></li>
+<li class="chapter" data-level="12.6.3" data-path="12-google-authorization-and-r.html"><a href="12-google-authorization-and-r.html#gargle"><i class="fa fa-check"></i><b>12.6.3</b> Gargle</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="18-help.html"><a href="18-help.html"><i class="fa fa-check"></i><b>18</b> Getting Help</a><ul>
-<li class="chapter" data-level="18.1" data-path="18-help.html"><a href="18-help.html#minimal-reproducible-examples---helping-others-help-you"><i class="fa fa-check"></i><b>18.1</b> Minimal reproducible examples - helping others help you</a></li>
+<li class="chapter" data-level="13" data-path="13-encryption.html"><a href="13-encryption.html"><i class="fa fa-check"></i><b>13</b> Encryption</a><ul>
+<li class="chapter" data-level="13.0.1" data-path="13-encryption.html"><a href="13-encryption.html#set-up-keybase"><i class="fa fa-check"></i><b>13.0.1</b> Set up Keybase</a></li>
+<li class="chapter" data-level="13.0.2" data-path="13-encryption.html"><a href="13-encryption.html#install-gpg-and-git-crypt"><i class="fa fa-check"></i><b>13.0.2</b> Install <code>gpg</code> and <code>git-crypt</code></a></li>
+<li class="chapter" data-level="13.0.3" data-path="13-encryption.html"><a href="13-encryption.html#create-your-keybase-keys"><i class="fa fa-check"></i><b>13.0.3</b> Create your Keybase keys</a></li>
+<li class="chapter" data-level="13.0.4" data-path="13-encryption.html"><a href="13-encryption.html#import-your-keys-to-your-local-keychain"><i class="fa fa-check"></i><b>13.0.4</b> Import your keys to your local keychain</a></li>
+<li class="chapter" data-level="13.0.5" data-path="13-encryption.html"><a href="13-encryption.html#also-import-your-keys-to-the-eha-server"><i class="fa fa-check"></i><b>13.0.5</b> Also import your keys to the EHA server</a></li>
+<li class="chapter" data-level="13.0.6" data-path="13-encryption.html"><a href="13-encryption.html#use-git-crypt"><i class="fa fa-check"></i><b>13.0.6</b> Use git-crypt</a></li>
+<li class="chapter" data-level="13.0.7" data-path="13-encryption.html"><a href="13-encryption.html#extra-use-a-symmetric-key-for-automated-processes"><i class="fa fa-check"></i><b>13.0.7</b> Extra: Use a symmetric key for automated processes</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="14-dependencies.html"><a href="14-dependencies.html"><i class="fa fa-check"></i><b>14</b> Dependency Management</a></li>
+<li class="chapter" data-level="15" data-path="15-statistical-methods.html"><a href="15-statistical-methods.html"><i class="fa fa-check"></i><b>15</b> Statistical Methods</a><ul>
+<li class="chapter" data-level="15.1" data-path="15-statistical-methods.html"><a href="15-statistical-methods.html#multivariate-regression"><i class="fa fa-check"></i><b>15.1</b> Multivariate Regression</a></li>
+<li class="chapter" data-level="15.2" data-path="15-statistical-methods.html"><a href="15-statistical-methods.html#networks"><i class="fa fa-check"></i><b>15.2</b> Networks</a></li>
+<li class="chapter" data-level="15.3" data-path="15-statistical-methods.html"><a href="15-statistical-methods.html#bioinformatics-and-sequence-analysis"><i class="fa fa-check"></i><b>15.3</b> Bioinformatics and Sequence Analysis</a></li>
+<li class="chapter" data-level="15.4" data-path="15-statistical-methods.html"><a href="15-statistical-methods.html#species-distribution-modeling"><i class="fa fa-check"></i><b>15.4</b> Species Distribution Modeling</a></li>
+<li class="chapter" data-level="15.5" data-path="15-statistical-methods.html"><a href="15-statistical-methods.html#epidemic-simulation-and-fitting"><i class="fa fa-check"></i><b>15.5</b> Epidemic Simulation and Fitting</a></li>
+<li class="chapter" data-level="15.6" data-path="15-statistical-methods.html"><a href="15-statistical-methods.html#phylogenetics"><i class="fa fa-check"></i><b>15.6</b> Phylogenetics</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="16-data-sources.html"><a href="16-data-sources.html"><i class="fa fa-check"></i><b>16</b> Data Sources</a></li>
+<li class="chapter" data-level="17" data-path="17-references.html"><a href="17-references.html"><i class="fa fa-check"></i><b>17</b> References</a><ul>
+<li class="chapter" data-level="17.1" data-path="17-references.html"><a href="17-references.html#converting-paperpile-citations-in-google-docs-to-endnote-citations-in-ms-word"><i class="fa fa-check"></i><b>17.1</b> Converting Paperpile Citations in Google Docs to Endnote Citations in MS Word</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="18-training-resources-and-plans.html"><a href="18-training-resources-and-plans.html"><i class="fa fa-check"></i><b>18</b> Training Resources and Plans</a><ul>
+<li class="chapter" data-level="18.1" data-path="18-training-resources-and-plans.html"><a href="18-training-resources-and-plans.html#training-plan-components"><i class="fa fa-check"></i><b>18.1</b> Training plan components</a></li>
+<li class="chapter" data-level="18.2" data-path="18-training-resources-and-plans.html"><a href="18-training-resources-and-plans.html#training-plans"><i class="fa fa-check"></i><b>18.2</b> Training Plans</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="18-training-resources-and-plans.html"><a href="18-training-resources-and-plans.html#better-managing-data"><i class="fa fa-check"></i><b>18.2.1</b> Better Managing Data</a></li>
+<li class="chapter" data-level="18.2.2" data-path="18-training-resources-and-plans.html"><a href="18-training-resources-and-plans.html#version-control-and-git"><i class="fa fa-check"></i><b>18.2.2</b> Version Control and Git</a></li>
+<li class="chapter" data-level="18.2.3" data-path="18-training-resources-and-plans.html"><a href="18-training-resources-and-plans.html#reproducible-reporting"><i class="fa fa-check"></i><b>18.2.3</b> Reproducible reporting</a></li>
+<li class="chapter" data-level="18.2.4" data-path="18-training-resources-and-plans.html"><a href="18-training-resources-and-plans.html#improving-your-statistical-fundamentals"><i class="fa fa-check"></i><b>18.2.4</b> Improving Your Statistical Fundamentals</a></li>
+<li class="chapter" data-level="18.2.5" data-path="18-training-resources-and-plans.html"><a href="18-training-resources-and-plans.html#improving-your-data-visualization"><i class="fa fa-check"></i><b>18.2.5</b> Improving your data visualization</a></li>
+<li class="chapter" data-level="18.2.6" data-path="18-training-resources-and-plans.html"><a href="18-training-resources-and-plans.html#r-programming"><i class="fa fa-check"></i><b>18.2.6</b> R Programming</a></li>
+<li class="chapter" data-level="18.2.7" data-path="18-training-resources-and-plans.html"><a href="18-training-resources-and-plans.html#map-making-and-geospatial-analysis-in-r"><i class="fa fa-check"></i><b>18.2.7</b> Map-making and geospatial analysis in R</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="19-help.html"><a href="19-help.html"><i class="fa fa-check"></i><b>19</b> Getting Help</a><ul>
+<li class="chapter" data-level="19.1" data-path="19-help.html"><a href="19-help.html#minimal-reproducible-examples---helping-others-help-you"><i class="fa fa-check"></i><b>19.1</b> Minimal reproducible examples - helping others help you</a></li>
 </ul></li>
 </ul>
 
@@ -244,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="encryption" class="section level1">
-<h1><span class="header-section-number">12</span> Encryption</h1>
+<h1><span class="header-section-number">13</span> Encryption</h1>
 <ul>
 <li><em>How do we share data in git repositories that needs to be secure?</em></li>
 </ul>
@@ -261,18 +282,18 @@ verify a public key for this purpose.</p>
 <p>Instructions for setting this up are below. They assume you are using MacOS
 for local work, but are mostly right for other cases, too.</p>
 <div id="set-up-keybase" class="section level3">
-<h3><span class="header-section-number">12.0.1</span> Set up Keybase</h3>
+<h3><span class="header-section-number">13.0.1</span> Set up Keybase</h3>
 <p>Sign up for <a href="https://keybase.io/">Keybase</a>, and follow the instructions for
 installing it on your laptop.</p>
 </div>
 <div id="install-gpg-and-git-crypt" class="section level3">
-<h3><span class="header-section-number">12.0.2</span> Install <code>gpg</code> and <code>git-crypt</code></h3>
+<h3><span class="header-section-number">13.0.2</span> Install <code>gpg</code> and <code>git-crypt</code></h3>
 <p><code>gpg</code> is the program that implements encryption, and <code>git-crypt</code> sets up git
 repos for encrypted sharing. These are aleady installed on EHA servers. To install
 them on a mac, use <code>homebrew</code>. You should also install <code>pinentry</code>.</p>
 </div>
 <div id="create-your-keybase-keys" class="section level3">
-<h3><span class="header-section-number">12.0.3</span> Create your Keybase keys</h3>
+<h3><span class="header-section-number">13.0.3</span> Create your Keybase keys</h3>
 <p>If you are just starting to use keybase, you can generate new keys for use on
 your computer using <a href="https://github.com/pstadler/keybase-gpg-github">this guide</a>.
 The guide also helps set up using your key to sign GitHub commits, which you
@@ -284,13 +305,13 @@ many other services, devices, or online identities as you want. We suggest
 at least three.</p>
 </div>
 <div id="import-your-keys-to-your-local-keychain" class="section level3">
-<h3><span class="header-section-number">12.0.4</span> Import your keys to your local keychain</h3>
+<h3><span class="header-section-number">13.0.4</span> Import your keys to your local keychain</h3>
 <p>If you have a Keybase account set and keys already generated, you can now import
 your Keybase keys to use. Instruction are found <a href="https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/">here</a>. Do set
 your keys to maximum trust level.</p>
 </div>
 <div id="also-import-your-keys-to-the-eha-server" class="section level3">
-<h3><span class="header-section-number">12.0.5</span> Also import your keys to the EHA server</h3>
+<h3><span class="header-section-number">13.0.5</span> Also import your keys to the EHA server</h3>
 <p>You will probably want the ability to decrypt files when working remotely,
 so place them on the EHA server. You can do this by copying over your whole
 <code>gpg</code> keys directory to the server, like so:</p>
@@ -303,7 +324,7 @@ its first line is <code>pinentry-program /usr/local/bin/pinentry-mac</code>, cha
 is fine - it means the program is just using default behavior.</p>
 </div>
 <div id="use-git-crypt" class="section level3">
-<h3><span class="header-section-number">12.0.6</span> Use git-crypt</h3>
+<h3><span class="header-section-number">13.0.6</span> Use git-crypt</h3>
 <p>The <a href="https://github.com/AGWA/git-crypt"><code>git-crypt</code> README</a> outlines the basics
 of using <code>git-crypt</code> to add encrypted files to a git repository. If you are
 using an encrypted repository someone else set up, they should have added your
@@ -318,7 +339,7 @@ your local keychain. Visit their Keybase profiles (e.g., <a href="https://keybas
 <p>Add this to your <code>.profile</code>, <code>.bashrc</code>, <code>.zshrc</code> or other settigns file.</p>
 </div>
 <div id="extra-use-a-symmetric-key-for-automated-processes" class="section level3">
-<h3><span class="header-section-number">12.0.7</span> Extra: Use a symmetric key for automated processes</h3>
+<h3><span class="header-section-number">13.0.7</span> Extra: Use a symmetric key for automated processes</h3>
 <p>If you are using continuous integration on a repository with encrypted files,
 you’ll need to provide a way for the CI system to unlock them. An easy, but
 not <em>most</em> secure way is to provide a <em>symmetric key</em>. You can generate
@@ -341,8 +362,8 @@ system image, and (2) to run these commands after the CI clones your repository:
           </div>
         </div>
       </div>
-<a href="11-cloud-computing-services.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="13-dependencies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="12-google-authorization-and-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="14-dependencies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
