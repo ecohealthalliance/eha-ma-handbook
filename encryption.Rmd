@@ -27,15 +27,17 @@ the following command into a terminal and noting down the Distributor ID.
 
     lsb_release -a
 
-In the case of the servers this will be 'Ubuntu' which is based on Debian. 
-Next identify the architecture via.
+Next identify the architecture via,
 
     arch
 
-For the EHA servers this will be 'x86_64'. Follow the instructions to install Keybase on
-Linux, available [here](https://keybase.io/docs/the_app/install_linux), making sure
-to use the section relevant to the architecutre and distribution information identified
-above.
+Follow the instructions to install Keybase on Linux, available [here](https://keybase.io/docs/the_app/install_linux), 
+making sure to use the section relevant to the architecutre and distribution 
+information identified above.
+
+**Note** Keybase is already installed on the EHA servers and only needs to be run via,
+
+    run_keybase
 
 ### Install `gpg` and `git-crypt`
 
