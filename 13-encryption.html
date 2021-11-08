@@ -276,7 +276,7 @@ do this using PGP (Pretty Good Privacy) encryption, implemented by the program
 <a href="https://github.com/AGWA/git-crypt"><code>git-crypt</code></a>. It takes a bit to set up
 but once activated makes sharing secure and seamless.</p>
 <p>The PGP encryption scheme involves making a <em>public</em> key that you share and
-a <em>private</em> key that you use do decrypt data encrypted with your public key.
+a <em>private</em> key that you use to decrypt data encrypted with your public key.
 We like and use <a href="https://keybase.io/">Keybase</a>, a service that helps you publish and
 verify a public key for this purpose.</p>
 <p>Instructions for setting this up are below. They assume you are using MacOS
@@ -285,6 +285,16 @@ for local work, but are mostly right for other cases, too.</p>
 <h3><span class="header-section-number">13.0.1</span> Set up Keybase</h3>
 <p>Sign up for <a href="https://keybase.io/">Keybase</a>, and follow the instructions for
 installing it on your laptop.</p>
+<p>For installing on linux, first identify the distribution by entering
+the following command into a terminal and noting down the Distributor ID.</p>
+<pre><code>lsb_release -a</code></pre>
+<p>In the case of the servers this will be ‘Ubuntu’ which is based on Debian.
+Next identify the architecture via.</p>
+<pre><code>arch</code></pre>
+<p>For the EHA servers this will be ‘x86_64’. Follow the instructions to install Keybase on
+Linux, available <a href="https://keybase.io/docs/the_app/install_linux">here</a>, making sure
+to use the section relevant to the architecutre and distribution information identified
+above.</p>
 </div>
 <div id="install-gpg-and-git-crypt" class="section level3">
 <h3><span class="header-section-number">13.0.2</span> Install <code>gpg</code> and <code>git-crypt</code></h3>
