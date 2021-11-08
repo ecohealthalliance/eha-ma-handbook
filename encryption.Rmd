@@ -10,7 +10,7 @@ do this using PGP (Pretty Good Privacy) encryption, implemented by the program
 but once activated makes sharing secure and seamless.
 
 The PGP encryption scheme involves making a _public_ key that you share and
-a _private_ key that you use do decrypt data encrypted with your public key.
+a _private_ key that you use to decrypt data encrypted with your public key.
 We like  and use [Keybase](https://keybase.io/), a service that helps you publish and
 verify a public key for this purpose.
 
@@ -21,6 +21,21 @@ for local work, but are mostly right for other cases, too.
 
 Sign up for [Keybase](https://keybase.io/), and follow the instructions for 
 installing it on your laptop.
+
+For installing on linux, first identify the distribution by entering
+the following command into a terminal and noting down the Distributor ID.
+
+    lsb_release -a
+
+In the case of the servers this will be 'Ubuntu' which is based on Debian. 
+Next identify the architecture via.
+
+    arch
+
+For the EHA servers this will be 'x86_64'. Follow the instructions to install Keybase on
+Linux, available [here](https://keybase.io/docs/the_app/install_linux), making sure
+to use the section relevant to the architecutre and distribution information identified
+above.
 
 ### Install `gpg` and `git-crypt`
 
