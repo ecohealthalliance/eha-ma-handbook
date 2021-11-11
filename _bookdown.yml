@@ -1,5 +1,6 @@
 rmd_files: 
     - "index.Rmd"
+    - "contribute-a-chapter.Rmd"
     - "quickstart.Rmd"
     - "projects.Rmd"
     - "r.Rmd"

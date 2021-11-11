@@ -1,0 +1,32 @@
+# Contributing a Chapter {#Contributing}
+
+*How do I add a chapter to the EHA M&A Handbook?*
+
+This handbook is created using the `[bookdown](https://bookdown.org/yihui/bookdown/)`
+package. `Bookdown` allows you to publish a set of Rmarkdown documents into a book. Each document constitutes a chapter in the book. Chapters are meant to provide sufficient information for a naive reader to gain an understanding of the topic and begin to apply it. Unless the topic is not well covered by outside resources, chapters do not need to cover the topic indepth. 
+
+This chapter assumes an introductory level understanding of git. See the chapter on [git](#versionControl) to learn more.
+
+## Anatomy of a chapter
+
+- **Motivation** - What question is the chapter trying to answer?
+- **Summary** - Short paragraph on the topic and/or bulleted list of workflow
+- **Main Content** - Longer form answer to the question
+- **Additional Resource** - Where can someone go to learn more about the topic?
+
+## Workflow Summary
+
+0) Clone the [repo](https://github.com/ecohealthalliance/eha-ma-handbook)
+1) Create a branch off of main/master for your chapter 
+2) Start a new Rmarkdown document
+3) Add content to RMD `
+4) Add chapter to `_bookdown.yml`
+5) Preview chapter with `bookdown::preview_chapter("my-chapter.Rmd")`
+6) Create a pull request into main/master
+7) Revise and resubmit
+
+## Git based workflows
+
+This handbook is generated via github actions. Whenever a change is made to the master branch, the book is re-compiled into 
+
+
