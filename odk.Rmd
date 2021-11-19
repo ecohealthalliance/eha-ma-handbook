@@ -1,0 +1,378 @@
+# Open Data Kit {#odk}
+
+This chapter covers documentation on the use and deployment of [Open Data Kit](https://getodk.org)(ODK) for data collection. This chapter is divided into three sections: 
+
+1) [A section on ODK Central](#central), the ODK server type used by EHA for aggregating data collected from forms deployed on mobile devices and/or on the web (using Enketo Express);
+
+2) [A section on ODK Collect](#collect), the Android-based mobile application used for offline data collection which interfaces with ODK Central; and,
+
+3) [A section on XLSForm](#xlsform), a form standard created to help simplify the authoring of forms in Microsoft Excel and/or in any other spreadsheet applications.
+
+Most of the material presented in this chapter are summarised from/based on [ODK](https://getodk.org)'s [official documentation](https://docs.getodk.org). Wherever appropriate, links to a specific topic on the [official documentation](https://docs.getodk.org) are provided as additinal resource. For further details on what has been discussed here, please refer to this resource as it is updated regularly with the latest updates and features of [ODK](https://getodk.org).
+
+## ODK Central {#central}
+
+### Getting an EHA ODK Central account
+
+[ODK Central](https://docs.getodk.org/central-intro/#) is the ODK server. It manages user accounts and permissions, stores form definitions, and allows data collection clients like ODK Collect to connect to it for form download and submission upload.
+
+EHA hosts its own [ODK Central](https://docs.getodk.org/central-intro/#) server. To gain access, request for an [ODK Central](https://docs.getodk.org/central-intro/#) account from Rob Young or Collin Schwantes. Once you have an EHA [ODK Central](https://docs.getodk.org/central-intro/#) account, you will then have to be associated with either an existing [ODK Central](https://docs.getodk.org/central-intro/#) project or a specific project will have to be created for which your account will be associated. Be ready to let Rob or Collin know which project to associate your [ODK Central](https://docs.getodk.org/central-intro/#) account with or the name of the new project to create. Even if you do not have a new project to start or an existing project that you are involved in, it is still possible to have an [ODK Central](https://docs.getodk.org/central-intro/#) account so that this account can be easily added to a project later on. However, only an [ODK Central](https://docs.getodk.org/central-intro/#) account that is associated with a project that can perform some or all of the [ODK Central](https://docs.getodk.org/central-intro/#) tasks described here.
+
+### Using ODK Central
+
+The ODK official documentation provides extensive and detailed information on how to use ODK Central - https://docs.getodk.org/central-using/.
+
+### Setting up a project
+
+Only ODK Central administrators may create projects. To setup a project in EHA's [ODK Central](https://docs.getodk.org/central-intro/#), request one of the admins (Rob Young or Collin Schwantes) to create a project for you. For them to be able to setup your project, they will need information on:
+
+* the name you want to give your project; and,
+
+* the list of team members, along with their respective project roles (either **Project Manager**, **Project Viewer**, **Data Collector**; you will find a detailed breakdown of user roles [here](https://docs.getodk.org/central-users/#central-users-web-roles), you want added to the project.
+
+It is important to remember that the team members that you want added to your [ODK Central](https://docs.getodk.org/central-intro/#) project will need to be added as [ODK Central](https://docs.getodk.org/central-intro/#) users (that is, they have [ODK Central](https://docs.getodk.org/central-intro/#) accounts). Do request the administrator/s for an [ODK Central](https://docs.getodk.org/central-intro/#) account for team members you want added to the project who do not have [ODK Central](https://docs.getodk.org/central-intro/#) accounts yet. You will also need to identify at least one of the team members you assign to the project to take on the **Project Manager** role.
+
+### Monitoring the progress of projects
+
+[ODK Central](https://docs.getodk.org/central-intro/#) provides a user interface for project team members (**project managers** and **project viewer** roles) to monitor progress of their project/s. When logged on to [ODK Central](https://docs.getodk.org/central-intro/#), a **project manager** or a **project viewer** will be able to see all the projects they are members of.
+
+To view a specific project, a **project manager** or **project viewer** can click on that project's name on the list of projects. A list of all the forms used within that specific project can then be viewed. To view the progress of data collection for a specific form, a **project manager** or **project viewer** can click on a specific form's name on the list of forms. An overview of that specific form can then be viewed. In addition, a **project manager** or **project viewer** will be able to view all the submissions that has been sent to [ODK Central](https://docs.getodk.org/central-intro/#) for this specific form by clicking on the **Submissions** tab. A **project manager** or **project viewer** will then see all the submissions in table format. From this view, the **project manager** or **project viewer** will be able to perform specific project monitoring functions. A **project manager** will be able to comment, review, edit and download data while a **project viewer** will only be able to comment and download data.
+
+The comment, review, and edit capabilities of [ODK Central](https://docs.getodk.org/central-intro/#) has been added in v1.3. This allows a **project manager** to monitor data submission by reviewing each row of data available on the [ODK Central](https://docs.getodk.org/central-intro/#) server for a form, giving it an appropriate label (either **approved**, **has issues**, or **rejected**), adding a comment to explain the label assigned and highlight any problems identified in the specific row of data, and editing the specific row of data accordingly based on review. A **project viewer**, on the other hand, will only be able to comment on each row of data to provide their feedback and/or to address any comment made by a fellow **project viewer** or by a **project manager**. A presentation on these review capabilities of [ODK Central](https://docs.getodk.org/central-intro/#) can be viewed [here](https://ecohealthalliance.github.io/odk_quality_control/#1).
+
+### Retrieving Data
+
+Data submissions can be retrieved from [ODK Central](https://docs.getodk.org/central-intro/#) in two ways:
+
+* through a manual download via the [ODK Central](https://docs.getodk.org/central-intro/#) web interface; or,
+
+* via API interface using a corresponding client.
+
+Manual download via the [ODK Central](https://docs.getodk.org/central-intro/#) web interface can be initiated in the same process described above for accessing form submissions. Once a **project manager** and/or a **project viewer** is in the **Submissions** view, a blue download button is available on the top right corner. Clicking on this button will download all the current form submissions which can then be read or viewed in the appropriate software (e.g., spreadsheet software or read into R).
+
+The API interface to [ODK Central](https://docs.getodk.org/central-intro/#) can be done through any client that can perform OData and/or REST API access. In R, the [`{ruODK}`](https://docs.ropensci.org/ruODK/) package is a client designed to access and parse data from [ODK Central](https://docs.getodk.org/central-intro/#). A basic workflow for accessing data from [ODK Central](https://docs.getodk.org/central-intro/#) using [`{ruODK}`](https://docs.ropensci.org/ruODK/) is shown below:
+
+```{r, echo = TRUE, eval = FALSE}
+################################################################################
+#
+# Example R script for accessing ODK Central data using ruODK package. This
+# uses a sample form from the EHA ODK Central server for an anthropometric
+# survey of 6-59 month old children.
+#
+################################################################################
+
+## Load libraries --------------------------------------------------------------
+if (!require(remotes)) install.packages("remotes")
+if (!require(ruODK)) remotes::install_github("ropensci/ruODK")
+if (!require(dplyr)) install.packages("dplyr")
+if (!require(zscorer)) install.packages("zscorer")
+if (!require(nutricheckr)) remotes::install_github("nutriverse/nutrichecker")
+
+
+## Setup connection with ODK Central and the anthropometry form ----------------
+ru_setup(
+  svc = "https://odk.eha.io/v1/projects/1/forms/anthropometry.svc",
+  un = "YOUR_USERNAME_HERE",     ## replace with your EHA ODK username
+  pw = "YOUR_PASSWORD_HERE",     ## replace with your EHA ODK password
+  tz = "GMT",
+  odkc_version = "1.3"
+)
+
+
+## Retrieve anthropometric data using ruODK ------------------------------------
+anthro <- odata_submission_get()
+
+
+## Calculate anthropometric z-scores -------------------------------------------
+anthro_zscores <- anthro %>%
+  mutate(age_days = anthropometry_age * (365.25 / 12)) %>%
+  addWGSR( 
+    sex = "anthropometry_sex", 
+    firstPart = "anthropometry_weight",
+    secondPart = "age_days",
+    index = "wfa"
+  ) %>%
+  addWGSR(
+    sex = "anthropometry_sex",
+    firstPart = "anthropometry_height",
+    secondPart = "age_days",
+    index = "hfa"
+  ) %>%
+  addWGSR(
+    sex = "anthropometry_sex",
+    firstPart = "anthropometry_weight",
+    secondPart = "anthropometry_height",
+    index = "wfh"
+  )
+
+
+## Flag z-scores using WHO criteria --------------------------------------------
+anthro_flags <- anthro_zscores %>%
+  flag_who(hlaz = "hfaz", waz = "wfaz", whlz = "wfhz")
+
+
+## Get a list of rows of data with flags ---------------------------------------
+anthro_for_checking <- anthro_flags %>%
+  filter(flag != 0)
+```
+
+## ODK Collect {#collect}
+
+[ODK Collect](https://docs.getodk.org/collect-intro/) is an open source Android app that replaces paper forms used in survey-based data gathering. It supports a wide range of question and answer types, and is designed to work well without network connectivity.
+
+[ODK Collect](https://docs.getodk.org/collect-intro/) renders forms into a sequence of input prompts that apply form logic, entry constraints, and repeating sub-structures. Users work through the prompts and can save the submission at any point. Finalized submissions can be sent to (and new forms downloaded from) a server such as the [ODK Central](https://docs.getodk.org/central-intro/#).
+
+Collect supports location, audio, images, video, barcodes, signatures, multiple-choice, free text, and numeric answers. It can even accept answers from other apps on your device.
+
+### Installing ODK Collect
+
+Installing applications such as [ODK Collect](https://docs.getodk.org/collect-intro/) on to mobile devices such as mobile phones and tablets is a straightforward process. This tutorial describes how to install applications onto Android-powered devices using the Google Play Store. Specifically, this tutorial shows how to install [ODK Collect](https://docs.getodk.org/collect-intro/) from the Google Play Store on to your mobile device.
+
+This tutorial is aimed at IT administrators and/or survey managers or coordinators who are tasked to setup the mobile devices in preparation for data collection.
+
+This tutorial assumes that:
+
+* You have internet connection;
+* You have a Google account; and,
+* You have access to the Google Play Store.
+
+1. Open Google Play Store
+2. Search for ODK Collect
+3. Install ODK Collect
+
+There are situations in which access to the Google Play Store might be limited for a variety reasons.
+
+A) You may not have a Google account which is required to be able to access the Google Play Store;
+
+B) There may be region or country-specific limitations to accessing either your Google account or Google Play Store or both; or,
+
+C) There is simply no internet connectivity in the area you are located in.
+
+Such situations would limit your ability to install applications including ODK Collect. This is a problem when the mobile devices you are going to use for your data collection are not yet configured and ODK Collect not yet installed.
+
+This tutorial addresses the problem described in situation A and B above where access to Google account and/or Google Play Store is limited but access to internet is not.
+For situation C, steps 2 to 4 of this tutorial will still apply but it would require that you have already done step 1 ahead of time where access to internet is available which will allow you to download a copy of the application to be installed.
+
+This tutorial shows how to install ODK Collect without using Google Play Store (and without requiring a Google account). Instead, the Open Data Kit application package is downloaded onto a computer and then transferred to the tablet for installation.
+
+This process requires a computer and a USB to micro-USB cable to connect the tablet to the computer.
+
+1. Download Open Data Kit APK
+First you need to download the [Open Data Kit APK](https://github.com/getodk/collect/releases/latest) on your computer. APK is short for Android application package which is the package file format used by the Android operating system for distribution and installation of mobile applications. Here are the steps to download the Open Data Kit APK onto your computer.
+
+2. Transfer the ODK Collect APK to your tablet
+You will now need to transfer the ODK Collect APK to your tablet. This can be done by following these steps.
+
+3. Set-up tablet device to allow installation of applications outside of the Google Play Store
+You will now need to set-up your tablet device to allow installation of application outside of Google Play Store. Following are the steps you need to take.
+
+4. Install ODK Collect on your tablet
+Now, you need to install ODK Collect on your tablet using the ODK Collect APK that you just transferred to your tablet. This can be done by following these steps.
+
+### Connecting to a server
+
+With [ODK Central](https://docs.getodk.org/central-intro/#), connecting ODK Collect has become simpler through its use of a QR Code that can be scanned using the mobile device to be used for data collection. Once scanned, ODK Collect will now be configured to communicate with the ODK Central server for retrieving and submitting forms.
+
+A detailed description of connecting with ODK Central using QR codes can be found [here](https://docs.getodk.org/collect-connect/#configure-server-from-qr-code).
+
+There maybe occasions where you are unable to use the QR code functionality to connect ODK Collect with ODK Central. If you are in such a situation, you can connect ODK Collect with and ODK server by manually setting the server settings for ODK Collect as shown [here](https://docs.getodk.org/collect-connect/#configure-server-from-settings).
+
+## Other useful ODK Collect configurations
+
+Once ODK Collect has been installed on the mobile device/s that you will be using for data collection, you may want to configure it's settings to fully maximize its use and also to make it as easy as possible to use by your enumerators. Depending on how involved you want your enumerators to be in the management of the data collection process, you may want to make available or limit certain settings or functions of ODK Collect.
+
+This tutorial describes how to setup the various configuration options of ODK Collect with the aim of minimizing possible unintended interference by enumerators on the various settings that might be detrimental to your data collection campaign. These include the options to load blank forms and change the settings of the server platform (if you are using any). This guide is aimed at IT administrators and/or survey coordinators/managers who will be setting up ODK Collect prior to distribution of the mobile devices to enumerators.
+This tutorial assumes that ODK Collect is already installed on your mobile devices. The following tutorial shows how to install ODK Collect on mobile devices.
+
+**1. Open ODK Collect**
+
+Find the ODK Collect app icon on your device and tap. You will see the following on your screen. This is the default configuration of ODK Collect when it is first installed on a device and the configurations have not been changed yet.
+
+**2. Tap on the ODK Collect settings menu**
+
+On the upper right hand corner, you will see three square dots on top of each other (1). Click on this and a dropdown menu will appear showing options for 'General Settings' (2) and for 'Admin Settings' (3).
+
+There are three main 'General Settings' categories that can be configured: Server Settings (1), Auto Send (2), and User Interface (3).
+
+2.1 Configure Server settings
+
+In 'Server Settings', there are three main settings that will need configuring: Platform (1), Platform settings (2) and Google account (3).
+
+First, tap on Platform (1).
+
+You will then be presented with various platform options that you can select depending on the type of server that you are using for your data collection campaign. ODK Aggregate is the default platform. For anything other than the default ODK Aggregate platform that is provided on ODK Collect by default, you will most likely need to select the `Other` option so that you can specify your own platform for your data collection server.
+
+Next, tap on 'Configure platform settings' (2).
+
+You will then see the following options on your screen. Here you can specify the settings of the server used by your platform specifically the URL of your server (1), the username (2) and password (3) use to login to your server. If you do not know these settings, you should ask your IT administrator or whoever setup your server platform to provide you with these settings. For most service providers offering servers for use by ODK, these settings are made explicit within your account so all you might need to do is to login to your account and find these settings.
+
+Next, configure your 'Google account' if you have one. This is not absolutely necessary and should be configured if you want to connect your ODK Collect with your Google account (if you have one). The advantage of doing this is that your data can be backed up to your Google account.
+
+2.2 Configure Auto Send settings (not recommended)
+Now you can configure Auto Send settings. There are two settings to setup: 'Auto send with Wi-Fi' (1) and 'Auto send with network' (2). 
+
+By default, these options are unchecked. It is recommended that you keep the default (unchecked) settings in place. This would mean that completed and finalized forms will be saved onto the device memory even when the device is connected on Wi-Fi and will not be sent unless the user specifically sends the forms for submission over the internet. It is good to have it this way because this allows for some type of checking of forms on the tablets themselves before they are sent to the server.
+
+This is also good when there is no reliable Wi-Fi and/or network connection or if no server has been setup for the data collection campaign. The option to send the forms by Wi-Fi or over the network can be done later on when there is reliable network and/or when a server has been setup. Otherwise, manual sending of finalized forms via direct mobile device to computer connection can be done.
+
+2.3 Configure User Interface settings
+Now you can configure the 'User Interface' settings. Following are the settings that you can configure or change:
+
+* Constraint processing behavior (1) - this is the option that determines how ODK Collect processes the checks and constraints that have been specified in your form. There are two options here. The first option is for ODK Collect to process the constraints at the end of the form when you are about to finalize the form. The second option is for ODK Collect to process the constraints every time you move to the next question in the form. The default behavior is to process the constraints after every question. It is recommended that the default option be kept (Validate upon forward swipe).
+
+* Navigation (2) - this is the option that determines how the user can move from one question to the next in a form. The default behavior is to use horizontal swipes. It is recommended that the option for use of forward/backward buttons be selected instead. Swiping is very user dependent and not all find it easy to use swiping gestures to move to the next question. Buttons, however, are universally acceptable and easy to train enumerators on using.
+
+* Text font size (3) - this is the option to change the font size used in ODK Collect. By default, this is set to Medium. This default is more than adequate and can be kept as is.
+
+* Default to finalized (4) - this is the option of whether all forms are by default finalized when you reach the end of the questionnaire. This is checked by default.  When you reach the end of your questionnaire, you will see a prompt asking whether you want to mark the form as finalized. This option will be checked automatically because of this setting. It is recommended to keep this setting as is.
+
+* Delete after send (5) - this is the option of whether forms should be deleted after it has been sent to the server. By default this is unchecked. It is recommended that this option be kept unchecked as it is useful to have the forms kept on the devices as backup. Forms can be retrieved later on manually via mobile device to computer connection. This is especially important in settings where internet is unreliable and a backup of the data on the device is crucial.
+
+* Enable hi-res video (6) - this is the option of whether hi-res video playback is required. Unless you require video for your forms, it is recommended to uncheck this option.
+
+* Show splash screen (7) - this option determines if a splash screen on startup of ODK Collect should be shown. This option by default is turned off. It is recommended that this default is kept as is as there is no need for a splash screen and this only delays the startup of the ODK Collect application.
+
+**3. Tap on Admin Settings**
+
+Now, you should configure the 'Admin Settings' (3).
+
+The 'Admin Settings' allow you to control what kinds of items are made available to the user of ODK Collect.
+
+3.1 Setting an Admin password
+An Admin password restricts access to the 'Admin Settings' on ODK Collect. Setting a password blocks access to 'Admin Settings' to those users who do not have the password.  
+
+3.2 Form processing logic
+'Form processing logic' settings should be kept as default.
+
+3.3 Configure User Can Access Main Menu Items settings
+
+Now to configure the 'User Can Access Main Menu Items' settings.
+
+* Edit Saved Form (1) - this is checked by default. Keep checked.
+
+* Send Finalized Form (2) - this is checked by default. Keep checked.
+
+* Get Blank Form (3) - this is checked by default. Uncheck this option. Unchecking this will hide it from the Main Menu. This will prevent unintended pulling of forms from the server that is not needed for your current data collection campaign.
+
+* Delete Saved Form (4) - this is checked by default. Uncheck this option. Unchecking this will hide it from the Main Menu. This will prevent unintended deletion of forms from ODK Collect.
+
+3.4 Configure User Can Access Change Settings Items settings
+Now, configure the 'User Can Access Change Settings Items' settings.
+
+The first five settings are shown here (1-5). It is recommended that all of these be unchecked to avoid unintended changing of settings.
+
+<!-- will there be screen shots here when this renders? -->
+
+The next set of settings are shown here (6-14). All these settings should be unchecked except for 'Text font size'. This will avoid unintended changing of settings.
+
+3.5 Configure User Can Access Form Entry Items settings
+
+Now you can configure 'User Can Access Form Entry Items' settings.
+
+The settings are shown below (1-6). All options should be kept checked except for 'Name this Form' which should be unchecked.
+
+**4. Important Notes on Order of Operations** 
+
+You should configure the General Settings first before you change the Admin Settings. This is because the menu items needed to configure General Settings will not be available to you anymore one you have changed the Admin Settings as per recommendation above.
+
+This means you should also get the blank forms loaded onto ODK Collect already before changing the Admin Settings because you will not have the option to get blank forms once you have changed the Admin Settings. However, if you need to load forms onto ODK Collect, you can still do so by transferring the XForms version of the form straight into the mobile device from your computer using a mobile device to computer connection. Or you can activate the Get Blank Forms option again so that you can pull the blank forms from your server.
+
+### Language settings
+
+ODK Collect supports forms written in multiple languages. XLSForm or XForms standard used for creating forms usable in ODK Collect also provide functionality that encodes multiple language support within the same single form being created (for more information, see multiple language support in XLSForm standard). If a form has been created to support multiple languages, ODK Collect is able to provide options for users to change the language of the form as needed.
+
+This tutorial describes how to change the ODK Collect language settings. This tutorial assumes that:
+
+* You have ODK Collect installed on your mobile device. See here for instructions on installing ODK Collect onto your mobile device.
+
+* You already have created a form using XLSForm standard that has multiple languages encoded. See here for a guide on how to create forms using XLSForm and here for a guide on how to included multiple language support on your form.
+
+* You have already uploaded your form that supports multiple languages onto ODK Collect.
+
+This tutorial is aimed at IT administrators and/or survey managers or coordinators to allow them to change language settings on ODK Collect in time for data collection.
+
+**1. Open a blank form that supports multiple languages**
+
+Tap on ODK Collect then tap on 'Fill Blank Form'.
+
+You will then be shown a list of forms that are uploaded onto your ODK Collect. Tap on the form that you want to use in ODK Collect.
+
+After tapping on the form you want to use in ODK Collect, you will be presented with the 'cover page' of the form that shows:
+
+* The form logo if it has been provided by the creator of the form and if the logo has been uploaded into ODK Collect as well. In the example below the form logo has been provided (1).
+
+* An introductory message (2) saying that you are at the start of the form that you selected and instructing you to tap the arrow buttons below to go backward and forward on the forms or to swipe backward and forward depending on how ODK has been configured (see here regarding ODK Collect settings and configuration).
+
+Tap on the forward button (or do a forward swipe) to see the first page of the form and to have an idea of what the form's default language is (3).
+
+You now get to see the first page (1) of the form that you have selected. ODK Collect will always display the form in the default language set for the form. Hence, the language that you see being used in the form in the first page is the default language of the form.
+
+Now, tap on the backward button (2) to get back to the 'cover page' of the form.
+
+**2. Go to ODK Collect's Change Language settings**
+
+Once you are back to the 'cover page', look at the top right corner of the screen. Here you will see an icon with three square dots on top of each other (1). This is the button that allows you to change the settings of ODK Collect including the 'Change Language' settings (2).
+
+Once you have located this, tap on 'Change Language'.
+
+**3. Select language you want to use for your form**
+
+You will then see the following dialog box giving options of the languages supported by the form. The selected language is the language that is currently being used by the form. 
+
+Choose the language that you want to use for the form.
+
+**4. Check the language now used by the form**
+
+You can now check the language being used by the form by tapping on the forward button again from the 'cover page'. You will now see that the form is displayed in the language that you have chosen.
+
+### Localizing ODK Collect
+
+The ODK Collect application for devices running Android can be localized into several different languages. Currently, the application has been fully translated into 11 different languages and is partly translated into 41 other languages.
+
+ODK Collect language localization is dependent on the language localization of the mobile device to which ODK Collect is installed in. The language to which the mobile device is set will be the language to which ODK Collect will localize to.
+
+This tutorial shows how to change the language settings of a mobile device running Android. 
+**1. Go to settings**
+
+On your tablet device, tap on the 'Settings'.
+
+You will then see the following on your tablet screen. There are four (4) tabs on top of the screen named 1) Connections; 2) Device; 3) Controls; and 4) General. These are the four settings categories that can be configured as needed.
+
+**2. Tap on 'Controls'**
+
+To change language settings, tap 'Controls' (1), then tap on 'Language and input' (2) and then tap on 'Language' (3)
+
+You will then see the following Language options on your screen.
+
+**3. Select language to set device to**
+
+Change the language to the language you want to set the device to.
+
+Setting the default language of your device to a specific language will affect applications installed in your mobile device that also have language localization features. For these applications, their default language will change to the language of the mobile device.
+
+This will be the case for ODK Collect. Since you have changed the default language of your device, ODK Collect will now use that language as the default language for the application. This means that the menus and the text in ODK Collect will now all be in the language you chose.
+
+It should be noted, however, that this language localization only affects the text in the ODK Collect application. This language localization will not affect the default language that is set in the forms that are loaded into ODK Collect. So, for example, if a form that is created in English is loaded onto ODK Collect that is localized in Arabic, the form will still show in English and not in Arabic. In order for this form to be localized into Arabic, the form should have been authored in both English and Arabic and then the language settings for the form is set into Arabic.
+
+## XLSForm {#xlsform}
+
+[XLSForm](https://xlsform.org/en/) is a form standard created to help simplify the authoring of forms in Excel. Authoring is done in a human readable format using a familiar tool that almost everyone knows - Excel. XLSForms provide a practical standard for sharing and collaborating on authoring forms. They are simple to get started with but allow for the authoring of complex forms by someone familiar with the syntax described [here](https://xlsform.org/en/).
+
+The [XLSForm](https://xlsform.org/en/) is then converted to an ODK XForm, a popular open form standard, that allows you to author a form with complex functionality like skip logic in a consistent way across a number of web and mobile data collection platforms.
+
+Extensive documentation on the XLSForm standard can be found [here](https://xlsform.org/en/).
+
+Here is a list of some XLSForms that provide good examples of specific approaches to form authoring for particular uses/applications:
+
+1. A basic XLSForm that shows most of the useful parameters for authoring and shows basic question types - The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1DiSC_dOz0GOCC912z_5xfaHq_p2WUOI8J8Q0Hj6rC-E/edit?usp=sharing).
+
+2. An XLSForm that demonstrates the various question types available using this form standard - The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1DiSC_dOz0GOCC912z_5xfaHq_p2WUOI8J8Q0Hj6rC-E/edit?usp=sharing)
+
+3. An XLSForm that performs randomization of options for select_one or select_multiple types of questions - The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1K3V6OkzcsUZjxwZFEpBXqoHiroQ2K7JWajUW5FmPlTQ/edit?usp=sharing)
+
+4. An XLSForm that demonstrates the use of the rank widget which allows the ranking of responses to select_multiple question types - The XLSForm an be viewed [here](https://docs.google.com/spreadsheets/d/15OW_VEvvrcz8crhJL8z7xrEKeXeGNk2XKzOmLB79nRc/edit?usp=sharing)
+
+5. Grid style layout that mimics an actual paper form. This XLSForm theme is specifically for use on a web client rather than on ODK Collect and presents the form as if it was a paper-based form with questions or fields laid out in a grid - The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1e-1pnNG6p_WbzuKcHoKBUdfSNAED3LPUw7JX6eXckQI/edit?usp=sharing).
+
+
+
