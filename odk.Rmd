@@ -2,8 +2,10 @@
 
 This chapter covers documentation on the use and deployment of [Open Data Kit](https://getodk.org)(ODK) for data collection. This chapter is divided into three sections: 
 
-1) [A section on ODK Central](#central), the ODK server type used by EHA for aggregating data collected from forms deployed on mobile devices and/or on the web (using Enketo Express)
-2) [A section on ODK Collect](#collect), the Android-based mobile application used for offline data collection which interfaces with ODK Central 
+1) [A section on ODK Central](#central), the ODK server type used by EHA for aggregating data collected from forms deployed on mobile devices and/or on the web (using Enketo Express);
+
+2) [A section on ODK Collect](#collect), the Android-based mobile application used for offline data collection which interfaces with ODK Central; and,
+
 3) [A section on XLSForm](#xlsform), a form standard created to help simplify the authoring of forms in Microsoft Excel and/or in any other spreadsheet applications.
 
 Most of the material presented in this chapter are summarised from/based on [ODK](https://getodk.org)'s [official documentation](https://docs.getodk.org). Wherever appropriate, links to a specific topic on the [official documentation](https://docs.getodk.org) are provided as additinal resource. For further details on what has been discussed here, please refer to this resource as it is updated regularly with the latest updates and features of [ODK](https://getodk.org).
@@ -13,19 +15,106 @@ Most of the material presented in this chapter are summarised from/based on [ODK
 ### Getting an EHA ODK Central account
 
 [ODK Central](https://docs.getodk.org/central-intro/#) is the ODK server. It manages user accounts and permissions, stores form definitions, and allows data collection clients like ODK Collect to connect to it for form download and submission upload.
-<!-- Since this is a public document, is there any concern about spam or fishing by providing our emails? -->
-EHA hosts its own [ODK Central](https://docs.getodk.org/central-intro/#) server. To gain access, request for an [ODK Central](https://docs.getodk.org/central-intro/#) account from [Rob Young](mailto:young@ecohealthalliance.org) or [Collin Schwantes](mailto:schwantes@ecohealthalliance.org). Once you have an EHA [ODK Central](https://docs.getodk.org/central-intro/#) account, you will then have to be associated with either an existing [ODK Central](https://docs.getodk.org/central-intro/#) project or a specific project will have to be created for which your account will be associated. Be ready to let Rob or Collin know which project to associate your [ODK Central](https://docs.getodk.org/central-intro/#) account with or the name of the new project to create. Even if you do not have a new project to start or an existing project that you are involved in, it is still possible to have an [ODK Central](https://docs.getodk.org/central-intro/#) account so that this account can be easily added to a project later on. However, only an [ODK Central](https://docs.getodk.org/central-intro/#) account that is associated with a project that can perform some or all of the [ODK Central](https://docs.getodk.org/central-intro/#) tasks described here.
+
+EHA hosts its own [ODK Central](https://docs.getodk.org/central-intro/#) server. To gain access, request for an [ODK Central](https://docs.getodk.org/central-intro/#) account from Rob Young or Collin Schwantes. Once you have an EHA [ODK Central](https://docs.getodk.org/central-intro/#) account, you will then have to be associated with either an existing [ODK Central](https://docs.getodk.org/central-intro/#) project or a specific project will have to be created for which your account will be associated. Be ready to let Rob or Collin know which project to associate your [ODK Central](https://docs.getodk.org/central-intro/#) account with or the name of the new project to create. Even if you do not have a new project to start or an existing project that you are involved in, it is still possible to have an [ODK Central](https://docs.getodk.org/central-intro/#) account so that this account can be easily added to a project later on. However, only an [ODK Central](https://docs.getodk.org/central-intro/#) account that is associated with a project that can perform some or all of the [ODK Central](https://docs.getodk.org/central-intro/#) tasks described here.
 
 ### Using ODK Central
 
 The ODK official documentation provides extensive and detailed information on how to use ODK Central - https://docs.getodk.org/central-using/.
-<!-- Are there any common tasks we expect them to do with odk central? -->
 
 ### Setting up a project
 
-### Fetching Data
+Only ODK Central administrators may create projects. To setup a project in EHA's [ODK Central](https://docs.getodk.org/central-intro/#), request one of the admins (Rob Young or Collin Schwantes) to create a project for you. For them to be able to setup your project, they will need information on:
+
+* the name you want to give your project; and,
+
+* the list of team members, along with their respective project roles (either **Project Manager**, **Project Viewer**, **Data Collector**; you will find a detailed breakdown of user roles [here](https://docs.getodk.org/central-users/#central-users-web-roles), you want added to the project.
+
+It is important to remember that the team members that you want added to your [ODK Central](https://docs.getodk.org/central-intro/#) project will need to be added as [ODK Central](https://docs.getodk.org/central-intro/#) users (that is, they have [ODK Central](https://docs.getodk.org/central-intro/#) accounts). Do request the administrator/s for an [ODK Central](https://docs.getodk.org/central-intro/#) account for team members you want added to the project who do not have [ODK Central](https://docs.getodk.org/central-intro/#) accounts yet. You will also need to identify at least one of the team members you assign to the project to take on the **Project Manager** role.
 
 ### Monitoring the progress of projects
+
+[ODK Central](https://docs.getodk.org/central-intro/#) provides a user interface for project team members (**project managers** and **project viewer** roles) to monitor progress of their project/s. When logged on to [ODK Central](https://docs.getodk.org/central-intro/#), a **project manager** or a **project viewer** will be able to see all the projects they are members of.
+
+To view a specific project, a **project manager** or **project viewer** can click on that project's name on the list of projects. A list of all the forms used within that specific project can then be viewed. To view the progress of data collection for a specific form, a **project manager** or **project viewer** can click on a specific form's name on the list of forms. An overview of that specific form can then be viewed. In addition, a **project manager** or **project viewer** will be able to view all the submissions that has been sent to [ODK Central](https://docs.getodk.org/central-intro/#) for this specific form by clicking on the **Submissions** tab. A **project manager** or **project viewer** will then see all the submissions in table format. From this view, the **project manager** or **project viewer** will be able to perform specific project monitoring functions. A **project manager** will be able to comment, review, edit and download data while a **project viewer** will only be able to comment and download data.
+
+The comment, review, and edit capabilities of [ODK Central](https://docs.getodk.org/central-intro/#) has been added in v1.3. This allows a **project manager** to monitor data submission by reviewing each row of data available on the [ODK Central](https://docs.getodk.org/central-intro/#) server for a form, giving it an appropriate label (either **approved**, **has issues**, or **rejected**), adding a comment to explain the label assigned and highlight any problems identified in the specific row of data, and editing the specific row of data accordingly based on review. A **project viewer**, on the other hand, will only be able to comment on each row of data to provide their feedback and/or to address any comment made by a fellow **project viewer** or by a **project manager**. A presentation on these review capabilities of [ODK Central](https://docs.getodk.org/central-intro/#) can be viewed [here](https://ecohealthalliance.github.io/odk_quality_control/#1).
+
+### Retrieving Data
+
+Data submissions can be retrieved from [ODK Central](https://docs.getodk.org/central-intro/#) in two ways:
+
+* through a manual download via the [ODK Central](https://docs.getodk.org/central-intro/#) web interface; or,
+
+* via API interface using a corresponding client.
+
+Manual download via the [ODK Central](https://docs.getodk.org/central-intro/#) web interface can be initiated in the same process described above for accessing form submissions. Once a **project manager** and/or a **project viewer** is in the **Submissions** view, a blue download button is available on the top right corner. Clicking on this button will download all the current form submissions which can then be read or viewed in the appropriate software (e.g., spreadsheet software or read into R).
+
+The API interface to [ODK Central](https://docs.getodk.org/central-intro/#) can be done through any client that can perform OData and/or REST API access. In R, the [`{ruODK}`](https://docs.ropensci.org/ruODK/) package is a client designed to access and parse data from [ODK Central](https://docs.getodk.org/central-intro/#). A basic workflow for accessing data from [ODK Central](https://docs.getodk.org/central-intro/#) using [`{ruODK}`](https://docs.ropensci.org/ruODK/) is shown below:
+
+```{r, echo = TRUE, eval = FALSE}
+################################################################################
+#
+# Example R script for accessing ODK Central data using ruODK package. This
+# uses a sample form from the EHA ODK Central server for an anthropometric
+# survey of 6-59 month old children.
+#
+################################################################################
+
+## Load libraries --------------------------------------------------------------
+if (!require(remotes)) install.packages("remotes")
+if (!require(ruODK)) remotes::install_github("ropensci/ruODK")
+if (!require(dplyr)) install.packages("dplyr")
+if (!require(zscorer)) install.packages("zscorer")
+if (!require(nutricheckr)) remotes::install_github("nutriverse/nutrichecker")
+
+
+## Setup connection with ODK Central and the anthropometry form ----------------
+ru_setup(
+  svc = "https://odk.eha.io/v1/projects/1/forms/anthropometry.svc",
+  un = "YOUR_USERNAME_HERE",     ## replace with your EHA ODK username
+  pw = "YOUR_PASSWORD_HERE",     ## replace with your EHA ODK password
+  tz = "GMT",
+  odkc_version = "1.3"
+)
+
+
+## Retrieve anthropometric data using ruODK ------------------------------------
+anthro <- odata_submission_get()
+
+
+## Calculate anthropometric z-scores -------------------------------------------
+anthro_zscores <- anthro %>%
+  mutate(age_days = anthropometry_age * (365.25 / 12)) %>%
+  addWGSR( 
+    sex = "anthropometry_sex", 
+    firstPart = "anthropometry_weight",
+    secondPart = "age_days",
+    index = "wfa"
+  ) %>%
+  addWGSR(
+    sex = "anthropometry_sex",
+    firstPart = "anthropometry_height",
+    secondPart = "age_days",
+    index = "hfa"
+  ) %>%
+  addWGSR(
+    sex = "anthropometry_sex",
+    firstPart = "anthropometry_weight",
+    secondPart = "anthropometry_height",
+    index = "wfh"
+  )
+
+
+## Flag z-scores using WHO criteria --------------------------------------------
+anthro_flags <- anthro_zscores %>%
+  flag_who(hlaz = "hfaz", waz = "wfaz", whlz = "wfhz")
+
+
+## Get a list of rows of data with flags ---------------------------------------
+anthro_for_checking <- anthro_flags %>%
+  filter(flag != 0)
+```
 
 ## ODK Collect {#collect}
 
@@ -84,7 +173,7 @@ Now, you need to install ODK Collect on your tablet using the ODK Collect APK th
 
 With [ODK Central](https://docs.getodk.org/central-intro/#), connecting ODK Collect has become simpler through its use of a QR Code that can be scanned using the mobile device to be used for data collection. Once scanned, ODK Collect will now be configured to communicate with the ODK Central server for retrieving and submitting forms.
 
-A detailed description of connecting with ODK Central using QR codes can be found at [here](https://docs.getodk.org/collect-connect/#configure-server-from-qr-code).
+A detailed description of connecting with ODK Central using QR codes can be found [here](https://docs.getodk.org/collect-connect/#configure-server-from-qr-code).
 
 There maybe occasions where you are unable to use the QR code functionality to connect ODK Collect with ODK Central. If you are in such a situation, you can connect ODK Collect with and ODK server by manually setting the server settings for ODK Collect as shown [here](https://docs.getodk.org/collect-connect/#configure-server-from-settings).
 
@@ -167,8 +256,6 @@ Now to configure the 'User Can Access Main Menu Items' settings.
 
 * Delete Saved Form (4) - this is checked by default. Uncheck this option. Unchecking this will hide it from the Main Menu. This will prevent unintended deletion of forms from ODK Collect.
 
-<!-- is it "the ODK Collect" or "ODK Collect"?  -->
-
 3.4 Configure User Can Access Change Settings Items settings
 Now, configure the 'User Can Access Change Settings Items' settings.
 
@@ -185,8 +272,6 @@ Now you can configure 'User Can Access Form Entry Items' settings.
 The settings are shown below (1-6). All options should be kept checked except for 'Name this Form' which should be unchecked.
 
 **4. Important Notes on Order of Operations** 
-
-<!-- Consider moving up this to the top since doing this out of order could cause an issue. It also may be good to provide an abbreviated list or diagram of the order of operations   -->
 
 You should configure the General Settings first before you change the Admin Settings. This is because the menu items needed to configure General Settings will not be available to you anymore one you have changed the Admin Settings as per recommendation above.
 
@@ -288,3 +373,6 @@ Here is a list of some XLSForms that provide good examples of specific approache
 4. An XLSForm that demonstrates the use of the rank widget which allows the ranking of responses to select_multiple question types - The XLSForm an be viewed [here](https://docs.google.com/spreadsheets/d/15OW_VEvvrcz8crhJL8z7xrEKeXeGNk2XKzOmLB79nRc/edit?usp=sharing)
 
 5. Grid style layout that mimics an actual paper form. This XLSForm theme is specifically for use on a web client rather than on ODK Collect and presents the form as if it was a paper-based form with questions or fields laid out in a grid - The XLSForm can be viewed [here](https://docs.google.com/spreadsheets/d/1e-1pnNG6p_WbzuKcHoKBUdfSNAED3LPUw7JX6eXckQI/edit?usp=sharing).
+
+
+
