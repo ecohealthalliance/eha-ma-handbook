@@ -279,8 +279,7 @@ but once activated makes sharing secure and seamless.</p>
 a <em>private</em> key that you use to decrypt data encrypted with your public key.
 We like and use <a href="https://keybase.io/">Keybase</a>, a service that helps you publish and
 verify a public key for this purpose.</p>
-<p>Instructions for setting this up are below. They assume you are using MacOS
-for local work, but are mostly right for other cases, too.</p>
+<p>Instructions for setting this up are below.</p>
 <div id="set-up-keybase" class="section level3">
 <h3><span class="header-section-number">13.0.1</span> Set up Keybase</h3>
 <p>Sign up for <a href="https://keybase.io/">Keybase</a>, and follow the instructions for
@@ -291,20 +290,31 @@ the following command into a terminal and noting down the Distributor ID.</p>
 <p>Next identify the architecture via,</p>
 <pre><code>arch</code></pre>
 <p>Follow the instructions to install Keybase on Linux, available <a href="https://keybase.io/docs/the_app/install_linux">here</a>,
-making sure to use the section relevant to the architecutre and distribution
+making sure to use the section relevant to the architecture and distribution
 information identified above.</p>
-<p><strong>Note</strong> Keybase is already installed on the EHA servers and only needs to be run via,</p>
-<pre><code>run_keybase</code></pre>
+<p>For installing on Windows, the easiest way is to download and install the
+graphical user interface available from the Keybase
+<a href="https://keybase.io/download">download page</a>. This will also install the necessary
+command line tools.</p>
 </div>
 <div id="install-gpg-and-git-crypt" class="section level3">
 <h3><span class="header-section-number">13.0.2</span> Install <code>gpg</code> and <code>git-crypt</code></h3>
 <p><code>gpg</code> is the program that implements encryption, and <code>git-crypt</code> sets up git
-repos for encrypted sharing. These are aleady installed on EHA servers. To install
+repos for encrypted sharing. These are already installed on EHA servers. To install
 them on a mac, use <code>homebrew</code>. You should also install <code>pinentry</code>.</p>
+<p>For Windows there are two alternative approaches. The first is to utilize the Windows Subsystem for Linux (WSL). This method requires Windows 10. For more information on using the WSL see this <a href="https://docs.microsoft.com/en-us/windows/wsl/install">guide</a>. After that all the necessary packages can be installed through the terminal using something like</p>
+<pre><code>sudo apt update
+sudo apt install keybase gpg git-crypt</code></pre>
+<p>see the linux installation instructions above for more details.</p>
+<p>The second method is to install pre-compiled binaries for GPG and git-crypt. A Windows compatible binary for GPG is available <a href="https://gnupg.org/download/">here</a>. The ‘Simple installer for the current GnuPG’ binary is the recommended choice.</p>
+<p>Then install git-crypt by downloading <code>git-crypt-windows.zip</code> available <a href="https://github.com/ecohealthalliance/git-crypt/releases/tag/win-release">here</a>. This may generate the warning ‘git-crypt-windows.zip is not commonly downloaded and may be dangerous’. Click the up arrow next to ‘Discard’ and select ‘Keep’. Even after this the download may fail with the message ‘Failed - Virus detected’. Do not worry this is a false positive. If this occurs, search for ‘Virus &amp; thread protection’ in the task bar and click on ‘Manage settings’ under ‘Virus &amp; thread protection settings’. Once there, turn off Real-time protection and try downloading again. Please make sure to turn it back on again when done. Once downloaded, the zip file will then need to be decompressed using a file archive manager such as <a href="https://peazip.github.io/">PeaZip</a>.</p>
+<p>Now move the resulting .exe file into a folder recognized by the Windows PATH environment variable. A convenient location is <code>C:\Program Files\Git\cmd\</code>.</p>
+<p>Once Keybase and GPG are installed, the terminal commands related to exporting keys from Kebyase
+into GPG do not need to be modified to work in cmd or powershell.</p>
 </div>
 <div id="create-your-keybase-keys" class="section level3">
 <h3><span class="header-section-number">13.0.3</span> Create your Keybase keys</h3>
-<p>If you are just starting to use keybase, you can generate new keys for use on
+<p>If you are just starting to use Keybase, you can generate new keys for use on
 your computer using <a href="https://github.com/pstadler/keybase-gpg-github">this guide</a>.
 The guide also helps set up using your key to sign GitHub commits, which you
 should do for added security.</p>
@@ -312,7 +322,8 @@ should do for added security.</p>
 this in a service such as LastPass if desired.</p>
 <p>At this point you can go to your Keybase account and verify your keys via as
 many other services, devices, or online identities as you want. We suggest
-at least three.</p>
+at least three. It is also a good idea to generate a physical ‘paper key’ and store it in
+a secure location.</p>
 </div>
 <div id="import-your-keys-to-your-local-keychain" class="section level3">
 <h3><span class="header-section-number">13.0.4</span> Import your keys to your local keychain</h3>
@@ -326,6 +337,8 @@ your keys to maximum trust level.</p>
 so place them on the EHA server. You can do this by copying over your whole
 <code>gpg</code> keys directory to the server, like so:</p>
 <pre><code>scp -rp ~/.gnupg url.of.server:</code></pre>
+<p>For Windows users, the above command will work only after installing <a href="https://www.putty.org/">PuTTY</a>,
+enabling Windows 10’s <a href="https://winaero.com/enable-openssh-client-windows-10/">OpenSSH client</a> or through use of the WLS.</p>
 <p>Note that the main EHA analysis servers share user file systems so you only
 have to do this on one of them.</p>
 <p>You may have to edit the file <code>~/.gnupg/gpg-agent.conf</code> on the server. If
@@ -341,12 +354,23 @@ using an encrypted repository someone else set up, they should have added your
 public key to the repo, and all you need to do after pulling/cloning is run</p>
 <pre><code>git-crypt unlock</code></pre>
 <p>in the repository folder. After that encryption and decryption for pushing and
-pulling should happen automatically.</p>
+pulling should happen automatically. If this produces and error double check that your
+key was added and pull the repo before trying again. For Windows it may also be necessary
+to inform git of the location of the gpg executable which can be done by opening cmd
+or powershell and entering</p>
+<p><code>git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"</code></p>
 <p>One key area missing is how to import the public keys of your team members to
 your local keychain. Visit their Keybase profiles (e.g., <a href="https://keybase.io/noamross" class="uri">https://keybase.io/noamross</a>) and click on the key - it will show several ways to import the keys.</p>
 <p>Another common source of errors is that the text entry for <code>gpg</code> isn’t set properly. You can fix this by setting the <code>GPG_TTY</code> environment variable like so:</p>
 <pre><code>export GPG_TTY=$(tty)</code></pre>
-<p>Add this to your <code>.profile</code>, <code>.bashrc</code>, <code>.zshrc</code> or other settigns file.</p>
+<p>Add this to your <code>.profile</code>, <code>.bashrc</code>, <code>.zshrc</code> or other settings file.</p>
+<p>If <code>git-crypt unlock</code> still fails, try the following steps</p>
+<ol style="list-style-type: decimal">
+<li>Verify that GPG has successfully imported your private key from Keybase by opening a shell and entering
+<code>gpg --list-secret-keys</code>. If no keys are found, follow the <a href="https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/">guide</a> for importing keys.</li>
+<li>Make sure that your GPG private key has actually been added to the repository. Navigate to the <code>~/.git-crypt/keys/default/0/</code> directory on github and look for a file that matches your public key.</li>
+<li>Once your key has been added, pull from the remote to make sure the key is available to your local repository.</li>
+</ol>
 </div>
 <div id="extra-use-a-symmetric-key-for-automated-processes" class="section level3">
 <h3><span class="header-section-number">13.0.7</span> Extra: Use a symmetric key for automated processes</h3>
