@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | EHA Modeling &amp; Analytics Handbook</title>
-  <meta name="description" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <title>14 Encryption | EHA Modeling &amp; Analytics Handbook</title>
+  <meta name="description" content="14 Encryption | EHA Modeling &amp; Analytics Handbook" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta property="og:title" content="14 Encryption | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta name="twitter:title" content="14 Encryption | EHA Modeling &amp; Analytics Handbook" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
-
+<link rel="prev" href="13-google-authorization-and-r.html"/>
+<link rel="next" href="15-dependencies.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -277,19 +277,140 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="encryption" class="section level1">
+<h1><span class="header-section-number">14</span> Encryption</h1>
+<ul>
+<li><em>How do we share data in git repositories that needs to be secure?</em></li>
+</ul>
+<p>Sometimes we need to store and share secure information, such as API keys to
+paid online service accounts. One of our methods of choice for this is to
+keep these files stored in git/GitHub repositories, but to encrypt them. We
+do this using PGP (Pretty Good Privacy) encryption, implemented by the program
+<a href="https://github.com/AGWA/git-crypt"><code>git-crypt</code></a>. It takes a bit to set up
+but once activated makes sharing secure and seamless.</p>
+<p>The PGP encryption scheme involves making a <em>public</em> key that you share and
+a <em>private</em> key that you use to decrypt data encrypted with your public key.
+We like and use <a href="https://keybase.io/">Keybase</a>, a service that helps you publish and
+verify a public key for this purpose.</p>
+<p>Instructions for setting this up are below.</p>
+<div id="set-up-keybase" class="section level3">
+<h3><span class="header-section-number">14.0.1</span> Set up Keybase</h3>
+<p>Sign up for <a href="https://keybase.io/">Keybase</a>, and follow the instructions for
+installing it on your laptop.</p>
+<p>For installing on linux, first identify the distribution by entering
+the following command into a terminal and noting down the Distributor ID.</p>
+<pre><code>lsb_release -a</code></pre>
+<p>Next identify the architecture via,</p>
+<pre><code>arch</code></pre>
+<p>Follow the instructions to install Keybase on Linux, available <a href="https://keybase.io/docs/the_app/install_linux">here</a>,
+making sure to use the section relevant to the architecture and distribution
+information identified above.</p>
+<p>For installing on Windows, the easiest way is to download and install the
+graphical user interface available from the Keybase
+<a href="https://keybase.io/download">download page</a>. This will also install the necessary
+command line tools.</p>
+</div>
+<div id="install-gpg-and-git-crypt" class="section level3">
+<h3><span class="header-section-number">14.0.2</span> Install <code>gpg</code> and <code>git-crypt</code></h3>
+<p><code>gpg</code> is the program that implements encryption, and <code>git-crypt</code> sets up git
+repos for encrypted sharing. These are already installed on EHA servers. To install
+them on a mac, use <code>homebrew</code>. You should also install <code>pinentry</code>.</p>
+<p>For Windows there are two alternative approaches. The first is to utilize the Windows Subsystem for Linux (WSL). This method requires Windows 10. For more information on using the WSL see this <a href="https://docs.microsoft.com/en-us/windows/wsl/install">guide</a>. After that all the necessary packages can be installed through the terminal using something like</p>
+<pre><code>sudo apt update
+sudo apt install keybase gpg git-crypt</code></pre>
+<p>see the linux installation instructions above for more details.</p>
+<p>The second method is to install pre-compiled binaries for GPG and git-crypt. A Windows compatible binary for GPG is available <a href="https://gnupg.org/download/">here</a>. The ‘Simple installer for the current GnuPG’ binary is the recommended choice.</p>
+<p>Then install git-crypt by downloading <code>git-crypt-windows.zip</code> available <a href="https://github.com/ecohealthalliance/git-crypt/releases/tag/win-release">here</a>. This may generate the warning ‘git-crypt-windows.zip is not commonly downloaded and may be dangerous’. Click the up arrow next to ‘Discard’ and select ‘Keep’. Even after this the download may fail with the message ‘Failed - Virus detected’. Do not worry this is a false positive. If this occurs, search for ‘Virus &amp; thread protection’ in the task bar and click on ‘Manage settings’ under ‘Virus &amp; thread protection settings’. Once there, turn off Real-time protection and try downloading again. Please make sure to turn it back on again when done. Once downloaded, the zip file will then need to be decompressed using a file archive manager such as <a href="https://peazip.github.io/">PeaZip</a>.</p>
+<p>Now move the resulting .exe file into a folder recognized by the Windows PATH environment variable. A convenient location is <code>C:\Program Files\Git\cmd\</code>.</p>
+<p>Once Keybase and GPG are installed, the terminal commands related to exporting keys from Kebyase
+into GPG do not need to be modified to work in cmd or powershell.</p>
+</div>
+<div id="create-your-keybase-keys" class="section level3">
+<h3><span class="header-section-number">14.0.3</span> Create your Keybase keys</h3>
+<p>If you are just starting to use Keybase, you can generate new keys for use on
+your computer using <a href="https://github.com/pstadler/keybase-gpg-github">this guide</a>.
+The guide also helps set up using your key to sign GitHub commits, which you
+should do for added security.</p>
+<p>Do create a password associated with your keys when asked. You can store
+this in a service such as LastPass if desired.</p>
+<p>At this point you can go to your Keybase account and verify your keys via as
+many other services, devices, or online identities as you want. We suggest
+at least three. It is also a good idea to generate a physical ‘paper key’ and store it in
+a secure location.</p>
+</div>
+<div id="import-your-keys-to-your-local-keychain" class="section level3">
+<h3><span class="header-section-number">14.0.4</span> Import your keys to your local keychain</h3>
+<p>If you have a Keybase account set and keys already generated, you can now import
+your Keybase keys to use. Instruction are found <a href="https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/">here</a>. Do set
+your keys to maximum trust level.</p>
+</div>
+<div id="also-import-your-keys-to-the-eha-server" class="section level3">
+<h3><span class="header-section-number">14.0.5</span> Also import your keys to the EHA server</h3>
+<p>You will probably want the ability to decrypt files when working remotely,
+so place them on the EHA server. You can do this by copying over your whole
+<code>gpg</code> keys directory to the server, like so:</p>
+<pre><code>scp -rp ~/.gnupg url.of.server:</code></pre>
+<p>For Windows users, the above command will work only after installing <a href="https://www.putty.org/">PuTTY</a>,
+enabling Windows 10’s <a href="https://winaero.com/enable-openssh-client-windows-10/">OpenSSH client</a> or through use of the WLS.</p>
+<p>Note that the main EHA analysis servers share user file systems so you only
+have to do this on one of them.</p>
+<p>You may have to edit the file <code>~/.gnupg/gpg-agent.conf</code> on the server. If
+its first line is <code>pinentry-program /usr/local/bin/pinentry-mac</code>, change it to
+<code>pinentry-program /usr/bin/pinentry</code>. Note that it may not exist at all, which
+is fine - it means the program is just using default behavior.</p>
+</div>
+<div id="use-git-crypt" class="section level3">
+<h3><span class="header-section-number">14.0.6</span> Use git-crypt</h3>
+<p>The <a href="https://github.com/AGWA/git-crypt"><code>git-crypt</code> README</a> outlines the basics
+of using <code>git-crypt</code> to add encrypted files to a git repository. If you are
+using an encrypted repository someone else set up, they should have added your
+public key to the repo, and all you need to do after pulling/cloning is run</p>
+<pre><code>git-crypt unlock</code></pre>
+<p>in the repository folder. After that encryption and decryption for pushing and
+pulling should happen automatically. If this produces and error double check that your
+key was added and pull the repo before trying again. For Windows it may also be necessary
+to inform git of the location of the gpg executable which can be done by opening cmd
+or powershell and entering</p>
+<p><code>git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"</code></p>
+<p>One key area missing is how to import the public keys of your team members to
+your local keychain. Visit their Keybase profiles (e.g., <a href="https://keybase.io/noamross" class="uri">https://keybase.io/noamross</a>) and click on the key - it will show several ways to import the keys.</p>
+<p>Another common source of errors is that the text entry for <code>gpg</code> isn’t set properly. You can fix this by setting the <code>GPG_TTY</code> environment variable like so:</p>
+<pre><code>export GPG_TTY=$(tty)</code></pre>
+<p>Add this to your <code>.profile</code>, <code>.bashrc</code>, <code>.zshrc</code> or other settings file.</p>
+<p>If <code>git-crypt unlock</code> still fails, try the following steps</p>
+<ol style="list-style-type: decimal">
+<li>Verify that GPG has successfully imported your private key from Keybase by opening a shell and entering
+<code>gpg --list-secret-keys</code>. If no keys are found, follow the <a href="https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/">guide</a> for importing keys.</li>
+<li>Make sure that your GPG private key has actually been added to the repository. Navigate to the <code>~/.git-crypt/keys/default/0/</code> directory on github and look for a file that matches your public key.</li>
+<li>Once your key has been added, pull from the remote to make sure the key is available to your local repository.</li>
+</ol>
+</div>
+<div id="extra-use-a-symmetric-key-for-automated-processes" class="section level3">
+<h3><span class="header-section-number">14.0.7</span> Extra: Use a symmetric key for automated processes</h3>
+<p>If you are using continuous integration on a repository with encrypted files,
+you’ll need to provide a way for the CI system to unlock them. An easy, but
+not <em>most</em> secure way is to provide a <em>symmetric key</em>. You can generate
+this by running this in your project directory.</p>
+<pre><code>git-crypt export-key git_crypt_key.key</code></pre>
+<p><code>git_crypt_key.key</code> can now be used to decrypt the repository, and you can provide
+it to the CI system as an environment variable. However, since it is binary data,
+you’ll need to convert it to base64 first. So run something like:</p>
+<pre><code>cat git_crypt_key.key | base64 | pbcopy</code></pre>
+<p>to convert this file to base64 data, then paste it in your CI system’s environment
+variable field as something like <code>GIT_CRYPT_KEY64</code>.</p>
+<p>To use the key later, you’ll need (1) <code>git-crypt</code> and <code>gpg</code> installed in the CI
+system image, and (2) to run these commands after the CI clones your repository:</p>
+<pre><code>echo $GIT_ENCRYPT_KEY64 &gt; git_crypt_key.key64 &amp;&amp; base64 -d git_crypt_key.key64 &gt; git_crypt_key.key &amp;&amp; git-crypt unlock git_crypt_key.key</code></pre>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="13-google-authorization-and-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="15-dependencies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -321,7 +442,7 @@ gitbook.start({
 "id": 1
 },
 "edit": {
-"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s",
+"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/encryption.Rmd",
 "text": "Edit this chapter"
 },
 "history": {

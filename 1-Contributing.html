@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | EHA Modeling &amp; Analytics Handbook</title>
-  <meta name="description" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <title>1 Contributing | EHA Modeling &amp; Analytics Handbook</title>
+  <meta name="description" content="1 Contributing | EHA Modeling &amp; Analytics Handbook" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta property="og:title" content="1 Contributing | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta name="twitter:title" content="1 Contributing | EHA Modeling &amp; Analytics Handbook" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
-
+<link rel="prev" href="index.html"/>
+<link rel="next" href="2-quickstart-for-computing.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -277,19 +277,105 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="Contributing" class="section level1">
+<h1><span class="header-section-number">1</span> Contributing</h1>
+<p><em>How do I add or modify a chapter in the EHA M&amp;A Handbook?</em></p>
+<p>Identify a gap in the handbook, create a branch, write the chapter and then create a pull request.</p>
+<p>This handbook is created using the <a href="https://bookdown.org/yihui/bookdown/">bookdown</a>
+package. <code>Bookdown</code> allows you to publish a set of Rmarkdown documents into a book. Each document constitutes a chapter in the book.</p>
+<p>This chapter assumes an introductory level understanding of git. See the chapter on <a href="#versionControl">git</a> to learn more.</p>
+<div id="anatomy-of-a-chapter" class="section level2">
+<h2><span class="header-section-number">1.1</span> Anatomy of a chapter</h2>
+<ul>
+<li><strong>Motivation</strong> - What question is the chapter trying to answer?</li>
+<li><strong>Summary</strong> - Short paragraph on the topic and/or bulleted list of workflow</li>
+<li><strong>Main Content</strong> - Longer form answer to the question</li>
+<li><strong>Additional Resources</strong> - Where can someone go to learn more about the topic?</li>
+</ul>
+</div>
+<div id="workflow-summary" class="section level2">
+<h2><span class="header-section-number">1.2</span> Workflow Summary</h2>
+<div id="for-quick-edits" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> For quick edits</h3>
+<ol start="0" style="list-style-type: decimal">
+<li>Click the edit button (<i class="fa fa-edit"></i>) at the top of the page</li>
+<li>Modify the chapter</li>
+<li>Commit the changes to master</li>
+</ol>
+<p><strong>These changes will be immediately reflected in the handbook!</strong>. If you would like someone else to review them, commit the changes to a branch then open a pull request.</p>
+</div>
+<div id="adding-a-chapter" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> Adding a chapter</h3>
+<ol start="0" style="list-style-type: decimal">
+<li>Clone the <a href="https://github.com/ecohealthalliance/eha-ma-handbook">repo</a></li>
+<li>Create a branch off of main/master for your chapter</li>
+<li>Start a new Rmarkdown document with <code>rmarkdown::draft("my-chapter.Rmd",template = "EHA-MA-Chapter",package = "ehastyle")</code></li>
+<li>Add content to RMD</li>
+<li>Add chapter to <code>_bookdown.yml</code></li>
+<li>Preview chapter with <code>bookdown::preview_chapter("my-chapter.Rmd")</code></li>
+<li>Create a pull request into main/master</li>
+<li>Revise and resubmit</li>
+</ol>
+</div>
+<div id="major-edits" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> Major edits</h3>
+<ol start="0" style="list-style-type: decimal">
+<li>Clone the <a href="https://github.com/ecohealthalliance/eha-ma-handbook">repo</a></li>
+<li>Create a branch off of main/master for your edits</li>
+<li>Edit Rmarkdown document</li>
+<li>Preview chapter with <code>bookdown::preview_chapter("my-chapter.Rmd")</code></li>
+<li>Create a pull request into main/master</li>
+<li>Revise and resubmit</li>
+</ol>
+</div>
+</div>
+<div id="git-based-workflows" class="section level2">
+<h2><span class="header-section-number">1.3</span> Git based workflows</h2>
+<p>This handbook is generated via github actions. Whenever a change is made to the master branch, the book is re-compiled and published to this webpage. Because of that, its important that we are creating new chapters using branches in git as <strong>any changes to master will be added before review</strong>.</p>
+<p>To create a branch use <code>git checkout -b feature/my-chapter</code> then use <code>git push -u origin feature/my-chapter</code> to track it on github. This will create a branch off of master and push it to the repository.</p>
+</div>
+<div id="working-with-rmarkdown-in-the-bookdown-framework" class="section level2">
+<h2><span class="header-section-number">1.4</span> Working with rmarkdown in the bookdown framework</h2>
+<p>The format of bookdown chapters and the workflow for previewing them is a little different from typical rmarkdown documents. Unlike typical rmarkdown documents, bookdown chapters do not start with a yaml section. Also, the file name for the chapter must be added to the <code>_bookdown.yaml</code> for it to knit as expected. Otherwise, the workflow is more or less the same.</p>
+<p>The <a href="https://github.com/ecohealthalliance/ehastyle">ehaStyle</a> package has a template for handbook chapters.</p>
+<pre><code>remotes::install_github(&quot;ecohealthalliance/ehastyle&quot;)
+
+# if you are installing the package you may need to close and reopen
+# Rstudio to be able to access this template
+
+rmarkdown::draft(&quot;my-chapter.Rmd&quot;,template = &quot;EHA-MA-Chapter&quot;,package = &quot;ehastyle&quot;)</code></pre>
+<p>This will generate a markdown document with a rough outline of a chapter structure and an overview of the workflow. After you have created the rmd, you can add it to the <code>_bookdown.yaml</code>. The chapters are rendered in order based on the <code>_bookdown.yaml</code> file so try to place your chapter near related content.</p>
+<p>You can now use <code>bookdown::preview_chapter("my-chapter.Rmd")</code> to make sure that your chapter has rendered properly. By specifying your chapter, you avoid rendering the entire book.</p>
+</div>
+<div id="review" class="section level2">
+<h2><span class="header-section-number">1.5</span> Review</h2>
+<p>When you’re happy with your chapter, open up a pull request and <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/requesting-a-pull-request-review">assign a reviewer</a>. The reviewer will read the chapter and check that the contents are in-line with the overall context of the handbook and sufficient to get someone started on the topic.</p>
+<p>When your pull request is accepted and merged into master, the <code>github actions</code> workflow will kick in and rebuild the book with your new material.</p>
+</div>
+<div id="modifying-chapters" class="section level2">
+<h2><span class="header-section-number">1.6</span> Modifying chapters</h2>
+<p>If you are making more than minor edits to the handbook, it is best to follow a branch based workflow as described above. When editing, you do not need to create a new rmd file or add the file name to <code>_bookdown.yaml</code>.</p>
+</div>
+<div id="additional-resources" class="section level2">
+<h2><span class="header-section-number">1.7</span> Additional resources</h2>
+<ul>
+<li><a href="https://bookdown.org/yihui/bookdown/">Bookdown</a> - Documentation for bookdown</li>
+<li><a href="https://bookdown.org/yihui/rmarkdown/bookdown-start.html">Rmarkdown: The definitive guide</a> - Higher level overview of bookdown</li>
+<li><a href="https://ropensci.org/tags/bookdown/">ROpenSci Bookdown materials</a> - articles from ROpenSci regarding bookdown</li>
+<li><a href="https://happygitwithr.com/bookdown-cheat-sheet.html">Bookdown cheatsheet</a> - Quick reference from happy git with R for bookdown</li>
+<li><a href="https://happygitwithr.com/git-branches.html?q=branch#create-a-new-branch">Happy Git With R: Branches</a> - Overview of how to work with branches in GIT</li>
+<li><a href="https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development">Git strategies</a> - an overview of trunk based git workflows</li>
+</ul>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="2-quickstart-for-computing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -321,7 +407,7 @@ gitbook.start({
 "id": 1
 },
 "edit": {
-"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s",
+"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/contribute-a-chapter.Rmd",
 "text": "Edit this chapter"
 },
 "history": {

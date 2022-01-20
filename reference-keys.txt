@@ -1,3 +1,14 @@
+Contributing
+anatomy-of-a-chapter
+workflow-summary
+for-quick-edits
+adding-a-chapter
+major-edits
+git-based-workflows
+working-with-rmarkdown-in-the-bookdown-framework
+review
+modifying-chapters
+additional-resources
 quickstart-for-computing
 optional
 projects
@@ -10,7 +21,7 @@ package-management-with-renv
 r
 install
 learn
-additional-resources
+additional-resources-1
 eha-team-communication
 install-1
 documentation-and-outputs
@@ -61,7 +72,7 @@ create-and-store-encryption-password-1
 encrypt-the-secret-file
 test-that-you-can-decrypt
 give-the-env-variable-to-services-optional
-additional-resources-1
+additional-resources-2
 google-drive
 google-sheets
 gargle
