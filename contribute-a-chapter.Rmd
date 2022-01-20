@@ -2,8 +2,10 @@
 
 *How do I add or modify a chapter in the EHA M&A Handbook?*
 
+Identify a gap in the handbook, create a branch, write the chapter and then create a pull request.
+
 This handbook is created using the [bookdown](https://bookdown.org/yihui/bookdown/)
-package. `Bookdown` allows you to publish a set of Rmarkdown documents into a book. Each document constitutes a chapter in the book. Chapters are meant to provide sufficient information for a naive reader to gain an understanding of the topic and begin to apply it. Unless the topic is not well covered by outside resources, chapters do not need to cover the topic in depth. 
+package. `Bookdown` allows you to publish a set of Rmarkdown documents into a book. Each document constitutes a chapter in the book. 
 
 This chapter assumes an introductory level understanding of git. See the chapter on [git](#versionControl) to learn more.
 
@@ -16,18 +18,39 @@ This chapter assumes an introductory level understanding of git. See the chapter
 
 ## Workflow Summary
 
+### For quick edits
+
+0) Click the edit button (<i class="fa fa-edit"></i>) at the top of the page
+1) Modify the chapter
+2) Commit the changes to master
+
+**These changes will be immediately reflected in the handbook!**. If you would like someone else to review them, commit the changes to a branch then open a pull request. 
+
+### Adding a chapter
+
 0) Clone the [repo](https://github.com/ecohealthalliance/eha-ma-handbook)
 1) Create a branch off of main/master for your chapter
-2) Start a new Rmarkdown document 
-3) Add content to RMD `
+2) Start a new Rmarkdown document with `rmarkdown::draft("my-chapter.Rmd",template = "EHA-MA-Chapter",package = "ehastyle")` 
+3) Add content to RMD 
 4) Add chapter to `_bookdown.yml`
 5) Preview chapter with `bookdown::preview_chapter("my-chapter.Rmd")`
 6) Create a pull request into main/master
 7) Revise and resubmit
 
+
+### Major edits
+
+0) Clone the [repo](https://github.com/ecohealthalliance/eha-ma-handbook)
+1) Create a branch off of main/master for your edits
+2) Edit Rmarkdown document 
+5) Preview chapter with `bookdown::preview_chapter("my-chapter.Rmd")`
+6) Create a pull request into main/master
+7) Revise and resubmit
+
+
 ## Git based workflows
 
-This handbook is generated via github actions. Whenever a change is made to the master branch, the book is re-compiled and published to this webpage. Because of that, its important that we are creating new chapters using branches in git as any changes to master will be added before review. 
+This handbook is generated via github actions. Whenever a change is made to the master branch, the book is re-compiled and published to this webpage. Because of that, its important that we are creating new chapters using branches in git as **any changes to master will be added before review**. 
 
 To create a branch use `git checkout -b feature/my-chapter` then use `git push -u origin feature/my-chapter` to track it on github. This will create a branch off of master and push it to the repository.
 
@@ -47,7 +70,9 @@ remotes::install_github("ecohealthalliance/ehastyle")
 rmarkdown::draft("my-chapter.Rmd",template = "EHA-MA-Chapter",package = "ehastyle")
 ```
 
-This will generate a markdown document with a rough outline of a chapter structure and an overview of the workflow. After you have created the rmd, you can add it to the `_bookdown.yaml`. You can now use `bookdown::preview_chapter("my-chapter.Rmd")` to make sure that your chapter has rendered properly. By specifying your chapter, you avoid rendering the entire book. 
+This will generate a markdown document with a rough outline of a chapter structure and an overview of the workflow. After you have created the rmd, you can add it to the `_bookdown.yaml`. The chapters are rendered in order based on the `_bookdown.yaml` file so try to place your chapter near related content.  
+
+You can now use `bookdown::preview_chapter("my-chapter.Rmd")` to make sure that your chapter has rendered properly. By specifying your chapter, you avoid rendering the entire book. 
 
 ## Review
 
@@ -57,7 +82,7 @@ When your pull request is accepted and merged into master, the `github actions` 
 
 ## Modifying chapters
 
-If you are making more than minor edits to the handbook, it is best to follow a branch based workflow as described above. Obviously, you do not need to create a new rmd file or add the file name to  `_bookdown.yaml`. 
+If you are making more than minor edits to the handbook, it is best to follow a branch based workflow as described above. When editing, you do not need to create a new rmd file or add the file name to  `_bookdown.yaml`.
 
 ## Additional resources
 
@@ -67,15 +92,3 @@ If you are making more than minor edits to the handbook, it is best to follow a 
 - [Bookdown cheatsheet](https://happygitwithr.com/bookdown-cheat-sheet.html) - Quick reference from happy git with R for bookdown
 - [Happy Git With R: Branches](https://happygitwithr.com/git-branches.html?q=branch#create-a-new-branch) -  Overview of how to work with branches in GIT
 - [Git strategies](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development) - an overview of trunk based git workflows
-
-
-
-
-
-
-
-
-
-
-
-
