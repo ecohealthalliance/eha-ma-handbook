@@ -97,7 +97,7 @@ your keys to maximum trust level.
 
 ### Set the text entry for gpg 
 
-A common source of errors is that the text entry for `gpg` isn't set properly. You can fix this by setting the `GPG_TTY` environment variable like so:
+A common source of errors is that the text entry for `gpg` isn't set properly. This means that `gpg` and your terminal aren't speaking the same language. You can fix this by setting the `GPG_TTY` environment variable like so:
 
     export GPG_TTY=$(tty)
     
