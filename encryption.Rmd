@@ -117,6 +117,12 @@ export GPG_TTY=$(tty)
 
 ```
 
+Or do it in one line with
+
+```
+echo "export GPG_TTY=$(tty)" >> ~/.zshrc && source ~/.zshrc
+```
+
 
 ### Also import your keys to the EHA server
 
