@@ -113,7 +113,7 @@ nano .zshrc
 export GPG_TTY=$(tty)
 
 # press Ctrl-O to write ("write-Out"), then follow prompts to save
-# press control x to exit
+# press Ctrl-X to exit
 
 ```
 
