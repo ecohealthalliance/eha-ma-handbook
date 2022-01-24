@@ -43,7 +43,17 @@ command line tools.
 
 `gpg` is the program that implements encryption, and `git-crypt` sets up git
 repos for encrypted sharing.  These are already installed on EHA servers.  To install
-them on a mac, use `homebrew`.  You should also install `pinentry`.
+them on a mac, use [`homebrew`](https://docs.brew.sh/Installation). You should also install `pinentry`.
+
+```
+# In Terminal 
+## homebrew automatically updates when you run it so if you haven't used it in a
+## while there may be a somewhat lengthy update
+
+brew install gpg
+brew install pinentry
+brew install git-crypt
+```
 
 For Windows there are two alternative approaches. The first is to utilize the Windows Subsystem for Linux (WSL). This method requires Windows 10. For more information on using the WSL see this [guide](https://docs.microsoft.com/en-us/windows/wsl/install). After that all the necessary packages can be installed through the terminal using something like
  
@@ -71,7 +81,7 @@ The guide also helps set up using your key to sign GitHub commits, which you
 should do for added security.
 
 Do create a password associated with your keys when asked.  You can store
-this in a service such as LastPass if desired.
+this in a service such as LastPass or BitWarden if desired.
 
 At this point you can go to your Keybase account and verify your keys via as
 many other services, devices, or online identities as you want.  We suggest
@@ -83,6 +93,35 @@ a secure location.
 If you have a Keybase account set and keys already generated, you can now import
 your Keybase keys to use.  Instruction are found [here](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/). Do set
 your keys to maximum trust level.
+
+
+### Set the text entry for gpg 
+
+A common source of errors is that the text entry for `gpg` isn't set properly. This means that `gpg` and your terminal aren't speaking the same language. You can fix this by setting the `GPG_TTY` environment variable like so:
+
+    export GPG_TTY=$(tty)
+    
+Adding this to your `.profile`, `.bashrc`, `.zshrc` or other settings files prevents
+having to run the command when you use git-crypt or sign commits. Use your favorite text editor (nano, vim, etc) to modify the settings file:
+
+```
+# on a mac in terminal
+nano .zshrc
+
+# in the nano editor
+
+export GPG_TTY=$(tty)
+
+# press Ctrl-O to write ("write-Out"), then follow prompts to save
+# press Ctrl-X to exit
+
+```
+
+Or do it in one line with
+
+```
+echo "export GPG_TTY=$(tty)" >> ~/.zshrc && source ~/.zshrc
+```
 
 
 ### Also import your keys to the EHA server
@@ -107,9 +146,59 @@ is fine - it means the program is just using default behavior.
 ### Use git-crypt
 
 The [`git-crypt` README](https://github.com/AGWA/git-crypt) outlines the basics
-of using `git-crypt` to add encrypted files to a git repository.  If you are
-using an encrypted repository someone else set up, they should have added your
-public key to the repo, and all you need to do after pulling/cloning is run
+of using `git-crypt` to add encrypted files to a git repository.
+
+To add contributors with access to the encrypted files in a repository, you first
+have to add their public key to your keychain. Visit their Keybase profiles (e.g., <https://keybase.io/noamross>) and click on the key - it will show several ways 
+to import the keys.
+
+```
+# curl + gpg pro tip: import noamross's keys
+curl https://keybase.io/noamross/pgp_keys.asc | gpg --import
+
+# the Keybase app can push to gpg keychain, too
+keybase pgp pull noamross
+```
+
+Edit the key so that it has sufficient trust levels
+
+```
+# in terminal
+## list keys 
+
+gpg --list-keys
+
+# edit the key you want to add to your repo so that it has sufficient trust levels
+
+gpg --edit-keys 4A1653E6FDB48C85EC4702B9E7B170AD3B19DAA4
+
+# you will now be in the key editor
+
+trust
+
+# select 5, ultimate 
+
+5
+
+# exit the key editor
+
+quit
+
+## add the person to your git repo (make sure you're in the right directory)
+## this will automatically commit changes to your repo
+
+git crypt add-gpg-user 4A1653E6FDB48C85EC4702B9E7B170AD3B19DAA4
+
+# push changes to remote (github)
+
+git push
+
+```
+
+Make sure your public key has been added to the repository. To do this, check the 
+`.git-crypt/keys/default/0` folder in the repo for your public key. 
+
+After pulling/cloning run
 
     git-crypt unlock
     
@@ -121,8 +210,6 @@ or powershell and entering
 
   `git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"`
 
-One key area missing is how to import the public keys of your team members to
-your local keychain. Visit their Keybase profiles (e.g., <https://keybase.io/noamross>) and click on the key - it will show several ways to import the keys.
 
 Another common source of errors is that the text entry for `gpg` isn't set properly. You can fix this by setting the `GPG_TTY` environment variable like so:
 
@@ -143,7 +230,8 @@ If `git-crypt unlock` still fails, try the following steps
 If you are using continuous integration on a repository with encrypted files,
 you'll need to provide a way for the CI system to unlock them.  An easy, but
 not _most_ secure way is to provide a _symmetric key_.  You can generate
-this by running this in your project directory.
+this by running this in your project directory. This key can always be regenerated
+so do NOT commit it to your repository. 
 
     git-crypt export-key git_crypt_key.key
 
@@ -155,6 +243,10 @@ you'll need to convert it to base64 first.  So run something like:
 
 to convert this file to base64 data, then paste it in your CI system's environment
 variable field as something like `GIT_CRYPT_KEY64`.
+
+The key can now be removed from your system.
+
+    rm git_crypt_key.key
 
 To use the key later, you'll need (1) `git-crypt` and `gpg` installed in the CI
 system image, and (2) to run these commands after the CI clones your repository:
