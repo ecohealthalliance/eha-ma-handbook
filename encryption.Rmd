@@ -224,7 +224,8 @@ If `git-crypt unlock` still fails, try the following steps
 If you are using continuous integration on a repository with encrypted files,
 you'll need to provide a way for the CI system to unlock them.  An easy, but
 not _most_ secure way is to provide a _symmetric key_.  You can generate
-this by running this in your project directory.
+this by running this in your project directory. This key can always be regenerated
+so do NOT commit it to your repository. 
 
     git-crypt export-key git_crypt_key.key
 
@@ -236,6 +237,10 @@ you'll need to convert it to base64 first.  So run something like:
 
 to convert this file to base64 data, then paste it in your CI system's environment
 variable field as something like `GIT_CRYPT_KEY64`.
+
+The key can now be removed from your system.
+
+    rm git_crypt_key.key
 
 To use the key later, you'll need (1) `git-crypt` and `gpg` installed in the CI
 system image, and (2) to run these commands after the CI clones your repository:
