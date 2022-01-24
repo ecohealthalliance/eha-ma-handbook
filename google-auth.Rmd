@@ -1,12 +1,14 @@
 # Google Authorization and R
 
+**IMPORTANT** DO NOT ADD SENSITIVE FILES TO A GITHUB REPO UNTIL THEY ARE ENCRYPTED!
+
 EcoHealth Alliance sometimes uses Google Drive, and Google Sheets in particular, to store and collaborate on data. Working with Google Drive-based files in R is relatively painless thanks to the [`googledrive`](https://googledrive.tidyverse.org/), [`googlesheets4`](https://googlesheets4.tidyverse.org/index.html), and [`gargle`](https://gargle.r-lib.org/index.html) packages.
 
 What is less straightforward is working with drive based files without having to manually authenticate your identity. In this chapter, we will walk through the process of creating credentials with API access that can be used in your R project or package. Ultimately, this could allow you to fully automate your Google-centric data pipelines.
 
 ## The basic overview:
 
-0)  Create or store something (sheet, csv, doc, etc.) in Google drive
+0) Create or store something (sheet, csv, doc, etc.) in Google drive
 1)  Create a *Google Cloud project* to manage Google services\
 2)  Enable the appropriate APIs for the project so it can access things like Drive and Sheets.
 3)  Create a *service account* so that you can access the APIs via credentials from R
@@ -20,19 +22,85 @@ What is less straightforward is working with drive based files without having to
 -   **Authorization** - Permits an entity to do something
     -   **Auth** - shorthand for authentication or authorization
 -   **Key** or **Token**- Computer-generated credentials that allow for authorization and authentication. In the R-Google universe *key* and *token* are synonyms, though not all services use this way, at at times okens and keys are communicated over the web using different method. You will see these terms used interchangeably in tutorials.
--   **Symmetric encryption** - A type of encryption that uses a singlekey to encrypt and decrypt an object
+-   **Symmetric encryption** - A type of encryption that uses a single key to encrypt and decrypt an object
+-   **Asymmetric encryption** -  A type of encryption that uses public and private keys to encrypt and decrypt an object
 -   **Environment variable** - A value stored in a computer's *system environment*. In R, this generally means values stored in the `.Renviron` file, which can be brought into your project using `Sys.getenv("Variable_Name")` and are very useful for storing sensitive information like tokens and keys.
 -   **Service** - Functionality provided by another system i.e. serving data via an API.
 -   **GCP** - Google cloud platform. Web services from Google.
 
 ## Before we start:
 
-*Note*: This is one workflow for encryption. An alternative approach useful for complex projects uses `git-crypt` instead. See chapter \@ref(encryption) for more on `git-crypt`.
+*Note*: The preferred method for adding encryption to projects is via `git-crypt`. See chapter \@ref(encryption) for more on `git-crypt`. 
+
 
 *Credit*: This chapter largely follows the\
 [non-interactive auth vignette from the Gargle R package](https://gargle.r-lib.org/articles/non-interactive-auth.html), but diverges for package and non-package focused projects.
 
 *What about Billing?*: Good question. This is not an issue for Google Sheets or Drive APIs but you do need a linked billing account for BigQuery and Maps APIs. If you're new to GCP as of 29 Sept 2021 you get \$300 of credits in the Free Tier. If you use the \$300 in credits GCP will ask for consent before billing. Check with the Data Librarian about using and billing arrangements beyond this.
+
+## Setup encryption tools on your machine
+
+ See chapter \@ref(encryption). This process will take ~30 mins and involves using the command line. 
+ 
+ 
+## Enable git-crypt on your repository 
+
+Enabling git-crypt requires that your code be stored in a git-backed repository. See chapter \@ref(Version Control, Git and Github) for setting up git repos. 
+
+Enabling `git-crypt` happens from the command line. You can access the [command line directly in Rstudio](https://support.rstudio.com/hc/en-us/articles/115010737148-Using-the-RStudio-Terminal-in-the-RStudio-IDE). If you use rstudio projects and the command line in Rstudio, then the terminal should open in the repo you want to encrypt. 
+
+
+In the command line run: 
+
+```
+# check that you are in the directory with the repo
+pwd 
+## /Users/MyName/Documents/repo-i-want-to-encrypt
+
+# if you're in the wrong directory, use cd to navigate to the correct repo
+# cd ./path/to/repo-i-want-to-encrypt
+
+git-crypt init
+
+```
+
+Next you want to tell git-crypt which files should be encrypted. To do this create a file in the top level directory of your repo called `.gitattributes`. Here you will list the files and folders you would like to encrypt. Each item should be placed a on separate line. To learn more about pattern matching in the `.gitattributes` file, see the [read.me](https://github.com/AGWA/git-crypt#gitattributes-file) and [`.gitignore` manual](https://git-scm.com/docs/gitignore#_pattern_format)
+
+
+```
+.env filter=git-crypt diff=git-crypt
+auth/** filter=git-crypt diff=git-crypt
+.gitattributes !filter !diff
+
+```
+
+The `.env` file will be used to store environment variables and the `auth/` folder will be used to store keys. Do NOT encrypt the `.gitattributes` file. It maybe a good idea to add your google auth key explicitly to the `.gitattributes` file using this format `**/mySecretKey.json` so that the key is encrypted independent of the directory it is in. 
+
+Next add yourself and other users who will require access to the encrypted files to the repo. The \@ref(encryption) section of the handbook details 
+how to add contributors to the repo. 
+
+Finally, you will have to setup a symmetric key for github actions to use. 
+
+In the command line run: 
+
+```
+# create the symmetic key
+git-crypt export-key git_crypt_key.key
+
+# convert it from binary to bas64 so github can use it
+# the file's contents can now be pasted into a github secrety environment variable
+cat git_crypt_key.key | base64 | pbcopy
+
+```
+
+Paste the key into [Github's secret environment variable field](https://docs.github.com/en/actions/security-guides/encrypted-secrets) as `GIT_CRYPT_KEY64`. 
+
+
+
+
+
+
+
 
 ## Setting up non-interactive authentication for Google sheets
 
