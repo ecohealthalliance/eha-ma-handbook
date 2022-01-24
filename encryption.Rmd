@@ -51,6 +51,7 @@ them on a mac, use [`homebrew`](https://docs.brew.sh/Installation). You should a
 ## while there may be a somewhat lengthy update
 
 brew install gpg
+brew install pinentry
 brew install git-crypt
 ```
 
