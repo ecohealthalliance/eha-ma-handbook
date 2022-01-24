@@ -112,6 +112,9 @@ nano .zshrc
 
 export GPG_TTY=$(tty)
 
+# press control o to write, then follow prompts to save
+# press control x to exit
+
 ```
 
 
