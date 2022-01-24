@@ -81,6 +81,7 @@ set-up-keybase
 install-gpg-and-git-crypt
 create-your-keybase-keys
 import-your-keys-to-your-local-keychain
+set-the-text-entry-for-gpg
 also-import-your-keys-to-the-eha-server
 use-git-crypt
 extra-use-a-symmetric-key-for-automated-processes
