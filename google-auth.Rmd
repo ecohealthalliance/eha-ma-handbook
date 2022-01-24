@@ -80,7 +80,7 @@ The `.env` file will be used to store environment variables and the `auth/` fold
 Next add yourself and other users who will require access to the encrypted files to the repo. The encryption chapter \@ref(encryption) in the handbook details 
 how to add contributors to the repo. 
 
-Finally, you will have to setup a symmetric key for github actions to use. This key can always be regenerated so there is no reason to store it.
+Finally, you will have to set up a symmetric key for github actions to use. This key can always be regenerated so there is no reason to store it.
 
 First, add the git-crypt key to your `.gitignore` so you don't accidentally commit it to the repo. 
 
