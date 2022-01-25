@@ -1,0 +1,56 @@
+# Airtable {#airtable}
+
+This chapter will provide an overview of Airtable and good practices for designing data models in relational databases. 
+
+## Key Terms
+
+- Workspace - A collection of bases that a user has access to.
+- Base - A database. Each is identified by the airtable API via a `base id` 
+- Table - A tabular data set within a base. Each table is identified by the airtable API via the name of the table e.g. "Demo Table"
+- Record - An individual cell within a table. Each record is identified by the airtable API via a `record id`
+- Views - a specific way of displaying a table. Default is grid. 
+
+## What is Airtable?
+
+## When should I use Airtable vs a spreadsheet? 
+
+## Is Airtable Secure?
+
+## Importing data
+
+## Using the API
+
+## Automating Airtable
+
+## Airtable and R
+
+## Base Design Process
+
+### Workflow Summary
+
+0) Describe what the database will do and collect use cases
+1) Determine the roles of various stakeholders
+1) List out the entities in the database and define their properties
+2) Map out how  the entities fit together (which properties link them)
+3) Check that the mapping meets the use cases
+4) Build base in Airtable
+5) Check that the base meets the use cases
+
+## Main content
+
+This is how we answered the question...
+
+### Section 1
+
+### Section 2
+
+### Section N
+
+## Additional Resources
+
+To learn more about the topic, check out these resources
+
+- Resource 1 - short description of linked resource
+- Resource N - short description of linked resource
+
+
