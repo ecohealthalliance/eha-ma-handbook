@@ -1,12 +1,14 @@
 # Google Authorization and R
 
+**IMPORTANT** DO NOT ADD SENSITIVE FILES TO A GITHUB REPO UNTIL THEY ARE ENCRYPTED!
+
 EcoHealth Alliance sometimes uses Google Drive, and Google Sheets in particular, to store and collaborate on data. Working with Google Drive-based files in R is relatively painless thanks to the [`googledrive`](https://googledrive.tidyverse.org/), [`googlesheets4`](https://googlesheets4.tidyverse.org/index.html), and [`gargle`](https://gargle.r-lib.org/index.html) packages.
 
 What is less straightforward is working with drive based files without having to manually authenticate your identity. In this chapter, we will walk through the process of creating credentials with API access that can be used in your R project or package. Ultimately, this could allow you to fully automate your Google-centric data pipelines.
 
 ## The basic overview:
 
-0)  Create or store something (sheet, csv, doc, etc.) in Google drive
+0) Create or store something (sheet, csv, doc, etc.) in Google drive
 1)  Create a *Google Cloud project* to manage Google services\
 2)  Enable the appropriate APIs for the project so it can access things like Drive and Sheets.
 3)  Create a *service account* so that you can access the APIs via credentials from R
@@ -20,23 +22,106 @@ What is less straightforward is working with drive based files without having to
 -   **Authorization** - Permits an entity to do something
     -   **Auth** - shorthand for authentication or authorization
 -   **Key** or **Token**- Computer-generated credentials that allow for authorization and authentication. In the R-Google universe *key* and *token* are synonyms, though not all services use this way, at at times okens and keys are communicated over the web using different method. You will see these terms used interchangeably in tutorials.
--   **Symmetric encryption** - A type of encryption that uses a singlekey to encrypt and decrypt an object
+-   **Symmetric encryption** - A type of encryption that uses a single key to encrypt and decrypt an object
+-   **Asymmetric encryption** -  A type of encryption that uses public and private keys to encrypt and decrypt an object
 -   **Environment variable** - A value stored in a computer's *system environment*. In R, this generally means values stored in the `.Renviron` file, which can be brought into your project using `Sys.getenv("Variable_Name")` and are very useful for storing sensitive information like tokens and keys.
 -   **Service** - Functionality provided by another system i.e. serving data via an API.
 -   **GCP** - Google cloud platform. Web services from Google.
 
 ## Before we start:
 
-*Note*: This is one workflow for encryption. An alternative approach useful for complex projects uses `git-crypt` instead. See chapter \@ref(encryption) for more on `git-crypt`.
+*Note*: The preferred method for adding encryption to projects is via `git-crypt`. See chapter \@ref(encryption) for more on `git-crypt`. 
+
 
 *Credit*: This chapter largely follows the\
 [non-interactive auth vignette from the Gargle R package](https://gargle.r-lib.org/articles/non-interactive-auth.html), but diverges for package and non-package focused projects.
 
 *What about Billing?*: Good question. This is not an issue for Google Sheets or Drive APIs but you do need a linked billing account for BigQuery and Maps APIs. If you're new to GCP as of 29 Sept 2021 you get \$300 of credits in the Free Tier. If you use the \$300 in credits GCP will ask for consent before billing. Check with the Data Librarian about using and billing arrangements beyond this.
 
+## Setup encryption tools on your machine
+
+ See chapter \@ref(encryption). This process will take ~30 mins and involves using the command line. 
+ 
+ 
+## Enable git-crypt on your repository 
+
+Enabling git-crypt requires your code to be stored in a git-backed repository. See chapter \@ref(versioning) for setting up git repositories. 
+
+Enabling `git-crypt` happens from the command line. You can access the [command line directly in Rstudio](https://support.rstudio.com/hc/en-us/articles/115010737148-Using-the-RStudio-Terminal-in-the-RStudio-IDE). If you use rstudio projects and the command line in Rstudio, then the terminal should open in the repo you want to encrypt. 
+
+
+In the command line run: 
+
+```
+# check that you are in the directory with the repo
+pwd 
+## /path/to/repo-i-want-to-encrypt
+
+# if you're in the wrong directory, use cd to navigate to the correct repo
+# cd /path/to/repo-i-want-to-encrypt
+
+git-crypt init
+
+```
+
+Next you want to tell git-crypt which files should be encrypted. To do this, create a file in the top level directory of your repo called `.gitattributes`. Here you will list the files and folders you would like to encrypt. Each item should be placed a on separate line. To learn more about pattern matching in the `.gitattributes` file, see the [git-crypt read.me](https://github.com/AGWA/git-crypt#gitattributes-file) and [gitignore manual](https://git-scm.com/docs/gitignore#_pattern_format)
+
+Your `.gitattributes` file might look something like this:
+
+```
+.env filter=git-crypt diff=git-crypt
+auth/** filter=git-crypt diff=git-crypt
+.gitattributes !filter !diff
+
+```
+
+The `.env` file will be used to store environment variables and the `auth/` folder will be used to store keys. Do NOT encrypt the `.gitattributes` file. It maybe a good idea to add your google auth key explicitly to the `.gitattributes` file using this format `**/mySecretKey.json` so that the key is encrypted independent of the directory it is in. 
+
+Next add yourself and other users who will require access to the encrypted files to the repo. The encryption chapter \@ref(encryption) in the handbook details 
+how to add contributors to the repo. 
+
+Finally, you will have to set up a symmetric key for github actions to use. This key can always be regenerated so there is no reason to store it.
+
+First, add the git-crypt key to your `.gitignore` so you don't accidentally commit it to the repo. 
+
+```
+.Rproj.user
+.Rhistory
+.Rdata
+.httr-oauth
+.DS_Store
+inst/.DS_Store
+git_crypt_key.key
+
+```
+
+In the command line run: 
+
+```
+# create the symmetic key
+git-crypt export-key git_crypt_key.key
+
+# convert it from binary to bas64 so github can use it
+# the file's contents can now be pasted into a github secret
+# environment variable
+cat git_crypt_key.key | base64 | pbcopy
+
+```
+
+Paste the key into [Github's secret environment variable field](https://docs.github.com/en/actions/security-guides/encrypted-secrets) as `GIT_CRYPT_KEY64`. 
+
+Now delete the key file:
+```
+# doesn't have to be done in terminal but you've already got it open
+rm -i git_crypt_key.key
+```
+
+You have now setup asymmetric encryption for human users and symmetric encryption for automations. The next steps involve getting the files you want to encrypt.
+
+
 ## Setting up non-interactive authentication for Google sheets
 
-In this chapter, we will walk through setting up credentials that can be used in R to access Google sheets without manual authentication. To achieve non-interactive authorization, we want to either provide a *token* directly to a service or make a token discoverable for a service. A token is essentially a long password, designed to be exchanged by machines but too long and complexly formatted to be used by people, and often time-limited. Remember that tokens, secrets, and API keys should be stored in a secure fashion (NOT stored in the text of your code or in unencrypted files).
+In this section, we will walk through setting up credentials that can be used in R to access Google sheets without manual authentication. To achieve non-interactive authorization, we want to either provide a *token* directly to a service or make a token discoverable for a service. A token is essentially a long password, designed to be exchanged by machines but too long and complexly formatted to be used by people, and often time-limited. Remember that tokens, secrets, and API keys should be stored in a secure fashion (NOT stored in the text of your code or in unencrypted files).
 
 We are going to follow the recommended (as of 29 September 2021) strategy of providing a *service account key* directly to handle authorization. A newer approach called "workload identity federation" exists as of writing but is not fully implemented in the `gargle` package.
 
@@ -84,7 +169,7 @@ Keys for Google service accounts are stored in JSON files. Remember that this ke
 
 -   Click on the keys tab, then click on **ADD KEY** ![gcp_add_key](./assets/gcp_add_key.png)
 
--   Select create new key and download the JSON file. **WARNING:** Do not store this unencrypted key in a shared location (Dropbox, Google Drive, folder connected to a git repository). ![gcp_get_key](./assets/gcp_get_key.png)
+-   Select create new key and download the JSON file. **WARNING:** Do not store this unencrypted key in a shared location (Dropbox, Google Drive, folder connected to a git repository). If you are using the `git-crypt` workflow, add the file to the "./auth" folder in your project's working directory. ![gcp_get_key](./assets/gcp_get_key.png)
 
 -   You should now see that there is an active key associated with your service account in the GCP project.
 
@@ -99,14 +184,18 @@ This workflow uses the relatively simple approach of symmetric encryption to sec
 
 1)  Unencrypted files storing keys for the Google service account should NOT be stored in shared or public locations (Drive, Dropbox, Github Repo)
     -   If possible store in an encrypted volume. Keybase, Bitwarden, and other credential management storage systems generally allow you to store files in an encrypted manner.
-2)  Files storing keys for the Google service account only ever enter the project working directory after being encrypted
-3)  Encryption keys or the passwords used to generate keys are stored as environment variables and retrieved from `.Renviron`, never hard-coded into scripts.
+2)  Files storing keys for the Google service account only ever enter the project working directory after being encrypted or after git-crypt has been initiated and the file is included in the `.gitattributes` file or stored in an encrypted folder like `./auth`.
+3)  For the sodium based work flow, encryption keys or the passwords used to generate keys are stored as environment variables and retrieved from `.Renviron`, never hard-coded into scripts.
 
 Skip ahead to [Securely managing your keys for packages](#securely-managing-your-keys-for-packages) if you are using the key in a project that produces a package.
 
 ### Provide a service account key for projects
 
-Now you have a secret key for the service account and need to securely access it in an R project. We can use the `sodium` and `gargle` packages to encrypt the JSON file that stores our key, safely store the encrypted file in the R project, and securely store the encryption key as an environment variable. If additional files or data require encryption it is recommended that use the `git-crypt` approached described in chapter \@ref(encryption).
+Now you have a secret key for the service account and need to securely access it in an R project. 
+
+If you setup `git-crypt`, make sure the file is saved in an appropriate location (e.g. `./auth`) and that all the user who need to use the encrypted file are added to the repo. If you used `git-crypt`, you can skip ahead to [Run your code using encrypted keys](#run-your-code-using-encrypted-keys).  
+
+Alternatively, we can use the `sodium` and `gargle` packages to encrypt the JSON file that stores our key, safely store the encrypted file in the R project, and securely store the encryption key as an environment variable. *This workflow is retained in the handbook but is not preferred and will be removed once the project that used it is fully transitioned to a git-crypt workflow.* 
 
 This section was inspired by the workflow described in [ROpenSci:Security](https://books.ropensci.org/http-testing/security-chapter.html) with additional information from the [sodium vignette](https://cran.r-project.org/web/packages/sodium/vignettes/intro.html) and [gargle vignette](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html).
 
@@ -209,7 +298,17 @@ saveRDS(cipher, "./inst/tokens/service_account_key.rds")
 
 #### Run your code using encrypted keys
 
-In the code that reads in data from Google, decrypt the credentials then pass them to Google using the `gs4_auth` function:
+For `git-crypt` users, the file will already be decrypted on your machine. If it isn't, run `git-crypt unlock` in the terminal. If that does not work double check that your public key has been added to the repo.  
+
+```{r eval=FALSE}
+
+jsonChar <- readr::read_file("./auth/myKey.json")
+
+googlesheets4::gs4_auth(path = jsonChar)
+
+```
+
+For sodium users, decrypt the credentials then pass them to Google using the `gs4_auth` function:
 
 ```{r eval=FALSE}
 library(googlesheets4)
@@ -248,7 +347,7 @@ See documentation here:
 
 ### Securely managing your keys for Packages {#securely-managing-your-keys-for-packages}
 
-You can make your secret service account ky accessible to your R package. We will use the `sodium` package as well as functions in `gargle` to encrypt the JSON file that stores the key and securely store the *encryption* key as an environment variable. Notice that we are using the `:::` operator in function calls. See [this article](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) for more details.
+You can make your secret service account key accessible to your R package. We will use the `sodium` package as well as functions in `gargle` to encrypt the JSON file that stores the key and securely store the *encryption* key as an environment variable. Notice that we are using the `:::` operator in function calls. See [this article](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) for more details.
 
 #### Create and store encryption password
 
