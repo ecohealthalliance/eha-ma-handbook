@@ -7,7 +7,7 @@
     limit its use to that, and organize your data in a way that can be easily
     exported.
 -   Metadata! Metadata! Document your data.
--   For relational datasets you can create linked data on [Airtable](https://airtable.com/)
+-   For relational datasets you can create linked data on [Airtable](https://airtable.com/). For more information see \@ref(airtable)
 -   For data sets that cross multiple projects, create data-only project folders
     for the master version. When these data sets are finalized, they can be
     deposited in public or private data repositories such as
