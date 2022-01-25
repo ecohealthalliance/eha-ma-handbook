@@ -31,7 +31,7 @@ library
 data-management
 learn-2
 install-3
-version-control-git-and-github
+versioning
 learn-3
 install-4
 reviewing-analyses-and-code
@@ -53,6 +53,8 @@ google-authorization-and-r
 the-basic-overview
 key-terms
 before-we-start
+setup-encryption-tools-on-your-machine
+enable-git-crypt-on-your-repository
 setting-up-non-interactive-authentication-for-google-sheets
 create-a-google-cloud-platform-project
 enable-apis
