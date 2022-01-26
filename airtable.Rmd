@@ -4,13 +4,13 @@ This chapter will provide an overview of Airtable and good practices for designi
 
 ## Key Terms
 
-- **Workspace** - A collection of bases that a user has access to.
+- **Workspace** - A collection of bases
 - **Base** - A database. Each is identified by the airtable API via a `base id` 
-- **Table** - A tabular data set within a base. Each table is identified by the airtable API via the name of the table e.g. "Demo Table"
-- **Record** - An individual cell within a table. Each record is identified by the airtable API via a `record id`
+- **Table** - A tabular data set within a base. Each table is identified by the Airtable API via the name of the table e.g. "Demo Table"
+- **Record** - An individual cell within a table. Each record is identified by the Airtable API via a `record id`
 - **Field** - A property of data in a table 
 - **Views** - A specific way of displaying a table. Default is grid. 
-- **Entity** - Something that either physically or logically exists whose properties are typically stored in a table and composed of data elements (a table).
+- **Entity** - Something that either physically or logically exists whose properties are typically stored in a table and composed of data elements.
 - **Element** - an attribute of a Entity (a field)
 
 ## What is Airtable?
@@ -23,6 +23,7 @@ Use Airtable when you would have multiple tabs in a spreadsheet, when you have h
 
 **Project Management**  
 Because Airtable is extremely useful and user friendly, there are a plethora of pre-built templates for nearly an project management type task.  
+
 - [Airtable Templates](https://www.airtable.com/templates)  
 - [User Contributed Templates](https://www.airtable.com/universe)  
 
@@ -32,12 +33,12 @@ For example, the computational sciences team has had success using  Airtable for
 Airtable shines when you have multiple data entities that are linked via common data elements. For example, if you are sampling bats then conducting antibody screening, running multiplex PCR, and keeping physical samples of blood and urine from those bats, you have multiple data entities (bats, antibody test results, pcr test results, and physical samples) that are all linked via common data elements like site and collector.
 What is more, the test results depend on the physical samples and the physical samples depend on the bats. Those common data elements only need to be entered into a single entity (or table) then shared across the other entities in your base using linked elements. Once you have linked elements you no longer have to worry about updating the same piece of information in multiple locations and you can quickly navigate between entities and understand hierarchical relationships. 
 
-```{r diagram, echo=FALSE, fig.height=8, fig.cap="Data model for bat sampling example."}
+```{r bat-data, echo=FALSE, fig.height=8, fig.cap="Data model for bat sampling example."}
 DiagrammeR::grViz("
 digraph bat_sampling {
 
   # a 'graph' statement
-  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10]
+  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]
 
   # 'node' styling
   node [shape = circle,
@@ -67,7 +68,7 @@ digraph bat_sampling {
  
 }
   
-")
+", height = 200)
 
 ```  
 
@@ -90,7 +91,35 @@ Direct access to a base or workspace is granted or removed by base owners and cr
 To further restrict access to a base, users can be given indirect access via revocable share links. These can be customized to prevent users from seeing the full base, prevent duplicating the base, and prevent copying data from the base. The ability to use the link can be password protected, restricted to people with certain email domains, and may be revoked at any time. If there are concerns about data leaks via base or table duplication, inviting people with a need to view the data via share links constrains their ability to extract data from the base.
 
 
-## Importing data
+## Managing Data
+
+See [Airtable plan comparison](https://support.airtable.com/hc/en-us/articles/115010928147-Airtable-plans) for more information on the size of bases and features available. Information in this section pertains to all plans unless specified.  
+
+### Workspaces, Bases, Tables, Views, Fields, Records
+
+Airtable uses workspaces, bases, tables, and fields to manage data. A workspace generally pertains to a particular project and contains all bases relevant to that project. Sharing a workspace with someone allows them to see all bases within that workspace. 
+
+Bases are equivalent to databases. They consist of a set of tables that can be linked and allow you to perform some task (e.g. IRB tracking, capturing research data, etc.). Bases can be duplicated and shared across your workspaces and you can share bases with other users. 
+
+Tables are where most of the action happens. Data is entered in tables, tables can be transformed via views into calendars, dashboards, or galleries, and tables can be manipulated via the API. They describe a data entity and are composed of fields. In the bat sampling example, each circle would be a table in the bat sampling base.
+
+```{r echo=FALSE, fig.height=8, fig.cap="Data model for bat sampling example.", ref.label= "bat-data"}
+```
+
+Fields represent properties of a data entity. In a spreadsheet view, fields are columns. Airtable allows you to control field types (date, number, text, file attachments, logical, etc.) and paid plans allows you to control who can edit fields. Fields can be linked between tables creating links. 
+
+Records are the individual data points in a table. In a spreadsheet they would be the rows. Records are shaped by the structure you have created in tables and fields. Each record has a URL that can be used to access it programatically or share it.    
+
+### Record History and Base Snapshots
+
+Airtable has a robust system for tracking changes to a base. They provide automated revision history for individual records (how long those histories are stored varies by plan). Any comments made in the revision history will be stored for the life of the record (on any plan). The current state of an entire base may be captured through snapshots. Should a systemic issue arise, the base can be restored to a snapshot at a later date. Restoring from a snapshot will remove the revision history for a record but comments on that record will be maintained.   
+
+As revision histories are maintained, "deleted" records may be retrieved.  In the event of the need to permanently remove data, the revision history of the base may be removed. 
+
+
+### Data entry, forms, and importing data
+
+
 
 ## Using the API
 
