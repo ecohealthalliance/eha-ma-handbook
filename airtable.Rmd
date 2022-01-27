@@ -95,7 +95,7 @@ To further restrict access to a base, users can be given indirect access via rev
 
 See [Airtable plan comparison](https://support.airtable.com/hc/en-us/articles/115010928147-Airtable-plans) for more information on the size of bases and features available. Information in this section pertains to all plans unless specified.  
 
-### Workspaces, Bases, Tables, Views, Fields, Records
+### Workspaces, Bases, Tables, Fields, Records
 
 Airtable uses workspaces, bases, tables, and fields to manage data. A workspace generally pertains to a particular project and contains all bases relevant to that project. Sharing a workspace with someone allows them to see all bases within that workspace. 
 
@@ -110,22 +110,78 @@ Fields represent properties of a data entity. In a spreadsheet view, fields are 
 
 Records are the individual data points in a table. In a spreadsheet they would be the rows. Records are shaped by the structure you have created in tables and fields. Each record has a URL that can be used to access it programatically or share it.    
 
-### Record History and Base Snapshots
+### Views
+
+### Record History, Base Snapshots, and Exporting Data
 
 Airtable has a robust system for tracking changes to a base. They provide automated revision history for individual records (how long those histories are stored varies by plan). Any comments made in the revision history will be stored for the life of the record (on any plan). The current state of an entire base may be captured through snapshots. Should a systemic issue arise, the base can be restored to a snapshot at a later date. Restoring from a snapshot will remove the revision history for a record but comments on that record will be maintained.   
 
 As revision histories are maintained, "deleted" records may be retrieved.  In the event of the need to permanently remove data, the revision history of the base may be removed. 
 
+Airtable allows data to be exported as CSVs from individual tables. At this time there is not a supported export function, however
 
-### Data entry, forms, and importing data
-
-
+### Importing data
 
 ## Using the API
 
-## Automating Airtable
+### Airtable and R
 
-## Airtable and R
+#### One to One join
+
+```{r one-to-one}
+library(airtabler)
+
+table1  <-  fetch_all(base = "app49bbyLczZxX9PM",table_name = "One To One")
+
+table2 <- fetch_all(base = "app49bbyLczZxX9PM",table_name = "Table 2")
+
+## Linked records are stored as JSON arrays so they become lists 
+## when part of a data frame. Because each array has a length of 1
+## we can safely unlist the arrays and add them back as to the 
+## data frame.
+
+table1$LinkedRec <- unlist(table1$LinkedRec)
+
+joinedTables <- dplyr::left_join(table1,table2, by = c("LinkedRec"="id"))
+
+recordKey <- joinedTables[c("Name","LinkedRec","Number")]
+
+recordKey
+
+
+```
+
+#### One to Many Join
+
+```{r one-to-many, message=FALSE}
+library(airtabler)
+library(dplyr)
+library(purrr)
+
+oneToMany  <-  fetch_all(base = "app49bbyLczZxX9PM",table_name = "One To Many")
+
+table2 <- fetch_all(base = "app49bbyLczZxX9PM",table_name = "Table 2")
+
+# Depending on how you want to work with the data joins are a 
+# little trickier here. 
+
+## to replace the values but keep the structure
+
+oneToMany$LinkedRecReplace <- purrr::map(oneToMany$LinkedRec, function(x){
+  table2 %>%
+    filter(id %in% x) %>%
+    select(c("id","Number")) %>% 
+    pull("Number")
+})
+
+data.frame(
+  id = unlist(oneToMany$LinkedRec), 
+  label = unlist(oneToMany$LinkedRecReplace)
+)
+
+```
+
+## Automating Airtable
 
 ## Base Design Process
 
