@@ -78,11 +78,11 @@ sudo apt update
 sudo apt install keybase gpg git-crypt
 ```
 
-#### Using Windows: Install the Windows binaries
+#### Using Windows: install binaries
 
-The second method is to install pre-compiled binaries for GPG and git-crypt.
+The second method is to install pre-compiled Windows binaries for GPG and git-crypt.
 
-First 0 A Windows-compatible binary for GPG is available at  <https://gnupg.org/download/>. The 'Simple installer for the current GnuPG' binary on that page is the recommended choice.
+First download a Windows-compatible binary for GPG which can be found (here)<https://gnupg.org/download/>. The 'Simple installer for the current GnuPG' binary on that page is the recommended choice.
 
 Then install git-crypt by via the following steps:
 
