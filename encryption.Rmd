@@ -148,7 +148,7 @@ echo "export GPG_TTY=$(tty)" >> ~/.zshrc && source ~/.zshrc
 
 ### Configure gpg on Windows
 
-Windows need to inform git of the location of the gpg executable. This can be done by opening cmd or PowerShell and entering the following command: 
+Windows needs to inform git of the location of the gpg executable. This can be done by opening cmd or PowerShell and entering the following command: 
 
 ```
 git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"`
