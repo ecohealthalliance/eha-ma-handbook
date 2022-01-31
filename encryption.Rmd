@@ -16,7 +16,7 @@ verify a public key for this purpose.
 
 Instructions for setting this up are below.
 
-### Set up Keybase
+## Set up Keybase
 
 Sign up for [Keybase](https://keybase.io/), and follow the instructions for 
 installing it on your laptop.
@@ -39,11 +39,10 @@ graphical user interface available from the Keybase
 [download page](https://keybase.io/download). This will also install the necessary
 command line tools.
 
-### Install `gpg` and `git-crypt`
+## Install `gpg` and `git-crypt`
 
 `gpg` is the program that implements encryption, and `git-crypt` sets up git
-repos for encrypted sharing.  These are already installed on EHA servers.  To install
-them on a mac, use [`homebrew`](https://docs.brew.sh/Installation). You should also install `pinentry`.
+repos for encrypted sharing.  These are already installed on EHA servers.  To install them on a mac, use [`homebrew`](https://docs.brew.sh/Installation). You should also install `pinentry`.
 
 ```
 # In Terminal 
@@ -55,7 +54,7 @@ brew install pinentry
 brew install git-crypt
 ```
 
-For Windows there are two alternative approaches. The first is to utilize the Windows Subsystem for Linux (WSL). This method requires Windows 10. For more information on using the WSL see this [guide](https://docs.microsoft.com/en-us/windows/wsl/install). After that all the necessary packages can be installed through the terminal using something like
+For Windows there are two alternative approaches. The first is to utilize the Windows Subsystem for Linux (WSL). This method requires Windows 10 or higher. For more information on using the WSL see this [guide](https://docs.microsoft.com/en-us/windows/wsl/install). After that all the necessary packages can be installed through the WSL command line shell using
  
 ```
 sudo apt update
@@ -66,14 +65,14 @@ see the linux installation instructions above for more details.
 
 The second method is to install pre-compiled binaries for GPG and git-crypt. A Windows compatible binary for GPG is available [here](https://gnupg.org/download/). The 'Simple installer for the current GnuPG' binary is the recommended choice.
 
-Then install git-crypt by downloading `git-crypt-windows.zip` available [here](https://github.com/ecohealthalliance/git-crypt/releases/tag/win-release). This may generate the warning 'git-crypt-windows.zip is not commonly downloaded and may be dangerous'. Click the up arrow next to 'Discard' and select 'Keep'. Even after this the download may fail with the message 'Failed - Virus detected'. Do not worry this is a false positive. If this occurs, search for 'Virus & thread protection' in the task bar and click on 'Manage settings' under 'Virus & thread protection settings'. Once there, turn off Real-time protection and try downloading again. Please make sure to turn it back on again when done. Once downloaded, the zip file will then need to be decompressed using a file archive manager such as [PeaZip](https://peazip.github.io/). 
+Then install git-crypt by downloading `git-crypt-windows.zip` available [here](https://github.com/ecohealthalliance/git-crypt/releases/tag/win-release). This may generate the warning 'git-crypt-windows.zip is not commonly downloaded and may be dangerous'. Click the up arrow next to 'Discard' and select 'Keep'. Even after this the download may fail with the message 'Failed - Virus detected'. Do not worry this is a false positive. If this occurs, search for 'Virus & thread protection' in the task bar and click on 'Manage settings' under 'Virus & thread protection settings'. Once there, turn off real-time protection and try downloading again. Please make sure to turn it back on again when done. Once downloaded, the zip file will then need to be decompressed. Open file explorer, navigate to the downloaded zip file and right click it once. In the menu above choose 'Extract all'. This will create a new folder containing `gpg-crypt.exe`.
 
-Now move the resulting .exe file into a folder recognized by the Windows PATH environment variable. A convenient location is `C:\Program Files\Git\cmd\`.
+Now move the resulting `gpg-crypt.exe` into a folder recognized by the Windows PATH environment variable. A convenient location is `C:\Program Files\Git\cmd\`.
 
 Once Keybase and GPG are installed, the terminal commands related to exporting keys from Kebyase
-into GPG do not need to be modified to work in cmd or powershell.
+into GPG are the same regardless of operating system.
 
-### Create your Keybase keys 
+## Create your Keybase keys 
 
 If you are just starting to use Keybase, you can generate new keys for use on
 your computer using [this guide](https://github.com/pstadler/keybase-gpg-github).
@@ -88,20 +87,20 @@ many other services, devices, or online identities as you want.  We suggest
 at least three. It is also a good idea to generate a physical 'paper key' and store it in
 a secure location.
 
-### Import your keys to your local keychain
+## Import your keys to your local keychain
 
 If you have a Keybase account set and keys already generated, you can now import
 your Keybase keys to use.  Instruction are found [here](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/). Do set
 your keys to maximum trust level.
 
 
-### Set the text entry for gpg 
+## Configure gpg
 
-A common source of errors is that the text entry for `gpg` isn't set properly. This means that `gpg` and your terminal aren't speaking the same language. You can fix this by setting the `GPG_TTY` environment variable like so:
+A common source of errors for mac and linux users is that the text entry for `gpg` isn't set properly. This means that `gpg` and your terminal aren't speaking the same language. You can fix this by setting the `GPG_TTY` environment variable like so:
 
     export GPG_TTY=$(tty)
     
-Adding this to your `.profile`, `.bashrc`, `.zshrc` or other settings files prevents
+Windows users can skip this step but will need to make sure git is using the correct version of gpg as outlined below. Adding this to your `.profile`, `.bashrc`, `.zshrc` or other settings files prevents
 having to run the command when you use git-crypt or sign commits. Use your favorite text editor (nano, vim, etc) to modify the settings file:
 
 ```
@@ -117,40 +116,67 @@ export GPG_TTY=$(tty)
 
 ```
 
-Or do it in one line with
+Or do it in one line without needing to invoke a text editor,
 
 ```
 echo "export GPG_TTY=$(tty)" >> ~/.zshrc && source ~/.zshrc
 ```
 
+For Windows users it is first necessary to inform git of the location of the gpg executable. This can be done by opening cmd or powershell and entering the following command. Note that if GnuPG is installed in a different location the command should be altered to reflect this change. Mac and linux users can skip this step.
 
-### Also import your keys to the EHA server
+```
+git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"`
+```
 
-You will probably want the ability to decrypt files when working remotely,
-so place them on the EHA server.  You can do this by copying over your whole
-`gpg` keys directory to the server, like so:
 
-    scp -rp ~/.gnupg url.of.server:
-    
-For Windows users, the above command will work only after installing [PuTTY](https://www.putty.org/),
-enabling Windows 10's [OpenSSH client](https://winaero.com/enable-openssh-client-windows-10/) or through use of the WLS.
-
-Note that the main EHA analysis servers share user file systems so you only
-have to do this on one of them.
-
-You may have to edit the file `~/.gnupg/gpg-agent.conf` on the server.  If
-its first line is `pinentry-program /usr/local/bin/pinentry-mac`, change it to
-`pinentry-program /usr/bin/pinentry`. Note that it may not exist at all, which
-is fine - it means the program is just using default behavior.
-
-### Use git-crypt
+## Use git-crypt to unlock a repository
 
 The [`git-crypt` README](https://github.com/AGWA/git-crypt) outlines the basics
-of using `git-crypt` to add encrypted files to a git repository.
+of using `git-crypt` to encrypted and decrypt files in a git repository.
 
-To add contributors with access to the encrypted files in a repository, you first
-have to add their public key to your keychain. Visit their Keybase profiles (e.g., <https://keybase.io/noamross>) and click on the key - it will show several ways 
-to import the keys.
+First be sure your public key has been added to the repository. To do this, check the 
+`.git-crypt/keys/default/0` folder in the github repo for your public key. If your key is present
+pull or clone the repo then run,
+
+    git-crypt unlock
+    
+from the terminal or command line in the repository folder.  If all goes well congrats! Encryption and decryption for pushing and
+pulling should now happen automatically.
+
+
+### Troubleshooting
+
+If `git-crypt unlock` fails, try the following steps:
+
+1. Verify that GPG has successfully imported your private key from Keybase by opening a shell and entering
+`gpg --list-secret-keys`. If no keys are found, follow the [guide](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/) for importing keys. This might fail for mac and linux users if `export GPG_TTY=$(tty)` is not in your .bashrc or .zshrc.
+2. Make sure that your GPG private key has actually been added to the repository. Navigate to the `~/.git-crypt/keys/default/0/` directory on github and look for a file that matches your public key.
+3. Once your key has been added, pull from the remote to make sure the key is available to your local repository.
+4. Windows users need to let git know where to find the gpg executable. Double check that the gpg.exe really is in the folder you specified above. If not find it's location or try re-installing gpg.
+
+<!-- This should really come after the unlocking step. More people I think will need to clone and unlock than manage users !-->
+## Going further
+
+If you've made it this far and you only need to unlock a repository that has already been set up you're done! The instructions below will help you go further by outlining how to grant access to encrypted files on a repository, add your key to the EHA servers, and to initialize a new repository to use git-crypt.
+
+### Set up encryption for a repo that did not previously use git-crypt. 
+
+This will initialize the repository and add the default gpg key to git-crypt. Note: adding encryption to a repository will only encrypt files _going forward._ Any previous versions in the commit history will still be un-encrypted. Best practice is to set up git-crypt first, add relevant file names to the `.gitattribues` file, and only then add any sensitive files to the repo.
+
+```
+## In the repo base directory open the terminal or command line and enter:
+
+git-crypt init
+
+## To verify that files are being encrypted run:
+
+git-crypt status
+
+```
+
+### Allow contributors access to encrypted files:
+
+First add their public key to your keychain. Visit their Keybase profiles (e.g., <https://keybase.io/noamross>) and click on the key - it will show several ways to import the keys. Two methods are shown below,
 
 ```
 # curl + gpg pro tip: import noamross's keys
@@ -160,70 +186,52 @@ curl https://keybase.io/noamross/pgp_keys.asc | gpg --import
 keybase pgp pull noamross
 ```
 
-Edit the key so that it has sufficient trust levels
+Next edit the key so that it has sufficient trust levels
 
 ```
 # in terminal
-## list keys 
 
 gpg --list-keys
 
-# edit the key you want to add to your repo so that it has sufficient trust levels
+## Copy the key that matches the individual you want to allow access to ecnrypted files. 
+## Edit that key so that it has sufficient trust levels as described in the above [guide](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/).
+```
 
-gpg --edit-keys 4A1653E6FDB48C85EC4702B9E7B170AD3B19DAA4
+Add the key to your git repo (make sure you're in the right directory)
 
-# you will now be in the key editor
+```
+## this will automatically commit changes. Note: replace [key] below with the
+appropriate gpg key.
 
-trust
+git crypt add-gpg-user [key]
 
-# select 5, ultimate 
+```
+push changes to remote (github)
 
-5
-
-# exit the key editor
-
-quit
-
-## add the person to your git repo (make sure you're in the right directory)
-## this will automatically commit changes to your repo
-
-git crypt add-gpg-user 4A1653E6FDB48C85EC4702B9E7B170AD3B19DAA4
-
-# push changes to remote (github)
-
+```
 git push
 
 ```
 
-Make sure your public key has been added to the repository. To do this, check the 
-`.git-crypt/keys/default/0` folder in the repo for your public key. 
-
-After pulling/cloning run
-
-    git-crypt unlock
-    
-in the repository folder.  After that encryption and decryption for pushing and
-pulling should happen automatically. If this produces and error double check that your
-key was added and pull the repo before trying again. For Windows it may also be necessary
-to inform git of the location of the gpg executable which can be done by opening cmd
-or powershell and entering
-
-  `git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"`
+remind the added individual to pull these changes down before they try to unlock the repo.
 
 
-Another common source of errors is that the text entry for `gpg` isn't set properly. You can fix this by setting the `GPG_TTY` environment variable like so:
+<!-- Moved down from up above. This won't apply to everyone and interrupts the main flow of getting git-crypt working. -->
+### Import your keys to the EHA server
 
-    export GPG_TTY=$(tty)
-    
-Add this to your `.profile`, `.bashrc`, `.zshrc` or other settings file.
+You will probably want the ability to decrypt files when working remotely,
+so place them on the EHA server.  You can do this by copying over your whole
+`gpg` keys directory to the server, like so:
 
-If `git-crypt unlock` still fails, try the following steps
+    scp -rp ~/.gnupg url.of.server:
 
-1. Verify that GPG has successfully imported your private key from Keybase by opening a shell and entering
-`gpg --list-secret-keys`. If no keys are found, follow the [guide](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/) for importing keys.
-2. Make sure that your GPG private key has actually been added to the repository. Navigate to the `~/.git-crypt/keys/default/0/` directory on github and look for a file that matches your public key.
-3. Once your key has been added, pull from the remote to make sure the key is available to your local repository.
+Note that the main EHA analysis servers share user file systems so you only
+have to do this on one of them.
 
+You may have to edit the file `~/.gnupg/gpg-agent.conf` on the server.  If
+its first line is `pinentry-program /usr/local/bin/pinentry-mac`, change it to
+`pinentry-program /usr/bin/pinentry`. Note that it may not exist at all, which
+is fine - it means the program is just using default behavior.
 
 ### Extra: Use a symmetric key for automated processes
 
