@@ -48,9 +48,7 @@ You may also use `homebrew` to install keybase on macOS
 ## Install `gpg` and `git-crypt`
 
 `gpg` is the program that implements encryption, and `git-crypt` sets up git
-repos for encrypted sharing using `gpg`.
-
-These are already installed on EHA servers.  
+repos for encrypted sharing using `gpg.` These are already installed on EHA servers.  
 
 ### Install `gpg` and `git-crypt` on macOS
 
@@ -71,7 +69,7 @@ For Windows there are two alternative approaches.
 
 #### Using Windows Subsystem for Linux (WSL)
 
-The first appraoch is to utilize the Windows Subsystem for Linux (WSL). This method requires Windows 10 or higher.  You must first install WSL.  Do so following this guide: <https://docs.microsoft.com/en-us/windows/wsl/install>. 
+The first approach is to utilize the Windows Subsystem for Linux (WSL). This method requires Windows 10 or higher.  You must first install WSL.  Do so following this guide: <https://docs.microsoft.com/en-us/windows/wsl/install>. 
 
 Once WSL is set up, the necessary packages can be installed through the WSL command line shell.  Run the following in the shell:
  
@@ -80,7 +78,7 @@ sudo apt update
 sudo apt install keybase gpg git-crypt
 ```
 
-### Install the Windows binaries
+#### Using Windows: Install the Windows binaries
 
 The second method is to install pre-compiled binaries for GPG and git-crypt.
 
@@ -94,7 +92,7 @@ Then install git-crypt by via the following steps:
  - Once downloaded, the unzip the zip file. Open file explorer, navigate to the downloaded `git-crypt-windows.zip` file and right-click it once. In the menu above choose 'Extract all'. This will create a new folder containing `gpg-crypt.exe`.
  - Move the resulting `gpg-crypt.exe` into a folder recognized by the Windows PATH environment variable. A convenient location is `C:\Program Files\Git\cmd\`.
 
-Once Keybase and GPG are installed, the terminal commands related to exporting keys from Kebyase into GPG are the same regardless of operating system.
+Once Keybase and GPG are installed, the terminal commands related to exporting keys from Keybase into GPG are the same regardless of operating system.
 
 ## Create your Keybase keys 
 
@@ -142,11 +140,7 @@ Then, in the nano text editor that comes up, add the following line to the file:
 export GPG_TTY=$(tty)
 ```
 
-In the nano edior, press Ctrl-O to write ("write-Out") to save your changes, then press Ctrl-X to exit
-
-```
-
-Alternatively, run the following line in the terminal to change your `.zshrc file without using nano or any other editor:
+In the nano editor, press Ctrl-O to write ("write-Out") to save your changes, then press Ctrl-X to exit. Alternatively, run the following line in the terminal to change your `.zshrc file without using nano or any other editor:
 
 ```
 echo "export GPG_TTY=$(tty)" >> ~/.zshrc && source ~/.zshrc
