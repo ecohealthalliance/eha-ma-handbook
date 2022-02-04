@@ -112,21 +112,42 @@ Records are the individual data points in a table. In a spreadsheet they would b
 
 ### Views
 
+In Airtable, tables can be displayed in different views to emphasis different components of the data. Views are great for creating concise presentations of data, especially in sprawling tables. The default view in an table is the grid (spreadsheet) view. All other views will derive from the data entered in this view. 
+
+For more on views, see [the guide to views](https://support.airtable.com/hc/en-us/articles/202624989-Guide-to-views).
+
 ### Record History, Base Snapshots, and Exporting Data
 
 Airtable has a robust system for tracking changes to a base. They provide automated revision history for individual records (how long those histories are stored varies by plan). Any comments made in the revision history will be stored for the life of the record (on any plan). The current state of an entire base may be captured through snapshots. Should a systemic issue arise, the base can be restored to a snapshot at a later date. Restoring from a snapshot will remove the revision history for a record but comments on that record will be maintained.   
 
 As revision histories are maintained, "deleted" records may be retrieved.  In the event of the need to permanently remove data, the revision history of the base may be removed. 
 
-Airtable allows data to be exported as CSVs from individual tables. At this time there is not a supported export function, however
+Airtable allows data to be exported as CSVs from individual tables. At this time there is not a supported base export function. 
 
 ### Importing data
 
+Data can be imported to Airtables from a number of sources including CSV files, excel, Google sheets, XML, and via copy paste. Airtable will guess what the most appropriate field type is, so make sure the field type is appropriate for the data (e.g. convert from text to date type fields). Certain sources, like google sheets, can be imported as bases. 
+
+For more on importing data see: [Importing and Adding data](https://support.airtable.com/hc/en-us/sections/200928025-Importing-and-adding-data) 
+
 ## Using the API
+
+All Airtable bases are automatically API accessible to authorized users. The list of API accessible bases you have access to can be found here: https://airtable.com/api. By clicking on a base you will be able to see the full API documentation for that base. 
 
 ### Airtable and R
 
-#### One to One join
+The Airtable API can be used via R with the [airtabler package](https://github.com/ecohealthalliance/airtabler). EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design was object oriented and works well for exploring the data. Our extension focuses on using `airtabler` in automations and emphasizes the a functional framework.  
+
+```{r eval=FALSE}
+devtools::install_github("ecohealthalliance/airtabler")
+```
+
+
+The Airtable API serves up data as JSON, which has a hierarchical structure similar to a list in R. To handle JSON, `airtabler` uses the `jsonlite` package. Its helpful to understand how `jsonlite` handles different JSON structures when working with more complicated Airtable data. See the `jsonlite` [quick-start guide](https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html) for a basic overview.
+
+The `airtabler` package provides instructions for setting up access to the Airtable API. You will need to following those instructions for the following examples to work.
+
+**One to One join**
 
 ```{r one-to-one}
 library(airtabler)
@@ -151,7 +172,7 @@ recordKey
 
 ```
 
-#### One to Many Join
+**One to Many Join**
 
 ```{r one-to-many, message=FALSE}
 library(airtabler)
