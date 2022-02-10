@@ -5,7 +5,7 @@ This chapter will provide an overview of Airtable and good practices for designi
 ## Key Terms
 
 - **Workspace** - A collection of bases
-- **Base** - A database. Each is identified by the airtable API via a `base id` 
+- **Base** - A database. Each is identified by the Airtable API via a `base id` 
 - **Table** - A tabular data set within a base. Each table is identified by the Airtable API via the name of the table e.g. "Demo Table"
 - **Record** - An individual cell within a table. Each record is identified by the Airtable API via a `record id`
 - **Field** - A property of data in a table 
@@ -30,7 +30,7 @@ Because Airtable is extremely useful and user friendly, there are a plethora of 
 For example, the computational sciences team has had success using  Airtable for candidate searches. Airtable allows us to efficiently, independently, and consistently review applications then compare our ratings. We can then sort candidates by average score and reach a consensus on who to follow up with. 
 
 **Research Data**  
-Airtable shines when you have multiple data entities that are linked via common data elements. For example, if you are sampling bats then conducting antibody screening, running multiplex PCR, and keeping physical samples of blood and urine from those bats, you have multiple data entities (bats, antibody test results, pcr test results, and physical samples) that are all linked via common data elements like site and collector.
+Airtable shines when you have multiple data entities that are linked via common data elements. For example, if you are sampling bats then conducting antibody screening, running multiplex PCR, and keeping physical samples of blood and urine from those bats, you have multiple data entities (bats, antibody test results, PCR test results, and physical samples) that are all linked via common data elements like site and collector.
 What is more, the test results depend on the physical samples and the physical samples depend on the bats. Those common data elements only need to be entered into a single entity (or table) then shared across the other entities in your base using linked elements. Once you have linked elements you no longer have to worry about updating the same piece of information in multiple locations and you can quickly navigate between entities and understand hierarchical relationships. 
 
 ```{r bat-data, echo=FALSE, fig.height=8, fig.cap="Data model for bat sampling example."}
@@ -126,24 +126,93 @@ Airtable allows data to be exported as CSVs from individual tables. At this time
 
 ### Importing data
 
-Data can be imported to Airtables from a number of sources including CSV files, excel, Google sheets, XML, and via copy paste. Airtable will guess what the most appropriate field type is, so make sure the field type is appropriate for the data (e.g. convert from text to date type fields). Certain sources, like google sheets, can be imported as bases. 
+Data can be imported to Airtable from a number of sources including CSV files, excel, Google sheets, XML, and via copy paste. Airtable will guess what the most appropriate field type is, so make sure the field type is appropriate for the data (e.g. convert from text to date type fields). Certain sources, like Google sheets, can be imported as bases. 
 
 For more on importing data see: [Importing and Adding data](https://support.airtable.com/hc/en-us/sections/200928025-Importing-and-adding-data) 
 
-## Using the API
+## Base Design
 
-All Airtable bases are automatically API accessible to authorized users. The list of API accessible bases you have access to can be found here: https://airtable.com/api. By clicking on a base you will be able to see the full API documentation for that base. 
+Having a good base design will make using your data easier. Generally, the process looks like this:
+
+0) Describe what the database will do and collect use cases
+1) Determine the roles of various stakeholders
+1) List out the entities in the database and define their properties
+2) Map out how  the entities fit together (which properties link them)
+3) Check that the mapping meets the use cases
+4) Build base in Airtable
+5) Check that the base meets the use cases
+
+If you are migrating from spreadsheets, you likely already have an idea of what you need the base to do and a collection of data properties. It is still a good idea to follow the steps outlined above for mapping out entities. You may find that entire sheets can be replaced by views or that the data in one sheet should actually be stored in two different tables.
+
+Feel free to reach out to the data librarian for questions about base design.
+
+## Automating Airtable
+
+Airtable has five main routes for automating processes.
+
+1) [Automations](https://support.airtable.com/hc/en-us/articles/360050974153-Automations-overview) - a drag and drop visual programming tool
+2) [Applications](https://support.airtable.com/hc/en-us/articles/115013403608-Airtable-apps-overview) - pre-built applications that perform some task
+3) [Scripting](https://support.airtable.com/hc/en-us/articles/360043041074-Scripting-app-overview) - use JavaScript to automate tasks within Airtable
+4) [Blocks](https://www.airtable.com/developers/apps/guides/getting-started) - use JavaScript to create custom applications
+5) [REST API](https://airtable.com/api) - use whatever programming language you like to automate processes
+
+
+### Automations with Drag and Drop Programing (pro and above)
+
+The automations feature within Airtable allows you to visually program routines. Each automation has three basic components:
+
+- Status - controls whether or not the automation will run when the trigger condition is met
+- Triggers - condition for automation to run. **Does not run on current records**
+- Actions - what the automation will do
+
+
+```{r actions diagram, echo=FALSE,fig.height=1,  fig.width= 3}
+
+library(ggplot2)
+
+nodes <- data.frame(x = c(1,2,3), y = 0, label = c("Status", "Trigger", "Action") )
+
+edges <- data.frame(x1 = c(1,2), x2 = c(2,3), y1 = 0, y2 = 0, seg_label = c("Automation is On","Condition is Met"))
+
+
+
+ggplot()+
+  geom_segment(data = edges, aes(x = x1, y = y1, xend = x2, yend = y2), color = "light gray") +
+    geom_text(data = edges, aes( label = seg_label),y = 0.005, x = c(1.5,2.5), size = 5) +
+    geom_point( data = nodes, aes(x =x, y = y), size = 30,  color = "mediumaquamarine") +
+  geom_text(data = nodes, aes(x =x, y=y, label = label), size = 5) +
+  theme_void() +
+  xlim(c(.9,3.1))
+```
+Automations are commonly used to augment the synced tables feature, send notifications, check data quality, and manipulate or create records. 
+
+This automation creates a weekly summary of applicants who applied for a position. Its trigger is time based, then it finds records that match a condition, and finally it generates an email from those records and sends to the appropriate recipients. 
+
+![airtable weekly summary](./assets/airtable_Weekly Digest.png)
+
+### Scripting and Blocks (free plan and above)
+
+Scripting uses JavaScript to manipulate a base from within an application in Airtable. Scripting is extremely flexible but has a steep learning curve. The scripting environment Airtable provides is a good place to learn because it provides code [linting](https://en.wikipedia.org/wiki/Lint_(software)), direct access to documentation, and example scripts to build from. The major drawback to scripting is that scripts live in the base and files are not version controlled.   
+
+- There are a LOT of [pre-written scripts](https://airtable.com/marketplace/category/scripts)to do any number of things. Search the marketplace before you start writing bespoke code. 
+
+Blocks are custom applications built in JavaScript and node.js. They are created in a dev environment outside of Airtable then brought back into platform. There are number of [great tutorials for getting  started with blocks](https://www.airtable.com/developers/apps/guides/getting-started). 
+
+## Using the REST API
+
+All Airtable bases are automatically accessible to authorized users via a REST API. The list of API accessible bases you have access to can be found here: https://airtable.com/api. By clicking on a base you will be able to see the full API documentation for that base. 
+
 
 ### Airtable and R
 
-The Airtable API can be used via R with the [airtabler package](https://github.com/ecohealthalliance/airtabler). EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design was object oriented and works well for exploring the data. Our extension focuses on using `airtabler` in automations and emphasizes the a functional framework.  
+The Airtable REST API can be used via R with the [airtabler package](https://github.com/ecohealthalliance/airtabler). EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design was object oriented and works well for exploring the data. Our extension focuses on using `airtabler` in automations and emphasizes the a functional framework.  
 
 ```{r eval=FALSE}
 devtools::install_github("ecohealthalliance/airtabler")
 ```
 
 
-The Airtable API serves up data as JSON, which has a hierarchical structure similar to a list in R. To handle JSON, `airtabler` uses the `jsonlite` package. Its helpful to understand how `jsonlite` handles different JSON structures when working with more complicated Airtable data. See the `jsonlite` [quick-start guide](https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html) for a basic overview.
+The Airtable API serves up data as JSON, which has a hierarchical structure similar to a list in R. To handle JSON, `airtabler` uses the `jsonlite` package. Its helpful to understand how `jsonlite` handles different JSON structures when working with more complicated Airtable data. See the `jsonlite` [quick-start guide](https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html) for a basic overview. The [`purr` package](https://purrr.tidyverse.org/) is extremely helpful when dealing with data objects derived from JSON because it facilitates navigating nested data structures. 
 
 The `airtabler` package provides instructions for setting up access to the Airtable API. You will need to following those instructions for the following examples to work.
 
@@ -202,35 +271,8 @@ data.frame(
 
 ```
 
-## Automating Airtable
 
-## Base Design Process
 
-### Workflow Summary
 
-0) Describe what the database will do and collect use cases
-1) Determine the roles of various stakeholders
-1) List out the entities in the database and define their properties
-2) Map out how  the entities fit together (which properties link them)
-3) Check that the mapping meets the use cases
-4) Build base in Airtable
-5) Check that the base meets the use cases
-
-## Main content
-
-This is how we answered the question...
-
-### Section 1
-
-### Section 2
-
-### Section N
-
-## Additional Resources
-
-To learn more about the topic, check out these resources
-
-- Resource 1 - short description of linked resource
-- Resource N - short description of linked resource
 
 
