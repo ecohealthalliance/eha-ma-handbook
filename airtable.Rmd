@@ -162,7 +162,7 @@ Airtable has five main routes for automating processes.
 The automations feature within Airtable allows you to visually program routines. Each automation has three basic components:
 
 - Status - controls whether or not the automation will run when the trigger condition is met
-- Triggers - condition for automation to run. **Does not run on current records**
+- Triggers - condition for automation to run: the creation or change of a record, a scheduled time, or some other external action
 - Actions - what the automation will do
 
 
@@ -194,14 +194,13 @@ This automation creates a weekly summary of applicants who applied for a positio
 
 Scripting uses JavaScript to manipulate a base from within an application in Airtable. Scripting is extremely flexible but has a steep learning curve. The scripting environment Airtable provides is a good place to learn because it provides code [linting](https://en.wikipedia.org/wiki/Lint_(software)), direct access to documentation, and example scripts to build from. The major drawback to scripting is that scripts live in the base and files are not version controlled.   
 
-- There are a LOT of [pre-written scripts](https://airtable.com/marketplace/category/scripts)to do any number of things. Search the marketplace before you start writing bespoke code. 
+- There are a LOT of [pre-written scripts](https://airtable.com/marketplace/category/scripts) to do any number of things. Search the marketplace before you start writing bespoke code. 
 
 Blocks are custom applications built in JavaScript and node.js. They are created in a dev environment outside of Airtable then brought back into platform. There are number of [great tutorials for getting  started with blocks](https://www.airtable.com/developers/apps/guides/getting-started). 
 
 ## Using the REST API
 
 All Airtable bases are automatically accessible to authorized users via a REST API. The list of API accessible bases you have access to can be found here: https://airtable.com/api. By clicking on a base you will be able to see the full API documentation for that base. 
-
 
 ### Airtable and R
 
