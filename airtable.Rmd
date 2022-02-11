@@ -75,7 +75,7 @@ digraph bat_sampling {
 
 ## Security and Access Control
 
-At the platform level, Airtable follows industry best practices for security. Airtable maintains physical and technological security as part of its ISO IEC 27001:2013 and SOC 2 compliance measures.  Data are 256-bit encrypted when storing on the server and also when transferring data over the internet. To find vulnerabilities in their software, they run daily, weekly, and monthly scans on different components of their system and regularly commission external penetration tests. They also run a bug bounty program to help identify issues. Their data centers have fire detection and suppression systems, redundant power systems, and strict control for physical access. Because Airtable relies on Amazon Web Services (AWS) for its cloud infrastructure (the same providers used by previous EHA projects), data are geo-redundantly replicated in backups across multiple zones to increase data durability. They also have a team monitoring services at all times. Airtable employees are thoroughly vetted before hiring and continually trained on data protection best practices. Their workstations are secured by using full-disk encryption, automatic locking, and strong password requirements.  
+Airtable maintains physical and technological security as part of its ISO IEC 27001:2013 and SOC 2 compliance measures.  Data are 256-bit encrypted when storing on the server and also when transferring data over the internet. To find vulnerabilities in their software, they run daily, weekly, and monthly scans on different components of their system and regularly commission external penetration tests. They also run a bug bounty program to help identify issues. Their data centers have fire detection and suppression systems, redundant power systems, and strict control for physical access. Because Airtable relies on Amazon Web Services (AWS) for its cloud infrastructure (the same providers used by previous EHA projects), data are geo-redundantly replicated in backups across multiple zones to increase data durability. They also have a team monitoring services at all times. Airtable employees are thoroughly vetted before hiring and continually trained on data protection best practices. Their workstations are secured by using full-disk encryption, automatic locking, and strong password requirements.  
 
 ### User- and Administrator Security Features
 #### Access Controls
@@ -118,7 +118,7 @@ For more on views, see [the guide to views](https://support.airtable.com/hc/en-u
 
 ### Record History, Base Snapshots, and Exporting Data
 
-Airtable has a robust system for tracking changes to a base. They provide automated revision history for individual records (how long those histories are stored varies by plan). Any comments made in the revision history will be stored for the life of the record (on any plan). The current state of an entire base may be captured through snapshots. Should a systemic issue arise, the base can be restored to a snapshot at a later date. Restoring from a snapshot will remove the revision history for a record but comments on that record will be maintained.   
+Airtable has system for tracking changes to a base. They provide revision history for individual records (how long those histories are stored varies by plan). Any comments made in the revision history will be stored for the life of the record (on any plan). The current state of an entire base may be captured through snapshots. Should a systemic issue arise, the base can be restored to a snapshot at a later date. Restoring from a snapshot will remove the revision history for a record but comments on that record will be maintained.   
 
 As revision histories are maintained, "deleted" records may be retrieved.  In the event of the need to permanently remove data, the revision history of the base may be removed. 
 
@@ -192,11 +192,11 @@ This automation creates a weekly summary of applicants who applied for a positio
 
 ### Scripting and Blocks (free plan and above)
 
-Scripting uses JavaScript to manipulate a base from within an application in Airtable. Scripting is extremely flexible but has a steep learning curve. The scripting environment Airtable provides is a good place to learn because it provides code [linting](https://en.wikipedia.org/wiki/Lint_(software)), direct access to documentation, and example scripts to build from. The major drawback to scripting is that scripts live in the base and files are not version controlled.   
+Scripting uses JavaScript to manipulate a base from within an application in Airtable. Scripting is flexible but has a steep learning curve. The scripting environment Airtable provides can be helpful as it provides code [linting](https://en.wikipedia.org/wiki/Lint_(software)), direct access to documentation, and example scripts to build from. The major drawback to scripting is that scripts live in the base and files are not version controlled.   
 
-- There are a LOT of [pre-written scripts](https://airtable.com/marketplace/category/scripts) to do any number of things. Search the marketplace before you start writing bespoke code. 
+- There are a LOT of [pre-written scripts, in a shared "marketplace"](https://airtable.com/marketplace/category/scripts) to perform automatic actions. Search the marketplace before you start writing bespoke code. 
 
-Blocks are custom applications built in JavaScript and node.js. They are created in a dev environment outside of Airtable then brought back into platform. There are number of [great tutorials for getting  started with blocks](https://www.airtable.com/developers/apps/guides/getting-started). 
+Blocks are custom applications built in JavaScript and node.js that add to base functionality. They are created in a development environment outside of Airtable then brought back into platform. There are number of [tutorials for getting  started with blocks](https://www.airtable.com/developers/apps/guides/getting-started). 
 
 ## Using the REST API
 
@@ -204,12 +204,11 @@ All Airtable bases are automatically accessible to authorized users via a REST A
 
 ### Airtable and R
 
-The Airtable REST API can be used via R with the [airtabler package](https://github.com/ecohealthalliance/airtabler). EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design was object oriented and works well for exploring the data. Our extension focuses on using `airtabler` in automations and emphasizes the a functional framework.  
+The Airtable REST API can be used via R with the [airtabler package](https://github.com/ecohealthalliance/airtabler). EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design was works well for exploring the data. Our extension adds additional functionality to help use `airtabler` in automation via continuous integration such as GitHub Actions.  
 
 ```{r eval=FALSE}
 devtools::install_github("ecohealthalliance/airtabler")
 ```
-
 
 The Airtable API serves up data as JSON, which has a hierarchical structure similar to a list in R. To handle JSON, `airtabler` uses the `jsonlite` package. Its helpful to understand how `jsonlite` handles different JSON structures when working with more complicated Airtable data. See the `jsonlite` [quick-start guide](https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html) for a basic overview. The [`purr` package](https://purrr.tidyverse.org/) is extremely helpful when dealing with data objects derived from JSON because it facilitates navigating nested data structures. 
 
