@@ -206,7 +206,7 @@ All Airtable bases are automatically accessible to authorized users via a REST A
 
 The Airtable REST API can be used via R with the [airtabler package](https://github.com/ecohealthalliance/airtabler). EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design was works well for exploring the data. Our extension adds additional functionality to help use `airtabler` in automation via continuous integration such as GitHub Actions.  
 
-```{r eval=FALSE}
+```
 devtools::install_github("ecohealthalliance/airtabler")
 ```
 
@@ -216,7 +216,7 @@ The `airtabler` package provides instructions for setting up access to the Airta
 
 **One to One join**
 
-```{r one-to-one}
+```
 library(airtabler)
 
 table1  <-  fetch_all(base = "app49bbyLczZxX9PM",table_name = "One To One")
@@ -241,7 +241,7 @@ recordKey
 
 **One to Many Join**
 
-```{r one-to-many, message=FALSE}
+```
 library(airtabler)
 library(dplyr)
 library(purrr)
