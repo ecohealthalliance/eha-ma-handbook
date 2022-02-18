@@ -5,5 +5,9 @@ Version: 0.0.1
 Imports:
   git2r,
   bookdown,
-  emo
-Remotes: hadley/emo
+  emo,
+  DiagrammeR,
+  airtabler
+Remotes: 
+  hadley/emo,
+  ecohealthalliance/airtabler
