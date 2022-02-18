@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | EHA Modeling &amp; Analytics Handbook</title>
-  <meta name="description" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <title>17 Statistical Methods | EHA Modeling &amp; Analytics Handbook</title>
+  <meta name="description" content="17 Statistical Methods | EHA Modeling &amp; Analytics Handbook" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta property="og:title" content="17 Statistical Methods | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta name="twitter:title" content="17 Statistical Methods | EHA Modeling &amp; Analytics Handbook" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
-
+<link rel="prev" href="16-dependencies.html"/>
+<link rel="next" href="18-data-sources.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -321,19 +321,77 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="statistical-methods" class="section level1">
+<h1><span class="header-section-number">17</span> Statistical Methods</h1>
+<p>Statistical methods are a far larger subject than can be covered in this
+handbook. Our team uses a wide variety of methods that differ by project and
+change via advances in the field. Nonetheless, here are some methods that we
+favor when they are appropriate.</p>
+<div id="multivariate-regression" class="section level2">
+<h2><span class="header-section-number">17.1</span> Multivariate Regression</h2>
+<ul>
+<li>We like Generalized Linear Models. Many of us approach these from a Bayesian
+perspective, and build and fit these models using
+<a href="http://mc-stan.org/">Stan</a>. A great introduction to this type of modeling
+is found in <a href="http://xcelab.net/rm/statistical-rethinking/">Statistical
+Rethinking</a>, by Richard
+McElreath which we have a couple of copies of. Richard also has accompanying
+lectures for this book online as <a href="https://www.youtube.com/playlist?list=PLDcUM9US4XdM9_N6XUUFrhghGJ4K25bFc">YouTube
+videos</a>.</li>
+<li>For nonlinear models, we like Generalized Additive Models, for which we use
+the <strong>mgcv</strong> R package. Noam has <a href="https://github.com/noamross/2017-11-14-noamross-gams-nyhackr">a bunch of
+materials</a> on
+this, including slides and exercises from a workshop he co-teaches, and the
+seminal text is <a href="https://www.amazon.com/Generalized-Additive-Models-Introduction-Statistical/dp/1498728332/ref=redir_mobile_desktop?_encoding=UTF8&amp;%2AVersion%2A=1&amp;%2Aentries%2A=0">Generalized Additive Models in
+R</a>,
+by Simon Wood. (Example - Host-Pathogen Phylogeny Project:
+<a href="https://dx.doi.org/10.1038/nature22975">Paper</a>,
+<a href="https://github.com/ecohealthalliance/HP3">GitHub</a>)</li>
+<li>When a multivariate analysis is primarily about prediction, and less about
+variable inference, machine-learning methods such as <strong>boosted regression
+trees</strong> are useful. We make use of these through the <strong>dismo</strong> or
+<strong>xgboost</strong> packages. (Example - Hotspots 2:
+<a href="https://www.nature.com/articles/s41467-017-00923-8">Paper</a>,
+<a href="https://github.com/ecohealthalliance/hotspots2">GitHub</a>)</li>
+</ul>
+</div>
+<div id="networks" class="section level2">
+<h2><span class="header-section-number">17.2</span> Networks</h2>
+<ul>
+<li>We like networks for both descriptive visualizations and quantitative analyses. R is full of packages to achieve both of these goals, check out <strong>ggnetwork</strong> and <strong>bipartite</strong>.<br />
+</li>
+<li>We assess individual components within networks looking for high-impact individuals due to their high <em>degree</em>, <em>centrality</em>, or ability to bridge different communities. For a tutorial on basic metrics check out Randi Griffin’s <a href="http://rgriff23.github.io/2017/04/26/primate-social-networks-in-igraph.html">tutorial on primate social networks</a> which utilizes the <strong>igraph</strong> package.<br />
+</li>
+<li>Often, our networks are bipartite, meaning the networks shows interactions between two type of nodes. For us, these are usually viruses and hosts. You can look at example networks in two PREDICT publications: <a href="https://academic.oup.com/view-large/figure/88156911/vex012f4.tif/Global%20patterns%20in%20coronavirus%20diversity">Figure 4 in Anthony et al. 2017</a> and <a href="http://www.mdpi.com/1424-2818/9/3/35/htm">Figure 3 in Willoughby et al. 2017</a>.</li>
+<li>To assess overall network structure and identify communities, we measure the <em>modularity</em>. The modularity of a network model is a type of network partitioning into subgroups or <em>modules</em>. This is an alternative to clustering alogrithms. For bipartite networks, we like the Barber’s modularity (<em>Q</em>), calculated through the <strong>lpbrim</strong> package. Alternatives modularity algorithms include NetCarto which uses a simulated annealing (SA) algorithm or using a map equation (ME) algorithm.</li>
+</ul>
+</div>
+<div id="bioinformatics-and-sequence-analysis" class="section level2">
+<h2><span class="header-section-number">17.3</span> Bioinformatics and Sequence Analysis</h2>
+<ul>
+<li><a href="https://www.bioconductor.org/"><strong>Bioconductor</strong></a> is a comprehensive ecosystem of R packages focused on sequence analyses. Typing your general topic of interest into their <a href="https://www.bioconductor.org/packages/release/BiocViews.html#___Software">searchable software table</a> should at least provide an introduction to relevant software.</li>
+<li>In general, best practices in bioinformatics are changing rapidly, so it is difficult to recommend particular procedures. However, the journal <a href="https://www.nature.com/nprot/">Nature Protocols</a> covers cutting-edge methods, ranging from the lab to the laptop, in great depth. Many articles include step-by-step instructions to complete a given analysis. For a scattershot introduction to high-quality bioinformatics software and relevant applications, it might be worth checking out the <a href="http://bedford.io/projects/">Bedford</a>, <a href="http://pachterlab.github.io/software.html">Pachter</a>, and <a href="http://combine-lab.github.io/software/">Patro</a> lab websites. Note that many contemporary bioinformatics tools are accessed through the command line rather than R.</li>
+<li>For a general overview of RNA sequencing analysis (other bioinformatics pipelines have strong similarities), the <a href="http://sfg.stanford.edu/index.html">Simple Fool’s Guide from the Palumbi lab</a> is a great learning resource.</li>
+</ul>
+</div>
+<div id="species-distribution-modeling" class="section level2">
+<h2><span class="header-section-number">17.4</span> Species Distribution Modeling</h2>
+</div>
+<div id="epidemic-simulation-and-fitting" class="section level2">
+<h2><span class="header-section-number">17.5</span> Epidemic Simulation and Fitting</h2>
+</div>
+<div id="phylogenetics" class="section level2">
+<h2><span class="header-section-number">17.6</span> Phylogenetics</h2>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="16-dependencies.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="18-data-sources.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -365,7 +423,7 @@ gitbook.start({
 "id": 1
 },
 "edit": {
-"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s",
+"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/stats-methods.Rmd",
 "text": "Edit this chapter"
 },
 "history": {
