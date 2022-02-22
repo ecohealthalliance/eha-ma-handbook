@@ -1,0 +1,35 @@
+# Secure EHA IO {#secure-eha-io}
+
+This chapter will cover setting up projects using the https://secure.eha.io infrastructure and using those sites as file repositories. 
+
+## Summary
+
+secure.eha.io provides a safe place to store and share files generated from automated processes on a per project basis. The sites infrastructure can be found in [this repository](https://github.com/ecohealthalliance/secure.eha.io)   
+
+## Workflow Summary
+
+## Main content
+
+This is how we answered the question...
+
+### Section 1
+
+## Additional Resources
+
+To learn more about the topic, check out these resources
+
+- Resource 1 - short description of linked resource
+- Resource N - short description of linked resource
+
+### Notes on the process 
+- need to lay out key components of repo 
+  > .gitattributes for files that need to be encrypted
+  > .env for environment variables in github actions
+  > describe use of tmate for debugging >> needs to be installed...
+  > setting up aws creds for using paws
+  > relies on rstudio package manager for R packages so need to make sure they have the version you're using.
+  > Doesnt show the content? 
+  > actions are split between yml and r. Shouldnt upload happen in targets setting?  Report generated > report uploaded
+  > Because the files are matching on md5sums, file names in s3 are not checked. Upload will happen as expected, but the url will be incorrect.
+  
+
