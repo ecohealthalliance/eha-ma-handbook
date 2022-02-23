@@ -31,5 +31,8 @@ To learn more about the topic, check out these resources
   > Doesnt show the content? 
   > actions are split between yml and r. Shouldnt upload happen in targets setting?  Report generated > report uploaded
   > Because the files are matching on md5sums, file names in s3 are not checked. Upload will happen as expected, but the url will be incorrect.
+  > would be good to get a sense of the development workflow for this >> how to test on local, 
+  > What does local with ACT mean? ACT is a way to run github action locally. Not well explained in docs.
+  >
   
 
