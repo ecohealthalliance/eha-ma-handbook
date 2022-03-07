@@ -181,6 +181,7 @@ If `git-crypt unlock` fails, try the following steps:
 2. Make sure that your GPG private key has actually been added to the repository. Navigate to the `~/.git-crypt/keys/default/0/` directory on github and look for a file that matches your public key.
 3. Once your key has been added, pull from the remote to make sure the key is available to your local repository.
 4. Windows users need to let git know where to find the gpg executable. Double check that the gpg.exe really is in the folder you specified above. If not find it's location or try re-installing gpg.
+5. Make sure that GIT [knows about your signing key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-gpg-key)
 
 <!-- This should really come after the unlocking step. More people I think will need to clone and unlock than manage users !-->
 
