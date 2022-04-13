@@ -12,6 +12,7 @@ rmd_files:
     - "review.Rmd"
     - "testing.Rmd"
     - "hpc.Rmd"
+    - "odk.Rmd"
     - "cloud-services.Rmd"
     - "google-auth.Rmd"
     - "encryption.Rmd"
