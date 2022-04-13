@@ -306,10 +306,11 @@ AKA What to do if you accidentally committed sensitive files (data, keys, etc.) 
   - see [`git log`](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History) for more information. 
 7)Check in with collaborators to make sure no one has work on branches in the repo they would like to keep. 
 8) Next you will use `push --force` to overwrite all the history on github and all the branches on your repo. Push your changes to the remote using `git push origin --force --all`. 
+  - You may have to add the origin back into your .git/config file
 9) Use `git push origin --force --tags` to remove sensitive files from any of your tagged releases. 
 10) Follow the instructions [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#fully-removing-the-data-from-github) for contacting github to make sure there aren't any caches of the files on github.
 11) Tell your collaborators to `rebase`,NOT MERGE, any branches created off the old repo history. 
-12) Wait a little bit to make sure that your file remove didnt have unintended side effects then run the following code: 
+12) Wait a little bit to make sure that your file remove didn't have unintended side effects then run the following code: 
 ```
 git for-each-ref --format="delete %(refname)" refs/original | git update-ref --stdin
 git reflog expire --expire=now --all
