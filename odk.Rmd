@@ -24,7 +24,7 @@ The ODK official documentation provides extensive and detailed information on ho
 
 ### Setting up a project
 
-Only ODK Central administrators may create projects. To setup a project in EHA's [ODK Central](https://docs.getodk.org/central-intro/#), request one of the admins (Infrastructure lead or Data Librarian) to create a project for you. For them to be able to setup your project, they will need information on:
+Only ODK Central administrators may create projects. To setup a project in EHA's [ODK Central](https://docs.getodk.org/central-intro/#), request one of the admins ([Infrastructure lead](https://www.ecohealthalliance.org/personnel/robert-young) or [Data Librarian](https://www.ecohealthalliance.org/personnel/collin-schwantes) to create a project for you. For them to be able to setup your project, they will need information on:
 
 * the name you want to give your project; and,
 
