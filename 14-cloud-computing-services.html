@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 R and Reproducible Analysis | EHA Modeling &amp; Analytics Handbook</title>
-  <meta name="description" content="4 R and Reproducible Analysis | EHA Modeling &amp; Analytics Handbook" />
+  <title>14 Cloud Computing Services | EHA Modeling &amp; Analytics Handbook</title>
+  <meta name="description" content="14 Cloud Computing Services | EHA Modeling &amp; Analytics Handbook" />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 R and Reproducible Analysis | EHA Modeling &amp; Analytics Handbook" />
+  <meta property="og:title" content="14 Cloud Computing Services | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 R and Reproducible Analysis | EHA Modeling &amp; Analytics Handbook" />
+  <meta name="twitter:title" content="14 Cloud Computing Services | EHA Modeling &amp; Analytics Handbook" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-<link rel="prev" href="3-projects.html"/>
-<link rel="next" href="5-eha-team-communication.html"/>
+<link rel="prev" href="13-odk.html"/>
+<link rel="next" href="15-google-authorization-and-r.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -340,55 +340,136 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r" class="section level1 hasAnchor">
-<h1><span class="header-section-number">4</span> R and Reproducible Analysis<a href="4-r.html#r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><em>Can everything be re-done easily if I change one data point in the inputs?</em></p>
-<p>At EHA <strong>R</strong> is our primary, though not exclusive, tool for analysis and
-modeling work. R is not just a piece of software for statistics and data
-manipulation but a computer language, meaning that our analyses are <em>scripted</em>. This means they
-thus can be automated, run again, built upon and extended.</p>
-<div id="install" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.1</span> Install<a href="4-r.html#install" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cloud-computing-services" class="section level1 hasAnchor">
+<h1><span class="header-section-number">14</span> Cloud Computing Services<a href="14-cloud-computing-services.html#cloud-computing-services" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <ul>
-<li><a href="https://cran.r-project.org/">R itself</a></li>
-<li><a href="https://www.rstudio.com/">RStudio</a>, the leading R development environment.</li>
+<li><em>What if my data files are too big to hold in Github?</em></li>
+<li><em>Where is the latest IUCN/MODIS/LANDSAT shapefile?</em></li>
+<li><em>What if I need more CPUs than even our servers have?</em></li>
 </ul>
-</div>
-<div id="learn" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.2</span> Learn<a href="4-r.html#learn" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Learning R is beyond the scope of this document, and you likely already have
-some experience in it, but some good starting points are:</p>
+<p>EHA has an organizational Amazon Web Services and Microsoft Azure accounts that may be useful for some projects. <strong>AWS S3 storage</strong> or <strong>Azure Blog Storage</strong> are useful for hosting large data files, especially if they are shared across projects. <strong>AWS EC2 cloud computers</strong> or <strong>Azure Virtual Machines</strong> may be appropriate for a hosting a web app or database, automating regular processes, or other analytical projects.</p>
+<p>If you think you need cloud resources for your project, contact Noam or <a href="young@ecohealthalliance.org">Robert Young</a> for access to the AWS account, to discuss what services or other providers may be useful.</p>
+<p>If you are using AWS, remember:</p>
 <ul>
-<li><a href="http://swcarpentry.github.io/r-novice-gapminder/">The Software Carpentry Lessons</a></li>
-<li><a href="http://swirlstats.com/">Swirl</a>, a set of interactive lessons run right
-in R.</li>
-<li><a href="https://www.coursera.org/specializations/jhu-data-science">The JHU Coursera Series</a></li>
-<li><a href="http://r4ds.had.co.nz/">R for Data Science by Hadley Wickam</a> is a
-beginner/intermediate text that we highly recommend for getting up to speed
-with the particular workflows we recommend and the most recent packages that
-support them.</li>
-<li><a href="http://adv-r.had.co.nz/">Advanced R (Wickham)</a> is very good for
-understanding how the language works.</li>
-<li><a href="https://csgillespie.github.io/efficientR/">Efficient R by Colin Gillespie and Robin
-Lovelace</a> is helpful for
-imporving workflows and speeding up code.</li>
-<li><a href="http://r-pkgs.had.co.nz/">R Packages (Wickham)</a> is good for package
-development.</li>
-<li><a href="https://www.rstudio.com/resources/cheatsheets/">Cheatsheets</a> from RStudio
-are a useful references for a number of things.</li>
+<li>All resources used on AWS need to be tagged with a project:PROJECTNAME tag in order to assign costs to the appropriate EHA projects.</li>
+<li>Be judicious with AWS service usage. It is easy to run up costs.</li>
 </ul>
-<p><a href="https://www.datacamp.com/onboarding/learn?from=home&amp;technology=r">DataCamp courses</a> are also potentially useful.
-If you feel they would match your learning style and needs, discuss EHA purchasing a subscription for you with your supervisor.</p>
-<p>These resources are largely about the mechanics of programming in R, rather
-than using it for statistical analyses. This is a far larger subject, but see
-the <a href="18-statistical-methods.html#statistical-methods">Statistical Methods</a> section for a jumping-off point.</p>
+<div id="setting-up-amazon-credentials" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.1</span> Setting up Amazon Credentials<a href="14-cloud-computing-services.html#setting-up-amazon-credentials" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To connect to AWS via program like R, you will net to set up an access access credientials.</p>
+<p>Once you’ve gotten your credentials, log on to <a href="ehatek.signin.aws.amazon.com/console/">ehatek.signin.aws.amazon.com/console/</a>. <code>ehatek</code> should be already entered in the “Account ID or alias” field. You will be asked to change your password after the first time you log on.</p>
+<div id="generate-an-access-key" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.1.1</span> Generate an access key<a href="14-cloud-computing-services.html#generate-an-access-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Navigate to your IAM (Identity and Access Management) page to generate an access key.</p>
+<p><img src="assets/AWS-IAM-1.png" /></p>
+<p>You should see a ✅ next to “rotate your access keys.” Click “Manage User Access Keys” after expanding the access key subheading. (If you see an ❌, ask whoever created your account if you have the appropriate S3 privileges.)</p>
+<p><img src="assets/AWS-IAM-2.png" /></p>
+<p>Click the “Security credentials” panel and scroll down to the “create access key” button.</p>
+<p><img src="assets/AWS-access-key.png" /></p>
+<p>Your access key will have a <code>key ID</code> - a long string of letters and numbers - and a <code>*~*secret*~* access key</code> - a longer string of letters and numbers. Press “show” and hang onto it somewhere until you are sure your <code>~/.aws/credentials</code> file is working as intended. <strong>Don’t share your secret key with anyone</strong>.</p>
+<p>If you lose it before you use it, you can delete your and make another one. <em>Deleting</em> a key is different from making a key <em>inactive</em> - you might reach your access key limit pretty quickly, so you’ll probably have to do the former if you have keys that you don’t use.</p>
 </div>
-<div id="additional-resources-1" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.3</span> Additional Resources<a href="4-r.html#additional-resources-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>Trouble shooting your code</strong>: <a href="22-help.html#help">Getting Help</a>.</p>
-<p><strong>User groups/communities of practice</strong>: <a href="https://www.meetup.com/pro/r-user-groups">R Meetups</a></p>
-<p><strong>Specific domains</strong>: <a href="21-training-resources-and-plans.html#training-plans">Training Plans</a></p>
+<div id="create-a-credentials-file" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.1.2</span> Create a credentials file<a href="14-cloud-computing-services.html#create-a-credentials-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Open a blank text file in a text editor and paste your key ID and secret key as follows. It will look like this:</p>
+<pre><code>[default]
+aws_access_key_id = your_key_id
+aws_secret_access_key = your_secret_access_key
+aws_default_region = us-east-1&quot;</code></pre>
+<p>Replace <code>your_key_id</code> and <code>your_secret_access_key</code> with the values you see in the AWS browser.</p>
+<p>Create a folder called <code>~/.aws</code>, and put the <code>credentials</code> file in it.</p>
+<p>(<strong>YES</strong>, currently, you need that trailing <code>"</code> after <code>us-east-1</code> if you want to include the AWS_DEFAULT_REGION in your credentials file, because the <code>aws.signature</code> is using a strange parser.) If you get errors related to the AWS default region, you can delete that line and set it locally inside your R environment like this:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="14-cloud-computing-services.html#cb7-1"></a><span class="kw">Sys.setenv</span>(<span class="st">&quot;AWS_DEFAULT_REGION&quot;</span> =<span class="st"> &quot;us-east-1&quot;</span>)</span></code></pre></div>
+</div>
+<div id="test-your-key" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.1.3</span> Test your Key<a href="14-cloud-computing-services.html#test-your-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Open an R session to make sure your credentials file works.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="14-cloud-computing-services.html#cb8-1"></a><span class="co"># install the AWS packages if you need them</span></span>
+<span id="cb8-2"><a href="14-cloud-computing-services.html#cb8-2"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(aws.s3)) devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;cloudyr/aws.s3&quot;</span>)</span>
+<span id="cb8-3"><a href="14-cloud-computing-services.html#cb8-3"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(aws.signature)) devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;cloudyr/aws.signature&quot;</span>)</span>
+<span id="cb8-4"><a href="14-cloud-computing-services.html#cb8-4"></a></span>
+<span id="cb8-5"><a href="14-cloud-computing-services.html#cb8-5"></a><span class="kw">library</span>(aws.s3)</span>
+<span id="cb8-6"><a href="14-cloud-computing-services.html#cb8-6"></a></span>
+<span id="cb8-7"><a href="14-cloud-computing-services.html#cb8-7"></a><span class="co"># load credentials from your credentials file</span></span>
+<span id="cb8-8"><a href="14-cloud-computing-services.html#cb8-8"></a>aws.signature<span class="op">::</span><span class="kw">use_credentials</span>()</span>
+<span id="cb8-9"><a href="14-cloud-computing-services.html#cb8-9"></a></span>
+<span id="cb8-10"><a href="14-cloud-computing-services.html#cb8-10"></a><span class="co"># check list of aws S3 buckets</span></span>
+<span id="cb8-11"><a href="14-cloud-computing-services.html#cb8-11"></a><span class="kw">head</span>(aws.s3<span class="op">::</span><span class="kw">bucketlist</span>())</span></code></pre></div>
+<p>If you get a ‘403 Forbidden’ error, your credentials aren’t working.</p>
+</div>
+<div id="alternate-credentialing-method" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.1.4</span> Alternate credentialing method<a href="14-cloud-computing-services.html#alternate-credentialing-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If you have Done Your Googles and are still having trouble setting your AWS credentials, you can set them in your <code>.Renviron</code> file. The advantage of using an <code>~/.aws/credentials</code> file is that your key will then work across all platforms - R, Python, the command line, etc. However, if you’re only connecting to AWS through R, having your key in your <code>.Renviron</code> will be enough.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="14-cloud-computing-services.html#cb9-1"></a><span class="co"># If you don&#39;t know how to find your .Renviron file, do the following to open it:  </span></span>
+<span id="cb9-2"><a href="14-cloud-computing-services.html#cb9-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(usethis)) <span class="kw">install.packages</span>(<span class="st">&quot;usethis&quot;</span>)</span>
+<span id="cb9-3"><a href="14-cloud-computing-services.html#cb9-3"></a>usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()</span>
+<span id="cb9-4"><a href="14-cloud-computing-services.html#cb9-4"></a></span>
+<span id="cb9-5"><a href="14-cloud-computing-services.html#cb9-5"></a><span class="co"># add the following to your .Renviron, replacing your_key_id and your_secret_access_key with their actual values. Save your .Renviron and restart R.</span></span>
+<span id="cb9-6"><a href="14-cloud-computing-services.html#cb9-6"></a><span class="st">&quot;AWS_ACCESS_KEY_ID&quot;</span> =<span class="st"> </span>your_key_id</span>
+<span id="cb9-7"><a href="14-cloud-computing-services.html#cb9-7"></a><span class="st">&quot;AWS_SECRET_ACCESS_KEY&quot;</span> =<span class="st"> </span>your_secret_access_key</span>
+<span id="cb9-8"><a href="14-cloud-computing-services.html#cb9-8"></a><span class="st">&quot;AWS_DEFAULT_REGION&quot;</span> =<span class="st"> </span>us<span class="op">-</span>east<span class="dv">-1</span></span></code></pre></div>
+<p>After you restart R, test that your credentials are working with <code>aws.s3::bucketlist()</code>.</p>
+</div>
+</div>
+<div id="using-amazon-s3-storage-from-r" class="section level2 hasAnchor">
+<h2><span class="header-section-number">14.2</span> Using Amazon S3 Storage from R<a href="14-cloud-computing-services.html#using-amazon-s3-storage-from-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Above, you used <code>bucketlist</code> above to list all the buckets associated with your account. To look at everything inside a specific bucket, use <code>get_bucket</code>.</p>
+<p>Note that Amazon <strong>charges per Gigabyte for downloading and uploading files.</strong> Use things as needed for your project, but don’t get crazy and put a file download inside a for loop that you’re running a thousand times a day.</p>
+<p>To test privacy privileges are working are intended, we’ll use a very small private bucket with ~4 KB in it - Two small subsets of the Social Security Administration’s baby names dataset from the <code>babynames</code> package.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="14-cloud-computing-services.html#cb10-1"></a><span class="co"># check list of aws S3 buckets</span></span>
+<span id="cb10-2"><a href="14-cloud-computing-services.html#cb10-2"></a><span class="kw">bucketlist</span>()</span>
+<span id="cb10-3"><a href="14-cloud-computing-services.html#cb10-3"></a></span>
+<span id="cb10-4"><a href="14-cloud-computing-services.html#cb10-4"></a><span class="co"># aws.s3::bucketlist()</span></span>
+<span id="cb10-5"><a href="14-cloud-computing-services.html#cb10-5"></a>pb &lt;-<span class="st"> &quot;eha-ma-practice-bucket&quot;</span></span>
+<span id="cb10-6"><a href="14-cloud-computing-services.html#cb10-6"></a>b &lt;-<span class="st"> </span><span class="kw">get_bucket</span>(pb)</span></code></pre></div>
+<div id="save-objects-from-s3-to-your-machine" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.2.1</span> Save objects from S3 to your machine<a href="14-cloud-computing-services.html#save-objects-from-s3-to-your-machine" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>One of the main reasons we use Amazon S3 is to make sure everyone is working with the same large data files. Usually, you’ll download the large files you need one time and keep them on your local machine for analyses. This can be done with <code>save_object</code>. Wrapping <code>save_object</code> in an <code>if()</code> clause checks to see if the dataset exists first before downloading.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="14-cloud-computing-services.html#cb11-1"></a><span class="co"># make a data folder if this is the first dataset you&#39;re downloading into this project</span></span>
+<span id="cb11-2"><a href="14-cloud-computing-services.html#cb11-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) {</span>
+<span id="cb11-3"><a href="14-cloud-computing-services.html#cb11-3"></a>  <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span>
+<span id="cb11-4"><a href="14-cloud-computing-services.html#cb11-4"></a>}</span>
+<span id="cb11-5"><a href="14-cloud-computing-services.html#cb11-5"></a></span>
+<span id="cb11-6"><a href="14-cloud-computing-services.html#cb11-6"></a><span class="co"># save the babynames_subset.csv object (b[[1]]) into local memory</span></span>
+<span id="cb11-7"><a href="14-cloud-computing-services.html#cb11-7"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&quot;data/babynames_subset.csv&quot;</span>)) {</span>
+<span id="cb11-8"><a href="14-cloud-computing-services.html#cb11-8"></a>  <span class="kw">save_object</span>(<span class="dt">object =</span> b[[<span class="dv">1</span>]], <span class="dt">bucket =</span> pb, <span class="dt">file =</span> <span class="st">&quot;data/babynames_subset.csv&quot;</span>)</span>
+<span id="cb11-9"><a href="14-cloud-computing-services.html#cb11-9"></a>}</span>
+<span id="cb11-10"><a href="14-cloud-computing-services.html#cb11-10"></a></span>
+<span id="cb11-11"><a href="14-cloud-computing-services.html#cb11-11"></a><span class="kw">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
+<p><code>babynames_subset.csv</code> is now in your <code>data</code> directory.You can then read it into memory as you would normally.</p>
+</div>
+<div id="upload-objects-from-your-machine-to-s3" class="section level3 hasAnchor">
+<h3><span class="header-section-number">14.2.2</span> Upload objects from your machine to S3<a href="14-cloud-computing-services.html#upload-objects-from-your-machine-to-s3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To <code>put</code> a file from your computer back into the bucket, use <code>put_object</code>. This will be less common than downloading and saving objects <em>from</em> S3 - as a general rule, we want everyone working with the same versions of large datasets. If you’ve made a large rasterfile that your colleagues will use, you can upload it,</p>
+<p>In this example, we’ll make a change to the <code>babynames_subset</code> and save it as a new file (<code>babynames_subset2</code>).</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="14-cloud-computing-services.html#cb12-1"></a>babynames_subset2 &lt;-<span class="st"> </span>babynames_subset <span class="op">%&gt;%</span></span>
+<span id="cb12-2"><a href="14-cloud-computing-services.html#cb12-2"></a><span class="st">    </span><span class="kw">group_by</span>(name) <span class="op">%&gt;%</span></span>
+<span id="cb12-3"><a href="14-cloud-computing-services.html#cb12-3"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">sum</span>(n)) <span class="op">%&gt;%</span></span>
+<span id="cb12-4"><a href="14-cloud-computing-services.html#cb12-4"></a><span class="st">    </span><span class="kw">filter</span>(n <span class="op">&lt;</span><span class="st"> </span><span class="dv">100</span>)</span>
+<span id="cb12-5"><a href="14-cloud-computing-services.html#cb12-5"></a></span>
+<span id="cb12-6"><a href="14-cloud-computing-services.html#cb12-6"></a><span class="co"># save to csv</span></span>
+<span id="cb12-7"><a href="14-cloud-computing-services.html#cb12-7"></a><span class="kw">write.csv</span>(babynames_subset2, <span class="dt">file =</span> <span class="st">&quot;data/babynames_subset2.csv&quot;</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb12-8"><a href="14-cloud-computing-services.html#cb12-8"></a></span>
+<span id="cb12-9"><a href="14-cloud-computing-services.html#cb12-9"></a><span class="co"># check whether an object with this name is in the bucket, and if it isn&#39;t, put it in there</span></span>
+<span id="cb12-10"><a href="14-cloud-computing-services.html#cb12-10"></a><span class="cf">if</span>(<span class="op">!</span>(<span class="st">&quot;babynames_subset2.csv&quot;</span> <span class="op">%in%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">pull</span>(<span class="kw">get_bucket_df</span>(pb), <span class="st">&quot;Key&quot;</span>) ) {</span>
+<span id="cb12-11"><a href="14-cloud-computing-services.html#cb12-11"></a>  <span class="kw">put_object</span>(<span class="dt">file =</span> <span class="st">&quot;data/babynames_subset2.csv&quot;</span>, <span class="dt">object =</span> <span class="st">&quot;babynames_subset2.csv&quot;</span>, <span class="dt">bucket =</span> pb, <span class="dt">acl =</span> <span class="st">&quot;private&quot;</span>)</span>
+<span id="cb12-12"><a href="14-cloud-computing-services.html#cb12-12"></a>}</span></code></pre></div>
+<p>So now we have a data frame in memory called <code>babynames_subset2</code> and a .csv in the AWS <code>eha-ma-practice-bucket</code> called <code>babynames_subset2.csv</code>. We’ll pull the AWS csv back into memory to make sure they’re the same.</p>
+<p>To do this, we have to first copy over <code>babynames_subset2</code> to a new object in memory and remove it so that when we load the version from AWS, it doesn’t overwrite it.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="14-cloud-computing-services.html#cb13-1"></a>babynames_subset_R &lt;-<span class="st"> </span>babynames_subset2</span>
+<span id="cb13-2"><a href="14-cloud-computing-services.html#cb13-2"></a><span class="kw">rm</span>(babynames_subset2)</span>
+<span id="cb13-3"><a href="14-cloud-computing-services.html#cb13-3"></a></span>
+<span id="cb13-4"><a href="14-cloud-computing-services.html#cb13-4"></a><span class="co"># save the .csv object using &quot;save_object&quot;</span></span>
+<span id="cb13-5"><a href="14-cloud-computing-services.html#cb13-5"></a>tmp =<span class="st"> </span><span class="kw">tempdir</span>()</span>
+<span id="cb13-6"><a href="14-cloud-computing-services.html#cb13-6"></a>file =<span class="st"> </span><span class="kw">paste0</span>(tmp, <span class="st">&quot;/babynames_subset2.csv&quot;</span>)</span>
+<span id="cb13-7"><a href="14-cloud-computing-services.html#cb13-7"></a><span class="kw">save_object</span>(<span class="st">&quot;babynames_subset2.csv&quot;</span>, <span class="dt">bucket =</span> pb, <span class="dt">file =</span> file)</span>
+<span id="cb13-8"><a href="14-cloud-computing-services.html#cb13-8"></a></span>
+<span id="cb13-9"><a href="14-cloud-computing-services.html#cb13-9"></a><span class="co"># read the csv file into memory</span></span>
+<span id="cb13-10"><a href="14-cloud-computing-services.html#cb13-10"></a>babynames_subset2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(file)</span></code></pre></div>
+<p>Finally, we can check that the object in memory and the .csv in AWS are the same.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="14-cloud-computing-services.html#cb14-1"></a>assertthat<span class="op">::</span><span class="kw">are_equal</span>(babynames_subset_R, babynames_subset2)</span></code></pre></div>
 
+</div>
 </div>
 </div>
             </section>
@@ -396,8 +477,8 @@ the <a href="18-statistical-methods.html#statistical-methods">Statistical Method
           </div>
         </div>
       </div>
-<a href="3-projects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="5-eha-team-communication.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="13-odk.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="15-google-authorization-and-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -429,7 +510,7 @@ gitbook.start({
 "id": 1
 },
 "edit": {
-"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/r.Rmd",
+"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/cloud-services.Rmd",
 "text": "Edit this chapter"
 },
 "history": {

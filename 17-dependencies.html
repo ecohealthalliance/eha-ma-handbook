@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 R and Reproducible Analysis | EHA Modeling &amp; Analytics Handbook</title>
-  <meta name="description" content="4 R and Reproducible Analysis | EHA Modeling &amp; Analytics Handbook" />
+  <title>17 Dependency Management | EHA Modeling &amp; Analytics Handbook</title>
+  <meta name="description" content="17 Dependency Management | EHA Modeling &amp; Analytics Handbook" />
   <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 R and Reproducible Analysis | EHA Modeling &amp; Analytics Handbook" />
+  <meta property="og:title" content="17 Dependency Management | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 R and Reproducible Analysis | EHA Modeling &amp; Analytics Handbook" />
+  <meta name="twitter:title" content="17 Dependency Management | EHA Modeling &amp; Analytics Handbook" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-<link rel="prev" href="3-projects.html"/>
-<link rel="next" href="5-eha-team-communication.html"/>
+<link rel="prev" href="16-encryption.html"/>
+<link rel="next" href="18-statistical-methods.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -340,64 +340,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="r" class="section level1 hasAnchor">
-<h1><span class="header-section-number">4</span> R and Reproducible Analysis<a href="4-r.html#r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><em>Can everything be re-done easily if I change one data point in the inputs?</em></p>
-<p>At EHA <strong>R</strong> is our primary, though not exclusive, tool for analysis and
-modeling work. R is not just a piece of software for statistics and data
-manipulation but a computer language, meaning that our analyses are <em>scripted</em>. This means they
-thus can be automated, run again, built upon and extended.</p>
-<div id="install" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.1</span> Install<a href="4-r.html#install" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="dependencies" class="section level1 hasAnchor">
+<h1><span class="header-section-number">17</span> Dependency Management<a href="17-dependencies.html#dependencies" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><em>How do I make sure that all my software and configurations needed for a project
+are portable?</em></p>
 <ul>
-<li><a href="https://cran.r-project.org/">R itself</a></li>
-<li><a href="https://www.rstudio.com/">RStudio</a>, the leading R development environment.</li>
-</ul>
-</div>
-<div id="learn" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.2</span> Learn<a href="4-r.html#learn" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Learning R is beyond the scope of this document, and you likely already have
-some experience in it, but some good starting points are:</p>
+<li><p><a href="https://rstudio.github.io/packrat/">Packrat</a> or
+<a href="https://CRAN.R-project.org/package=checkpoint">checkpoint</a> to fix R package
+versions.</p></li>
+<li><p><a href="https://www.docker.com/">Docker</a> for everything</p>
 <ul>
-<li><a href="http://swcarpentry.github.io/r-novice-gapminder/">The Software Carpentry Lessons</a></li>
-<li><a href="http://swirlstats.com/">Swirl</a>, a set of interactive lessons run right
-in R.</li>
-<li><a href="https://www.coursera.org/specializations/jhu-data-science">The JHU Coursera Series</a></li>
-<li><a href="http://r4ds.had.co.nz/">R for Data Science by Hadley Wickam</a> is a
-beginner/intermediate text that we highly recommend for getting up to speed
-with the particular workflows we recommend and the most recent packages that
-support them.</li>
-<li><a href="http://adv-r.had.co.nz/">Advanced R (Wickham)</a> is very good for
-understanding how the language works.</li>
-<li><a href="https://csgillespie.github.io/efficientR/">Efficient R by Colin Gillespie and Robin
-Lovelace</a> is helpful for
-imporving workflows and speeding up code.</li>
-<li><a href="http://r-pkgs.had.co.nz/">R Packages (Wickham)</a> is good for package
-development.</li>
-<li><a href="https://www.rstudio.com/resources/cheatsheets/">Cheatsheets</a> from RStudio
-are a useful references for a number of things.</li>
+<li><a href="http://ropenscilabs.github.io/r-docker-tutorial/">A lesson in user Docker for an R
+project</a></li>
+</ul></li>
+<li><p>Makefiles can automate a complex, multipart project. Here’s <a href="http://swcarpentry.github.io/make-novice/">a lesson on
+them from Software Carpentry</a></p></li>
+<li><p>R packages can be a useful project output. We have some in-house R packages
+to provide access to internal data and generate reports, and may be
+developing more for external audiences. Hadley Wickham’s <a href="http://r-pkgs.had.co.nz/">R Packages
+Book</a> provides guidance for these, and we expect
+our packages to be up to <a href="https://github.com/ropensci/onboarding">rOpenSci
+standards</a>.</p></li>
 </ul>
-<p><a href="https://www.datacamp.com/onboarding/learn?from=home&amp;technology=r">DataCamp courses</a> are also potentially useful.
-If you feel they would match your learning style and needs, discuss EHA purchasing a subscription for you with your supervisor.</p>
-<p>These resources are largely about the mechanics of programming in R, rather
-than using it for statistical analyses. This is a far larger subject, but see
-the <a href="18-statistical-methods.html#statistical-methods">Statistical Methods</a> section for a jumping-off point.</p>
-</div>
-<div id="additional-resources-1" class="section level2 hasAnchor">
-<h2><span class="header-section-number">4.3</span> Additional Resources<a href="4-r.html#additional-resources-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>Trouble shooting your code</strong>: <a href="22-help.html#help">Getting Help</a>.</p>
-<p><strong>User groups/communities of practice</strong>: <a href="https://www.meetup.com/pro/r-user-groups">R Meetups</a></p>
-<p><strong>Specific domains</strong>: <a href="21-training-resources-and-plans.html#training-plans">Training Plans</a></p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="3-projects.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="5-eha-team-communication.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="16-encryption.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="18-statistical-methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -429,7 +402,7 @@ gitbook.start({
 "id": 1
 },
 "edit": {
-"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/r.Rmd",
+"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/dependencies.Rmd",
 "text": "Edit this chapter"
 },
 "history": {
