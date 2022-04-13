@@ -119,6 +119,7 @@ set-up-encryption-for-a-repo-that-did-not-previously-use-git-crypt.
 allow-contributors-access-to-encrypted-files
 import-your-keys-to-the-eha-server
 extra-use-a-symmetric-key-for-automated-processes
+removing-sensitive-files-from-git-history
 dependencies
 statistical-methods
 multivariate-regression

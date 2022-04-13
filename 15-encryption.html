@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15 Encryption | EHA Modeling &amp; Analytics Handbook</title>
   <meta name="description" content="15 Encryption | EHA Modeling &amp; Analytics Handbook" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.25 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15 Encryption | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
-  
   
   
   <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
@@ -276,6 +275,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="15.7.3" data-path="15-encryption.html"><a href="15-encryption.html#import-your-keys-to-the-eha-server"><i class="fa fa-check"></i><b>15.7.3</b> Import your keys to the EHA server<span></span></a></li>
 <li class="chapter" data-level="15.7.4" data-path="15-encryption.html"><a href="15-encryption.html#extra-use-a-symmetric-key-for-automated-processes"><i class="fa fa-check"></i><b>15.7.4</b> Extra: Use a symmetric key for automated processes<span></span></a></li>
 </ul></li>
+<li class="chapter" data-level="15.8" data-path="15-encryption.html"><a href="15-encryption.html#removing-sensitive-files-from-git-history"><i class="fa fa-check"></i><b>15.8</b> Removing sensitive files from git history<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="16-dependencies.html"><a href="16-dependencies.html"><i class="fa fa-check"></i><b>16</b> Dependency Management<span></span></a></li>
 <li class="chapter" data-level="17" data-path="17-statistical-methods.html"><a href="17-statistical-methods.html"><i class="fa fa-check"></i><b>17</b> Statistical Methods<span></span></a><ul>
@@ -542,8 +542,45 @@ variable field as something like <code>GIT_CRYPT_KEY64</code>.</p>
 <p>To use the key later, you’ll need (1) <code>git-crypt</code> and <code>gpg</code> installed in the CI
 system image, and (2) to run these commands after the CI clones your repository:</p>
 <pre><code>echo $GIT_ENCRYPT_KEY64 &gt; git_crypt_key.key64 &amp;&amp; base64 -d git_crypt_key.key64 &gt; git_crypt_key.key &amp;&amp; git-crypt unlock git_crypt_key.key</code></pre>
-
 </div>
+</div>
+<div id="removing-sensitive-files-from-git-history" class="section level2 hasAnchor">
+<h2><span class="header-section-number">15.8</span> Removing sensitive files from git history<a href="15-encryption.html#removing-sensitive-files-from-git-history" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>AKA What to do if you accidentally committed sensitive files (data, keys, etc.) to your repository either before encryption or our outside the scope of your <code>.gitattributes</code> file.</p>
+<ol style="list-style-type: decimal">
+<li>Take a breath.</li>
+<li>Make sure your sensitive files are included either in the <code>.gitattributes</code> file or your <code>.ignore</code> file. You can add a filter for particular files any where in your repo with <code>**/MySuperSensitiveFile</code> see <a href="https://git-scm.com/docs/gitignore#_pattern_format">gitignore documentation</a></li>
+<li>Install <a href="https://github.com/newren/git-filter-repo/blob/main/INSTALL.md"><code>git-filter-repo</code></a></li>
+<li>Navigate to your repo’s working directory <code>cd my/project/folder</code></li>
+<li>Back up your <code>.git/config</code> file as certain elements will be removed when we run <code>git filter-repo</code></li>
+<li>Run <code>git filter-repo --invert-paths --path PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA</code> to remove a sensitive file.</li>
+<li>Make sure you’ve removed everything you want from the repository’s history</li>
+</ol>
+<ul>
+<li>use <code>git log -- path/to/file</code> to see git history for a particular file. <strong>Note</strong> If you’ve successfully removed the file there won’t be any history to display.<br />
+</li>
+<li>see <a href="https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History"><code>git log</code></a> for more information.
+7)Check in with collaborators to make sure no one has work on branches in the repo they would like to keep.</li>
+</ul>
+<ol start="8" style="list-style-type: decimal">
+<li>Next you will use <code>push --force</code> to overwrite all the history on github and all the branches on your repo. Push your changes to the remote using <code>git push origin --force --all</code>.</li>
+</ol>
+<ul>
+<li>You may have to add the origin back into your .git/config file</li>
+</ul>
+<ol start="9" style="list-style-type: decimal">
+<li>Use <code>git push origin --force --tags</code> to remove sensitive files from any of your tagged releases.</li>
+<li>Follow the instructions <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#fully-removing-the-data-from-github">here</a> for contacting github to make sure there aren’t any caches of the files on github.</li>
+<li>Tell your collaborators to <code>rebase</code>,NOT MERGE, any branches created off the old repo history.</li>
+<li>Wait a little bit to make sure that your file remove didn’t have unintended side effects then run the following code:</li>
+</ol>
+<pre><code>git for-each-ref --format=&quot;delete %(refname)&quot; refs/original | git update-ref --stdin
+git reflog expire --expire=now --all
+git gc --prune=now</code></pre>
+<ol start="10" style="list-style-type: decimal">
+<li>Breathe a sigh of relief.</li>
+</ol>
+
 </div>
 </div>
             </section>
