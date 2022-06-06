@@ -8,7 +8,9 @@ This chapter covers documentation on the use and deployment of [Open Data Kit](h
 
 3) [A section on XLSForm](#xlsform), a form standard created to help simplify the authoring of forms in Microsoft Excel and/or in any other spreadsheet applications.
 
-Most of the material presented in this chapter are summarised from/based on [ODK](https://getodk.org)'s [official documentation](https://docs.getodk.org). Wherever appropriate, links to a specific topic on the [official documentation](https://docs.getodk.org) are provided as additinal resource. For further details on what has been discussed here, please refer to this resource as it is updated regularly with the latest updates and features of [ODK](https://getodk.org).
+Most of the material presented in this chapter are summarised from/based on [ODK](https://getodk.org)'s [official documentation](https://docs.getodk.org). Wherever appropriate, links to a specific topic on the [official documentation](https://docs.getodk.org) are provided as additional resource. For further details on what has been discussed here, please refer to this resource as it is updated regularly with the latest updates and features of [ODK](https://getodk.org).
+
+A working group at EHA has pulled together this [Tips and Tricks Document](https://docs.google.com/document/d/1QcYc-8q0EMSCORQ2RakMcFGePwionNCLzKQNIWu7Av0/edit)
 
 ## ODK Central {#central}
 
