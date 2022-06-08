@@ -21,18 +21,18 @@ structuring data makes interoperability between tools easier.
 
 ## Data Management Plan
 
-*Data Management Plans* , also called *Outputs Management Plans* or *Data Management and Sharing Plans*, are living documents that help structure the creation and management of data throughout the lifecycle of a project. DMPs are flexible and do not force researchers to choose a particular technology set but rather ask probing questions about the mechanics and ethics of data used in research projects. Organizing data management in this way provides a common framework to think about data without requiring specific technologies be used in the research workflow. Furthermore, DMPs use reliable identifiers (URIs) to connect  components of the research workflow, making long term data access more reliable.
+*Data Management Plans* , also called *Outputs Management Plans* or *Data Management and Sharing Plans*, are living documents that help structure the creation and management of data throughout the lifecycle of a project. DMPs are flexible and do not force researchers to choose a particular technology set but rather ask probing questions about the mechanics and ethics of data use in research projects. Organizing data management in this way provides a common framework to think about data without requiring specific technologies be used in the research workflow. Furthermore, DMPs use reliable identifiers (URIs) to connect  components of the research workflow, making long term data access more reliable.
 
-![data management plan as hub in knowledge management](assets/data_mgmg_plan.png)
+![Data management plan as hub in knowledge management system](assets/data_mgmg_plan.png)
 
 Data management activities, but not necessarily infrastructure, are an allowable cost for most funding agencies (NIH, NSF, NASA). Gray areas include paying for hosting services and other infrastructure-like components of the DMP. 
 
 **Benefits of using a DMP**:
 
 1. They are a funder requirement and you want funding
-    - NIH, NSF, NASA, Wellcome Trust, etc.   
+    - NIH, NSF, NASA, Wellcome Trust, etc. require a DMP be submitted with a proposal.    
 2. They provide a scaffold for you to conceptualize data management for your project
-    - what data do you need to answer your research question, where will it come from, what resources are needed throughout the project lifecycle, what are the mechanics of managing the data?
+    - What data do you need to answer your research question, where will it come from, what resources are needed throughout the project lifecycle, what are the mechanics of managing the data?
 3. They make it easier collaborate
     - Defining responsibilities, Committing to using data standards, Documenting how the project works  
 4. They make it easier for your data to be reused
@@ -57,7 +57,7 @@ Data management activities, but not necessarily infrastructure, are an allowable
 ### DMP Process Overview
 
 0. [Create an account](https://dmptool.org/quick_start_guide) on DMPTool.org associated with EcoHealth Alliance
-1. Identify Funder DMP requirements and reach out to the `r params$data_librarian`
+1. Identify Funder DMP requirements and `r params$data_librarian_appt` with the `r params$data_librarian`
 2. Create a DMP using appropriate template given your funder. If no template is available or the funder has no requirements, use the EHA Minimal Data Management Plan.  Add collaborators and complete as much of the plan as you can 
 3. Request feedback from the `r params$data_librarian`
 4. Work with the `r params$data_librarian` to incorporate feedback 
@@ -65,7 +65,7 @@ Data management activities, but not necessarily infrastructure, are an allowable
 
 ### Expectations by project phase
 
-**Proposal**
+**Proposal/Pre-Award Phase**
 
 - Look for and use Funder Requirements for DMPs. If no template exists, use this one or create one based on funder requirements.
 - Think about how you might make data Findable, Accessible, Interoperable and Reproducible (FAIR)
@@ -74,13 +74,11 @@ Data management activities, but not necessarily infrastructure, are an allowable
 - Outline the ethical considerations for properly managing data in your project
 - `r params$data_librarian_appt` with the Data Librarian, create a timeline for proposal submission, and have a notion of tools and standards to use
 
-**Post Award - Early Phase**
+**Post-Award/Early Phase**
 
 - Review and update proposal DMP 
     - include updates from IRB or IACUC 
 - Refine roles and tech stack
-    - Will you need to control access to the data?
-    - Who will be able to create and/or modify data elements?
 - Provide more detail on data collection and storage
     - Think about how measurements and primary data sets will be stored
     - Think about how statistical models and derived products will be produced and stored
