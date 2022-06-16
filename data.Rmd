@@ -90,7 +90,7 @@ Data management activities, but not necessarily infrastructure, are an allowable
 
 **Operational Phase**
 
-- Link the plan to the objects being created via URI's.  
+- Link the plan to the research artifacts (data sets, publications, code repositories, etc.) being created via URI's.  
 - Review, revise, and update components of the DMP
     - check that IRB/IACUC documents match DMP and protocols
 - Make sure all SOPs and relevant data collection or analysis documents are accessible (linked) to the DMP 
