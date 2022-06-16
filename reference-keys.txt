@@ -31,6 +31,9 @@ learn-1
 install-2
 library
 data-management
+data-management-plan
+dmp-process-overview
+expectations-by-project-phase
 learn-2
 install-3
 airtable

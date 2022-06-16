@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Data Management | EHA Modeling &amp; Analytics Handbook</title>
   <meta name="description" content="7 Data Management | EHA Modeling &amp; Analytics Handbook" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Data Management | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
@@ -179,8 +179,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.3" data-path="6-documentation-and-outputs.html"><a href="6-documentation-and-outputs.html#library"><i class="fa fa-check"></i><b>6.3</b> Library</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="7-data-management.html"><a href="7-data-management.html"><i class="fa fa-check"></i><b>7</b> Data Management</a><ul>
-<li class="chapter" data-level="7.1" data-path="7-data-management.html"><a href="7-data-management.html#learn-2"><i class="fa fa-check"></i><b>7.1</b> Learn</a></li>
-<li class="chapter" data-level="7.2" data-path="7-data-management.html"><a href="7-data-management.html#install-3"><i class="fa fa-check"></i><b>7.2</b> Install</a></li>
+<li class="chapter" data-level="7.1" data-path="7-data-management.html"><a href="7-data-management.html#data-management-plan"><i class="fa fa-check"></i><b>7.1</b> Data Management Plan</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="7-data-management.html"><a href="7-data-management.html#dmp-process-overview"><i class="fa fa-check"></i><b>7.1.1</b> DMP Process Overview</a></li>
+<li class="chapter" data-level="7.1.2" data-path="7-data-management.html"><a href="7-data-management.html#expectations-by-project-phase"><i class="fa fa-check"></i><b>7.1.2</b> Expectations by project phase</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="7-data-management.html"><a href="7-data-management.html#learn-2"><i class="fa fa-check"></i><b>7.2</b> Learn</a></li>
+<li class="chapter" data-level="7.3" data-path="7-data-management.html"><a href="7-data-management.html#install-3"><i class="fa fa-check"></i><b>7.3</b> Install</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="8-airtable.html"><a href="8-airtable.html"><i class="fa fa-check"></i><b>8</b> Airtable</a><ul>
 <li class="chapter" data-level="8.1" data-path="8-airtable.html"><a href="8-airtable.html#key-terms"><i class="fa fa-check"></i><b>8.1</b> Key Terms</a></li>
@@ -344,6 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">7</span> Data Management<a href="7-data-management.html#data-management" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><em>Can the data be shared and published, and easily re-used in other analyses</em>?</p>
 <ul>
+<li>Create and maintain a <a href="https://dmptool.org/plans">data management plan</a></li>
 <li>Store data in simple, cross-compatible formats such as CSV files.</li>
 <li>Microsoft Excel can be a useful tool for data entry and organization, but
 limit its use to that, and organize your data in a way that can be easily
@@ -358,10 +363,140 @@ cases it makes sense for us to create data-only R packages for easily
 distributing data internally and externally.</li>
 </ul>
 <p>We aim to generally work in a <strong>tidy data</strong> framework. This approach to
-structuring data makes iteroperability between tools easier.</p>
-<div id="learn-2" class="section level2 hasAnchor">
-<h2><span class="header-section-number">7.1</span> Learn<a href="7-data-management.html#learn-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+structuring data makes interoperability between tools easier.</p>
+<div id="data-management-plan" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.1</span> Data Management Plan<a href="7-data-management.html#data-management-plan" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>Data Management Plans</em> , also called <em>Outputs Management Plans</em> or <em>Data Management and Sharing Plans</em>, are living documents that help structure the creation and management of data throughout the lifecycle of a project. DMPs are flexible and do not force researchers to choose a particular technology set but rather ask probing questions about the mechanics and ethics of data use in research projects. Organizing data management in this way provides a common framework to think about data without requiring specific technologies be used in the research workflow. Furthermore, DMPs use reliable identifiers (URIs) to connect components of the research workflow, making long term data access more reliable.</p>
+<div class="figure">
+<img src="assets/data_mgmg_plan.png" alt="" />
+<p class="caption">Data management plan as hub in knowledge management system</p>
+</div>
+<p>Data management activities, but not necessarily infrastructure, are an allowable cost for most funding agencies (NIH, NSF, NASA). Gray areas include paying for hosting services and other infrastructure-like components of the DMP.</p>
+<p><strong>Benefits of using a DMP</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>They are a funder requirement and you want funding
 <ul>
+<li>NIH, NSF, NASA, Wellcome Trust, etc. require a DMP be submitted with a proposal.<br />
+</li>
+</ul></li>
+<li>They provide a scaffold for you to conceptualize data management for your project
+<ul>
+<li>What data do you need to answer your research question, where will it come from, what resources are needed throughout the project lifecycle, what are the mechanics of managing the data?</li>
+</ul></li>
+<li>They make it easier collaborate
+<ul>
+<li>Defining responsibilities, Committing to using data standards, Documenting how the project works<br />
+</li>
+</ul></li>
+<li>They make it easier for your data to be reused
+<ul>
+<li>You get more citations, your effort contributes to knowledge creation in unexpected ways, your results become more reproducible</li>
+</ul></li>
+</ol>
+<p><strong>Components of a DMP</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Data Type</strong> - What will be collected or created during the project?<br />
+</li>
+<li><strong>Related Tools, Software, or Code</strong> - Whats needed to make your analysis run?<br />
+</li>
+<li><strong>Standards and Documentation</strong> - How will people/machines know what they are looking at?<br />
+</li>
+<li><strong>Where, when, and how will data be made accessible?</strong><br />
+</li>
+<li><strong>Restrictions on data use</strong> - How will you abide by ethical standards or other restrictions on data reuse?<br />
+</li>
+<li><strong>Responsibilities</strong> - Who is supposed to do what? How will you monitor that?</li>
+</ol>
+<p><strong>EHA DMP Philosophy</strong>:</p>
+<ol style="list-style-type: decimal">
+<li>Its never too late to write a DMP<br />
+</li>
+<li>Data Management Plans are living documents that change with a project<br />
+</li>
+<li>DMPs are created collaboratively and stored in DMPTool.org<br />
+</li>
+<li>We ensure our DMPs meet EHA best practices for FAIR data and Reproducible Science</li>
+</ol>
+<div id="dmp-process-overview" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.1.1</span> DMP Process Overview<a href="7-data-management.html#dmp-process-overview" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol start="0" style="list-style-type: decimal">
+<li><a href="https://dmptool.org/quick_start_guide">Create an account</a> on DMPTool.org associated with EcoHealth Alliance</li>
+<li>Identify Funder DMP requirements and <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GOwk4nzuezs8t_Ua1IxLW8aXHhyo4_tv1-mIv9nmT4rDkEaQuV7HbwqXervbMiX1ijDN65UZ-">Schedule a meeting</a> with the <a href="https://www.ecohealthalliance.org/personnel/collin-schwantes">Data Librarian</a></li>
+<li>Create a DMP using appropriate template given your funder. If no template is available or the funder has no requirements, use the EHA Minimal Data Management Plan. Add collaborators and complete as much of the plan as you can</li>
+<li>Request feedback from the <a href="https://www.ecohealthalliance.org/personnel/collin-schwantes">Data Librarian</a></li>
+<li>Work with the <a href="https://www.ecohealthalliance.org/personnel/collin-schwantes">Data Librarian</a> to incorporate feedback</li>
+<li>Export DMP for inclusion in grant</li>
+</ol>
+</div>
+<div id="expectations-by-project-phase" class="section level3 hasAnchor">
+<h3><span class="header-section-number">7.1.2</span> Expectations by project phase<a href="7-data-management.html#expectations-by-project-phase" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>Proposal/Pre-Award Phase</strong></p>
+<ul>
+<li>Look for and use Funder Requirements for DMPs. If no template exists, use this one or create one based on funder requirements.</li>
+<li>Think about how you might make data Findable, Accessible, Interoperable and Reproducible (FAIR)</li>
+<li>Consider what tools you will use throughout the lifecycle of your data </li>
+<li>Consider how data collection, analysis and management tasks will be divided among collaborators</li>
+<li>Outline the ethical considerations for properly managing data in your project</li>
+<li><a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GOwk4nzuezs8t_Ua1IxLW8aXHhyo4_tv1-mIv9nmT4rDkEaQuV7HbwqXervbMiX1ijDN65UZ-">Schedule a meeting</a> with the Data Librarian, create a timeline for proposal submission, and have a notion of tools and standards to use</li>
+</ul>
+<p><strong>Post-Award/Early Phase</strong></p>
+<ul>
+<li>Review and update proposal DMP
+<ul>
+<li>include updates from IRB or IACUC</li>
+</ul></li>
+<li>Refine roles and tech stack</li>
+<li>Provide more detail on data collection and storage
+<ul>
+<li>Think about how measurements and primary data sets will be stored</li>
+<li>Think about how statistical models and derived products will be produced and stored</li>
+<li>Consider where data will be stored long term, how it will be accessed, and by whom</li>
+</ul></li>
+<li>Think about how you will store artifacts of analysis
+<ul>
+<li>Where will your code live? Who will be able to access it?<br />
+</li>
+<li>If you’re using spreadsheets with formulas, proprietary software or other methods analyzing data, how will you make that workflow reproducible?</li>
+</ul></li>
+<li><a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GOwk4nzuezs8t_Ua1IxLW8aXHhyo4_tv1-mIv9nmT4rDkEaQuV7HbwqXervbMiX1ijDN65UZ-">Schedule a meeting</a> with the <a href="https://www.ecohealthalliance.org/personnel/collin-schwantes">Data Librarian</a></li>
+</ul>
+<p><strong>Operational Phase</strong></p>
+<ul>
+<li>Link the plan to the research artifacts (data sets, publications, code repositories, etc.) being created via URI’s.<br />
+</li>
+<li>Review, revise, and update components of the DMP
+<ul>
+<li>check that IRB/IACUC documents match DMP and protocols</li>
+</ul></li>
+<li>Make sure all SOPs and relevant data collection or analysis documents are accessible (linked) to the DMP </li>
+<li>Check that data storage locations and methods are well described and linked </li>
+<li>Check that necessary stakeholders are identified </li>
+<li>Check that appropriate privacy and security measures are working as expected </li>
+<li>Check that your data products and code meet the needs of your proposed long term storage solution</li>
+<li><a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GOwk4nzuezs8t_Ua1IxLW8aXHhyo4_tv1-mIv9nmT4rDkEaQuV7HbwqXervbMiX1ijDN65UZ-">Schedule a meeting</a> with the <a href="https://www.ecohealthalliance.org/personnel/collin-schwantes">Data Librarian</a></li>
+</ul>
+<p><strong>Publication and Archiving phase</strong></p>
+<ul>
+<li>Review and revise your DMP</li>
+<li>Check that linked objects are accessible to the appropriate individuals</li>
+<li>Add DOI or stable identifier for research objects 
+<ul>
+<li>DOI’s can be assigned to code, datasets, and published articles</li>
+</ul></li>
+<li>Submit materials to long term storage
+<ul>
+<li>Ensure sharing and access are in agreement with requirements from IRB and/or research </li>
+<li>Use EHA institutional tags where possible e.g. <a href="https://zenodo.org/communities/ecohealthalliance/?page=1&amp;size=20">Zenodo Community</a></li>
+</ul></li>
+<li><a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GOwk4nzuezs8t_Ua1IxLW8aXHhyo4_tv1-mIv9nmT4rDkEaQuV7HbwqXervbMiX1ijDN65UZ-">Schedule a meeting</a> with the <a href="https://www.ecohealthalliance.org/personnel/collin-schwantes">Data Librarian</a></li>
+</ul>
+</div>
+</div>
+<div id="learn-2" class="section level2 hasAnchor">
+<h2><span class="header-section-number">7.2</span> Learn<a href="7-data-management.html#learn-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Watch M3 on <a href="https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwfFq11zdwCbBT83/recNVSuG2ApgfYkbl?blocks=hide">Data Management Plans</a></li>
+<li>Read California Digital Library guidance on <a href="https://dmptool.org/general_guidance">Data Management Plans</a></li>
 <li>Read Hadley Wickham’s <a href="http://vita.had.co.nz/papers/tidy-data.pdf">tidy data
 paper</a> for the general concept.
 Note the <em>packages</em> in this paper are out of date, but the structures and
@@ -381,7 +516,7 @@ is nice, too.</li>
 </ul>
 </div>
 <div id="install-3" class="section level2 hasAnchor">
-<h2><span class="header-section-number">7.2</span> Install<a href="7-data-management.html#install-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">7.3</span> Install<a href="7-data-management.html#install-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Get the
 <a href="https://cran.r-project.org/web/packages/tidyverse/index.html"><strong>tidyverse</strong></a>
 package for R using <code>install.packages("tidyverse")</code>. This will install several
