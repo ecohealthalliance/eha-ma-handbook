@@ -2,6 +2,7 @@
 
 *Can the data be shared and published, and easily re-used in other analyses*?
 
+-   Create and maintain a [data management plan](https://dmptool.org/plans)
 -   Store data in simple, cross-compatible formats such as CSV files.
 -   Microsoft Excel can be a useful tool for data entry and organization, but
     limit its use to that, and organize your data in a way that can be easily
@@ -16,10 +17,103 @@
     distributing data internally and externally.
 
 We aim to generally work in a **tidy data** framework. This approach to
-structuring data makes iteroperability between tools easier.
+structuring data makes interoperability between tools easier.
+
+## Data Management Plan
+
+*Data Management Plans* , also called *Outputs Management Plans* or *Data Management and Sharing Plans*, are living documents that help structure the creation and management of data throughout the lifecycle of a project. DMPs are flexible and do not force researchers to choose a particular technology set but rather ask probing questions about the mechanics and ethics of data use in research projects. Organizing data management in this way provides a common framework to think about data without requiring specific technologies be used in the research workflow. Furthermore, DMPs use reliable identifiers (URIs) to connect  components of the research workflow, making long term data access more reliable.
+
+![Data management plan as hub in knowledge management system](assets/data_mgmg_plan.png)
+
+Data management activities, but not necessarily infrastructure, are an allowable cost for most funding agencies (NIH, NSF, NASA). Gray areas include paying for hosting services and other infrastructure-like components of the DMP. 
+
+**Benefits of using a DMP**:
+
+1. They are a funder requirement and you want funding
+    - NIH, NSF, NASA, Wellcome Trust, etc. require a DMP be submitted with a proposal.    
+2. They provide a scaffold for you to conceptualize data management for your project
+    - What data do you need to answer your research question, where will it come from, what resources are needed throughout the project lifecycle, what are the mechanics of managing the data?
+3. They make it easier collaborate
+    - Defining responsibilities, Committing to using data standards, Documenting how the project works  
+4. They make it easier for your data to be reused
+    - You get more citations, your effort contributes to knowledge creation in unexpected ways, your results become more reproducible    
+
+**Components of a DMP**:
+
+1. **Data Type** - What will be collected or created during the project?  
+2. **Related Tools, Software, or Code** - Whats needed to make your analysis run?  
+3. **Standards and Documentation** - How will people/machines know what they are looking at?  
+4. **Where, when, and how will data be made accessible?**    
+5. **Restrictions on data use** - How will you abide by ethical standards or other restrictions on data reuse?  
+6. **Responsibilities** - Who is supposed to do what? How will you monitor that?  
+
+**EHA DMP Philosophy**:
+
+1. Its never too late to write a DMP  
+2. Data Management Plans are living documents that change with a project  
+3. DMPs are created collaboratively and stored in DMPTool.org  
+4. We ensure our DMPs meet EHA best practices for FAIR data and Reproducible Science  
+
+### DMP Process Overview
+
+0. [Create an account](https://dmptool.org/quick_start_guide) on DMPTool.org associated with EcoHealth Alliance
+1. Identify Funder DMP requirements and `r params$data_librarian_appt` with the `r params$data_librarian`
+2. Create a DMP using appropriate template given your funder. If no template is available or the funder has no requirements, use the EHA Minimal Data Management Plan.  Add collaborators and complete as much of the plan as you can 
+3. Request feedback from the `r params$data_librarian`
+4. Work with the `r params$data_librarian` to incorporate feedback 
+5. Export DMP for inclusion in grant
+
+### Expectations by project phase
+
+**Proposal/Pre-Award Phase**
+
+- Look for and use Funder Requirements for DMPs. If no template exists, use this one or create one based on funder requirements.
+- Think about how you might make data Findable, Accessible, Interoperable and Reproducible (FAIR)
+- Consider what tools you will use throughout the lifecycle of your data 
+- Consider how data collection, analysis and management tasks will be divided among collaborators 
+- Outline the ethical considerations for properly managing data in your project
+- `r params$data_librarian_appt` with the Data Librarian, create a timeline for proposal submission, and have a notion of tools and standards to use
+
+**Post-Award/Early Phase**
+
+- Review and update proposal DMP 
+    - include updates from IRB or IACUC 
+- Refine roles and tech stack
+- Provide more detail on data collection and storage
+    - Think about how measurements and primary data sets will be stored
+    - Think about how statistical models and derived products will be produced and stored
+    - Consider where data will be stored long term, how it will be accessed, and by whom
+- Think about how you will store artifacts of analysis
+    - Where will your code live? Who will be able to access it?  
+    - If you're using spreadsheets with formulas, proprietary software or other methods analyzing data, how will you make that workflow reproducible?
+- `r params$data_librarian_appt` with the `r params$data_librarian`
+
+**Operational Phase**
+
+- Link the plan to the research artifacts (data sets, publications, code repositories, etc.) being created via URI's.  
+- Review, revise, and update components of the DMP
+    - check that IRB/IACUC documents match DMP and protocols
+- Make sure all SOPs and relevant data collection or analysis documents are accessible (linked) to the DMP 
+- Check that data storage locations and methods are well described and linked 
+- Check that necessary stakeholders are identified 
+- Check that appropriate privacy and security measures are working as expected 
+- Check that your data products and code meet the needs of your proposed long term storage solution
+- `r params$data_librarian_appt` with the `r params$data_librarian`
+
+**Publication and Archiving phase**
+
+- Review and revise your DMP
+- Check that linked objects are accessible to the appropriate individuals
+- Add DOI or stable identifier for research objects 
+    - DOI's can be assigned to code, datasets, and published articles
+- Submit materials to long term storage
+    - Ensure sharing and access are in agreement with requirements from IRB and/or research 
+    - Use EHA institutional tags where possible e.g. [Zenodo Community](https://zenodo.org/communities/ecohealthalliance/?page=1&size=20)
+- `r params$data_librarian_appt` with the `r params$data_librarian`
 
 ## Learn
-
+-   Watch M3 on [Data Management Plans](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwfFq11zdwCbBT83/recNVSuG2ApgfYkbl?blocks=hide)
+-   Read California Digital Library guidance on [Data Management Plans](https://dmptool.org/general_guidance)
 -   Read Hadley Wickham's [tidy data
     paper](http://vita.had.co.nz/papers/tidy-data.pdf) for the general concept.
     Note the *packages* in this paper are out of date, but the structures and
