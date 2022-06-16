@@ -23,7 +23,8 @@ structuring data makes interoperability between tools easier.
 
 *Data Management Plans* , also called *Outputs Management Plans* or *Data Management and Sharing Plans*, are living documents that help structure the creation and management of data throughout the lifecycle of a project. DMPs are flexible and do not force researchers to choose a particular technology set but rather ask probing questions about the mechanics and ethics of data use in research projects. Organizing data management in this way provides a common framework to think about data without requiring specific technologies be used in the research workflow. Furthermore, DMPs use reliable identifiers (URIs) to connect  components of the research workflow, making long term data access more reliable.
 
-![Data management plan as hub in knowledge management system](assets/data_mgmg_plan.png)
+![](assets/data_mgmg_plan.png)
+*Data management plan as hub in knowledge management system*
 
 Data management activities, but not necessarily infrastructure, are an allowable cost for most funding agencies (NIH, NSF, NASA). Gray areas include paying for hosting services and other infrastructure-like components of the DMP. 
 
