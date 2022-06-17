@@ -166,7 +166,7 @@ The automations feature within Airtable allows you to visually program routines.
 - Actions - what the automation will do
 
 
-```{r actions diagram, echo=FALSE,fig.height=1,  fig.width= 3}
+```{r actions diagram, echo=FALSE,fig.height=1.5}
 
 library(ggplot2)
 
@@ -184,6 +184,7 @@ ggplot()+
   theme_void() +
   xlim(c(.9,3.1))
 ```
+
 Automations are commonly used to augment the synced tables feature, send notifications, check data quality, and manipulate or create records. 
 
 This automation creates a weekly summary of applicants who applied for a position. Its trigger is time based, then it finds records that match a condition, and finally it generates an email from those records and sends to the appropriate recipients. 
