@@ -191,7 +191,7 @@ This automation creates a weekly summary of applicants who applied for a positio
 
 ![airtable weekly summary](./assets/airtable_Weekly Digest.png)
 
-### Scripting and Blocks (free plan and above)
+### Scripting and Blocks (pro plan and above)
 
 Scripting uses JavaScript to manipulate a base from within an application in Airtable. Scripting is flexible but has a steep learning curve. The scripting environment Airtable provides can be helpful as it provides code [linting](https://en.wikipedia.org/wiki/Lint_(software)), direct access to documentation, and example scripts to build from. The major drawback to scripting is that scripts live in the base and files are not version controlled.   
 
