@@ -51,7 +51,7 @@ importing-data
 base-design
 automating-airtable
 automations-with-drag-and-drop-programing-pro-and-above
-scripting-and-blocks-free-plan-and-above
+scripting-and-blocks-pro-plan-and-above
 using-the-rest-api
 airtable-and-r
 versioning
