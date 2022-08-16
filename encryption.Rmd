@@ -86,10 +86,10 @@ First download a Windows-compatible binary for GPG which can be found (here)<htt
 
 Then install git-crypt by via the following steps:
 
- - Downloading `git-crypt-windows.zip` from <https://github.com/ecohealthalliance/git-crypt/releases/tag/win-release>.
-     - This may generate the warning "git-crypt-windows.zip is not commonly downloaded and may be dangerous". Click the up arrow next to 'Discard' and select 'Keep'. 
+ - Downloading `git-crypt-*.exe` from <https://github.com/AGWA/git-crypt/releases>.
+     - This may generate the warning "git-crypt-*.exe is not commonly downloaded and may be dangerous". Click the up arrow next to 'Discard' and select 'Keep'. 
      - Even after this the download may fail with the message 'Failed - Virus detected'. Do not worry this is a false positive. If this occurs, search for 'Virus & thread protection' in the task bar and click on 'Manage settings' under 'Virus & thread protection settings'. Once there, turn off "real-time protection" and try downloading again. Please make sure to turn it back on again when done.
- - Once downloaded, the unzip the zip file. Open file explorer, navigate to the downloaded `git-crypt-windows.zip` file and right-click it once. In the menu above choose 'Extract all'. This will create a new folder containing `gpg-crypt.exe`.
+ - Once downloaded, rename the file to `gpg-crypt.exe`.
  - Move the resulting `gpg-crypt.exe` into a folder recognized by the Windows PATH environment variable. A convenient location is `C:\Program Files\Git\cmd\`.
 
 Once Keybase and GPG are installed, the terminal commands related to exporting keys from Keybase into GPG are the same regardless of operating system.
