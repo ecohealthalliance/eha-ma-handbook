@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>16 Encryption | EHA Modeling &amp; Analytics Handbook</title>
   <meta name="description" content="16 Encryption | EHA Modeling &amp; Analytics Handbook" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.28 and GitBook 2.6.7" />
 
   <meta property="og:title" content="16 Encryption | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
@@ -413,12 +413,12 @@ sudo apt install keybase gpg git-crypt</code></pre>
 <p>First download a Windows-compatible binary for GPG which can be found (here)<a href="https://gnupg.org/download/" class="uri">https://gnupg.org/download/</a>. The ‘Simple installer for the current GnuPG’ binary on that page is the recommended choice.</p>
 <p>Then install git-crypt by via the following steps:</p>
 <ul>
-<li>Downloading <code>git-crypt-windows.zip</code> from <a href="https://github.com/ecohealthalliance/git-crypt/releases/tag/win-release" class="uri">https://github.com/ecohealthalliance/git-crypt/releases/tag/win-release</a>.
+<li>Downloading <code>git-crypt-*.exe</code> from <a href="https://github.com/AGWA/git-crypt/releases" class="uri">https://github.com/AGWA/git-crypt/releases</a>.
 <ul>
-<li>This may generate the warning “git-crypt-windows.zip is not commonly downloaded and may be dangerous”. Click the up arrow next to ‘Discard’ and select ‘Keep’.</li>
+<li>This may generate the warning "git-crypt-*.exe is not commonly downloaded and may be dangerous". Click the up arrow next to ‘Discard’ and select ‘Keep’.</li>
 <li>Even after this the download may fail with the message ‘Failed - Virus detected’. Do not worry this is a false positive. If this occurs, search for ‘Virus &amp; thread protection’ in the task bar and click on ‘Manage settings’ under ‘Virus &amp; thread protection settings’. Once there, turn off “real-time protection” and try downloading again. Please make sure to turn it back on again when done.</li>
 </ul></li>
-<li>Once downloaded, the unzip the zip file. Open file explorer, navigate to the downloaded <code>git-crypt-windows.zip</code> file and right-click it once. In the menu above choose ‘Extract all’. This will create a new folder containing <code>gpg-crypt.exe</code>.</li>
+<li>Once downloaded, rename the file to <code>gpg-crypt.exe</code>.</li>
 <li>Move the resulting <code>gpg-crypt.exe</code> into a folder recognized by the Windows PATH environment variable. A convenient location is <code>C:\Program Files\Git\cmd\</code>.</li>
 </ul>
 <p>Once Keybase and GPG are installed, the terminal commands related to exporting keys from Keybase into GPG are the same regardless of operating system.</p>
@@ -673,7 +673,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
