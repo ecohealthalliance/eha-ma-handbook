@@ -43,10 +43,10 @@ when-should-i-use-airtable
 security-and-access-control
 user--and-administrator-security-features
 access-controls
-managing-data
+data-in-airtable
 workspaces-bases-tables-fields-records
 views
-record-history-base-snapshots-and-exporting-data
+internal-backups-record-history-base-snapshots
 importing-data
 base-design
 automating-airtable
@@ -54,6 +54,13 @@ automations-with-drag-and-drop-programing-pro-and-above
 scripting-and-blocks-pro-plan-and-above
 using-the-rest-api
 airtable-and-r
+data-management-1
+metadata
+metadata-for-automations-and-extensions
+external-backups
+using-airtabler
+open-source-projects
+paid-services
 versioning
 learn-3
 install-4
