@@ -91,7 +91,7 @@ Direct access to a base or workspace is granted or removed by base owners and cr
 To further restrict access to a base, users can be given indirect access via revocable share links. These can be customized to prevent users from seeing the full base, prevent duplicating the base, and prevent copying data from the base. The ability to use the link can be password protected, restricted to people with certain email domains, and may be revoked at any time. If there are concerns about data leaks via base or table duplication, inviting people with a need to view the data via share links constrains their ability to extract data from the base.
 
 
-## Managing Data
+## Data in Airtable
 
 See [Airtable plan comparison](https://support.airtable.com/hc/en-us/articles/115010928147-Airtable-plans) for more information on the size of bases and features available. Information in this section pertains to all plans unless specified.  
 
@@ -116,13 +116,13 @@ In Airtable, tables can be displayed in different views to emphasis different co
 
 For more on views, see [the guide to views](https://support.airtable.com/hc/en-us/articles/202624989-Guide-to-views).
 
-### Record History, Base Snapshots, and Exporting Data
+### Internal Backups: Record History, Base Snapshots
 
 Airtable has system for tracking changes to a base. They provide revision history for individual records (how long those histories are stored varies by plan). Any comments made in the revision history will be stored for the life of the record (on any plan). The current state of an entire base may be captured through snapshots. Should a systemic issue arise, the base can be restored to a snapshot at a later date. Restoring from a snapshot will remove the revision history for a record but comments on that record will be maintained.   
 
 As revision histories are maintained, "deleted" records may be retrieved.  In the event of the need to permanently remove data, the revision history of the base may be removed. 
 
-Airtable allows data to be exported as CSVs from individual tables. At this time there is not a supported base export function. 
+Airtable allows data to be exported as CSVs from individual tables. At this time there is not an Airtable supported base export function. 
 
 ### Importing data
 
@@ -205,7 +205,7 @@ All Airtable bases are automatically accessible to authorized users via a REST A
 
 ### Airtable and R
 
-The Airtable REST API can be used via R with the [airtabler package](https://github.com/ecohealthalliance/airtabler). EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design was works well for exploring the data. Our extension adds additional functionality to help use `airtabler` in automation via continuous integration such as GitHub Actions.  
+The Airtable REST API can be used via R with the [airtabler package](https://github.com/ecohealthalliance/airtabler). EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design works well for exploring the data. Our extension adds additional functionality to help use `airtabler` in automation via continuous integration such as GitHub Actions.  
 
 ```
 devtools::install_github("ecohealthalliance/airtabler")
@@ -270,8 +270,56 @@ data.frame(
 
 ```
 
+## Data Management
+
+Because of its flexibility and ease of use, it is extremely important that data
+management for airtable be taken seriously. Unlike most other relational databases,
+the fundamental properties of your base can be changed easily by multiple users 
+without warning! Documenting the structure and purpose of your base, as well 
+as creating regular external backups could save you from catastrophe. 
+
+### Metadata
+- **Structural metadata** - Information about a resource that tells you how its
+put together - e.g. the relationship between a table, field, and automation. With
+the exception of users on the enterprise plan, you must be deliberate about
+creating and maintaining structural metadata for your base. 
+
+Example of Airtable Structural Metadata:
+<iframe class="airtable-embed" src="https://airtable.com/embed/shrsv0CWMSERgUIR8?backgroundColor=gray&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
 
 
+- **Descriptive metadata** - Information about a resource that makes it easier to
+find and attribute data. This includes things attributes like author, title, description,
+keywords, etc. This table becomes especially important when data are transitioned
+out of airtable, at the end of a project, or if the base will be shared broadly
+with collaborators. 
+
+Example of Airtable Descriptive Metadata:
+<iframe class="airtable-embed" src="https://airtable.com/embed/shrFr7eafWtH4s7ll?backgroundColor=gray&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+
+To see the template base, follow this [link]( https://airtable.com/invite/l?inviteId=inv5ycCAbIVw1WM3Z&inviteToken=ef7b72e998a0a69d835244f87f88b6b9b6b1094915239ebc93423e1257fcd72b&utm_medium=email&utm_source=product_team&utm_content=transactional-alerts)
+
+#### Metadata for automations and extensions
+
+Automations and extensions live entirely inside airtable. As of August 2022, Airtable introduced a "Manage Fields" tab that provides metadata for a specific table, including any automation dependencies. It is not possible to export those dependency tables or the code used in automations automatically. This makes it extremely important to document any automations and extensions outside your base. 
+
+
+
+### External Backups
+#### Using airtabler
+
+Using `airtabler::air_dump()` and `airtabler::air_dump_to_csv()` functions, you can export all tables to R then create versioned folder of CSVs for backup.
+
+#### Open Source Projects
+
+UnlyEd - use this template to push airtable backups to AWS S3. 
+
+https://github.com/UnlyEd/airtable-backups-boilerplate
+
+#### Paid services
+
+Sequin - replicate airtable to postGres database
+https://www.sequin.io/sources/airtable 
 
 
 
