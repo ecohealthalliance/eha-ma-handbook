@@ -306,20 +306,27 @@ Automations and extensions live entirely inside airtable. As of August 2022, Air
 
 
 ### External Backups
+
+It is a good idea to create regular external backups of airtable data in the event
+that something catastrophic happens to your base or you simply decide you no longer wish
+to use airtable as your data store.Unfortunately, airtable does not provide an
+off the shelf solution for this. Below are three options for extracting all data
+from your base. 
+
 #### Using airtabler
 
-Using `airtabler::air_dump()` and `airtabler::air_dump_to_csv()` functions, you can export all tables to R then create versioned folder of CSVs for backup.
+Using `airtabler::air_dump()` and `airtabler::air_dump_to_csv()` functions, you can export all tables to R then create a versioned folder of CSVs. See the `air_dump_to_csv` help page for more information.
 
-#### Open Source Projects
+#### Other Open Source Projects
 
 UnlyEd - use this template to push airtable backups to AWS S3. 
 
-https://github.com/UnlyEd/airtable-backups-boilerplate
+- https://github.com/UnlyEd/airtable-backups-boilerplate
 
 #### Paid services
 
 Sequin - replicate airtable to postGres database
-https://www.sequin.io/sources/airtable 
+- https://www.sequin.io/sources/airtable 
 
 
 
