@@ -59,7 +59,7 @@ metadata
 metadata-for-automations-and-extensions
 external-backups
 using-airtabler
-open-source-projects
+other-open-source-projects
 paid-services
 versioning
 learn-3
