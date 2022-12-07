@@ -21,11 +21,16 @@ structuring data makes interoperability between tools easier.
 
 ## Data Management Plan
 
-*Data Management Plans* , also called *Outputs Management Plans* or *Data Management and Sharing Plans*, are living documents that help structure the creation and management of data throughout the lifecycle of a project. DMPs are flexible and do not force researchers to choose a particular technology set but rather ask probing questions about the mechanics and ethics of data use in research projects. Organizing data management in this way provides a common framework to think about data without requiring specific technologies be used in the research workflow. Furthermore, DMPs use reliable identifiers (URIs) to connect  components of the research workflow, making long term data access more reliable.
+*Data Management Plans* , also called *Outputs Management Plans* or *Data Management and Sharing Plans*, are living documents that help structure the creation and management of data throughout the lifecycle of a project. DMPs are flexible and do not force researchers to choose a particular technology set but rather ask probing questions about the mechanics and ethics of data use in research projects. Organizing data management in this way provides a common framework to think about data without requiring specific technologies be used in the research workflow. Furthermore, DMPs use stable identifiers (URIs) to connect  components of the research workflow, making long term data access more reliable.
+
+The majority of funders require a DMP; however, each funder has specific expectations
+about what, when, and how research outputs should be shared. It is important you 
+and your collaborators understand those expectations. 
 
 ![](assets/data_mgmg_plan.png)
 *Data management plan as hub in knowledge management system*
 
+**Important note on budgeting**:
 Data management activities, but not necessarily infrastructure, are an allowable cost for most funding agencies (NIH, NSF, NASA). Gray areas include paying for hosting services and other infrastructure-like components of the DMP. 
 
 **Benefits of using a DMP**:
@@ -54,12 +59,14 @@ Data management activities, but not necessarily infrastructure, are an allowable
 2. Data Management Plans are living documents that change with a project  
 3. DMPs are created collaboratively and stored in DMPTool.org  
 4. We ensure our DMPs meet EHA best practices for FAIR data and Reproducible Science  
+5. Collaborators, especially those from outside institutions, are full participants in the DMP process 
 
 ### DMP Process Overview
 
 0. [Create an account](https://dmptool.org/quick_start_guide) on DMPTool.org associated with EcoHealth Alliance
 1. Identify Funder DMP requirements and `r params$data_librarian_appt` with the `r params$data_librarian`
-2. Create a DMP using appropriate template given your funder. If no template is available or the funder has no requirements, use the EHA Minimal Data Management Plan.  Add collaborators and complete as much of the plan as you can 
+2. Create a DMP using appropriate template given your funder. If no template is available or the funder has no requirements, use the EHA Minimal Data Management Plan. Add collaborators and complete as much of the plan as you can 
+3. Principle Investigators and Project Partners explicitly agree to abide by the DMP. All collaborators should fully understand and agree with the data sharing components of the plan before approving it. 
 3. Request feedback from the `r params$data_librarian`
 4. Work with the `r params$data_librarian` to incorporate feedback 
 5. Export DMP for inclusion in grant
@@ -68,12 +75,15 @@ Data management activities, but not necessarily infrastructure, are an allowable
 
 **Proposal/Pre-Award Phase**
 
-- Look for and use Funder Requirements for DMPs. If no template exists, use this one or create one based on funder requirements.
+- Look for funder requirements and use funder specific templates for DMPs. If no template exists, use the EHA Minimal Data Management Plan or create one based on funder requirements.
 - Think about how you might make data Findable, Accessible, Interoperable and Reproducible (FAIR)
+- Establish expectations for data sharing and outputs with collaborators and PIs. 
 - Consider what tools you will use throughout the lifecycle of your data 
 - Consider how data collection, analysis and management tasks will be divided among collaborators 
 - Outline the ethical considerations for properly managing data in your project
+- Ensure collaborators and PIs understand the commitments they are making via the DMP. Request and incorporate feedback from collaborators.
 - `r params$data_librarian_appt` with the Data Librarian, create a timeline for proposal submission, and have a notion of tools and standards to use
+
 
 **Post-Award/Early Phase**
 
