@@ -115,6 +115,11 @@ Data management activities, but not necessarily infrastructure, are an allowable
 ## Learn
 -   Watch M3 on [Data Management Plans](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwfFq11zdwCbBT83/recNVSuG2ApgfYkbl?blocks=hide)
 -   Read California Digital Library guidance on [Data Management Plans](https://dmptool.org/general_guidance)
+-   [Data Management Plan Skill Building](https://dataoneorg.github.io/Education/bp_step/plan/) from DataOne
+-   [NIH Data Sharing Guidance](https://sharing.nih.gov/data-management-and-sharing-policy)
+  - [NIH Data Sharing learning Resources](https://sharing.nih.gov/about/learning)
+  - [Condensed NIH DMSP Guidance Resources](https://osf.io/uadxr/)
+-   [NSF Bio DMP Guidance](https://www.nsf.gov/bio/biodmp.jsp)
 -   Read Hadley Wickham's [tidy data
     paper](http://vita.had.co.nz/papers/tidy-data.pdf) for the general concept.
     Note the *packages* in this paper are out of date, but the structures and
