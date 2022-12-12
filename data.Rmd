@@ -46,7 +46,7 @@ Data management activities, but not necessarily infrastructure, are an allowable
 3. **Standards and Documentation** - How will people/machines know what they are looking at?  
 4. **Where, when, and how will data be made accessible?**    
 5. **Restrictions on data use** - How will you abide by ethical standards or other restrictions on data reuse?  
-6. **Responsibilities** - Who is supposed to do what? How will you monitor that?  
+6. **Responsibilities** - Who is supposed to do what? How will you monitor that? What do they have to do it with?
 
 **EHA DMP Philosophy**:
 
@@ -54,7 +54,8 @@ Data management activities, but not necessarily infrastructure, are an allowable
 2. Data Management Plans are living documents that change with a project  
 3. DMPs are created collaboratively and stored in DMPTool.org  
 4. We ensure our DMPs meet EHA best practices for [FAIR data](https://www.go-fair.org/fair-principles/) and Reproducible Science  
-5. Collaborators, especially those from outside institutions, are full participants in the DMP process 
+5. Projects should have adequate resources (personnel time, infrastructure, time in project schedule) to implement the DMP
+6. Collaborators, especially those from outside institutions, are full participants in the DMP process 
 
 
 ### Expectations by project phase
@@ -65,7 +66,8 @@ Data management activities, but not necessarily infrastructure, are an allowable
 - Think about how you might make data Findable, Accessible, Interoperable and Reproducible (FAIR)
 - Establish expectations for data sharing and outputs with collaborators and PIs. These discussions should begin early at the same time as discussing project responsibilities and budget.
 - Consider what tools you will use throughout the lifecycle of your data 
-- Consider how data collection, analysis and management tasks will be divided among collaborators 
+- Consider how data collection, analysis and management tasks will be divided among collaborators
+- Incorporate data management activities into your project staffing, budget, and schedule
 - Outline the ethical considerations for properly managing data in your project
 - Ensure collaborators and PIs understand the commitments they are making via the DMP. Request and incorporate feedback from collaborators.
 - `r params$data_librarian_appt` with the Data Librarian, create a timeline for proposal submission, and have a notion of tools and standards to use
