@@ -32,8 +32,9 @@ install-2
 library
 data-management
 data-management-plan
-dmp-process-overview
 expectations-by-project-phase
+using-dmptool-to-create-prepare-your-proposal-data-management-plan
+notes-on-data-management
 learn-2
 install-3
 airtable
