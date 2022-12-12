@@ -63,7 +63,7 @@ Data management activities, but not necessarily infrastructure, are an allowable
 
 - Look for funder requirements and use funder specific templates for DMPs. If no template exists, use the EHA Minimal Data Management Plan or create one based on funder requirements.
 - Think about how you might make data Findable, Accessible, Interoperable and Reproducible (FAIR)
-- Establish expectations for data sharing and outputs with collaborators and PIs. 
+- Establish expectations for data sharing and outputs with collaborators and PIs. These discussions should begin early at the same time as discussing project responsibilities and budget.
 - Consider what tools you will use throughout the lifecycle of your data 
 - Consider how data collection, analysis and management tasks will be divided among collaborators 
 - Outline the ethical considerations for properly managing data in your project
