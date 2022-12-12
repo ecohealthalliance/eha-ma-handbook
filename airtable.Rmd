@@ -88,7 +88,15 @@ Airtable provides database (referred to as "base") and workspace administrators 
 - **Reader**: Sees full base  
 
 Direct access to a base or workspace is granted or removed by base owners and creators to Airtable users. Base owners and creators can control who has access to a base and can control any “share” links created for that base. They may also restrict editing of tables or fields within a base. Any collaborator given direct access to a base at any permission level will be able to duplicate that base and share that data further. It is important that direct access to the base is limited to individuals with a need to curate or analyze the data. 
-To further restrict access to a base, users can be given indirect access via revocable share links. These can be customized to prevent users from seeing the full base, prevent duplicating the base, and prevent copying data from the base. The ability to use the link can be password protected, restricted to people with certain email domains, and may be revoked at any time. If there are concerns about data leaks via base or table duplication, inviting people with a need to view the data via share links constrains their ability to extract data from the base.
+
+### Share Links and Interfaces
+
+To further restrict access to a base, users can be given indirect access via revocable share links or interfaces. 
+
+[Share links](https://support.airtable.com/docs/creating-a-base-share-link-or-a-view-share-link)  can be customized to prevent users from seeing the full base, prevent duplicating the base, and prevent copying data from the base. The ability to use the link can be password protected, restricted to people with certain email domains, and may be revoked at any time. If there are concerns about data leaks via base or table duplication, inviting people with a need to view the data via share links constrains their ability to extract data from the base.
+
+[Interfaces](https://support.airtable.com/docs/interface-designer-overview) are dynamic dashboards built on a limited set of data in an airtable base. Users can explore or even edit data based on the permissions provided by the interface creator. Access can be further tuned by setting up a "current-user filter". See [this guide](https://support.airtable.com/docs/interface-designer-permissions) for more information. 
+
 
 
 ## Data in Airtable
