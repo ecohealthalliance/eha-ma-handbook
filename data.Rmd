@@ -53,7 +53,7 @@ Data management activities, but not necessarily infrastructure, are an allowable
 1. Its never too late to write a DMP  
 2. Data Management Plans are living documents that change with a project  
 3. DMPs are created collaboratively and stored in DMPTool.org  
-4. We ensure our DMPs meet EHA best practices for FAIR data and Reproducible Science  
+4. We ensure our DMPs meet EHA best practices for [FAIR data](https://www.go-fair.org/fair-principles/) and Reproducible Science  
 5. Collaborators, especially those from outside institutions, are full participants in the DMP process 
 
 
@@ -108,7 +108,7 @@ Data management activities, but not necessarily infrastructure, are an allowable
     - Use EHA institutional tags where possible e.g. [Zenodo Community](https://zenodo.org/communities/ecohealthalliance/?page=1&size=20)
 - `r params$data_librarian_appt` with the `r params$data_librarian`
 
-### DMP Process Overview
+### Using DMPTool to create prepare your proposal data Management plan
 
 0. [Create an account](https://dmptool.org/quick_start_guide) on DMPTool.org associated with EcoHealth Alliance
 1. Identify Funder DMP requirements and `r params$data_librarian_appt` with the `r params$data_librarian`
