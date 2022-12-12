@@ -151,7 +151,7 @@ Feel free to reach out to the data librarian for questions about base design.
 Airtable has five main routes for automating processes.
 
 1) [Automations](https://support.airtable.com/hc/en-us/articles/360050974153-Automations-overview) - a drag and drop visual programming tool
-2) [Applications](https://support.airtable.com/hc/en-us/articles/115013403608-Airtable-apps-overview) - pre-built applications that perform some task
+2) [Extensions](https://support.airtable.com/docs/airtable-extensions-overview) - pre-built applications that perform some task
 3) [Scripting](https://support.airtable.com/hc/en-us/articles/360043041074-Scripting-app-overview) - use JavaScript to automate tasks within Airtable
 4) [Blocks](https://www.airtable.com/developers/apps/guides/getting-started) - use JavaScript to create custom applications
 5) [REST API](https://airtable.com/api) - use whatever programming language you like to automate processes
@@ -203,6 +203,18 @@ Blocks are custom applications built in JavaScript and node.js that add to base 
 
 All Airtable bases are automatically accessible to authorized users via a REST API. The list of API accessible bases you have access to can be found here: https://airtable.com/api. By clicking on a base you will be able to see the full API documentation for that base. 
 
+
+### Scoped Tokens 
+
+Airtable is moving to a [scoped tokens](https://airtable.com/developers/web/guides/personal-access-tokens) based approach to api access. Scoped personal access tokens allow you to create a token for a specific base with specific permissions - e.g. token has read-only access to a bat sampling base. Using scoped tokens in this way means that if the token is compromised (leaked, stolen, accidentally committed unencrypted to a github repo, etc), you can delete that token to remove any access it might have had and the limited scope means that you know exactly what a person would have been able to access. 
+
+To create a personal access token go here: https://airtable.com/create/tokens
+
+** Remember to save the  token in a secure place.
+
+Airtable has also deployed [oauth tokens](https://airtable.com/developers/web/api/oauth-reference) for all users. 
+
+
 ### Airtable and R
 
 The Airtable REST API can be used via R with the [airtabler package](https://github.com/ecohealthalliance/airtabler). EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design works well for exploring the data. Our extension adds additional functionality to help use `airtabler` in automation via continuous integration such as GitHub Actions.  
@@ -213,7 +225,7 @@ devtools::install_github("ecohealthalliance/airtabler")
 
 The Airtable API serves up data as JSON, which has a hierarchical structure similar to a list in R. To handle JSON, `airtabler` uses the `jsonlite` package. Its helpful to understand how `jsonlite` handles different JSON structures when working with more complicated Airtable data. See the `jsonlite` [quick-start guide](https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html) for a basic overview. The [`purr` package](https://purrr.tidyverse.org/) is extremely helpful when dealing with data objects derived from JSON because it facilitates navigating nested data structures. 
 
-The `airtabler` package provides instructions for setting up access to the Airtable API. You will need to following those instructions for the following examples to work.
+The `airtabler` package provides instructions for setting up access to the Airtable API. You will need to follow those instructions for the following examples to work.
 
 **One to One join**
 
