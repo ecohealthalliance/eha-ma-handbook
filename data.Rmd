@@ -1,23 +1,14 @@
 # Data Management
 
-*Can the data be shared and published, and easily re-used in other analyses*?
+EcoHealth Alliance is committed to producing and promoting reliable and
+reproducible research. In order to achieve this, we have to provide data
+(and other research outputs) that non-team members can interpret and use; as well
+as promote best practices for data management among collaborators. Ideally, the 
+framework for managing data laid out in this chapter will facilitate the creation
+of high quality, share-able research outputs. By focusing on [Data Management 
+Plans](https://datamanagement.hms.harvard.edu/plan-design/data-management-plans) and the [dmptool](https://dmptool.org/plans), we can build on well 
+established workflows for producing high quality research outputs.  
 
--   Create and maintain a [data management plan](https://dmptool.org/plans)
--   Store data in simple, cross-compatible formats such as CSV files.
--   Microsoft Excel can be a useful tool for data entry and organization, but
-    limit its use to that, and organize your data in a way that can be easily
-    exported.
--   Metadata! Metadata! Document your data.
--   For relational datasets you can create linked data on [Airtable](https://airtable.com/). For more information see \@ref(airtable)
--   For data sets that cross multiple projects, create data-only project folders
-    for the master version. When these data sets are finalized, they can be
-    deposited in public or private data repositories such as
-    [figshare](https://figshare.com/) and [zenodo](https://zenodo.org/). In some
-    cases it makes sense for us to create data-only R packages for easily
-    distributing data internally and externally.
-
-We aim to generally work in a **tidy data** framework. This approach to
-structuring data makes interoperability between tools easier.
 
 ## Data Management Plan
 
@@ -25,7 +16,11 @@ structuring data makes interoperability between tools easier.
 
 The majority of funders require a DMP; however, each funder has specific expectations
 about what, when, and how research outputs should be shared. It is important you 
-and your collaborators understand those expectations. 
+and your collaborators understand those expectations before submitting a DMP. Its
+equally important that all collaborators understand and agree to the obligations
+created when submitting a DMP. Early communication between collaborators 
+is key to navigating differing expectations about data sharing from researchers
+in different contexts. 
 
 ![](assets/data_mgmg_plan.png)
 *Data management plan as hub in knowledge management system*
@@ -35,14 +30,14 @@ Data management activities, but not necessarily infrastructure, are an allowable
 
 **Benefits of using a DMP**:
 
-1. They are a funder requirement and you want funding
-    - NIH, NSF, NASA, Wellcome Trust, etc. require a DMP be submitted with a proposal.    
-2. They provide a scaffold for you to conceptualize data management for your project
+1. They provide a scaffold for you to conceptualize data management for your project
     - What data do you need to answer your research question, where will it come from, what resources are needed throughout the project lifecycle, what are the mechanics of managing the data?
-3. They make it easier collaborate
+2. They make it easier collaborate
     - Defining responsibilities, Committing to using data standards, Documenting how the project works  
-4. They make it easier for your data to be reused
+3. They make it easier for your data to be reused
     - You get more citations, your effort contributes to knowledge creation in unexpected ways, your results become more reproducible    
+4. They are a funder requirement and you want funding
+    - NIH, NSF, NASA, Wellcome Trust, etc. require a DMP be submitted with a proposal.   
 
 **Components of a DMP**:
 
@@ -61,15 +56,6 @@ Data management activities, but not necessarily infrastructure, are an allowable
 4. We ensure our DMPs meet EHA best practices for FAIR data and Reproducible Science  
 5. Collaborators, especially those from outside institutions, are full participants in the DMP process 
 
-### DMP Process Overview
-
-0. [Create an account](https://dmptool.org/quick_start_guide) on DMPTool.org associated with EcoHealth Alliance
-1. Identify Funder DMP requirements and `r params$data_librarian_appt` with the `r params$data_librarian`
-2. Create a DMP using appropriate template given your funder. If no template is available or the funder has no requirements, use the EHA Minimal Data Management Plan. Add collaborators and complete as much of the plan as you can 
-3. Principle Investigators and Project Partners explicitly agree to abide by the DMP. All collaborators should fully understand and agree with the data sharing components of the plan before approving it. 
-3. Request feedback from the `r params$data_librarian`
-4. Work with the `r params$data_librarian` to incorporate feedback 
-5. Export DMP for inclusion in grant
 
 ### Expectations by project phase
 
@@ -121,6 +107,38 @@ Data management activities, but not necessarily infrastructure, are an allowable
     - Ensure sharing and access are in agreement with requirements from IRB and/or research 
     - Use EHA institutional tags where possible e.g. [Zenodo Community](https://zenodo.org/communities/ecohealthalliance/?page=1&size=20)
 - `r params$data_librarian_appt` with the `r params$data_librarian`
+
+### DMP Process Overview
+
+0. [Create an account](https://dmptool.org/quick_start_guide) on DMPTool.org associated with EcoHealth Alliance
+1. Identify Funder DMP requirements and `r params$data_librarian_appt` with the `r params$data_librarian`
+2. Create a DMP using appropriate template given your funder. If no template is available or the funder has no requirements, use the EHA Minimal Data Management Plan. Add collaborators and complete as much of the plan as you can 
+3. Principle Investigators and Project Partners explicitly agree to abide by the DMP. All collaborators should fully understand and agree with the data sharing components of the plan before approving it. 
+3. Request feedback from the `r params$data_librarian`
+4. Work with the `r params$data_librarian` to incorporate feedback 
+5. Export DMP for inclusion in grant
+
+## Notes on data management
+*Can the data be shared and published, and easily re-used in other analyses*?
+
+-   Create and maintain a [data management plan](https://dmptool.org/plans)
+-   Store data in simple, interoperable formats such as CSV files.
+-   Microsoft Excel can be a useful tool for data entry and organization, but
+    limit its use to that, and organize your data in a way that can be easily
+    exported.
+-   Metadata! Metadata! Document your data.
+-   For relational datasets you can create linked data on [Airtable](https://airtable.com/). For more information see \@ref(airtable)
+-   For data sets that cross multiple projects, create data-only project folders
+    for the master version. When these data sets are finalized, they can be
+    deposited in public or private data repositories such as
+    [figshare](https://figshare.com/) and [zenodo](https://zenodo.org/). In some
+    cases it makes sense for us to create data-only R packages for easily
+    distributing data internally and externally.
+
+We aim to generally work in a **tidy data** framework. This approach to
+structuring data makes interoperability between tools easier.
+
+
 
 ## Learn
 -   Watch M3 on [Data Management Plans](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwfFq11zdwCbBT83/recNVSuG2ApgfYkbl?blocks=hide)
