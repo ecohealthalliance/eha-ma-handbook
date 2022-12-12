@@ -210,7 +210,7 @@ Airtable is moving to a [scoped tokens](https://airtable.com/developers/web/guid
 
 To create a personal access token go here: https://airtable.com/create/tokens
 
-** Remember to save the  token in a secure place.
+** Remember to save the  token in a secure place. Do not store unencrypted tokens on the web (e.g. pushing them to github).
 
 Airtable has also deployed [oauth tokens](https://airtable.com/developers/web/api/oauth-reference) for all users. 
 
