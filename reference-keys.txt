@@ -44,6 +44,7 @@ when-should-i-use-airtable
 security-and-access-control
 user--and-administrator-security-features
 access-controls
+share-links-and-interfaces
 data-in-airtable
 workspaces-bases-tables-fields-records
 views
@@ -54,6 +55,7 @@ automating-airtable
 automations-with-drag-and-drop-programing-pro-and-above
 scripting-and-blocks-pro-plan-and-above
 using-the-rest-api
+scoped-tokens
 airtable-and-r
 data-management-1
 metadata
