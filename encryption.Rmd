@@ -140,7 +140,7 @@ Then, in the nano text editor that comes up, add the following line to the file:
 export GPG_TTY=$(tty)
 ```
 
-In the nano editor, press Ctrl-O to write ("write-Out") to save your changes, then press Ctrl-X to exit. Alternatively, run the following line in the terminal to change your `.zshrc file without using nano or any other editor:
+In the nano editor, press Ctrl-O to write ("write-Out") to save your changes, then press Ctrl-X to exit. Alternatively, run the following line in the terminal to change your `.zshrc` file without using nano or any other editor:
 
 ```
 echo "export GPG_TTY=$(tty)" >> ~/.zshrc && source ~/.zshrc
@@ -191,7 +191,7 @@ If you've made it this far and you only need to unlock a repository that has alr
 
 ### Set up encryption for a repo that did not previously use git-crypt. 
 
-This will initialize the repository and add the default gpg key to git-crypt. Note: adding encryption to a repository will only encrypt files _going forward._ Any previous versions in the commit history will still be un-encrypted. Best practice is to set up git-crypt first, add relevant file names to the `.gitattribues` file, and only then add any sensitive files to the repo.
+This will initialize the repository and add the default gpg key to git-crypt. Note: adding encryption to a repository will only encrypt files _going forward._ Any previous versions in the commit history will still be un-encrypted. Best practice is to set up git-crypt first, add relevant file names to the `.gitattributes` file, and only then add any sensitive files to the repo.
 
 ```
 ## In the repo base directory open the terminal or command line and enter:
@@ -201,6 +201,19 @@ git-crypt init
 ## To verify that files are being encrypted run:
 
 git-crypt status
+
+# add your key to git crypt
+git-crypt add-gpg-user YOUR_KEY_HERE
+
+# create .attributes file - will tell git crypt what should be encrypted
+touch .attributes
+
+# tell git crypt that .env should be encrypted
+cat >> .attributes < **/.env filter=git-crypt diff=git-crypt
+
+# may also be a good idea to add **/auth as well if you're going to be 
+# using non-interactive processes with dropbox and google drive
+cat >> .attributes < **/auth filter=git-crypt diff=git-crypt
 
 ```
 
