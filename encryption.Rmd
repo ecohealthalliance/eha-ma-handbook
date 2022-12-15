@@ -206,14 +206,14 @@ git-crypt status
 git-crypt add-gpg-user YOUR_KEY_HERE
 
 # create .attributes file - will tell git crypt what should be encrypted
-touch .attributes
+touch .attributes 
 
 # tell git crypt that .env should be encrypted
-cat >> .attributes < **/.env filter=git-crypt diff=git-crypt
+echo '**/.env filter=git-crypt diff=git-crypt' >> .attributes 
 
-# may also be a good idea to add **/auth as well if you're going to be 
+# may also be a good idea to add **/auth  if you're going to be 
 # using non-interactive processes with dropbox and google drive
-cat >> .attributes < **/auth filter=git-crypt diff=git-crypt
+echo '**/auth filter=git-crypt diff=git-crypt' >> .attributes
 
 ```
 
