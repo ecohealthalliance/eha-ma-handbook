@@ -21,6 +21,10 @@ Instructions for setting this up are below.
 Sign up for [Keybase](https://keybase.io/), and follow the instructions for 
 installing it on your computer.
 
+Note that if you switch computers, you need to have another device associated with the  keybase account and/or a copy of your paper key in order to recover your key.  
+A [password manager](https://www.theguardian.com/technology/2022/mar/19/not-using-password-manager-why-you-should-online-security) ([Bitwarden](https://bitwarden.com/), [LastPass](https://www.lastpass.com/), [1Password](https://1password.com/)) would be helpful for securely storing a paper key. 
+
+
 ### Installing Keybase on Linux
 
 For installing on linux, first identify the distribution by entering
@@ -140,7 +144,7 @@ Then, in the nano text editor that comes up, add the following line to the file:
 export GPG_TTY=$(tty)
 ```
 
-In the nano editor, press Ctrl-O to write ("write-Out") to save your changes, then press Ctrl-X to exit. Alternatively, run the following line in the terminal to change your `.zshrc file without using nano or any other editor:
+In the nano editor, press Ctrl-O to write ("write-Out") to save your changes, then press Ctrl-X to exit. Alternatively, run the following line in the terminal to change your `.zshrc` file without using nano or any other editor:
 
 ```
 echo "export GPG_TTY=$(tty)" >> ~/.zshrc && source ~/.zshrc
@@ -189,9 +193,9 @@ If `git-crypt unlock` fails, try the following steps:
 
 If you've made it this far and you only need to unlock a repository that has already been set up you're done! The instructions below will help you go further by outlining how to grant access to encrypted files on a repository, add your key to the EHA servers, and to initialize a new repository to use git-crypt.
 
-### Set up encryption for a repo that did not previously use git-crypt. 
+### Set up encryption for a repo that did not previously use git-crypt 
 
-This will initialize the repository and add the default gpg key to git-crypt. Note: adding encryption to a repository will only encrypt files _going forward._ Any previous versions in the commit history will still be un-encrypted. Best practice is to set up git-crypt first, add relevant file names to the `.gitattribues` file, and only then add any sensitive files to the repo.
+This will initialize the repository and add the default gpg key to git-crypt. Note: adding encryption to a repository will only encrypt files _going forward._ Any previous versions in the commit history will still be un-encrypted. Best practice is to set up git-crypt first, add relevant file or folder names to the `.gitattributes` file, and only then add any sensitive files to the repo. 
 
 ```
 ## In the repo base directory open the terminal or command line and enter:
@@ -202,9 +206,33 @@ git-crypt init
 
 git-crypt status
 
+# add your key to git crypt
+git-crypt add-gpg-user YOUR_KEY_HERE
+
+# create .attributes file - will tell git crypt what should be encrypted
+touch .attributes 
+
+# tell git crypt that .env should be encrypted
+echo '**/.env filter=git-crypt diff=git-crypt' >> .attributes 
+
+# may also be a good idea to add **/auth  if you're going to be 
+# using non-interactive processes with dropbox and google drive
+echo '**/auth filter=git-crypt diff=git-crypt' >> .attributes
+
+```
+To learn more about pattern matching in the `.gitattributes` file, see the [git-crypt read.me](https://github.com/AGWA/git-crypt#gitattributes-file) and [gitignore manual](https://git-scm.com/docs/gitignore#_pattern_format)
+
+Your `.gitattributes` file might look something like this:
+
+```
+.env filter=git-crypt diff=git-crypt
+auth/** filter=git-crypt diff=git-crypt
+.gitattributes !filter !diff
+
 ```
 
-### Allow contributors access to encrypted files:
+
+### Allow contributors access to encrypted files
 
 First add their public key to your keychain. Visit their Keybase profiles (e.g., <https://keybase.io/noamross>) and click on the key - it will show several ways to import the keys. Two methods are shown below,
 
@@ -216,7 +244,7 @@ curl https://keybase.io/noamross/pgp_keys.asc | gpg --import
 keybase pgp pull noamross
 ```
 
-Next edit the key so that it has sufficient trust levels
+Next edit the key so that it has sufficient trust levels as described in this [guide](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/).
 
 ```
 # in terminal
@@ -224,8 +252,16 @@ Next edit the key so that it has sufficient trust levels
 gpg --list-keys
 
 ## Copy the key that matches the individual you want to allow access to ecnrypted files. 
-## Edit that key so that it has sufficient trust levels as described in the above [guide](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/).
+
+gpg --edit-key <keyID>
+
+# At the gpg> prompt, use uid X to select the user ID you want to mark as trusted,
+# then use the trust command to set the trust level.
+# Use save to exit when you’re done.
+
+.
 ```
+Edit that key so that it has sufficient trust levels as described in the above 
 
 Add the key to your git repo (make sure you're in the right directory)
 
@@ -243,8 +279,12 @@ git push
 
 ```
 
-remind the added individual to pull these changes down before they try to unlock the repo.
+remind the added individual to pull these changes down before they try to unlock the repo. The individual who was just added will have to unlock the repo before they can 
+access encrypted files.
 
+```
+git crypt unlock
+```
 
 <!-- Moved down from up above. This won't apply to everyone and interrupts the main flow of getting git-crypt working. -->
 ### Import your keys to the EHA server
@@ -263,7 +303,7 @@ its first line is `pinentry-program /usr/local/bin/pinentry-mac`, change it to
 `pinentry-program /usr/bin/pinentry`. Note that it may not exist at all, which
 is fine - it means the program is just using default behavior.
 
-### Extra: Use a symmetric key for automated processes
+## Use a symmetric key for automated processes
 
 If you are using continuous integration on a repository with encrypted files,
 you'll need to provide a way for the CI system to unlock them.  An easy, but
