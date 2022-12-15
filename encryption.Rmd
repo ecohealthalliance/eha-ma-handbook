@@ -193,7 +193,7 @@ If `git-crypt unlock` fails, try the following steps:
 
 If you've made it this far and you only need to unlock a repository that has already been set up you're done! The instructions below will help you go further by outlining how to grant access to encrypted files on a repository, add your key to the EHA servers, and to initialize a new repository to use git-crypt.
 
-### Set up encryption for a repo that did not previously use git-crypt. 
+### Set up encryption for a repo that did not previously use git-crypt 
 
 This will initialize the repository and add the default gpg key to git-crypt. Note: adding encryption to a repository will only encrypt files _going forward._ Any previous versions in the commit history will still be un-encrypted. Best practice is to set up git-crypt first, add relevant file names to the `.gitattributes` file, and only then add any sensitive files to the repo.
 
@@ -221,7 +221,7 @@ echo '**/auth filter=git-crypt diff=git-crypt' >> .attributes
 
 ```
 
-### Allow contributors access to encrypted files:
+### Allow contributors access to encrypted files
 
 First add their public key to your keychain. Visit their Keybase profiles (e.g., <https://keybase.io/noamross>) and click on the key - it will show several ways to import the keys. Two methods are shown below,
 
@@ -233,7 +233,7 @@ curl https://keybase.io/noamross/pgp_keys.asc | gpg --import
 keybase pgp pull noamross
 ```
 
-Next edit the key so that it has sufficient trust levels
+Next edit the key so that it has sufficient trust levels as described in this [guide](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/).
 
 ```
 # in terminal
@@ -241,8 +241,16 @@ Next edit the key so that it has sufficient trust levels
 gpg --list-keys
 
 ## Copy the key that matches the individual you want to allow access to ecnrypted files. 
-## Edit that key so that it has sufficient trust levels as described in the above [guide](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/).
+
+gpg --edit-key <keyID>
+
+# At the gpg> prompt, use uid X to select the user ID you want to mark as trusted,
+# then use the trust command to set the trust level.
+# Use save to exit out when you’re done.
+
+.
 ```
+Edit that key so that it has sufficient trust levels as described in the above 
 
 Add the key to your git repo (make sure you're in the right directory)
 
@@ -260,8 +268,12 @@ git push
 
 ```
 
-remind the added individual to pull these changes down before they try to unlock the repo.
+remind the added individual to pull these changes down before they try to unlock the repo. The individual who was just added will have to unlock the repo before they can 
+access encrypted files.
 
+```
+git crypt unlock
+```
 
 <!-- Moved down from up above. This won't apply to everyone and interrupts the main flow of getting git-crypt working. -->
 ### Import your keys to the EHA server
