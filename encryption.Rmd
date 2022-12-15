@@ -303,7 +303,7 @@ its first line is `pinentry-program /usr/local/bin/pinentry-mac`, change it to
 `pinentry-program /usr/bin/pinentry`. Note that it may not exist at all, which
 is fine - it means the program is just using default behavior.
 
-### Extra: Use a symmetric key for automated processes
+## Use a symmetric key for automated processes
 
 If you are using continuous integration on a repository with encrypted files,
 you'll need to provide a way for the CI system to unlock them.  An easy, but
