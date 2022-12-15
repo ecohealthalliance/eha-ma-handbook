@@ -21,6 +21,10 @@ Instructions for setting this up are below.
 Sign up for [Keybase](https://keybase.io/), and follow the instructions for 
 installing it on your computer.
 
+Note that if you switch computers, you need to have another device associated with the  keybase account and/or a copy of your paper key in order to recover your key.  
+A [password manager](https://www.theguardian.com/technology/2022/mar/19/not-using-password-manager-why-you-should-online-security) ([Bitwarden](https://bitwarden.com/), [LastPass](https://www.lastpass.com/), [1Password](https://1password.com/)) would be helpful for securely storing a paper key. 
+
+
 ### Installing Keybase on Linux
 
 For installing on linux, first identify the distribution by entering
