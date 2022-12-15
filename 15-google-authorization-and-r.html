@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15 Google Authorization and R | EHA Modeling &amp; Analytics Handbook</title>
   <meta name="description" content="15 Google Authorization and R | EHA Modeling &amp; Analytics Handbook" />
-  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15 Google Authorization and R | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
@@ -51,7 +51,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.0/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
@@ -271,12 +271,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="15.7" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#general-approach-to-securely-managing-keys"><i class="fa fa-check"></i><b>15.7</b> General approach to securely managing keys</a><ul>
 <li class="chapter" data-level="15.7.1" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#provide-a-service-account-key-for-projects"><i class="fa fa-check"></i><b>15.7.1</b> Provide a service account key for projects</a></li>
-<li class="chapter" data-level="15.7.2" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#securely-managing-your-keys-for-packages"><i class="fa fa-check"></i><b>15.7.2</b> Securely managing your keys for Packages</a></li>
 </ul></li>
 <li class="chapter" data-level="15.8" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#additional-resources-2"><i class="fa fa-check"></i><b>15.8</b> Additional Resources</a><ul>
 <li class="chapter" data-level="15.8.1" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#google-drive"><i class="fa fa-check"></i><b>15.8.1</b> Google Drive</a></li>
 <li class="chapter" data-level="15.8.2" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#google-sheets"><i class="fa fa-check"></i><b>15.8.2</b> Google Sheets</a></li>
-<li class="chapter" data-level="15.8.3" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#gargle"><i class="fa fa-check"></i><b>15.8.3</b> Gargle</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="16-encryption.html"><a href="16-encryption.html"><i class="fa fa-check"></i><b>16</b> Encryption</a><ul>
@@ -298,12 +296,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.6.1" data-path="16-encryption.html"><a href="16-encryption.html#troubleshooting"><i class="fa fa-check"></i><b>16.6.1</b> Troubleshooting</a></li>
 </ul></li>
 <li class="chapter" data-level="16.7" data-path="16-encryption.html"><a href="16-encryption.html#managing-which-users-can-decrypt-files-in-a-repository"><i class="fa fa-check"></i><b>16.7</b> Managing which users can decrypt files in a repository</a><ul>
-<li class="chapter" data-level="16.7.1" data-path="16-encryption.html"><a href="16-encryption.html#set-up-encryption-for-a-repo-that-did-not-previously-use-git-crypt."><i class="fa fa-check"></i><b>16.7.1</b> Set up encryption for a repo that did not previously use git-crypt.</a></li>
-<li class="chapter" data-level="16.7.2" data-path="16-encryption.html"><a href="16-encryption.html#allow-contributors-access-to-encrypted-files"><i class="fa fa-check"></i><b>16.7.2</b> Allow contributors access to encrypted files:</a></li>
+<li class="chapter" data-level="16.7.1" data-path="16-encryption.html"><a href="16-encryption.html#set-up-encryption-for-a-repo-that-did-not-previously-use-git-crypt"><i class="fa fa-check"></i><b>16.7.1</b> Set up encryption for a repo that did not previously use git-crypt</a></li>
+<li class="chapter" data-level="16.7.2" data-path="16-encryption.html"><a href="16-encryption.html#allow-contributors-access-to-encrypted-files"><i class="fa fa-check"></i><b>16.7.2</b> Allow contributors access to encrypted files</a></li>
 <li class="chapter" data-level="16.7.3" data-path="16-encryption.html"><a href="16-encryption.html#import-your-keys-to-the-eha-server"><i class="fa fa-check"></i><b>16.7.3</b> Import your keys to the EHA server</a></li>
-<li class="chapter" data-level="16.7.4" data-path="16-encryption.html"><a href="16-encryption.html#extra-use-a-symmetric-key-for-automated-processes"><i class="fa fa-check"></i><b>16.7.4</b> Extra: Use a symmetric key for automated processes</a></li>
 </ul></li>
-<li class="chapter" data-level="16.8" data-path="16-encryption.html"><a href="16-encryption.html#removing-sensitive-files-from-git-history"><i class="fa fa-check"></i><b>16.8</b> Removing sensitive files from git history</a></li>
+<li class="chapter" data-level="16.8" data-path="16-encryption.html"><a href="16-encryption.html#use-a-symmetric-key-for-automated-processes"><i class="fa fa-check"></i><b>16.8</b> Use a symmetric key for automated processes</a></li>
+<li class="chapter" data-level="16.9" data-path="16-encryption.html"><a href="16-encryption.html#removing-sensitive-files-from-git-history"><i class="fa fa-check"></i><b>16.9</b> Removing sensitive files from git history</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="17-dependencies.html"><a href="17-dependencies.html"><i class="fa fa-check"></i><b>17</b> Dependency Management</a></li>
 <li class="chapter" data-level="18" data-path="18-statistical-methods.html"><a href="18-statistical-methods.html"><i class="fa fa-check"></i><b>18</b> Statistical Methods</a><ul>
@@ -365,7 +363,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Create a <em>service account</em> so that you can access the APIs via credentials from R</li>
 <li>Encrypt credentials then add them to your R project so that you can still use <code>git</code>-based workflows without leaking access to your service account</li>
 <li>Share Google-based resources with the service account and check that credentials work as expected from R</li>
-<li>Add an encryption key to RStudio Connect or Github as an environment variable so that R can access the resources in automated workflows</li>
+<li>Add an encryption key to Github as an environment variable so that R can access the resources in automated workflows</li>
 </ol>
 </div>
 <div id="key-terms-1" class="section level2 hasAnchor">
@@ -416,9 +414,9 @@ auth/** filter=git-crypt diff=git-crypt
 .gitattributes !filter !diff
 </code></pre>
 <p>The <code>.env</code> file will be used to store environment variables and the <code>auth/</code> folder will be used to store keys. Do NOT encrypt the <code>.gitattributes</code> file. It maybe a good idea to add your google auth key explicitly to the <code>.gitattributes</code> file using this format <code>**/mySecretKey.json</code> so that the key is encrypted independent of the directory it is in.</p>
-<p>Next add yourself and other users who will require access to the encrypted files to the repo. The encryption chapter <a href="16-encryption.html#encryption">16</a> in the handbook details
-how to add contributors to the repo.</p>
-<p>Finally, you will have to set up a symmetric key for github actions to use. This key can always be regenerated so there is no reason to store it.</p>
+<p>Next add yourself and other users who will require access to the encrypted files to the repo. The encryption chapter <a href="16-encryption.html#allow-contributors-access-to-encrypted-files">encryption</a> in the handbook details how to add contributors to the repo.</p>
+<p>Finally, you will have to set up a symmetric key for github actions to use. This key can always be regenerated so there is no reason to store it. Additional detail can
+be found in the encryption chapter <a href="16-encryption.html#use-a-symmetric-key-for-automated-processes">here</a>.</p>
 <p>First, add the git-crypt key to your <code>.gitignore</code> so you don’t accidentally commit it to the repo.</p>
 <pre><code>.Rproj.user
 .Rhistory
@@ -507,200 +505,38 @@ rm -i git_crypt_key.key</code></pre>
 </div>
 <div id="general-approach-to-securely-managing-keys" class="section level2 hasAnchor">
 <h2><span class="header-section-number">15.7</span> General approach to securely managing keys<a href="15-google-authorization-and-r.html#general-approach-to-securely-managing-keys" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This workflow uses the relatively simple approach of symmetric encryption to securely store files on shared resources like a github repository. Symmetric encryption uses a single key to encrypt and decrypt files. In this workflow, the key is generated from a passphrase.</p>
+<p>This workflow uses the encryption practices laid out in the <a href="16-encryption.html#encryption">encryption chapter</a>. Make sure you have setup your computer with encryption tools
+before proceeding. Reach out to the <a href="https://www.ecohealthalliance.org/personnel/collin-schwantes">Data Librarian</a> with questions.</p>
 <ol style="list-style-type: decimal">
 <li>Unencrypted files storing keys for the Google service account should NOT be stored in shared or public locations (Drive, Dropbox, Github Repo)
 <ul>
-<li>If possible store in an encrypted volume. Keybase, Bitwarden, and other credential management storage systems generally allow you to store files in an encrypted manner.</li>
+<li>If possible store in an encrypted volume. Keybase, Bitwarden, or other credential management storage systems generally allow you to store files in an encrypted manner.</li>
 </ul></li>
-<li>Files storing keys for the Google service account only ever enter the project working directory after being encrypted or after git-crypt has been initiated and the file is included in the <code>.gitattributes</code> file or stored in an encrypted folder like <code>./auth</code>.</li>
-<li>For the sodium based work flow, encryption keys or the passwords used to generate keys are stored as environment variables and retrieved from <code>.Renviron</code>, never hard-coded into scripts.</li>
+<li>Files storing keys for the Google service account only ever enter the project working directory after being encrypted or after git-crypt has been initiated and the file is included in the <code>.gitattributes</code> file or stored in an encrypted folder like <code>./auth</code>. See the [encryption chapter][Set up encryption for a repo that did not previously use git-crypt.] for more details</li>
 </ol>
-<p>Skip ahead to <a href="15-google-authorization-and-r.html#securely-managing-your-keys-for-packages">Securely managing your keys for packages</a> if you are using the key in a project that produces a package.</p>
 <div id="provide-a-service-account-key-for-projects" class="section level3 hasAnchor">
 <h3><span class="header-section-number">15.7.1</span> Provide a service account key for projects<a href="15-google-authorization-and-r.html#provide-a-service-account-key-for-projects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Now you have a secret key for the service account and need to securely access it in an R project.</p>
-<p>If you setup <code>git-crypt</code>, make sure the file is saved in an appropriate location (e.g. <code>./auth</code>) and that all the user who need to use the encrypted file are added to the repo. If you used <code>git-crypt</code>, you can skip ahead to <a href="15-google-authorization-and-r.html#run-your-code-using-encrypted-keys">Run your code using encrypted keys</a>.</p>
-<p>Alternatively, we can use the <code>sodium</code> and <code>gargle</code> packages to encrypt the JSON file that stores our key, safely store the encrypted file in the R project, and securely store the encryption key as an environment variable. <em>This workflow is retained in the handbook but is not preferred and will be removed once the project that used it is fully transitioned to a git-crypt workflow.</em></p>
-<p>This section was inspired by the workflow described in <a href="https://books.ropensci.org/http-testing/security-chapter.html">ROpenSci:Security</a> with additional information from the <a href="https://cran.r-project.org/web/packages/sodium/vignettes/intro.html">sodium vignette</a> and <a href="https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html">gargle vignette</a>.</p>
-<div id="create-and-store-encryption-password" class="section level4 hasAnchor">
-<h4><span class="header-section-number">15.7.1.1</span> Create and store encryption password<a href="15-google-authorization-and-r.html#create-and-store-encryption-password" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Here we will create an environment variable to store our encryption password.</p>
-<ul>
-<li>We will store it in the <em>user-level</em> <code>.Renviron</code> file that is outside of your project repository so it is not accidentally committed to your project.</li>
-</ul>
-<p>Creating your password encrypting the key should only need to be done once, then we will write code that makes use of your encrypted key every time it runs.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="15-google-authorization-and-r.html#cb20-1"></a><span class="kw">library</span>(sodium)</span>
-<span id="cb20-2"><a href="15-google-authorization-and-r.html#cb20-2"></a><span class="kw">library</span>(gargle)</span>
-<span id="cb20-3"><a href="15-google-authorization-and-r.html#cb20-3"></a><span class="kw">library</span>(usethis)</span>
-<span id="cb20-4"><a href="15-google-authorization-and-r.html#cb20-4"></a><span class="kw">library</span>(readr)</span>
-<span id="cb20-5"><a href="15-google-authorization-and-r.html#cb20-5"></a></span>
-<span id="cb20-6"><a href="15-google-authorization-and-r.html#cb20-6"></a><span class="co">## Name of Environment variable</span></span>
-<span id="cb20-7"><a href="15-google-authorization-and-r.html#cb20-7"></a></span>
-<span id="cb20-8"><a href="15-google-authorization-and-r.html#cb20-8"></a>pw_name &lt;-<span class="st"> </span>gargle<span class="op">:::</span><span class="kw">secret_pw_name</span>(<span class="st">&quot;service_account&quot;</span>)</span>
-<span id="cb20-9"><a href="15-google-authorization-and-r.html#cb20-9"></a><span class="co">#&gt; SERVICE_ACCOUNT_PASSWORD</span></span>
-<span id="cb20-10"><a href="15-google-authorization-and-r.html#cb20-10"></a></span>
-<span id="cb20-11"><a href="15-google-authorization-and-r.html#cb20-11"></a><span class="co">## Value of Environment variable</span></span>
-<span id="cb20-12"><a href="15-google-authorization-and-r.html#cb20-12"></a></span>
-<span id="cb20-13"><a href="15-google-authorization-and-r.html#cb20-13"></a>pw &lt;-<span class="st"> </span>gargle<span class="op">:::</span><span class="kw">secret_pw_gen</span>()</span>
-<span id="cb20-14"><a href="15-google-authorization-and-r.html#cb20-14"></a><span class="co">#&gt; someSecretComplicatedPassword</span></span>
-<span id="cb20-15"><a href="15-google-authorization-and-r.html#cb20-15"></a></span>
-<span id="cb20-16"><a href="15-google-authorization-and-r.html#cb20-16"></a><span class="kw">sprintf</span>(<span class="st">&quot;%s=%s&quot;</span>,pw_name, pw)</span>
-<span id="cb20-17"><a href="15-google-authorization-and-r.html#cb20-17"></a><span class="co">#&gt; SERVICE_ACCOUNT_PASSWORD=someSecretComplicatedPassword</span></span>
-<span id="cb20-18"><a href="15-google-authorization-and-r.html#cb20-18"></a></span>
-<span id="cb20-19"><a href="15-google-authorization-and-r.html#cb20-19"></a>usethis<span class="op">::</span><span class="kw">edit_r_environ</span>(<span class="dt">scope =</span> <span class="st">&quot;user&quot;</span>)</span>
-<span id="cb20-20"><a href="15-google-authorization-and-r.html#cb20-20"></a></span>
-<span id="cb20-21"><a href="15-google-authorization-and-r.html#cb20-21"></a><span class="co">#### Copy and paste pw_name=pw into .Renviron file </span><span class="al">###</span></span>
-<span id="cb20-22"><a href="15-google-authorization-and-r.html#cb20-22"></a><span class="co"># 1 SERVICE_ACCOUNT_PASSWORD=someSecretComplicatedPassword</span></span>
-<span id="cb20-23"><a href="15-google-authorization-and-r.html#cb20-23"></a><span class="co"># 2 </span></span>
-<span id="cb20-24"><a href="15-google-authorization-and-r.html#cb20-24"></a></span>
-<span id="cb20-25"><a href="15-google-authorization-and-r.html#cb20-25"></a><span class="co"># always leave an empty line at the end of the .Renviron file</span></span></code></pre></div>
-</div>
-<div id="create-encryption-key" class="section level4 hasAnchor">
-<h4><span class="header-section-number">15.7.1.2</span> Create encryption key<a href="15-google-authorization-and-r.html#create-encryption-key" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="15-google-authorization-and-r.html#cb21-1"></a>make_sodium_key &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">env_var_name =</span> <span class="st">&quot;SERVICE_ACCOUNT_PASSWORD&quot;</span>){</span>
-<span id="cb21-2"><a href="15-google-authorization-and-r.html#cb21-2"></a></span>
-<span id="cb21-3"><a href="15-google-authorization-and-r.html#cb21-3"></a>  pw &lt;-<span class="st"> </span><span class="kw">Sys.getenv</span>(env_name)</span>
-<span id="cb21-4"><a href="15-google-authorization-and-r.html#cb21-4"></a>  </span>
-<span id="cb21-5"><a href="15-google-authorization-and-r.html#cb21-5"></a>  <span class="co"># we use scrypt as our hashing function because it makes keys difficult</span></span>
-<span id="cb21-6"><a href="15-google-authorization-and-r.html#cb21-6"></a>  <span class="co"># to brute force. </span></span>
-<span id="cb21-7"><a href="15-google-authorization-and-r.html#cb21-7"></a>  k &lt;-<span class="st"> </span>sodium<span class="op">::</span><span class="kw">scrypt</span>(<span class="kw">charToRaw</span>(pw))</span>
-<span id="cb21-8"><a href="15-google-authorization-and-r.html#cb21-8"></a>  </span>
-<span id="cb21-9"><a href="15-google-authorization-and-r.html#cb21-9"></a>  <span class="kw">return</span>(k)</span>
-<span id="cb21-10"><a href="15-google-authorization-and-r.html#cb21-10"></a></span>
-<span id="cb21-11"><a href="15-google-authorization-and-r.html#cb21-11"></a>}</span>
-<span id="cb21-12"><a href="15-google-authorization-and-r.html#cb21-12"></a></span>
-<span id="cb21-13"><a href="15-google-authorization-and-r.html#cb21-13"></a>key &lt;-<span class="st"> </span><span class="kw">make_sodium_key</span>()</span>
-<span id="cb21-14"><a href="15-google-authorization-and-r.html#cb21-14"></a></span>
-<span id="cb21-15"><a href="15-google-authorization-and-r.html#cb21-15"></a><span class="co"># The key we just made is binary so it has to be converted to character in order</span></span>
-<span id="cb21-16"><a href="15-google-authorization-and-r.html#cb21-16"></a><span class="co"># to be stored in .Renviron </span></span>
-<span id="cb21-17"><a href="15-google-authorization-and-r.html#cb21-17"></a></span>
-<span id="cb21-18"><a href="15-google-authorization-and-r.html#cb21-18"></a>sodium<span class="op">::</span><span class="kw">bin2hex</span>(key)</span>
-<span id="cb21-19"><a href="15-google-authorization-and-r.html#cb21-19"></a></span>
-<span id="cb21-20"><a href="15-google-authorization-and-r.html#cb21-20"></a>usethis<span class="op">::</span><span class="kw">edit_r_environ</span>(<span class="dt">scope =</span> <span class="st">&quot;user&quot;</span>)</span>
-<span id="cb21-21"><a href="15-google-authorization-and-r.html#cb21-21"></a></span>
-<span id="cb21-22"><a href="15-google-authorization-and-r.html#cb21-22"></a><span class="co">########### .Renviron file ####################</span></span>
-<span id="cb21-23"><a href="15-google-authorization-and-r.html#cb21-23"></a><span class="co"># 1 SERVICE_ACCOUNT_PASSWORD=someSecretComplicatedPassword</span></span>
-<span id="cb21-24"><a href="15-google-authorization-and-r.html#cb21-24"></a><span class="co"># 2 SERVICE_ACCOUNT_NA_KEY=output_from_bin2hex_function </span></span>
-<span id="cb21-25"><a href="15-google-authorization-and-r.html#cb21-25"></a><span class="co"># 3</span></span>
-<span id="cb21-26"><a href="15-google-authorization-and-r.html#cb21-26"></a></span>
-<span id="cb21-27"><a href="15-google-authorization-and-r.html#cb21-27"></a><span class="co"># always leave an empty line at the end of the .Renviron file</span></span></code></pre></div>
-</div>
-<div id="symmetrically-encrypt-your-file" class="section level4 hasAnchor">
-<h4><span class="header-section-number">15.7.1.3</span> Symmetrically encrypt your file<a href="15-google-authorization-and-r.html#symmetrically-encrypt-your-file" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Now that we have a sodium key stored as an environment variable, we can symmetrically encrypt our JSON file that stores the service account key. The encrypted file will live in <code>inst/tokens</code> within your working directory. After the file has been encrypted it is safe to push it to a remote git repository.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="15-google-authorization-and-r.html#cb22-1"></a><span class="co"># get your sodium key from the environment variable</span></span>
-<span id="cb22-2"><a href="15-google-authorization-and-r.html#cb22-2"></a>get_sodium_key &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">env_var_name =</span> <span class="st">&quot;SERVICE_ACCOUNT_NA_KEY&quot;</span>){</span>
-<span id="cb22-3"><a href="15-google-authorization-and-r.html#cb22-3"></a>  k &lt;-<span class="st"> </span>sodium<span class="op">::</span><span class="kw">hex2bin</span>(<span class="kw">Sys.getenv</span>(env_var_name))</span>
-<span id="cb22-4"><a href="15-google-authorization-and-r.html#cb22-4"></a>  <span class="kw">return</span>(k)</span>
-<span id="cb22-5"><a href="15-google-authorization-and-r.html#cb22-5"></a>}</span>
-<span id="cb22-6"><a href="15-google-authorization-and-r.html#cb22-6"></a></span>
-<span id="cb22-7"><a href="15-google-authorization-and-r.html#cb22-7"></a>key &lt;-<span class="st"> </span><span class="kw">get_sodium_key</span>()</span>
-<span id="cb22-8"><a href="15-google-authorization-and-r.html#cb22-8"></a></span>
-<span id="cb22-9"><a href="15-google-authorization-and-r.html#cb22-9"></a><span class="co"># Our encrypted file will live here</span></span>
-<span id="cb22-10"><a href="15-google-authorization-and-r.html#cb22-10"></a><span class="kw">dir.create</span>(<span class="st">&quot;./inst/tokens&quot;</span>,<span class="dt">recursive =</span> T)</span>
-<span id="cb22-11"><a href="15-google-authorization-and-r.html#cb22-11"></a></span>
-<span id="cb22-12"><a href="15-google-authorization-and-r.html#cb22-12"></a>binJSON &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_file_raw</span>(<span class="st">&quot;My/directory/outside/the/project/service_account_key.json&quot;</span>)</span>
-<span id="cb22-13"><a href="15-google-authorization-and-r.html#cb22-13"></a></span>
-<span id="cb22-14"><a href="15-google-authorization-and-r.html#cb22-14"></a>cipher &lt;-<span class="st"> </span><span class="kw">data_encrypt</span>(<span class="dt">msg =</span> binJSON, <span class="dt">key =</span> key2,<span class="dt">nonce =</span> <span class="kw">random</span>(<span class="dv">24</span>))</span>
-<span id="cb22-15"><a href="15-google-authorization-and-r.html#cb22-15"></a></span>
-<span id="cb22-16"><a href="15-google-authorization-and-r.html#cb22-16"></a><span class="co"># The encrypted file in inst/tokens is now safe to push to a remote repository</span></span>
-<span id="cb22-17"><a href="15-google-authorization-and-r.html#cb22-17"></a><span class="kw">saveRDS</span>(cipher, <span class="st">&quot;./inst/tokens/service_account_key.rds&quot;</span>)</span></code></pre></div>
-</div>
+<p>If you setup <code>git-crypt</code>, make sure the file is saved in an appropriate location (e.g. <code>./auth</code>) and that all the users who need to use the encrypted file are <a href="16-encryption.html#allow-contributors-access-to-encrypted-files">added to the repo</a>.</p>
 <div id="run-your-code-using-encrypted-keys" class="section level4 hasAnchor">
-<h4><span class="header-section-number">15.7.1.4</span> Run your code using encrypted keys<a href="15-google-authorization-and-r.html#run-your-code-using-encrypted-keys" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">15.7.1.1</span> Run your code using encrypted keys<a href="15-google-authorization-and-r.html#run-your-code-using-encrypted-keys" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>For <code>git-crypt</code> users, the file will already be decrypted on your machine. If it isn’t, run <code>git-crypt unlock</code> in the terminal. If that does not work double check that your public key has been added to the repo.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="15-google-authorization-and-r.html#cb23-1"></a>jsonChar &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_file</span>(<span class="st">&quot;./auth/myKey.json&quot;</span>)</span>
-<span id="cb23-2"><a href="15-google-authorization-and-r.html#cb23-2"></a></span>
-<span id="cb23-3"><a href="15-google-authorization-and-r.html#cb23-3"></a>googlesheets4<span class="op">::</span><span class="kw">gs4_auth</span>(<span class="dt">path =</span> jsonChar)</span></code></pre></div>
-<p>For sodium users, decrypt the credentials then pass them to Google using the <code>gs4_auth</code> function:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="15-google-authorization-and-r.html#cb24-1"></a><span class="kw">library</span>(googlesheets4)</span>
-<span id="cb24-2"><a href="15-google-authorization-and-r.html#cb24-2"></a></span>
-<span id="cb24-3"><a href="15-google-authorization-and-r.html#cb24-3"></a>key &lt;-<span class="st"> </span><span class="kw">get_sodium_key</span>()</span>
-<span id="cb24-4"><a href="15-google-authorization-and-r.html#cb24-4"></a></span>
-<span id="cb24-5"><a href="15-google-authorization-and-r.html#cb24-5"></a>service_account_token &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="st">&quot;./inst/tokens/service_account_key.rds&quot;</span>)</span>
-<span id="cb24-6"><a href="15-google-authorization-and-r.html#cb24-6"></a></span>
-<span id="cb24-7"><a href="15-google-authorization-and-r.html#cb24-7"></a>jsonRaw &lt;-<span class="st"> </span>sodium<span class="op">:::</span><span class="kw">data_decrypt</span>(service_account_token,<span class="dt">key =</span> key)</span>
-<span id="cb24-8"><a href="15-google-authorization-and-r.html#cb24-8"></a></span>
-<span id="cb24-9"><a href="15-google-authorization-and-r.html#cb24-9"></a>jsonChar &lt;-<span class="st"> </span><span class="kw">rawToChar</span>(jsonRaw)</span>
-<span id="cb24-10"><a href="15-google-authorization-and-r.html#cb24-10"></a></span>
-<span id="cb24-11"><a href="15-google-authorization-and-r.html#cb24-11"></a>googlesheets4<span class="op">::</span><span class="kw">gs4_auth</span>(<span class="dt">path =</span> jsonChar)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="15-google-authorization-and-r.html#cb20-1"></a>jsonChar &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_file</span>(<span class="st">&quot;./auth/myKey.json&quot;</span>)</span>
+<span id="cb20-2"><a href="15-google-authorization-and-r.html#cb20-2"></a></span>
+<span id="cb20-3"><a href="15-google-authorization-and-r.html#cb20-3"></a>googlesheets4<span class="op">::</span><span class="kw">gs4_auth</span>(<span class="dt">path =</span> jsonChar)</span></code></pre></div>
 </div>
 <div id="read-in-your-sheet" class="section level4 hasAnchor">
-<h4><span class="header-section-number">15.7.1.5</span> Read in your sheet<a href="15-google-authorization-and-r.html#read-in-your-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<h4><span class="header-section-number">15.7.1.2</span> Read in your sheet<a href="15-google-authorization-and-r.html#read-in-your-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li><em>Make sure your sheet is shared with the service account if it hasn’t been already</em></li>
 </ul>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="15-google-authorization-and-r.html#cb25-1"></a>googlesheets4<span class="op">::</span><span class="kw">read_sheet</span>(<span class="st">&quot;https://docs.Google.com/spreadsheets/that/i/definitely/shared/with/the/service-account&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="15-google-authorization-and-r.html#cb21-1"></a>googlesheets4<span class="op">::</span><span class="kw">read_sheet</span>(<span class="st">&quot;https://docs.Google.com/spreadsheets/that/i/definitely/shared/with/the/service-account&quot;</span>)</span></code></pre></div>
 </div>
 <div id="add-environment-variable-to-other-services" class="section level4 hasAnchor">
-<h4><span class="header-section-number">15.7.1.6</span> Add Environment Variable to other services<a href="15-google-authorization-and-r.html#add-environment-variable-to-other-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Non-interactive authentication allows us to automate workflows that involve Google sheets on services like Rstudio connect or Github Actions. In either case, it is relatively straight forward to securely add our <code>SERVICE_ACCOUNT_PASSWORD</code> environment variables to those services.</p>
-<p>See documentation here:</p>
-<ul>
-<li><a href="https://blog.rstudio.com/2018/03/02/rstudio-connect-v1-5-14/#:~:text=Environment%20variables%20for%20executable%20content,and%20are%20encrypted%20at%20rest.">Add env variables to RSConnect</a></li>
-<li><a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets">Add secrets to Github Actions</a></li>
-</ul>
-</div>
-</div>
-<div id="securely-managing-your-keys-for-packages" class="section level3 hasAnchor">
-<h3><span class="header-section-number">15.7.2</span> Securely managing your keys for Packages<a href="15-google-authorization-and-r.html#securely-managing-your-keys-for-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You can make your secret service account key accessible to your R package. We will use the <code>sodium</code> package as well as functions in <code>gargle</code> to encrypt the JSON file that stores the key and securely store the <em>encryption</em> key as an environment variable. Notice that we are using the <code>:::</code> operator in function calls. See <a href="https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html">this article</a> for more details.</p>
-<div id="create-and-store-encryption-password-1" class="section level4 hasAnchor">
-<h4><span class="header-section-number">15.7.2.1</span> Create and store encryption password<a href="15-google-authorization-and-r.html#create-and-store-encryption-password-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Here we will create an environment variable to store our encryption password.</p>
-<ul>
-<li>We will store it in the <em>user-level</em> <code>.Renviron</code> file that is outside of your project repository so it is not accidentally committed to your project.</li>
-</ul>
-<p>Creating your password encrypting the key should only need to be done once. The package can then use code that makes use of your encrypted key every time it runs.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="15-google-authorization-and-r.html#cb26-1"></a><span class="kw">library</span>(sodium)</span>
-<span id="cb26-2"><a href="15-google-authorization-and-r.html#cb26-2"></a><span class="kw">library</span>(gargle)</span>
-<span id="cb26-3"><a href="15-google-authorization-and-r.html#cb26-3"></a><span class="kw">library</span>(usethis)</span>
-<span id="cb26-4"><a href="15-google-authorization-and-r.html#cb26-4"></a></span>
-<span id="cb26-5"><a href="15-google-authorization-and-r.html#cb26-5"></a><span class="co">## Name of Environment variable</span></span>
-<span id="cb26-6"><a href="15-google-authorization-and-r.html#cb26-6"></a></span>
-<span id="cb26-7"><a href="15-google-authorization-and-r.html#cb26-7"></a>pw_name &lt;-<span class="st"> </span>gargle<span class="op">:::</span><span class="kw">secret_pw_name</span>(<span class="st">&quot;gargle&quot;</span>)</span>
-<span id="cb26-8"><a href="15-google-authorization-and-r.html#cb26-8"></a><span class="co">#&gt; GARGLE_PASSWORD</span></span>
-<span id="cb26-9"><a href="15-google-authorization-and-r.html#cb26-9"></a></span>
-<span id="cb26-10"><a href="15-google-authorization-and-r.html#cb26-10"></a><span class="co">## Value of Environment variable</span></span>
-<span id="cb26-11"><a href="15-google-authorization-and-r.html#cb26-11"></a></span>
-<span id="cb26-12"><a href="15-google-authorization-and-r.html#cb26-12"></a>pw &lt;-<span class="st"> </span>gargle<span class="op">:::</span><span class="kw">secret_pw_gen</span>()</span>
-<span id="cb26-13"><a href="15-google-authorization-and-r.html#cb26-13"></a><span class="co">#&gt; someSecretComplicatedPassword</span></span>
-<span id="cb26-14"><a href="15-google-authorization-and-r.html#cb26-14"></a></span>
-<span id="cb26-15"><a href="15-google-authorization-and-r.html#cb26-15"></a><span class="kw">sprintf</span>(<span class="st">&quot;%s=%s&quot;</span>,pw_name, pw)</span>
-<span id="cb26-16"><a href="15-google-authorization-and-r.html#cb26-16"></a><span class="co">#&gt; GARGLE_PASSWORD=someSecretComplicatedPassword</span></span>
-<span id="cb26-17"><a href="15-google-authorization-and-r.html#cb26-17"></a></span>
-<span id="cb26-18"><a href="15-google-authorization-and-r.html#cb26-18"></a>usethis<span class="op">::</span><span class="kw">edit_r_environ</span>(<span class="dt">scope =</span> <span class="st">&quot;user&quot;</span>)</span>
-<span id="cb26-19"><a href="15-google-authorization-and-r.html#cb26-19"></a></span>
-<span id="cb26-20"><a href="15-google-authorization-and-r.html#cb26-20"></a><span class="co">#### in .Renviron file </span><span class="al">###</span></span>
-<span id="cb26-21"><a href="15-google-authorization-and-r.html#cb26-21"></a><span class="co"># 1 GARGLE_PASSWORD=someSecretComplicatedPassword</span></span>
-<span id="cb26-22"><a href="15-google-authorization-and-r.html#cb26-22"></a><span class="co"># 2 </span></span>
-<span id="cb26-23"><a href="15-google-authorization-and-r.html#cb26-23"></a></span>
-<span id="cb26-24"><a href="15-google-authorization-and-r.html#cb26-24"></a><span class="co"># always leave an empty line at the end of the .Renviron file</span></span></code></pre></div>
-</div>
-<div id="encrypt-the-secret-file" class="section level4 hasAnchor">
-<h4><span class="header-section-number">15.7.2.2</span> Encrypt the Secret File<a href="15-google-authorization-and-r.html#encrypt-the-secret-file" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="15-google-authorization-and-r.html#cb27-1"></a>gargle<span class="op">:::</span><span class="kw">secret_write</span>(</span>
-<span id="cb27-2"><a href="15-google-authorization-and-r.html#cb27-2"></a>  <span class="dt">package =</span> <span class="st">&quot;myCoolPackage&quot;</span>,</span>
-<span id="cb27-3"><a href="15-google-authorization-and-r.html#cb27-3"></a>  <span class="dt">name =</span> <span class="st">&quot;sheets-demo-key.json&quot;</span>,</span>
-<span id="cb27-4"><a href="15-google-authorization-and-r.html#cb27-4"></a>  <span class="dt">input =</span> <span class="st">&quot;My/directory/outside/the/project/longComplicatedFile.json&quot;</span></span>
-<span id="cb27-5"><a href="15-google-authorization-and-r.html#cb27-5"></a>)</span></code></pre></div>
-</div>
-<div id="test-that-you-can-decrypt" class="section level4 hasAnchor">
-<h4><span class="header-section-number">15.7.2.3</span> Test that you can decrypt<a href="15-google-authorization-and-r.html#test-that-you-can-decrypt" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="15-google-authorization-and-r.html#cb28-1"></a><span class="cf">if</span>(gargle<span class="op">:::</span><span class="kw">secret_can_decrypt</span>(<span class="st">&quot;myCoolPackage&quot;</span>)){</span>
-<span id="cb28-2"><a href="15-google-authorization-and-r.html#cb28-2"></a>  json&lt;-<span class="st"> </span>gargle<span class="op">:::</span><span class="kw">secret_read</span>(<span class="st">&quot;sheets-demo-key.json&quot;</span>)</span>
-<span id="cb28-3"><a href="15-google-authorization-and-r.html#cb28-3"></a>  googlesheets4<span class="op">::</span><span class="kw">gs4_auth</span>(<span class="dt">path =</span> <span class="kw">rawToChar</span>(json))</span>
-<span id="cb28-4"><a href="15-google-authorization-and-r.html#cb28-4"></a>}</span></code></pre></div>
-</div>
-<div id="give-the-env-variable-to-services-optional" class="section level4 hasAnchor">
-<h4><span class="header-section-number">15.7.2.4</span> Give the env variable to services (Optional)<a href="15-google-authorization-and-r.html#give-the-env-variable-to-services-optional" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>If the package will be used in services like RStudio Connect or Github Actions, it is relatively straight forward to securely add our <code>GARGLE_PASSWORD</code> environment variables to those services.</p>
-<p>See documentation here:</p>
-<ul>
-<li><a href="https://blog.rstudio.com/2018/03/02/rstudio-connect-v1-5-14/#:~:text=Environment%20variables%20for%20executable%20content,and%20are%20encrypted%20at%20rest.">Add env variables to RSConnect</a></li>
-<li><a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets">Add secrets to Github Actions</a></li>
-</ul>
+<h4><span class="header-section-number">15.7.1.3</span> Add Environment Variable to other services<a href="15-google-authorization-and-r.html#add-environment-variable-to-other-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Non-interactive authentication allows us to automate workflows that involve Google sheets on services like Github Actions. In either case, it is relatively straight forward to securely add our <code>SERVICE_ACCOUNT_PASSWORD</code> environment variables to those services.</p>
+<p>See documentation here:
+- <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets">Add secrets to Github Actions</a></p>
 </div>
 </div>
 </div>
@@ -715,10 +551,6 @@ rm -i git_crypt_key.key</code></pre>
 <h3><span class="header-section-number">15.8.2</span> Google Sheets<a href="15-google-authorization-and-r.html#google-sheets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The <a href="https://googlesheets4.tidyverse.org/index.html"><code>googlesheets4</code></a> package allows you to directly interact with Google sheets in R. You can read, write, reformat, create formulas, and otherwise manipulate the sheet of interest.</p>
 <p>Package vignettes can be found <a href="https://googlesheets4.tidyverse.org/articles/index.html">here</a></p>
-</div>
-<div id="gargle" class="section level3 hasAnchor">
-<h3><span class="header-section-number">15.8.3</span> Gargle<a href="15-google-authorization-and-r.html#gargle" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The <a href="https://gargle.r-lib.org/index.html"><code>gargle</code></a> package focuses entirely on managing credentials for the Google api. Vignettes for the package can be found <a href="https://gargle.r-lib.org/articles/index.html">here</a>.</p>
 
 </div>
 </div>
