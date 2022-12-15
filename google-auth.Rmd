@@ -77,10 +77,10 @@ auth/** filter=git-crypt diff=git-crypt
 
 The `.env` file will be used to store environment variables and the `auth/` folder will be used to store keys. Do NOT encrypt the `.gitattributes` file. It maybe a good idea to add your google auth key explicitly to the `.gitattributes` file using this format `**/mySecretKey.json` so that the key is encrypted independent of the directory it is in. 
 
-Next add yourself and other users who will require access to the encrypted files to the repo. The encryption chapter \@ref(encryption) in the handbook details 
-how to add contributors to the repo. 
+Next add yourself and other users who will require access to the encrypted files to the repo. The encryption chapter [encryption][Allow contributors access to encrypted files] in the handbook details how to add contributors to the repo. 
 
-Finally, you will have to set up a symmetric key for github actions to use. This key can always be regenerated so there is no reason to store it.
+Finally, you will have to set up a symmetric key for github actions to use. This key can always be regenerated so there is no reason to store it. Additional detail can
+be found in the encryption chapter [here][Use a symmetric key for automated processes].
 
 First, add the git-crypt key to your `.gitignore` so you don't accidentally commit it to the repo. 
 
@@ -192,7 +192,7 @@ before proceeding. Reach out to the `r params$data_librarian` with questions.
 
 Now you have a secret key for the service account and need to securely access it in an R project. 
 
-If you setup `git-crypt`, make sure the file is saved in an appropriate location (e.g. `./auth`) and that all the users who need to use the encrypted file are [added to the repo][Allow contributors access to encrypted files]. If you used `git-crypt`, you can skip ahead to [Run your code using encrypted keys](#run-your-code-using-encrypted-keys).  
+If you setup `git-crypt`, make sure the file is saved in an appropriate location (e.g. `./auth`) and that all the users who need to use the encrypted file are [added to the repo][Allow contributors access to encrypted files]. 
 
 
 #### Run your code using encrypted keys
@@ -207,22 +207,6 @@ googlesheets4::gs4_auth(path = jsonChar)
 
 ```
 
-For sodium users, decrypt the credentials then pass them to Google using the `gs4_auth` function:
-
-```{r eval=FALSE}
-library(googlesheets4)
-
-key <- get_sodium_key()
-
-service_account_token <- readRDS("./inst/tokens/service_account_key.rds")
-
-jsonRaw <- sodium:::data_decrypt(service_account_token,key = key)
-
-jsonChar <- rawToChar(jsonRaw)
-
-googlesheets4::gs4_auth(path = jsonChar)
-
-```
 
 #### Read in your sheet
 

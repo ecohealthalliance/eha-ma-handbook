@@ -195,7 +195,7 @@ If you've made it this far and you only need to unlock a repository that has alr
 
 ### Set up encryption for a repo that did not previously use git-crypt 
 
-This will initialize the repository and add the default gpg key to git-crypt. Note: adding encryption to a repository will only encrypt files _going forward._ Any previous versions in the commit history will still be un-encrypted. Best practice is to set up git-crypt first, add relevant file names to the `.gitattributes` file, and only then add any sensitive files to the repo.
+This will initialize the repository and add the default gpg key to git-crypt. Note: adding encryption to a repository will only encrypt files _going forward._ Any previous versions in the commit history will still be un-encrypted. Best practice is to set up git-crypt first, add relevant file or folder names to the `.gitattributes` file, and only then add any sensitive files to the repo. 
 
 ```
 ## In the repo base directory open the terminal or command line and enter:
@@ -220,6 +220,17 @@ echo '**/.env filter=git-crypt diff=git-crypt' >> .attributes
 echo '**/auth filter=git-crypt diff=git-crypt' >> .attributes
 
 ```
+To learn more about pattern matching in the `.gitattributes` file, see the [git-crypt read.me](https://github.com/AGWA/git-crypt#gitattributes-file) and [gitignore manual](https://git-scm.com/docs/gitignore#_pattern_format)
+
+Your `.gitattributes` file might look something like this:
+
+```
+.env filter=git-crypt diff=git-crypt
+auth/** filter=git-crypt diff=git-crypt
+.gitattributes !filter !diff
+
+```
+
 
 ### Allow contributors access to encrypted files
 
@@ -246,7 +257,7 @@ gpg --edit-key <keyID>
 
 # At the gpg> prompt, use uid X to select the user ID you want to mark as trusted,
 # then use the trust command to set the trust level.
-# Use save to exit out when you’re done.
+# Use save to exit when you’re done.
 
 .
 ```
