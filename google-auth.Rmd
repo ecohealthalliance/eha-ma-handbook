@@ -14,7 +14,7 @@ What is less straightforward is working with drive based files without having to
 3)  Create a *service account* so that you can access the APIs via credentials from R
 4)  Encrypt credentials then add them to your R project so that you can still use `git`-based workflows without leaking access to your service account
 5)  Share Google-based resources with the service account and check that credentials work as expected from R
-6)  Add an encryption key to RStudio Connect or Github as an environment variable so that R can access the resources in automated workflows
+6)  Add an encryption key to Github as an environment variable so that R can access the resources in automated workflows
 
 ## Key Terms
 
@@ -180,121 +180,20 @@ Keys for Google service accounts are stored in JSON files. Remember that this ke
 
 ## General approach to securely managing keys
 
-This workflow uses the relatively simple approach of symmetric encryption to securely store files on shared resources like a github repository. Symmetric encryption uses a single key to encrypt and decrypt files. In this workflow, the key is generated from a passphrase.
+This workflow uses the encryption practices laid out in the [encryption chapter][Encryption]. Make sure you have setup your computer with encryption tools
+before proceeding. Reach out to the `r params$data_librarian` with questions. 
 
 1)  Unencrypted files storing keys for the Google service account should NOT be stored in shared or public locations (Drive, Dropbox, Github Repo)
-    -   If possible store in an encrypted volume. Keybase, Bitwarden, and other credential management storage systems generally allow you to store files in an encrypted manner.
-2)  Files storing keys for the Google service account only ever enter the project working directory after being encrypted or after git-crypt has been initiated and the file is included in the `.gitattributes` file or stored in an encrypted folder like `./auth`.
-3)  For the sodium based work flow, encryption keys or the passwords used to generate keys are stored as environment variables and retrieved from `.Renviron`, never hard-coded into scripts.
+    -   If possible store in an encrypted volume. Keybase, Bitwarden, or other credential management storage systems generally allow you to store files in an encrypted manner.
+2)  Files storing keys for the Google service account only ever enter the project working directory after being encrypted or after git-crypt has been initiated and the file is included in the `.gitattributes` file or stored in an encrypted folder like `./auth`. See the [encryption chapter][Set up encryption for a repo that did not previously use git-crypt.] for more details
 
-Skip ahead to [Securely managing your keys for packages](#securely-managing-your-keys-for-packages) if you are using the key in a project that produces a package.
 
 ### Provide a service account key for projects
 
 Now you have a secret key for the service account and need to securely access it in an R project. 
 
-If you setup `git-crypt`, make sure the file is saved in an appropriate location (e.g. `./auth`) and that all the user who need to use the encrypted file are added to the repo. If you used `git-crypt`, you can skip ahead to [Run your code using encrypted keys](#run-your-code-using-encrypted-keys).  
+If you setup `git-crypt`, make sure the file is saved in an appropriate location (e.g. `./auth`) and that all the users who need to use the encrypted file are [added to the repo][Allow contributors access to encrypted files]. If you used `git-crypt`, you can skip ahead to [Run your code using encrypted keys](#run-your-code-using-encrypted-keys).  
 
-Alternatively, we can use the `sodium` and `gargle` packages to encrypt the JSON file that stores our key, safely store the encrypted file in the R project, and securely store the encryption key as an environment variable. *This workflow is retained in the handbook but is not preferred and will be removed once the project that used it is fully transitioned to a git-crypt workflow.* 
-
-This section was inspired by the workflow described in [ROpenSci:Security](https://books.ropensci.org/http-testing/security-chapter.html) with additional information from the [sodium vignette](https://cran.r-project.org/web/packages/sodium/vignettes/intro.html) and [gargle vignette](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html).
-
-#### Create and store encryption password
-
-Here we will create an environment variable to store our encryption password.
-
--   We will store it in the *user-level* `.Renviron` file that is outside of your project repository so it is not accidentally committed to your project.
-
-Creating your password encrypting the key should only need to be done once, then we will write code that makes use of your encrypted key every time it runs.
-
-```{r create_store_pw, eval=FALSE}
-library(sodium)
-library(gargle)
-library(usethis)
-library(readr)
-
-## Name of Environment variable
-
-pw_name <- gargle:::secret_pw_name("service_account")
-#> SERVICE_ACCOUNT_PASSWORD
-
-## Value of Environment variable
-
-pw <- gargle:::secret_pw_gen()
-#> someSecretComplicatedPassword
-
-sprintf("%s=%s",pw_name, pw)
-#> SERVICE_ACCOUNT_PASSWORD=someSecretComplicatedPassword
-
-usethis::edit_r_environ(scope = "user")
-
-#### Copy and paste pw_name=pw into .Renviron file ###
-# 1 SERVICE_ACCOUNT_PASSWORD=someSecretComplicatedPassword
-# 2 
-
-# always leave an empty line at the end of the .Renviron file
-
-```
-
-#### Create encryption key
-
-```{r Create Key, eval=FALSE}
-
-make_sodium_key <- function(env_var_name = "SERVICE_ACCOUNT_PASSWORD"){
-
-  pw <- Sys.getenv(env_name)
-  
-  # we use scrypt as our hashing function because it makes keys difficult
-  # to brute force. 
-  k <- sodium::scrypt(charToRaw(pw))
-  
-  return(k)
-
-}
-
-key <- make_sodium_key()
-
-# The key we just made is binary so it has to be converted to character in order
-# to be stored in .Renviron 
-
-sodium::bin2hex(key)
-
-usethis::edit_r_environ(scope = "user")
-
-########### .Renviron file ####################
-# 1 SERVICE_ACCOUNT_PASSWORD=someSecretComplicatedPassword
-# 2 SERVICE_ACCOUNT_NA_KEY=output_from_bin2hex_function 
-# 3
-
-# always leave an empty line at the end of the .Renviron file
-
-```
-
-#### Symmetrically encrypt your file
-
-Now that we have a sodium key stored as an environment variable, we can symmetrically encrypt our JSON file that stores the service account key. The encrypted file will live in `inst/tokens` within your working directory. After the file has been encrypted it is safe to push it to a remote git repository.
-
-```{r Encrypt File, eval=FALSE}
-
-# get your sodium key from the environment variable
-get_sodium_key <- function(env_var_name = "SERVICE_ACCOUNT_NA_KEY"){
-  k <- sodium::hex2bin(Sys.getenv(env_var_name))
-  return(k)
-}
-
-key <- get_sodium_key()
-
-# Our encrypted file will live here
-dir.create("./inst/tokens",recursive = T)
-
-binJSON <- readr::read_file_raw("My/directory/outside/the/project/service_account_key.json")
-
-cipher <- data_encrypt(msg = binJSON, key = key2,nonce = random(24))
-
-# The encrypted file in inst/tokens is now safe to push to a remote repository
-saveRDS(cipher, "./inst/tokens/service_account_key.rds")
-
-```
 
 #### Run your code using encrypted keys
 
@@ -338,81 +237,11 @@ googlesheets4::read_sheet("https://docs.Google.com/spreadsheets/that/i/definitel
 
 #### Add Environment Variable to other services
 
-Non-interactive authentication allows us to automate workflows that involve Google sheets on services like Rstudio connect or Github Actions. In either case, it is relatively straight forward to securely add our `SERVICE_ACCOUNT_PASSWORD` environment variables to those services.
+Non-interactive authentication allows us to automate workflows that involve Google sheets on services like Github Actions. In either case, it is relatively straight forward to securely add our `SERVICE_ACCOUNT_PASSWORD` environment variables to those services.
 
 See documentation here:
-
--   [Add env variables to RSConnect](https://blog.rstudio.com/2018/03/02/rstudio-connect-v1-5-14/#:~:text=Environment%20variables%20for%20executable%20content,and%20are%20encrypted%20at%20rest.)
 -   [Add secrets to Github Actions](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)
 
-### Securely managing your keys for Packages {#securely-managing-your-keys-for-packages}
-
-You can make your secret service account key accessible to your R package. We will use the `sodium` package as well as functions in `gargle` to encrypt the JSON file that stores the key and securely store the *encryption* key as an environment variable. Notice that we are using the `:::` operator in function calls. See [this article](https://gargle.r-lib.org/articles/articles/managing-tokens-securely.html) for more details.
-
-#### Create and store encryption password
-
-Here we will create an environment variable to store our encryption password.
-
--   We will store it in the *user-level* `.Renviron` file that is outside of your project repository so it is not accidentally committed to your project.
-
-Creating your password encrypting the key should only need to be done once. The package can then use code that makes use of your encrypted key every time it runs.
-
-```{r eval=FALSE}
-library(sodium)
-library(gargle)
-library(usethis)
-
-## Name of Environment variable
-
-pw_name <- gargle:::secret_pw_name("gargle")
-#> GARGLE_PASSWORD
-
-## Value of Environment variable
-
-pw <- gargle:::secret_pw_gen()
-#> someSecretComplicatedPassword
-
-sprintf("%s=%s",pw_name, pw)
-#> GARGLE_PASSWORD=someSecretComplicatedPassword
-
-usethis::edit_r_environ(scope = "user")
-
-#### in .Renviron file ###
-# 1 GARGLE_PASSWORD=someSecretComplicatedPassword
-# 2 
-
-# always leave an empty line at the end of the .Renviron file
-
-```
-
-#### Encrypt the Secret File
-
-```{r eval=FALSE}
-gargle:::secret_write(
-  package = "myCoolPackage",
-  name = "sheets-demo-key.json",
-  input = "My/directory/outside/the/project/longComplicatedFile.json"
-)
-
-```
-
-#### Test that you can decrypt
-
-```{r eval=FALSE}
-if(gargle:::secret_can_decrypt("myCoolPackage")){
-  json<- gargle:::secret_read("sheets-demo-key.json")
-  googlesheets4::gs4_auth(path = rawToChar(json))
-}
-```
-
-#### Give the env variable to services (Optional)
-
-If the package will be used in services like RStudio Connect or Github Actions, it is relatively straight forward to securely add our `GARGLE_PASSWORD` environment variables to those services.
-
-See documentation here:
-
--   [Add env variables to RSConnect](https://blog.rstudio.com/2018/03/02/rstudio-connect-v1-5-14/#:~:text=Environment%20variables%20for%20executable%20content,and%20are%20encrypted%20at%20rest.)
--   [Add secrets to Github Actions](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)
 
 ## Additional Resources
 
@@ -428,6 +257,3 @@ The [`googlesheets4`](https://googlesheets4.tidyverse.org/index.html) package al
 
 Package vignettes can be found [here](https://googlesheets4.tidyverse.org/articles/index.html)
 
-###  Gargle
-
-The [`gargle`](https://gargle.r-lib.org/index.html) package focuses entirely on managing credentials for the Google api. Vignettes for the package can be found [here](https://gargle.r-lib.org/articles/index.html).
