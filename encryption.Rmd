@@ -217,7 +217,7 @@ echo '**/.env filter=git-crypt diff=git-crypt' >> .gitattributes
 
 # may also be a good idea to add **/auth  if you're going to be 
 # using non-interactive processes with dropbox and google drive
-echo '**/auth filter=git-crypt diff=git-crypt' >> .gitattributes
+echo 'auth/** filter=git-crypt diff=git-crypt' >> .gitattributes
 
 
 ```
