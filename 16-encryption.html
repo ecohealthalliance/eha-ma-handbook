@@ -51,7 +51,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.0/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
@@ -521,7 +521,7 @@ echo &#39;**/.env filter=git-crypt diff=git-crypt&#39; &gt;&gt; .gitattributes
 
 # may also be a good idea to add **/auth  if you&#39;re going to be 
 # using non-interactive processes with dropbox and google drive
-echo &#39;**/auth filter=git-crypt diff=git-crypt&#39; &gt;&gt; .gitattributes
+echo &#39;auth/** filter=git-crypt diff=git-crypt&#39; &gt;&gt; .gitattributes
 
 </code></pre>
 <p>To learn more about pattern matching in the <code>.gitattributes</code> file, see the <a href="https://github.com/AGWA/git-crypt#gitattributes-file">git-crypt read.me</a> and <a href="https://git-scm.com/docs/gitignore#_pattern_format">gitignore manual</a></p>
