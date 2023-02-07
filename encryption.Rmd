@@ -344,8 +344,8 @@ AKA What to do if you accidentally committed sensitive files (data, keys, etc.) 
 5) Run `git filter-repo --invert-paths --path PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA` to remove a sensitive file.
 6) Make sure you've removed everything you want from the repository's history
   - use `git log -- path/to/file` to see git history for a particular file. **Note** If you've successfully removed the file there won't be any history to display.  
-  - see [`git log`](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History) for more information. 
-7)Check in with collaborators to make sure no one has work on branches in the repo they would like to keep. 
+  - see [`git log`](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History) for more information.   
+7)Check in with collaborators to make sure no one has work on branches in the repo they would like to keep.   
 8) Next you will use `push --force` to overwrite all the history on github and all the branches on your repo. Push your changes to the remote using `git push origin --force --all`. 
   - You may have to add the origin back into your .git/config file
 9) Use `git push origin --force --tags` to remove sensitive files from any of your tagged releases. 
