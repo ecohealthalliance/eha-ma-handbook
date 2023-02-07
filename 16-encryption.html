@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>16 Encryption | EHA Modeling &amp; Analytics Handbook</title>
   <meta name="description" content="16 Encryption | EHA Modeling &amp; Analytics Handbook" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="16 Encryption | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
@@ -607,7 +607,7 @@ system image, and (2) to run these commands after the CI clones your repository:
 <p>AKA What to do if you accidentally committed sensitive files (data, keys, etc.) to your repository either before encryption or our outside the scope of your <code>.gitattributes</code> file.</p>
 <ol style="list-style-type: decimal">
 <li>Take a breath.</li>
-<li>Make sure your sensitive files are included either in the <code>.gitattributes</code> file or your <code>.ignore</code> file. You can add a filter for particular files any where in your repo with <code>**/MySuperSensitiveFile</code> see <a href="https://git-scm.com/docs/gitignore#_pattern_format">gitignore documentation</a></li>
+<li>Make sure your sensitive files are included either in the <code>.gitattributes</code> file or your <code>.gitignore</code> file. You can add a filter for particular files any where in your repo with <code>**/MySuperSensitiveFile</code> see <a href="https://git-scm.com/docs/gitignore#_pattern_format">gitignore documentation</a></li>
 <li>Install <a href="https://github.com/newren/git-filter-repo/blob/main/INSTALL.md"><code>git-filter-repo</code></a></li>
 <li>Navigate to your repo’s working directory <code>cd my/project/folder</code></li>
 <li>Back up your <code>.git/config</code> file as certain elements will be removed when we run <code>git filter-repo</code></li>
