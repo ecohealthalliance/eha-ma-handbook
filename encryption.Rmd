@@ -337,7 +337,7 @@ system image, and (2) to run these commands after the CI clones your repository:
 AKA What to do if you accidentally committed sensitive files (data, keys, etc.) to your repository either before encryption or our outside the scope of your `.gitattributes` file. 
 
 1) Take a breath.
-2) Make sure your sensitive files are included either in the `.gitattributes` file or your `.ignore` file. You can add a filter for particular files any where in your repo with `**/MySuperSensitiveFile` see [gitignore documentation](https://git-scm.com/docs/gitignore#_pattern_format)
+2) Make sure your sensitive files are included either in the `.gitattributes` file or your `.gitignore` file. You can add a filter for particular files any where in your repo with `**/MySuperSensitiveFile` see [gitignore documentation](https://git-scm.com/docs/gitignore#_pattern_format)
 2) Install [`git-filter-repo`](https://github.com/newren/git-filter-repo/blob/main/INSTALL.md)
 3) Navigate to your repo's working directory `cd my/project/folder`
 4) Back up your `.git/config` file as certain elements will be removed when we run `git filter-repo`
