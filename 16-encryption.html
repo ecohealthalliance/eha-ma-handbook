@@ -607,7 +607,7 @@ system image, and (2) to run these commands after the CI clones your repository:
 <p>AKA What to do if you accidentally committed sensitive files (data, keys, etc.) to your repository either before encryption or our outside the scope of your <code>.gitattributes</code> file.</p>
 <ol style="list-style-type: decimal">
 <li>Take a breath.</li>
-<li>Make sure your sensitive files are included either in the <code>.gitattributes</code> file or your <code>.gitignore</code> file. You can add a filter for particular files any where in your repo with <code>**/MySuperSensitiveFile</code> see <a href="https://git-scm.com/docs/gitignore#_pattern_format">gitignore documentation</a></li>
+<li>Make sure your sensitive files are included either in the <code>.gitattributes</code> file if you want them encrypted or delete them then add them to your <code>.gitignore</code> file. You can add a filter for particular files any where in your repo with <code>**/MySuperSensitiveFile</code> see <a href="https://git-scm.com/docs/gitignore#_pattern_format">gitignore documentation</a></li>
 <li>Install <a href="https://github.com/newren/git-filter-repo/blob/main/INSTALL.md"><code>git-filter-repo</code></a></li>
 <li>Navigate to your repo’s working directory <code>cd my/project/folder</code></li>
 <li>Back up your <code>.git/config</code> file as certain elements will be removed when we run <code>git filter-repo</code></li>
@@ -618,16 +618,16 @@ system image, and (2) to run these commands after the CI clones your repository:
 <li>use <code>git log -- path/to/file</code> to see git history for a particular file. <strong>Note</strong> If you’ve successfully removed the file there won’t be any history to display.<br />
 </li>
 <li>see <a href="https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History"><code>git log</code></a> for more information.<br />
-7)Check in with collaborators to make sure no one has work on branches in the repo they would like to keep.<br />
+9)Check in with collaborators to make sure no one has work on branches in the repo they would like to keep.<br />
 </li>
 </ul>
-<ol start="8" style="list-style-type: decimal">
+<ol start="10" style="list-style-type: decimal">
 <li>Next you will use <code>push --force</code> to overwrite all the history on github and all the branches on your repo. Push your changes to the remote using <code>git push origin --force --all</code>.</li>
 </ol>
 <ul>
 <li>You may have to add the origin back into your .git/config file</li>
 </ul>
-<ol start="9" style="list-style-type: decimal">
+<ol start="11" style="list-style-type: decimal">
 <li>Use <code>git push origin --force --tags</code> to remove sensitive files from any of your tagged releases.</li>
 <li>Follow the instructions <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#fully-removing-the-data-from-github">here</a> for contacting github to make sure there aren’t any caches of the files on github.</li>
 <li>Tell your collaborators to <code>rebase</code>,NOT MERGE, any branches created off the old repo history.</li>
