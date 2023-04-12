@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8 Airtable | EHA Modeling &amp; Analytics Handbook</title>
   <meta name="description" content="8 Airtable | EHA Modeling &amp; Analytics Handbook" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.33 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8 Airtable | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
@@ -51,7 +51,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
@@ -351,6 +351,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="airtable" class="section level1 hasAnchor">
 <h1><span class="header-section-number">8</span> Airtable<a href="8-airtable.html#airtable" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>This chapter will provide an overview of Airtable and good practices for designing data models in relational databases.</p>
+<p>For an EHA specific overview of Airtable Enterprise, see this <a href="https://docs.google.com/document/d/1kMbfhWTG7TRMGZmeyByeZCFt5xOaEwLwgVIrbrbk3Vs/edit?usp=sharing">document</a></p>
+<p>Request access to the EHA shared workspaces by contacting the <a href="https://www.ecohealthalliance.org/personnel/collin-schwantes">Data Librarian</a> or <a href="https://www.ecohealthalliance.org/personnel/andrew-espira">Infrastructure Lead</a>.</p>
 <div id="key-terms" class="section level2 hasAnchor">
 <h2><span class="header-section-number">8.1</span> Key Terms<a href="8-airtable.html#key-terms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
@@ -371,6 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="when-should-i-use-airtable" class="section level2 hasAnchor">
 <h2><span class="header-section-number">8.3</span> When should I use Airtable?<a href="8-airtable.html#when-should-i-use-airtable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Use Airtable when you would have multiple tabs in a spreadsheet, when you have hierarchical data, and/or when you want to create collaborative automated workflows in a low code environment.</p>
+<p>While Airtable is good for many things, it is not a good solution for big data. Consider using other systems if you plan to have more than 250,000 records of data in a base.</p>
 <p><strong>Project Management</strong><br />
 Because Airtable is extremely useful and user friendly, there are a plethora of pre-built templates for nearly an project management type task.</p>
 <ul>
@@ -378,13 +381,13 @@ Because Airtable is extremely useful and user friendly, there are a plethora of 
 </li>
 <li><a href="https://www.airtable.com/universe">User Contributed Templates</a></li>
 </ul>
-<p>For example, the computational sciences team has had success using Airtable for candidate searches. Airtable allows us to efficiently, independently, and consistently review applications then compare our ratings. We can then sort candidates by average score and reach a consensus on who to follow up with.</p>
+<p>For example, the computational sciences team has had success using Airtable for <a href="https://airtable.com/invite/l?inviteId=inv50tI6Z3ceiLos4&amp;inviteToken=7959000f3c419989a754b762bea01c10c808797a077bbed14b7a4dd67f315516&amp;utm_medium=email&amp;utm_source=product_team&amp;utm_content=transactional-alerts">candidate searches</a>. Airtable allows us to efficiently, independently, and consistently review applications then compare our ratings. We can then sort candidates by average score and reach a consensus on who to follow up with.</p>
 <p><strong>Research Data</strong><br />
 Airtable shines when you have multiple data entities that are linked via common data elements. For example, if you are sampling bats then conducting antibody screening, running multiplex PCR, and keeping physical samples of blood and urine from those bats, you have multiple data entities (bats, antibody test results, PCR test results, and physical samples) that are all linked via common data elements like site and collector.
 What is more, the test results depend on the physical samples and the physical samples depend on the bats. Those common data elements only need to be entered into a single entity (or table) then shared across the other entities in your base using linked elements. Once you have linked elements you no longer have to worry about updating the same piece of information in multiple locations and you can quickly navigate between entities and understand hierarchical relationships.</p>
 <div class="figure"><span style="display:block;" id="fig:bat-data"></span>
-<div id="htmlwidget-83b26773f435142619da" style="width:672px;height:200px;" class="grViz html-widget "></div>
-<script type="application/json" data-for="htmlwidget-83b26773f435142619da">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-866c01e92ebb87733af5" style="width:672px;height:200px;" class="grViz html-widget "></div>
+<script type="application/json" data-for="htmlwidget-866c01e92ebb87733af5">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 8.1: Data model for bat sampling example.
 </p>
@@ -426,8 +429,8 @@ Figure 8.1: Data model for bat sampling example.
 <p>Bases are equivalent to databases. They consist of a set of tables that can be linked and allow you to perform some task (e.g. IRB tracking, capturing research data, etc.). Bases can be duplicated and shared across your workspaces and you can share bases with other users.</p>
 <p>Tables are where most of the action happens. Data is entered in tables, tables can be transformed via views into calendars, dashboards, or galleries, and tables can be manipulated via the API. They describe a data entity and are composed of fields. In the bat sampling example, each circle would be a table in the bat sampling base.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<div id="htmlwidget-2f31e0f9deb9049a068f" style="width:672px;height:200px;" class="grViz html-widget "></div>
-<script type="application/json" data-for="htmlwidget-2f31e0f9deb9049a068f">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-73c5f88b079829922ed3" style="width:672px;height:200px;" class="grViz html-widget "></div>
+<script type="application/json" data-for="htmlwidget-73c5f88b079829922ed3">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 8.2: Data model for bat sampling example.
 </p>
@@ -507,15 +510,15 @@ Figure 8.2: Data model for bat sampling example.
 <p>All Airtable bases are automatically accessible to authorized users via a REST API. The list of API accessible bases you have access to can be found here: <a href="https://airtable.com/api" class="uri">https://airtable.com/api</a>. By clicking on a base you will be able to see the full API documentation for that base.</p>
 <div id="scoped-tokens" class="section level3 hasAnchor">
 <h3><span class="header-section-number">8.8.1</span> Scoped Tokens<a href="8-airtable.html#scoped-tokens" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>** Remember to save the token in a secure place. Do not store unencrypted tokens on the web (e.g. pushing them to github).</p>
 <p>Airtable is moving to a <a href="https://airtable.com/developers/web/guides/personal-access-tokens">scoped tokens</a> based approach to api access. Scoped personal access tokens allow you to create a token for a specific base with specific permissions - e.g. token has read-only access to a bat sampling base. Using scoped tokens in this way means that if the token is compromised (leaked, stolen, accidentally committed unencrypted to a github repo, etc), you can delete that token to remove any access it might have had and the limited scope means that you know exactly what a person would have been able to access.</p>
 <p>To create a personal access token go here: <a href="https://airtable.com/create/tokens" class="uri">https://airtable.com/create/tokens</a></p>
-<p>** Remember to save the token in a secure place. Do not store unencrypted tokens on the web (e.g. pushing them to github).</p>
 <p>Airtable has also deployed <a href="https://airtable.com/developers/web/api/oauth-reference">oauth tokens</a> for all users.</p>
 </div>
 <div id="airtable-and-r" class="section level3 hasAnchor">
 <h3><span class="header-section-number">8.8.2</span> Airtable and R<a href="8-airtable.html#airtable-and-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The Airtable REST API can be used via R with the <a href="https://github.com/ecohealthalliance/airtabler">airtabler package</a>. EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design works well for exploring the data. Our extension adds additional functionality to help use <code>airtabler</code> in automation via continuous integration such as GitHub Actions.</p>
-<pre><code>devtools::install_github(&quot;ecohealthalliance/airtabler&quot;)</code></pre>
+<p>The Airtable REST API can be used via R with the <a href="https://github.com/ecohealthalliance/airtabler">airtabler package</a>. EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design works well for exploring the data. Our extension adds additional functionality to help use <code>airtabler</code> in automations via continuous integration systems like GitHub Actions.</p>
+<pre><code>remotes::install_github(&quot;ecohealthalliance/airtabler&quot;)</code></pre>
 <p>The Airtable API serves up data as JSON, which has a hierarchical structure similar to a list in R. To handle JSON, <code>airtabler</code> uses the <code>jsonlite</code> package. Its helpful to understand how <code>jsonlite</code> handles different JSON structures when working with more complicated Airtable data. See the <code>jsonlite</code> <a href="https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html">quick-start guide</a> for a basic overview. The <a href="https://purrr.tidyverse.org/"><code>purr</code> package</a> is extremely helpful when dealing with data objects derived from JSON because it facilitates navigating nested data structures.</p>
 <p>The <code>airtabler</code> package provides instructions for setting up access to the Airtable API. You will need to follow those instructions for the following examples to work.</p>
 <p><strong>One to One join</strong></p>
@@ -608,7 +611,8 @@ off the shelf solution for this. Below are three options for extracting all data
 from your base.</p>
 <div id="using-airtabler" class="section level4 hasAnchor">
 <h4><span class="header-section-number">8.9.2.1</span> Using airtabler<a href="8-airtable.html#using-airtabler" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Using <code>airtabler::air_dump()</code> and <code>airtabler::air_dump_to_csv()</code> functions, you can export all tables to R then create a versioned folder of CSVs. See the <code>air_dump_to_csv</code> help page for more information.</p>
+<p>Using <code>airtabler::air_dump()</code> and <code>airtabler::air_dump_to_csv()</code> functions, you can export all tables to R then create a versioned folder of CSVs.</p>
+<p>See the <a href="https://github.com/ecohealthalliance/airtabler/blob/11f5fb21741c4cf36ece448a8eb92f53c46422f7/vignettes/Generate-Metadata-and-Backup.Rmd">vignette</a> in the <code>airtabler</code> package for generating metadata and creating backups.</p>
 </div>
 <div id="other-open-source-projects" class="section level4 hasAnchor">
 <h4><span class="header-section-number">8.9.2.2</span> Other Open Source Projects<a href="8-airtable.html#other-open-source-projects" class="anchor-section" aria-label="Anchor link to header"></a></h4>
