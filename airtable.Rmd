@@ -2,6 +2,10 @@
 
 This chapter will provide an overview of Airtable and good practices for designing data models in relational databases. 
 
+For an EHA specific overview of Airtable Enterprise, see this [document](https://docs.google.com/document/d/1kMbfhWTG7TRMGZmeyByeZCFt5xOaEwLwgVIrbrbk3Vs/edit?usp=sharing)
+
+Request access to the EHA shared workspaces by contacting the  `r params$data_librarian` or `r params$infrastructure_lead`. 
+
 ## Key Terms
 
 - **Workspace** - A collection of bases
@@ -21,13 +25,15 @@ Airtable provides a cloud hosted spreadsheet-database hybrid platform for collab
 
 Use Airtable when you would have multiple tabs in a spreadsheet, when you have hierarchical data, and/or when you want to create collaborative automated workflows in a low code environment. 
 
+While Airtable is good for many things, it is not a good solution for big data. Consider using other systems if you plan to have more than 250,000 records of data in a base. 
+
 **Project Management**  
 Because Airtable is extremely useful and user friendly, there are a plethora of pre-built templates for nearly an project management type task.  
 
 - [Airtable Templates](https://www.airtable.com/templates)  
 - [User Contributed Templates](https://www.airtable.com/universe)  
 
-For example, the computational sciences team has had success using  Airtable for candidate searches. Airtable allows us to efficiently, independently, and consistently review applications then compare our ratings. We can then sort candidates by average score and reach a consensus on who to follow up with. 
+For example, the computational sciences team has had success using  Airtable for [candidate searches](https://airtable.com/invite/l?inviteId=inv50tI6Z3ceiLos4&inviteToken=7959000f3c419989a754b762bea01c10c808797a077bbed14b7a4dd67f315516&utm_medium=email&utm_source=product_team&utm_content=transactional-alerts). Airtable allows us to efficiently, independently, and consistently review applications then compare our ratings. We can then sort candidates by average score and reach a consensus on who to follow up with. 
 
 **Research Data**  
 Airtable shines when you have multiple data entities that are linked via common data elements. For example, if you are sampling bats then conducting antibody screening, running multiplex PCR, and keeping physical samples of blood and urine from those bats, you have multiple data entities (bats, antibody test results, PCR test results, and physical samples) that are all linked via common data elements like site and collector.
@@ -214,21 +220,23 @@ All Airtable bases are automatically accessible to authorized users via a REST A
 
 ### Scoped Tokens 
 
+** Remember to save the  token in a secure place. Do not store unencrypted tokens on the web (e.g. pushing them to github).
+
 Airtable is moving to a [scoped tokens](https://airtable.com/developers/web/guides/personal-access-tokens) based approach to api access. Scoped personal access tokens allow you to create a token for a specific base with specific permissions - e.g. token has read-only access to a bat sampling base. Using scoped tokens in this way means that if the token is compromised (leaked, stolen, accidentally committed unencrypted to a github repo, etc), you can delete that token to remove any access it might have had and the limited scope means that you know exactly what a person would have been able to access. 
 
 To create a personal access token go here: https://airtable.com/create/tokens
 
-** Remember to save the  token in a secure place. Do not store unencrypted tokens on the web (e.g. pushing them to github).
+
 
 Airtable has also deployed [oauth tokens](https://airtable.com/developers/web/api/oauth-reference) for all users. 
 
 
 ### Airtable and R
 
-The Airtable REST API can be used via R with the [airtabler package](https://github.com/ecohealthalliance/airtabler). EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design works well for exploring the data. Our extension adds additional functionality to help use `airtabler` in automation via continuous integration such as GitHub Actions.  
+The Airtable REST API can be used via R with the [airtabler package](https://github.com/ecohealthalliance/airtabler). EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design works well for exploring the data. Our extension adds additional functionality to help use `airtabler` in automations via continuous integration systems like GitHub Actions.  
 
 ```
-devtools::install_github("ecohealthalliance/airtabler")
+remotes::install_github("ecohealthalliance/airtabler")
 ```
 
 The Airtable API serves up data as JSON, which has a hierarchical structure similar to a list in R. To handle JSON, `airtabler` uses the `jsonlite` package. Its helpful to understand how `jsonlite` handles different JSON structures when working with more complicated Airtable data. See the `jsonlite` [quick-start guide](https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html) for a basic overview. The [`purr` package](https://purrr.tidyverse.org/) is extremely helpful when dealing with data objects derived from JSON because it facilitates navigating nested data structures. 
@@ -298,6 +306,8 @@ the fundamental properties of your base can be changed easily by multiple users
 without warning! Documenting the structure and purpose of your base, as well 
 as creating regular external backups could save you from catastrophe. 
 
+
+
 ### Metadata
 - **Structural metadata** - Information about a resource that tells you how its
 put together - e.g. the relationship between a table, field, and automation. With
@@ -324,7 +334,6 @@ To see the template base, follow this [link]( https://airtable.com/invite/l?invi
 Automations and extensions live entirely inside airtable. As of August 2022, Airtable introduced a "Manage Fields" tab that provides metadata for a specific table, including any automation dependencies. It is not possible to export those dependency tables or the code used in automations automatically. This makes it extremely important to document any automations and extensions outside your base. 
 
 
-
 ### External Backups
 
 It is a good idea to create regular external backups of airtable data in the event
@@ -335,7 +344,10 @@ from your base.
 
 #### Using airtabler
 
-Using `airtabler::air_dump()` and `airtabler::air_dump_to_csv()` functions, you can export all tables to R then create a versioned folder of CSVs. See the `air_dump_to_csv` help page for more information.
+Using `airtabler::air_dump()` and `airtabler::air_dump_to_csv()` functions, you can export all tables to R then create a versioned folder of CSVs. 
+
+See the [vignette](https://github.com/ecohealthalliance/airtabler/blob/11f5fb21741c4cf36ece448a8eb92f53c46422f7/vignettes/Generate-Metadata-and-Backup.Rmd) in the `airtabler` package for generating metadata and creating backups. 
+
 
 #### Other Open Source Projects
 
