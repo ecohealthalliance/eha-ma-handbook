@@ -13,7 +13,7 @@ favicon: "favicon.png"
 params:
   data_librarian: "[Data Librarian](https://www.ecohealthalliance.org/personnel/collin-schwantes)"
   data_librarian_appt: "[Schedule a meeting](https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GOwk4nzuezs8t_Ua1IxLW8aXHhyo4_tv1-mIv9nmT4rDkEaQuV7HbwqXervbMiX1ijDN65UZ-)"
-  infrastructure_lead: "[Infrastructure Lead]( https://www.ecohealthalliance.org/personnel/robert-young)"
+  infrastructure_lead: "[Infrastructure Lead]( https://www.ecohealthalliance.org/personnel/andrew-espira)"
 ---
 
 # Introduction {#introduction .unnumbered}
