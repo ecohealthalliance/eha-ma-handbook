@@ -97,6 +97,8 @@ ster
 
 -   The targets [manual](https://books.ropensci.org/targets/), including
     a [walkthrough](https://books.ropensci.org/targets/walkthrough.html)
+    
+-   A [high-level overview paper]( https://doi.org/10.1111/2041-210X.14113) outlining the concepts and benefits to workflow tools like `targets`.
 
 -   [A good intro talk](https://www.youtube.com/watch?v=jU1Zv21GvT4)(\~90 mins
     with questions) by Miles McBain on using targets and getting a good workflow
