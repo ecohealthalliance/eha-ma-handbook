@@ -35,7 +35,7 @@ rather than only trying to pick it up as you go along.
 -   Work through the online book [Happy Git with R](http://happygitwithr.com/), which will
     help you get git and GitHub setup and working with R and RStudio, and teach you some
     basic workflows.
--   Take the Software Carpentries course [Version Control with Git](https://swcarpentry.github.io/git-novice/) (free) to reinforce some key concepts and learn how work with versions on a day-to-day basis. 
+-   Take the Software Carpentry course [Version Control with Git](https://swcarpentry.github.io/git-novice/) (free) to reinforce some key concepts and learn how work with versions on a day-to-day basis. 
 
 ## Install
 
@@ -70,7 +70,7 @@ account. The `usethis` package has a [good overview](https://usethis.r-lib.org/a
 helpful functions that will be highlighted below. 
 
 Good practices for managing GITHUB PATS:
-1) Set an expiration date - github will notify you about expirations
+1) Set an expiration date - github will notify you about expiration
 2) Give them an informative name
 3) Give minimal permissions - tokens should be able to do no more than necessary
 4) Describe the token's purpose in the notes field
@@ -95,7 +95,7 @@ storing credentials. See [storing git credentials](https://usethis.r-lib.org/art
 
 ### Regenerating Tokens
 
-When your token is about to expire, you will get a notification from github. Thats
+When your token is about to expire, you will get a notification from github. That's
 your cue to go to the [tokens management page](https://github.com/settings/tokens),
 select the appropriate token, and then click "regenerate token". Copy and paste
 that token into your secure storage location and then update your git credentials
