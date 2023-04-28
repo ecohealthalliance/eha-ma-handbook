@@ -67,6 +67,9 @@ paid-services
 versioning
 learn-3
 install-4
+creating-tokens
+regenerating-tokens
+useful-references
 reviewing-analyses-and-code
 learn-4
 testing

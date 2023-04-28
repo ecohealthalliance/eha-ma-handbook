@@ -216,7 +216,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="9-versioning.html"><a href="9-versioning.html"><i class="fa fa-check"></i><b>9</b> Version Control, Git and Github</a><ul>
 <li class="chapter" data-level="9.1" data-path="9-versioning.html"><a href="9-versioning.html#learn-3"><i class="fa fa-check"></i><b>9.1</b> Learn</a></li>
-<li class="chapter" data-level="9.2" data-path="9-versioning.html"><a href="9-versioning.html#install-4"><i class="fa fa-check"></i><b>9.2</b> Install</a></li>
+<li class="chapter" data-level="9.2" data-path="9-versioning.html"><a href="9-versioning.html#install-4"><i class="fa fa-check"></i><b>9.2</b> Install</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="9-versioning.html"><a href="9-versioning.html#creating-tokens"><i class="fa fa-check"></i><b>9.2.1</b> Creating Tokens</a></li>
+<li class="chapter" data-level="9.2.2" data-path="9-versioning.html"><a href="9-versioning.html#regenerating-tokens"><i class="fa fa-check"></i><b>9.2.2</b> Regenerating Tokens</a></li>
+<li class="chapter" data-level="9.2.3" data-path="9-versioning.html"><a href="9-versioning.html#useful-references"><i class="fa fa-check"></i><b>9.2.3</b> Useful References</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="10-reviewing-analyses-and-code.html"><a href="10-reviewing-analyses-and-code.html"><i class="fa fa-check"></i><b>10</b> Reviewing Analyses and Code</a><ul>
 <li class="chapter" data-level="10.1" data-path="10-reviewing-analyses-and-code.html"><a href="10-reviewing-analyses-and-code.html#learn-4"><i class="fa fa-check"></i><b>10.1</b> Learn</a></li>
@@ -388,8 +392,7 @@ rather than only trying to pick it up as you go along.</p>
 <li>Work through the online book <a href="http://happygitwithr.com/">Happy Git with R</a>, which will
 help you get git and GitHub setup and working with R and RStudio, and teach you some
 basic workflows.</li>
-<li>Take the Data Camp course <a href="https://www.datacamp.com/courses/introduction-to-git-for-data-science">Introduction to Git for Data Science</a> (free) to reinforce some key concepts and learn how work with versions on a day-to-day basis.</li>
-<li>Here is a useful git <a href="https://www.git-tower.com/blog/git-cheat-sheet/">cheat sheet</a></li>
+<li>Take the Software Carpentry course <a href="https://swcarpentry.github.io/git-novice/">Version Control with Git</a> (free) to reinforce some key concepts and learn how work with versions on a day-to-day basis.</li>
 </ul>
 </div>
 <div id="install-4" class="section level2 hasAnchor">
@@ -402,8 +405,7 @@ Appendix B</li>
 e-mail addresses associated with it, so you can split your work and personal
 stuff without needing multiple accounts (see
 <a href="https://help.github.com/articles/managing-notification-emails-for-organizations/">here</a>).</li>
-<li>Give <a href="ross@ecohealthalliance.org">Noam</a> (Modeling &amp; Analytics) or
-<a href="young@ecohealthalliance.org">Robert Young</a> (Tech), your GitHub username so they can
+<li>Give <a href="ross@ecohealthalliance.org">Noam</a> (Modeling &amp; Analytics),the <a href="https://www.ecohealthalliance.org/personnel/collin-schwantes">Data Librarian</a> or the <a href="https://www.ecohealthalliance.org/personnel/andrew-espira">Infrastructure Lead</a> your GitHub username so they can
 make you a member of the <a href="https://github.com/ecohealthalliance">organizational EHA
 account</a> and be given access to the
 appropriate teams.</li>
@@ -419,7 +421,52 @@ separate personal and EHA Dropbox folders)</li>
 it, or your supervisor specifies it, <a href="https://tools.google.com/dlpage/drive">install it locally on your
 computer</a></li>
 </ul>
+<p>##. Personal Access Tokens</p>
+<p>Github requires you to use personal access tokens (PATs) when authenticating (signing in).
+These tokens provide specific levels of access to repositories and a user’s github
+account. The <code>usethis</code> package has a <a href="https://usethis.r-lib.org/articles/git-credentials.html">good overview</a> of managing your PATs and some
+helpful functions that will be highlighted below.</p>
+<p>Good practices for managing GITHUB PATS:
+1) Set an expiration date - github will notify you about expiration
+2) Give them an informative name
+3) Give minimal permissions - tokens should be able to do no more than necessary
+4) Describe the token’s purpose in the notes field
+5) Save the PAT in an encrypted file storage system - password managers like <a href="https://team-ecohealthalliance.1password.com/signin?landing-page=%2Fhome">1Password</a> or <a href="https://bitwarden.com/">Bitwarden</a> are a good option</p>
+<div id="creating-tokens" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.1</span> Creating Tokens<a href="9-versioning.html#creating-tokens" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>There are a number of ways to create tokens, see <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">github docs</a> for a comprehensive review.</p>
+<p>You can create tokens using the function <code>usethis::create_github_token()</code>.
+This function will open the token management page on github and pre-select
+a sensible set of permissions.</p>
+<p>The next easiest way to generate tokens is to navigate to the <a href="https://github.com/settings/tokens">tokens management page</a> and click generate token &gt;&gt; classic token.
+There you will be presented with a number of options for permissions. You will
+probably want to select the “repo” option so that you can read and write to a
+repository.</p>
+<p>Historically, Github PATs have been stored in the .Renviron/.env file with the variable
+GITHUB_PAT. The <code>usethis</code>, <code>gert</code>,and <code>gh</code> packages are moving towards a more secure method for
+storing credentials. See <a href="https://usethis.r-lib.org/articles/git-credentials.html#put-your-pat-into-the-local-git-credential-store">storing git credentials</a> for more information.</p>
+</div>
+<div id="regenerating-tokens" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.2</span> Regenerating Tokens<a href="9-versioning.html#regenerating-tokens" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>When your token is about to expire, you will get a notification from github. That’s
+your cue to go to the <a href="https://github.com/settings/tokens">tokens management page</a>,
+select the appropriate token, and then click “regenerate token”. Copy and paste
+that token into your secure storage location and then update your git credentials
+in R.</p>
+<p>See <a href="https://usethis.r-lib.org/articles/git-credentials.html#ongoing-pat-maintenance">PAT maintenance</a></p>
+</div>
+<div id="useful-references" class="section level3 hasAnchor">
+<h3><span class="header-section-number">9.2.3</span> Useful References<a href="9-versioning.html#useful-references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><a href="https://www.atlassian.com/git/tutorials">Atlassian GIT Tutorials</a> - Nice diagrams and plan language descriptions</li>
+<li><a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">GIT CLI Cheatsheet</a></li>
+<li><a href="https://git-scm.com/docs/gitignore">GIT Ignore reference</a></li>
+<li><a href="https://docs.github.com/en/get-started/quickstart/git-and-github-learning-resources">Github Learning Resources</a></li>
+<li><a href="https://www.git-tower.com/blog/git-cheat-sheet/">Git Tower cheat sheet</a></li>
+<li><a href="https://github.com/ecohealthalliance/collinschwantes-misc/blob/main/git-basic.md">Git basics overview</a></li>
+</ul>
 
+</div>
 </div>
 </div>
             </section>
