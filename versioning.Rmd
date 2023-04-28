@@ -35,8 +35,7 @@ rather than only trying to pick it up as you go along.
 -   Work through the online book [Happy Git with R](http://happygitwithr.com/), which will
     help you get git and GitHub setup and working with R and RStudio, and teach you some
     basic workflows.
--   Take the Data Camp course [Introduction to Git for Data Science](https://www.datacamp.com/courses/introduction-to-git-for-data-science) (free) to reinforce some key concepts and learn how work with versions on a day-to-day basis. 
--   Here is a useful git [cheat sheet](https://www.git-tower.com/blog/git-cheat-sheet/)
+-   Take the Software Carpentry course [Version Control with Git](https://swcarpentry.github.io/git-novice/) (free) to reinforce some key concepts and learn how work with versions on a day-to-day basis. 
 
 ## Install
 
@@ -47,8 +46,7 @@ rather than only trying to pick it up as you go along.
     e-mail addresses associated with it, so you can split your work and personal
     stuff without needing multiple accounts (see
     [here](https://help.github.com/articles/managing-notification-emails-for-organizations/)).
--   Give [Noam](ross@ecohealthalliance.org) (Modeling & Analytics) or
-    [Robert Young](young@ecohealthalliance.org) (Tech), your GitHub username so they can
+-   Give [Noam](ross@ecohealthalliance.org) (Modeling & Analytics),the `r params$data_librarian` or the `r params$infrastructure_lead` your GitHub username so they can
     make you a member of the [organizational EHA
     account](https://github.com/ecohealthalliance) and be given access to the
     appropriate teams.
@@ -63,3 +61,54 @@ rather than only trying to pick it up as you go along.
 -   Check that your EHA email gives you access to Google Drive. If you prefer
     it, or your supervisor specifies it, [install it locally on your
     computer](https://tools.google.com/dlpage/drive)
+    
+##. Personal Access Tokens
+
+Github requires you to use personal access tokens (PATs) when authenticating (signing in). 
+These tokens provide specific levels of access to repositories and a user's github
+account. The `usethis` package has a [good overview](https://usethis.r-lib.org/articles/git-credentials.html) of managing your PATs and some
+helpful functions that will be highlighted below. 
+
+Good practices for managing GITHUB PATS:
+1) Set an expiration date - github will notify you about expiration
+2) Give them an informative name
+3) Give minimal permissions - tokens should be able to do no more than necessary
+4) Describe the token's purpose in the notes field
+5) Save the PAT in an encrypted file storage system - password managers like [1Password](https://team-ecohealthalliance.1password.com/signin?landing-page=%2Fhome) or [Bitwarden](https://bitwarden.com/) are a good option
+
+### Creating Tokens 
+
+There are a number of ways to create tokens, see [github docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for a comprehensive review.
+
+You can create tokens using the function `usethis::create_github_token()`. 
+This function will open the token management page on github and  pre-select
+a sensible set of permissions.
+
+The next easiest way to generate tokens is to navigate to the [tokens management page](https://github.com/settings/tokens) and click generate token >> classic token.
+There you  will be presented with a number of options for permissions. You will
+probably want to select the "repo" option so that you can read and write to a 
+repository. 
+
+Historically, Github PATs have been stored in the .Renviron/.env file with the variable
+GITHUB_PAT. The `usethis`, `gert`,and `gh` packages are moving towards a more secure method for
+storing credentials. See [storing git credentials](https://usethis.r-lib.org/articles/git-credentials.html#put-your-pat-into-the-local-git-credential-store) for more information.
+
+### Regenerating Tokens
+
+When your token is about to expire, you will get a notification from github. That's
+your cue to go to the [tokens management page](https://github.com/settings/tokens),
+select the appropriate token, and then click "regenerate token". Copy and paste
+that token into your secure storage location and then update your git credentials
+in R. 
+
+See [PAT maintenance](https://usethis.r-lib.org/articles/git-credentials.html#ongoing-pat-maintenance)
+
+### Useful References
+
+- [Atlassian GIT Tutorials](https://www.atlassian.com/git/tutorials) - Nice diagrams and plan language descriptions
+- [GIT CLI Cheatsheet](https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet)
+- [GIT Ignore reference](https://git-scm.com/docs/gitignore)
+- [Github Learning Resources](https://docs.github.com/en/get-started/quickstart/git-and-github-learning-resources)
+- [Git Tower cheat sheet](https://www.git-tower.com/blog/git-cheat-sheet/)
+- [Git basics overview](https://github.com/ecohealthalliance/collinschwantes-misc/blob/main/git-basic.md)
+
