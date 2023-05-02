@@ -91,9 +91,8 @@ are some resources for getting started with `targets`
 
 - Internal presentations on using `targets` at EHA: ([Videos (password protected on internal AirTable)](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwYtpOngYZ8fppIq?blocks=hide),
 
-    - [Slides](https://ecohealthalliance.github.io/targets-renv-example/outputs/targets-presentation.html#1),
-ster
-    - [Example Repository on GitHub](https://github.com/ecohealthalliance/targets-renv-example))
+    - [Slides](https://ecohealthalliance.github.io/targets-renv-example/outputs/targets-presentation.html#1)
+    - [Example Repository on GitHub](https://github.com/ecohealthalliance/targets-renv-example)
     
     - [Brief overview of using `renv` with `targets ](https://github.com/ecohealthalliance/building-blocks-of-reproducibility/blob/main/happy_renv_with_targets.md)
     - [Repo for Branching in targets](https://github.com/ecohealthalliance/targets_branching)
