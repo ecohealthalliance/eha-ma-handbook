@@ -83,4 +83,14 @@ some of the material from Geomputation in R in less depth, and gives you fewer t
 -  [Leaflet for R](https://rstudio.github.io/leaflet/) is a manual on the use of the R **leaflet** package to harness [Leaflet](https://leafletjs.com/), an open-source JS library for creating _interactive_ maps. Leaflet maps particularly useful for exploring and visualizing spatial data, and are easily embedded into R Markdown documents.   You should take a course or have knowledge of R Markdown prior to taking this course.
 
 
+### Bioinformatics
+
+- Conceptual and practical introduction to some of the main topics in Bioinformatics.
+
+## Metagenomics
+
+- [Quality control](https://github.com/alexarmerov/Metagenomics/blob/main/Docs/Quality_control.md)
+- [Assembly](https://github.com/alexarmerov/Metagenomics/blob/main/Docs/Assembly.md)
+- [Alignment](https://github.com/alexarmerov/Metagenomics/blob/main/Docs/Alignment.md)
+
 
