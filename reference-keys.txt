@@ -162,5 +162,7 @@ improving-your-statistical-fundamentals
 improving-your-data-visualization
 r-programming
 map-making-and-geospatial-analysis-in-r
+bioinformatics
+metagenomics
 help
 minimal-reproducible-examples---helping-others-help-you
