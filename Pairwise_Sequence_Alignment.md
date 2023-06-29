@@ -282,4 +282,4 @@ chmod +x crocoblast
 
 ```
 
-##### CrocoBLAST shows messages with the time remaining to complete the process. We hope that this example motivates you to carefully read the CrocoBLAST [wiki](https://webchem.ncbr.muni.cz/Wiki/CrocoBLAST:UserManual) to efficiently exploit the different possibilities of this nice tool.
+CrocoBLAST shows messages with the time remaining to complete the process. We hope that this example motivates you to carefully read the CrocoBLAST [wiki](https://webchem.ncbr.muni.cz/Wiki/CrocoBLAST:UserManual) to efficiently exploit the different possibilities of this nice tool.
