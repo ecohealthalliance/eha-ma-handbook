@@ -13,46 +13,39 @@ Homology relationships between sequences are defined by two important events in 
 
 ### BLAST
 
+#### 1. BLAST+ installation with conda software
 
-#### Conda Installation
-One of the easy ways to install bioinformatics software is with [Conda](https://docs.conda.io/en/latest/).
+One of the easy ways to install bioinformatics software is with [conda](https://docs.conda.io/en/latest/).
 
-###### 1. Download miniconda for ubuntu (If you have another OS choose the appropriate file)
+###### 1.1 Download Miniconda for ubuntu (If you have another OS choose the appropriate file)
 ```
 https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
-###### 2. Set the correct authorizations
-
+###### 1.2 Set the correct authorizations
 ```
 chmod +x Miniconda3-latest-Linux-x86_64.sh
 ```
-###### 3. Install
-
+###### 1.3 Install
 ```
 bash Miniconda3-latest-Linux-x86_64.sh
 
 ```
-
-###### 4. Export path
-
+###### 1.4 Export path
 ```
 export PATH="$HOME/miniconda3/bin:$PATH"
 
 ```
-###### 5. Reinitialize the session. 
+###### 1.5 Reinitialize the session. 
 
-
-######## Install [BLAST+](https://www.ncbi.nlm.nih.gov/books/NBK279690/) with Conda
-
+###### 1.6 Install [BLAST+](https://www.ncbi.nlm.nih.gov/books/NBK279690/) with conda
 ```
 conda install -c bioconda blast=2.12.0
 
 ```
-######## Install database reference sequences
+#### 2. Install database reference sequences
 
-The first step is to create the directories where the databases will be installed.
+###### 2.1 The first step is to create the directories where the databases will be installed.
 For example, in your home directory:
-
 
 ```
 
@@ -67,7 +60,7 @@ cd NCBI
 
 ```
 
-######## Create two subdirectories, one for nucleic acid sequences and one for protein sequences.
+###### 2.2 Create two subdirectories, one for nucleic acid sequences and one for protein sequences.
 
 ```
 
@@ -81,11 +74,11 @@ mkdir nr
 
 ```
 
-######## There are different ways to install the pre-formatted blast databases:
+###### 2.3 There are different ways to install the pre-formatted blast databases:
 
- 1. Alternative 1. With the wget command
+ 2.3.1. Alternative 1. With the wget command
 
- 1.1. Download NCBI nucleotide sequence database
+- Download NCBI nucleotide sequence database
 
 
 ```
@@ -96,13 +89,12 @@ cd nt
 
 
 ```
-
-wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.??.tar.gz
+wget http://ftp.ncbi.nlm.nih.gov/blast/db/FASTA/nt.gz
 
 ```
 
 
-Uncompress the database files. You will find the uncompress.sh script in the scripts directory of this repository
+- Uncompress the database files. You will find the uncompress.sh script in the scripts directory of this repository
 
 ```
 
@@ -110,10 +102,10 @@ Uncompress the database files. You will find the uncompress.sh script in the scr
 
 ```
 
-1.2. Download NCBI amino acid sequence database (In the nr directory) 
+- Download NCBI amino acid sequence database (In the nr directory) 
 
 ```
-wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/nr.??.tar.gz
+wget http://ftp.ncbi.nlm.nih.gov/blast/db/FASTA/nr.gz
 
 ```
 
@@ -121,12 +113,11 @@ wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/nr.??.tar.gz
 ./uncompress.sh
 
 ```
-
-2. Alternative 2. The update_blastdb.pl script.
+2.3.2 Second alternative, the update_blastdb.pl script.
 
 BLAST+ offers the [update_blastdb.pl](https://www.ncbi.nlm.nih.gov/books/NBK569850/) script that allows you to download the NCBI databases. This script uncompresses the files for you.
 
-2.1. Obtain information from the available databases to download
+- Print the available databases to download
 
 
 ```
@@ -134,9 +125,7 @@ BLAST+ offers the [update_blastdb.pl](https://www.ncbi.nlm.nih.gov/books/NBK5698
 update_blastdb.pl --showall [*]
 
 ```
-
-2.2. Download the nucleotide sequence database (NCBI_DB/nt directory) 
-
+- Download the nucleotide sequence database (NCBI_DB/nt directory) 
 
 ```
 
@@ -144,8 +133,7 @@ update_blastdb.pl --decompress nt [*]
 
 ```
 
-2.3. Download the amino acid database (NCBI_DB/nr directory) 
-
+- Download the amino acid database (NCBI_DB/nr directory) 
 
 ```
 
