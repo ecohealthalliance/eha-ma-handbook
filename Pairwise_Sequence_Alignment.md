@@ -1,60 +1,57 @@
 
 #  Sequences alignment
 
-##  Heredity
+###  Heredity
 
 Today, we are capable of reconstructing kinship relationships between organisms through bioinformatics analysis of biological sequences, particularly proteins, and DNA. This is possible thanks to the principle of heredity. The biological sequences are transmitted from one generation to the next through sexual and asexual reproduction. From one generation to the next, the sequences accumulate variation as a result of stochastic or selective processes. Despite this variation, sequences from two closely related organisms are expected to be more similar to each other than sequences from two distantly related organisms. Between two organisms with a distant relationship, more time has elapsed since the last shared ancestor, accumulating more variation. This is the principle on which the search for homology between sequences is based, two DNA or protein sequences are homologous if they share ancestry. This means that the similarity between these sequences is the product of sharing the same ancestor placed somewhere in the phylogenetic tree of life. The higher the sequence similarity, the more recent the common ancestor between the sequences is expected to be. However, the identification of a hit with a high similarity is not enough to determine the homology of a sequence; it is also necessary to model the evolutionary process through phylogenetic tools. This chapter will address the methodological principles of pairwise alignments, the alignment between two biological sequences. Multiple sequence alignment is the topic of the next chapter. Before introducing pairwise alignment, I would like to introduce some homology concepts that are essential to the application and interpretation of alignments and phylogenies.
 
-## Orthologs and paralogs
+### Orthologs and paralogs
 
 Homology relationships between sequences are defined by two important events in the evolution of species: duplication and speciation. Two sequences (genes or proteins) are orthologous if they are the product of speciation. Two sequences are paralogs if they are the products of duplication events. When two different organisms present sequences that are the product of duplication events prior to speciation, these sequences are out-paralogs. When duplication occurs after the speciation process, the sequences are called in-paralogs (Figure 1).
 
 <img width="908" alt="image" src="https://github.com/alexarmerov/Metagenomics/assets/72785049/e7448fb7-66ab-4826-a43e-0164256ab0ed">
 
-# BLAST
+### BLAST
 
 
 #### Conda Installation
-#### One of the easy ways to install bioinformatics software is with [Conda](https://docs.conda.io/en/latest/).
-##### 1. Download miniconda for ubuntu (If you have another OS choose the appropriate file)
+One of the easy ways to install bioinformatics software is with [Conda](https://docs.conda.io/en/latest/).
+
+###### 1. Download miniconda for ubuntu (If you have another OS choose the appropriate file)
 ```
 https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
-#### 2. Set the correct authorizations
+###### 2. Set the correct authorizations
 
 ```
 chmod +x Miniconda3-latest-Linux-x86_64.sh
 ```
-#### 3. Install
+###### 3. Install
 
 ```
 bash Miniconda3-latest-Linux-x86_64.sh
 
 ```
 
-#### 4. Export path
+###### 4. Export path
 
 ```
 export PATH="$HOME/miniconda3/bin:$PATH"
 
 ```
-#### 5. Reinitialize the session. 
+###### 5. Reinitialize the session. 
 
 
-## Install [BLAST+](https://www.ncbi.nlm.nih.gov/books/NBK279690/) with Conda
+######## Install [BLAST+](https://www.ncbi.nlm.nih.gov/books/NBK279690/) with Conda
 
 ```
 conda install -c bioconda blast=2.12.0
 
 ```
+######## Install database reference sequences
 
-
-
-## Install database reference sequences
-
-
-###### The first step is to create the directories where the databases will be installed.
-###### For example, in your home directory:
+The first step is to create the directories where the databases will be installed.
+For example, in your home directory:
 
 
 ```
@@ -70,8 +67,7 @@ cd NCBI
 
 ```
 
-##### Create two subdirectories, one for nucleic acid sequences and one for protein sequences.
-
+######## Create two subdirectories, one for nucleic acid sequences and one for protein sequences.
 
 ```
 
@@ -85,12 +81,11 @@ mkdir nr
 
 ```
 
+######## There are different ways to install the pre-formatted blast databases:
 
-### There are different ways to install the pre-formatted blast databases:
+ 1. Alternative 1. With the wget command
 
-### 1. Alternative 1. With the wget command
-
-##### 1.1. Download NCBI nucleotide sequence database
+ 1.1. Download NCBI nucleotide sequence database
 
 
 ```
@@ -107,7 +102,7 @@ wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.??.tar.gz
 ```
 
 
-##### Uncompress the database files. You will find the uncompress.sh script in the scripts directory of this repository
+Uncompress the database files. You will find the uncompress.sh script in the scripts directory of this repository
 
 ```
 
@@ -115,7 +110,7 @@ wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/nt.??.tar.gz
 
 ```
 
-##### 1.2. Download NCBI amino acid sequence database (In the nr directory) 
+1.2. Download NCBI amino acid sequence database (In the nr directory) 
 
 ```
 wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/nr.??.tar.gz
@@ -127,11 +122,11 @@ wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/nr.??.tar.gz
 
 ```
 
-### 2. Alternative 2. The update_blastdb.pl script. 
-#### BLAST+ offers the [update_blastdb.pl](https://www.ncbi.nlm.nih.gov/books/NBK569850/) script that allows you to download the NCBI databases. This script uncompress the files for you.
+2. Alternative 2. The update_blastdb.pl script.
 
+BLAST+ offers the [update_blastdb.pl](https://www.ncbi.nlm.nih.gov/books/NBK569850/) script that allows you to download the NCBI databases. This script uncompresses the files for you.
 
-#### 2.1. Obtain information from the available databases to download
+2.1. Obtain information from the available databases to download
 
 
 ```
@@ -140,8 +135,7 @@ update_blastdb.pl --showall [*]
 
 ```
 
-#### 2.2. Download the nucleotide sequence database (NCBI_DB/nt directory) 
-
+2.2. Download the nucleotide sequence database (NCBI_DB/nt directory) 
 
 
 ```
@@ -150,8 +144,7 @@ update_blastdb.pl --decompress nt [*]
 
 ```
 
-#### 2.3. Download the amino acid database (NCBI_DB/nr directory) 
-
+2.3. Download the amino acid database (NCBI_DB/nr directory) 
 
 
 ```
@@ -160,10 +153,11 @@ update_blastdb.pl --decompress nr [*]
 
 ```
 
-## Alignment
+### Alignment
 
-### Blastn
-#### Here is an example of alignment with blastn. Remember that blast offers different softwares to perform alignments according to the type of sequence and the reference database ([BLAST software](https://blast.ncbi.nlm.nih.gov/Blast.cgi)). Blastn involves nucleotide-to-nucleotide alignments, this means that both the query sequences and the reference database are nucleotide sequences. 
+#### BLASTn
+
+Here is an example of alignment with BLASTn. Remember that BLAST offers different software to perform alignments according to the type of sequence and the reference database ([BLAST software](https://blast.ncbi.nlm.nih.gov/Blast.cgi)). BLASTn involves nucleotide-to-nucleotide alignments, this means that both the query sequences and the reference database are nucleotide sequences. 
 
 
 ```
@@ -172,17 +166,19 @@ blastn -db /home/alexarmero2022/shared/NCBI/nt/nt   -evalue 0.0000000001     -nu
 
 
 ```
-#### In the last command line there are several important points to keep in mind:
-##### 1. Specify the full directory path to the NCBI database. In this example I'm using my path (/home/alexarmero2022/shared/NCBI/nt), replace it with the appropriate directory path on your system.
+In the last command line, there are several important points to keep in mind:
 
-##### 2. The -db option expects the name of a database. It is for this reason that in addition to the path, it is also necessary to give the name of the database in the previous example nt.
+1. Specify the full directory path to the NCBI database. In this example, I'm using my path (/home/alexarmero2022/shared/NCBI/nt) to replace it with the appropriate directory path on your system.
 
-##### 3. The -num_threads option refers to the number of cores or logic CPUs that the user wants to assign to the task. Specify it according to availability in your system.
+2. The -db option expects the name of a database. It is for this reason that in addition to the path, it is also necessary to give the name of the database in the previous example nt.
 
-##### 4. The results of an alignment can be reported in different types of formats (-outfmt). In the example, the tabular format (6) was used; this format is easy to manipulate. In this example the standard alignment information (std) was requested to be printed, but also some other information such as the alignment coverage in the query sequence (qcovs) and the length of the target sequence (slen). [Tabular format options](https://www.metagenomics.wiki/tools/blast/blastn-output-format-6).
+3. The -num_threads option refers to the number of cores or logic CPUs that the user wants to assign to the task. Specify it according to availability in your system.
 
-### Blastp
-#### Here an example of protein-protein alignment with Blastp. Notice that the path to the database changed; now it points to the nr directory, where the amino acid sequences were installed. In the same way the name of the database also changed (nr). The sequences in the test.fasta file must necessarily be amino acid sequences.
+4. The results of an alignment can be reported in different types of formats (-outfmt). In the example, the tabular format (6) was used; this format is easy to manipulate. In this example the standard alignment information (std) was requested to be printed, but also some other information such as the alignment coverage in the query sequence (qcovs) and the length of the target sequence (slen). [Tabular format options](https://www.metagenomics.wiki/tools/blast/blastn-output-format-6).
+
+### BLASTp
+
+Here is an example of protein-protein alignment with BLASTp. Notice that the path to the database changed; now it points to the nr directory, where the amino acid sequences were installed. In the same way, the name of the database also changed (nr). The sequences in the test.fasta file must necessarily be amino acid sequences.
 
 ```
 
@@ -193,7 +189,7 @@ blastp -db /home/alexarmero2022/shared/NCBI/nr/nr   -evalue 0.0000000001     -nu
 
 ## Configuration files and environmental variables
 
-#### BLAST+ allows you to configure the blast runs. Configuration can be done through a .ncbirc file. In the scripts directory of this directory, there is an example of this file. Once the variables of interest have been modified, place this file in your home directory. For example, you could indicate where your NCBI database is located:
+BLAST+ allows you to configure the blast runs. Configuration can be done through a .ncbirc file. In the scripts directory of this directory, there is an example of this file. Once the variables of interest have been modified, place this file in your home directory. For example, you could indicate where your NCBI database is located:
 
 
 ```
@@ -206,9 +202,7 @@ BLASTDB=/home/alexarmero2022/shared/NCBI/
 
 ```
 
-####  In this last example we modify the variable **BLASTDB**   and we assign the directory path to the NCBI databases. Note, that is the path we use in the blastn and blastp alignment examples. With this modification the blastn command line would subtly change:
-
-
+In this last example, we modify the variable **BLASTDB**   and we assign the directory path to the NCBI databases. Note, that is the path we use in the BASTN and BLASTP alignment examples. With this modification, the BLASTN command line would subtly change:
 
 ```
 
@@ -217,18 +211,17 @@ blastn -db nt/nt   -evalue 0.0000000001     -num_threads 10  -outfmt '6 std qcov
 
 ```
  
- 
-#### You could also use environmental variables. For example from your command line, you could write:
+You could also use environmental variables. For example from your command line, you could write:
 
 ```
 BLASTDB=/home/alexarmero2022/shared/NCBI/
 
 ```
-#### There are several other [variables](https://www.ncbi.nlm.nih.gov/books/NBK569858/) that can modify. 
+There are several other [variables](https://www.ncbi.nlm.nih.gov/books/NBK569858/) that can modify. 
 
-#### This last line is equivalent to using the .ncbirc file.
+This last line is equivalent to using the .ncbirc file.
 
-##### Note. The .ncbirc  is a hidden file. To be able to observe it in your directory, execute the following line:
+Note. The .ncbirc  is a hidden file. To be able to observe it in your directory, execute the following line:
 
 ```
 ls -ad .*
@@ -238,11 +231,12 @@ ls -ad .*
 
 ## BLAST with high throughput data
 
-##### BLAST is perhaps the best software in the identification of homology relationships between biological sequences. The sensitivity of this tool has a cost both in the use of physical computing resources and in processing time. These limitations are particularly evident when are used NCBI databases. Several efforts have been made to use high performance computing (HPC) resources to efficiently run BLAST on large datasets. Here is one such tool: [Crocroblast](https://webchem.ncbr.muni.cz/Platform/App/CrocoBLAST). This software is presented as an example, and a starting point for higher performance strategies. Crocroblast determines what is the optimal file size to perform the alignment according to the HPC physical capabilities. In this way this software divides a large fasta file into files with sizes optimized to the available system resources. This is an easy to use tool; we recommend a good reading of the CrocroBLAST [documentation](https://webchem.ncbr.muni.cz/Wiki/CrocoBLAST:UserManual). The following example shows how to perform a CrocoBLAST blastn alignment.
+BLAST is perhaps the best software for the identification of homology relationships between biological sequences. The sensitivity of this tool has a cost both in the use of physical computing resources and in processing time. These limitations are particularly evident when are used NCBI databases. Several efforts have been made to use high-performance computing (HPC) resources to efficiently run BLAST on large datasets. Here is one such tool: [Crocroblast](https://webchem.ncbr.muni.cz/Platform/App/CrocoBLAST). This software is presented as an example and a starting point for higher-performance strategies. Crocroblast determines what is the optimal file size to perform the alignment according to the HPC's physical capabilities. In this way, this software divides a large fasta file into files with sizes optimized to the available system resources. This is an easy-to-use tool; we recommend a good reading of the CrocroBLAST [documentation](https://webchem.ncbr.muni.cz/Wiki/CrocoBLAST:UserManual). The following example shows how to perform a CrocoBLAST BLASTN alignment.
 
 #### 1. Installation
-##### Get the right version for your [operating system](https://webchem.ncbr.muni.cz/Platform/App/CrocoBLAST).
-##### Install the software in an appropriate directory
+
+Get the right version for your [operating system](https://webchem.ncbr.muni.cz/Platform/App/CrocoBLAST).
+Install the software in an appropriate directory
 
 ```
 mkdir Crocroblast
@@ -252,15 +246,17 @@ chmod +x crocoblast
 
 ```
 #### 2. Add sequence database
-##### In order to use CrocroBLAST you need to add the sequence database.
-##### Please adapt the following line according to the directory path where your database is located:
+
+In order to use CrocroBLAST you need to add the sequence database.
+Please adapt the following line according to the directory path where your database is located:
 
 ```
 ./crocoblast -add_database --formatted_db /home/alexarmero2022/shared/NCBI/nt/nt.00.nsq
 
 ```
 #### 3. Add the job to the queue.
-##### CrocroBLAST handles job queues; this software has different functions to stop, pause, delete and run a job. The next line adds a job to the queue:
+
+CrocroBLAST handles job queues; this software has different functions to stop, pause, delete and run a job. The next line adds a job to the queue:
 
 ```
 ./crocoblast -add_to_queue blastn nt data/test.fa output_test_4  --blast_options -outfmt 6
