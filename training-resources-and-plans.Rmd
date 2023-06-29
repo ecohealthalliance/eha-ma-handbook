@@ -91,6 +91,6 @@ some of the material from Geomputation in R in less depth, and gives you fewer t
 
 - [Quality control](Quality_control.md)
 - [Assembly](Assembly.md)
-- [Alignment](Alignment.md)
+- [Alignment](Pairwise_Sequence_Alignment.md)
 
 
