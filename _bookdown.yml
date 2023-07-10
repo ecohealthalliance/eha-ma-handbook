@@ -1,4 +1,7 @@
-rmd_files: 
+rmd_files:
+    - "Alignment.Rmd"
+    - "Assembly.Rmd"
+    - "Quality_control.Rmd"
     - "index.Rmd"
     - "contribute-a-chapter.Rmd"
     - "quickstart.Rmd"
