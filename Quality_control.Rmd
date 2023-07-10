@@ -1,0 +1,107 @@
+# Quality control
+
+### What is quality control?
+
+ Quality control is a determinant step that impacts the accuracy of the results obtained from NGS data. This chapter presents the motivations and tools involved in the quality control of NGS data.
+ 
+### Why is a quality control step necessary in NGS data?
+ 
+Simple and paired-end reads from NGS technologies are sequenced through complex processes that occur at the atomic scale. In particular, the sequences of the Illumina technology are obtained through a technique called [sequencing by synthesis](https://www.illumina.com/science/technology/next-generation-sequencing/sequencing-technology.html).
+As a consequence of this process, reads could carry complete sequences or fragments of adapters. In addition, the quality of the bases represented by the PHRED score is not homogeneous throughout the sequence, reducing towards the ends of the 
+reads, in particular the end 3'. So a step is necessary that removes the technical sequences (adapters), but also the low-quality regions from the reads.
+This process is called **trimming**.
+
+### Why is a quality control step important in the processing of NGS data?
+ 
+ Improves the quality of the results. The positive impact of the read trimming stage has been [demonstrated](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0085024) in the study of genetic expression, variant calling, genome assembly, metagenomics and in general in all areas of knowledge where NGS data are used.
+ Trimming the reads increases the number of sequences that are aligned against the reference sequences or decreases the complexity of the assembly graphs saving time and computational resources.
+ 
+### How does the trimming process work?
+  
+Here we describe in a superficial way how the trimming process is performed by the [trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic)
+tool. There are two ways to remove adapters from reads. In the simple mode, the adapter sequences are aligned with an allowed mistmach number against the reads. The region in the 5' region of the alignment is trimming. The second type is the Palindrome mode. The palindrome mode is specifically optimized for the detection of ‘adapter read-through’. When ‘read-through’ occurs, both reads in a pair will consist of
+an equal number of valid bases, followed by contaminating sequence from the ‘opposite’ adapters (figure below).  Adapter read-through detection is done by aligning reverse read against forward read of each pair. The region aligned between the adapters represents valid sequences, the remaining sequences are discarded. 
+
+To remove regions of low quality trimmomatic uses a sliding window. This works by scanning from the 5' end of the read, and removes the 3' end of the read when the average quality of a group of bases drops below a specified threshold. 
+  
+![image](https://user-images.githubusercontent.com/72785049/212085192-8e8514da-9023-4bbc-9729-8add8111eb03.png)
+
+
+### Quality control with trimmomatic
+
+#### Documentation
+  
+- [Github](https://github.com/usadellab/Trimmomatic/tree/main/adapters)
+- [Manual](http://www.usadellab.org/cms/?page=trimmomatic)
+- [Publication](https://doi.org/10.1093/bioinformatics/btu170)
+
+#### Installation 
+  
+An easy way to install trimmomatic is with conda
+
+```
+  conda install -c bioconda trimmomatic
+  
+```
+
+We are also going to install fastqc
+
+```
+  conda install -c bioconda fastqc  
+
+```
+
+#### Execution
+
+The following command line removes adapters and trimming #' regions of low quality pair-end reads in fastq files
+
+```
+    trimmomatic PE -threads 8 R1.fastq R2.fastq R1_clean.fastq R1_clean_unpaired.fastq R2_clean.fastq R2_clean_unpaired.fastq  ILLUMINACLIP:TruSeq2-PE.fa:2:30:10  LEADING:6 TRAILING:6  SLIDINGWINDOW:4:20 MINLEN:80 2> {log}
+```
+
+Input files:
+    
+- R1.fastq forward reads
+- R2.fastq reverse reads
+     
+Output files:
+    
+- R1_clean.fastq trimmed forward reads
+- R1_clean_unpaired.fastq trimmed forward reads (dropped pair)
+- R2_clean.fastq trimmed reverse reads
+- R2_clean_unpaired.fastq  trimmed reverse reads (dropped pair)
+    
+```
+#### Parameters:
+  
+ - threads number of threats that could be used to execute the command
+ - ILLUMINACLIP:TruSeq2-PE.fa:2:30:10 fasta file containing adapters TruSeq2-PE; the maximum number of mismatches allowed is 2 in the seed alignment; minimum 30 nucleotides must align for PE palindrome read alignment;minimum 10 nucleotides must align between a sequence and an adapter.   
+ - LEADING:6 The minimum quality to retain a base a base is 6 (5')
+ - TRAILING:6 The minimum quality to retain a base a base is 6 (3')
+ - SLIDINGWINDOW:4:20 The sliding window size is 4 and and the average quality must be a minimum of 20.
+ - MINLEN: Only reads with a minimum length of 80 nucleotides after trimming are kept.
+
+```
+  
+### Visualization of the quality of the reads
+
+After trimming the reads, it is important to check the quality of the reads. A popular tool at this step is [fastqc](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) which produces easy to interpret plots about different read quality parameters. 
+
+#### Execution 
+ 
+ ```
+ fastqc  --threads 8  R1_clean.fastq --outdir=QC
+  
+ ```
+
+```
+Input:
+  
+R1_clean.fastq trimmed reads
+  
+Output:
+  
+QC: directory; in this directory fastqc produces html files with the main results of the quality analysis.
+
+```
+  
