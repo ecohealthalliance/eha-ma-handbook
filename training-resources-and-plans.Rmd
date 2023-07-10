@@ -89,8 +89,8 @@ some of the material from Geomputation in R in less depth, and gives you fewer t
 
 ## Metagenomics
 
-- [Quality control](https://github.com/alexarmerov/Metagenomics/blob/main/Docs/Quality_control.md)
-- [Assembly](https://github.com/alexarmerov/Metagenomics/blob/main/Docs/Assembly.md)
-- [Alignment](https://github.com/alexarmerov/Metagenomics/blob/main/Docs/Alignment.md)
+- [Quality control](/Quality_control.Rmd)
+- [Assembly](/Assembly.Rmd)
+- [Alignment](/Alignment.Rmd)
 
 
