@@ -22,7 +22,7 @@ weekly M&A meetings. Report-outs should include
 -   Substantive report-out of results and products
 -   Draft plan for tasks and goals for the coming cycle 
 -   Team assignments for the next cycle and level of involvement (high
-    (&gt;50%), medium (25%-50%, low (&lt;25%)) of team memberss over the cycle.
+    (&gt;50%), medium (25%-50%, low (&lt;25%)) of team members over the cycle.
 -   Any additional deadlines or reporting anticipated in that time frame,
     including plans for other internal presentations or feedback sessions.
 
@@ -89,13 +89,20 @@ define steps in the code.  `targets` is a package for defining R project workflo
 and tracks your functions and objects to ensure everything is up-to-date.  Here
 are some resources for getting started with `targets`
 
--  An internal presentation on using `targets` at EHA: ([Video (via password at internal AirTable)](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwgVEpgZnmyrILmZ/recNumz1XdgbOtuaQ?blocks=hide),
-[Slides](https://ecohealthalliance.github.io/targets-renv-example/outputs/targets-presentation.html#1),
+- Internal presentations on using `targets` at EHA: ([Videos (password protected on internal AirTable)](https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwYtpOngYZ8fppIq?blocks=hide),
 
-[Example Repository on GitHub](https://github.com/ecohealthalliance/targets-renv-example))
+    - [Slides](https://ecohealthalliance.github.io/targets-renv-example/outputs/targets-presentation.html#1)
+    - [Example Repository on GitHub](https://github.com/ecohealthalliance/targets-renv-example)
+    
+    - [Brief overview of using `renv` with `targets ](https://github.com/ecohealthalliance/building-blocks-of-reproducibility/blob/main/happy_renv_with_targets.md)
+    - [Repo for Branching in targets](https://github.com/ecohealthalliance/targets_branching)
 
 -   The targets [manual](https://books.ropensci.org/targets/), including
     a [walkthrough](https://books.ropensci.org/targets/walkthrough.html)
+    
+-   A [high-level overview paper]( https://doi.org/10.1111/2041-210X.14113) outlining the concepts and benefits to workflow tools like `targets`.
+
+- A [good paper discussing](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.14113) how `targets` helps with research workflows
 
 -   [A good intro talk](https://www.youtube.com/watch?v=jU1Zv21GvT4)(\~90 mins
     with questions) by Miles McBain on using targets and getting a good workflow

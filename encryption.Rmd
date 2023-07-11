@@ -2,54 +2,293 @@
 
 - _How do we share data in git repositories that needs to be secure?_
 
-Sometimes we need to store and share secure information, such as API keys to
-paid online service accounts.  One of our methods of choice for this is to
+Sometimes we need to store and share secure information, such as passwords or API keys, to
+online service accounts.  One of our methods of choice for this is to
 keep these files stored in git/GitHub repositories, but to encrypt them.  We
 do this using PGP (Pretty Good Privacy) encryption, implemented by the program
 [`git-crypt`](https://github.com/AGWA/git-crypt).  It takes a bit to set up
 but once activated makes sharing secure and seamless.
 
 The PGP encryption scheme involves making a _public_ key that you share and
-a _private_ key that you use do decrypt data encrypted with your public key.
-We like  and use [Keybase](https://keybase.io/), a service that helps you publish and
+a _private_ key that you use to decrypt data encrypted with your public key.
+We also use [Keybase](https://keybase.io/), a service that helps you publish and
 verify a public key for this purpose.
 
-Instructions for setting this up are below.  They assume you are using MacOS
-for local work, but are mostly right for other cases, too.
+Instructions for setting this up are below.
 
-### Set up Keybase
+## Set up Keybase
 
 Sign up for [Keybase](https://keybase.io/), and follow the instructions for 
-installing it on your laptop.
+installing it on your computer.
 
-### Install `gpg` and `git-crypt`
+Note that if you switch computers, you need to have another device associated with the  keybase account and/or a copy of your paper key in order to recover your key.  
+A [password manager](https://www.theguardian.com/technology/2022/mar/19/not-using-password-manager-why-you-should-online-security) ([Bitwarden](https://bitwarden.com/), [LastPass](https://www.lastpass.com/), [1Password](https://1password.com/)) would be helpful for securely storing a paper key. 
+
+
+### Installing Keybase on Linux
+
+For installing on linux, first identify the distribution by entering
+the following command into a terminal and noting down the Distributor ID.
+
+    lsb_release -a
+
+Next identify the architecture via,
+
+    arch
+
+Follow the instructions to install Keybase on Linux, available [here](https://keybase.io/docs/the_app/install_linux), 
+making sure to use the section relevant to the architecture and distribution 
+information identified above.
+
+### Installing Keybase on macOS and Windows
+
+For installing on Windows and macOS, the easiest way is to download and install the
+graphical user interface available from the Keybase 
+[download page](https://keybase.io/download). This will also install the necessary
+command line tools.
+
+You may also use `homebrew` to install keybase on macOS
+
+## Install `gpg` and `git-crypt`
 
 `gpg` is the program that implements encryption, and `git-crypt` sets up git
-repos for encrypted sharing.  These are aleady installed on EHA servers.  To install
-them on a mac, use `homebrew`.  You should also install `pinentry`.
+repos for encrypted sharing using `gpg.` These are already installed on EHA servers.  
 
-### Create your Keybase keys 
+### Install `gpg` and `git-crypt` on macOS
 
-If you are just starting to use keybase, you can generate new keys for use on
-your computer using [this guide](https://github.com/pstadler/keybase-gpg-github).
-The guide also helps set up using your key to sign GitHub commits, which you
+Use [`homebrew`](https://docs.brew.sh/Installation) to install `gpg`, `git-crypt`. You should also install `pinentry`,
+which is a helper program for entering passwords securely.  Run the following in the terminal:
+
+```
+brew install gpg
+brew install pinentry
+brew install git-crypt
+```
+
+Homebrew automatically updates when you run it so if you haven't used it in a while there may be a somewhat lengthy update
+
+### Install `gpg` and `git-crypt` on Windows
+
+For Windows there are two alternative approaches.
+
+#### Using Windows Subsystem for Linux (WSL)
+
+The first approach is to utilize the Windows Subsystem for Linux (WSL). This method requires Windows 10 or higher.  You must first install WSL.  Do so following this guide: <https://docs.microsoft.com/en-us/windows/wsl/install>. 
+
+Once WSL is set up, the necessary packages can be installed through the WSL command line shell.  Run the following in the shell:
+ 
+```
+sudo apt update
+sudo apt install keybase gpg git-crypt
+```
+
+#### Using Windows: install binaries
+
+The second method is to install pre-compiled Windows binaries for GPG and git-crypt.
+
+First download a Windows-compatible binary for GPG which can be found (here)<https://gnupg.org/download/>. The 'Simple installer for the current GnuPG' binary on that page is the recommended choice.
+
+Then install git-crypt by via the following steps:
+
+ - Downloading `git-crypt-*.exe` from <https://github.com/AGWA/git-crypt/releases>.
+     - This may generate the warning "git-crypt-*.exe is not commonly downloaded and may be dangerous". Click the up arrow next to 'Discard' and select 'Keep'. 
+     - Even after this the download may fail with the message 'Failed - Virus detected'. Do not worry this is a false positive. If this occurs, search for 'Virus & thread protection' in the task bar and click on 'Manage settings' under 'Virus & thread protection settings'. Once there, turn off "real-time protection" and try downloading again. Please make sure to turn it back on again when done.
+ - Once downloaded, rename the file to `gpg-crypt.exe`.
+ - Move the resulting `gpg-crypt.exe` into a folder recognized by the Windows PATH environment variable. A convenient location is `C:\Program Files\Git\cmd\`.
+
+Once Keybase and GPG are installed, the terminal commands related to exporting keys from Keybase into GPG are the same regardless of operating system.
+
+## Create your Keybase keys 
+
+If you are just starting to use Keybase, you can generate new keys for use on
+your computer using this guide: <https://github.com/pstadler/keybase-gpg-github>.
+That guide also helps set up using your key to sign GitHub commits, which you
 should do for added security.
 
-Do create a password associated with your keys when asked.  You can store
-this in a service such as LastPass if desired.
-
-At this point you can go to your Keybase account and verify your keys via as
+Create a password associated with your keys when asked.  You can store
+this in your password manager such as LastPass or BitWarden.
+Once your keys are created, visit your Keybase account at and verify your keys via as
 many other services, devices, or online identities as you want.  We suggest
-at least three.
+at least three. It is also a good idea to generate a physical 'paper key' and store it in
+a secure location.
 
-### Import your keys to your local keychain
+## Import your keys to your local keychain
 
 If you have a Keybase account set and keys already generated, you can now import
-your Keybase keys to use.  Instruction are found [here](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/). Do set
-your keys to maximum trust level.
+your Keybase keys to use.  Instruction are found at <https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/>.  When followng those instructions, set your keys to maximum trust level.
 
 
-### Also import your keys to the EHA server
+## Configure gpg
+
+
+### Configure gpg on macOS (and Linux)
+
+A common source of errors for macOS (and Linux) users is that the text entry for `gpg` isn't set properly. This means that `gpg` and your terminal aren't speaking the same language. You can fix this by setting the `GPG_TTY` environment variable in your shell configuration.
+
+    export GPG_TTY=$(tty)
+    
+Adding this to your `.profile`, `.bashrc`, `.zshrc` or other settings files prevents
+having to run the command when you use git-crypt or sign commits. U
+
+Use a text editor to modify the settings file for your shell.  These are set in one of the files `~/.profile`, `~/.bashrc`, `~/.zshrc`. For most macOS users, it is `~/.zshrc`. Here are instructions using `nano`, an editor available on most machines. 
+
+
+In the terminal, run:
+```
+nano ~/.zshrc
+```
+
+Then, in the nano text editor that comes up, add the following line to the file:
+
+```
+export GPG_TTY=$(tty)
+```
+
+In the nano editor, press Ctrl-O to write ("write-Out") to save your changes, then press Ctrl-X to exit. Alternatively, run the following line in the terminal to change your `.zshrc` file without using nano or any other editor:
+
+```
+echo "export GPG_TTY=$(tty)" >> ~/.zshrc && source ~/.zshrc
+```
+
+### Configure gpg on Windows
+
+Windows needs to inform git of the location of the gpg executable. This can be done by opening cmd or PowerShell and entering the following command: 
+
+```
+git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"`
+```
+
+Note that if GnuPG is installed in a different location the command should be altered to reflect this change. 
+
+
+## Use git-crypt to unlock a repository
+
+The [`git-crypt` README](https://github.com/AGWA/git-crypt) outlines the basics
+of using `git-crypt` to encrypted and decrypt files in a git repository.
+
+First be sure your public key has been added to the repository. To do this, check the 
+`.git-crypt/keys/default/0` folder in the github repo for your public key. If your key is present
+pull or clone the repo then run,
+
+    git-crypt unlock
+    
+from the terminal or command line in the repository folder.  If all goes well, congrats! Encryption and decryption for pushing and
+pulling should now happen automatically.
+
+
+### Troubleshooting
+
+If `git-crypt unlock` fails, try the following steps:
+
+1. Verify that GPG has successfully imported your private key from Keybase by opening a shell and entering
+`gpg --list-secret-keys`. If no keys are found, follow the [guide](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/) for importing keys. This might fail for mac and linux users if `export GPG_TTY=$(tty)` is not in your .bashrc or .zshrc.
+2. Make sure that your GPG private key has actually been added to the repository. Navigate to the `~/.git-crypt/keys/default/0/` directory on github and look for a file that matches your public key.
+3. Once your key has been added, pull from the remote to make sure the key is available to your local repository.
+4. Windows users need to let git know where to find the gpg executable. Double check that the gpg.exe really is in the folder you specified above. If not find it's location or try re-installing gpg.
+5. Make sure that GIT [knows about your signing key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-gpg-key)
+
+<!-- This should really come after the unlocking step. More people I think will need to clone and unlock than manage users !-->
+
+## Managing which users can decrypt files in a repository
+
+If you've made it this far and you only need to unlock a repository that has already been set up you're done! The instructions below will help you go further by outlining how to grant access to encrypted files on a repository, add your key to the EHA servers, and to initialize a new repository to use git-crypt.
+
+### Set up encryption for a repo that did not previously use git-crypt 
+
+This will initialize the repository and add the default gpg key to git-crypt. Note: adding encryption to a repository will only encrypt files _going forward._ Any previous versions in the commit history will still be un-encrypted. Best practice is to set up git-crypt first, add relevant file or folder names to the `.gitattributes` file, and only then add any sensitive files to the repo. 
+
+```
+## In the repo base directory open the terminal or command line and enter:
+
+git-crypt init
+
+## To verify that files are being encrypted run:
+
+git-crypt status
+
+# add your key to git crypt
+git-crypt add-gpg-user YOUR_KEY_HERE
+
+# create .gitattributes file - will tell git crypt what should be encrypted
+touch .gitattributes 
+
+# tell git crypt that .env should be encrypted
+echo '**/.env filter=git-crypt diff=git-crypt' >> .gitattributes 
+
+# may also be a good idea to add **/auth  if you're going to be 
+# using non-interactive processes with dropbox and google drive
+echo 'auth/** filter=git-crypt diff=git-crypt' >> .gitattributes
+
+
+```
+To learn more about pattern matching in the `.gitattributes` file, see the [git-crypt read.me](https://github.com/AGWA/git-crypt#gitattributes-file) and [gitignore manual](https://git-scm.com/docs/gitignore#_pattern_format)
+
+Your `.gitattributes` file might look something like this:
+
+```
+.env filter=git-crypt diff=git-crypt
+auth/** filter=git-crypt diff=git-crypt
+.gitattributes !filter !diff
+
+```
+
+
+### Allow contributors access to encrypted files
+
+First add their public key to your keychain. Visit their Keybase profiles (e.g., <https://keybase.io/noamross>) and click on the key - it will show several ways to import the keys. Two methods are shown below,
+
+```
+# curl + gpg pro tip: import noamross's keys
+curl https://keybase.io/noamross/pgp_keys.asc | gpg --import
+
+# the Keybase app can push to gpg keychain, too
+keybase pgp pull noamross
+```
+
+Next edit the key so that it has sufficient trust levels as described in this [guide](https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/).
+
+```
+# in terminal
+
+gpg --list-keys
+
+## Copy the key that matches the individual you want to allow access to ecnrypted files. 
+
+gpg --edit-key <keyID>
+
+# At the gpg> prompt, use uid X to select the user ID you want to mark as trusted,
+# then use the trust command to set the trust level.
+# Use save to exit when you’re done.
+
+.
+```
+Edit that key so that it has sufficient trust levels as described in the above 
+
+Add the key to your git repo (make sure you're in the right directory)
+
+```
+## this will automatically commit changes. Note: replace [key] below with the
+appropriate gpg key.
+
+git crypt add-gpg-user [key]
+
+```
+push changes to remote (github)
+
+```
+git push
+
+```
+
+remind the added individual to pull these changes down before they try to unlock the repo. The individual who was just added will have to unlock the repo before they can 
+access encrypted files.
+
+```
+git crypt unlock
+```
+
+<!-- Moved down from up above. This won't apply to everyone and interrupts the main flow of getting git-crypt working. -->
+### Import your keys to the EHA server
 
 You will probably want the ability to decrypt files when working remotely,
 so place them on the EHA server.  You can do this by copying over your whole
@@ -65,33 +304,13 @@ its first line is `pinentry-program /usr/local/bin/pinentry-mac`, change it to
 `pinentry-program /usr/bin/pinentry`. Note that it may not exist at all, which
 is fine - it means the program is just using default behavior.
 
-### Use git-crypt
-
-The [`git-crypt` README](https://github.com/AGWA/git-crypt) outlines the basics
-of using `git-crypt` to add encrypted files to a git repository.  If you are
-using an encrypted repository someone else set up, they should have added your
-public key to the repo, and all you need to do after pulling/cloning is run
-
-    git-crypt unlock
-    
-in the repository folder.  After that encryption and decryption for pushing and
-pulling should happen automatically.
-
-One key area missing is how to import the public keys of your team members to
-your local keychain. Visit their Keybase profiles (e.g., <https://keybase.io/noamross>) and click on the key - it will show several ways to import the keys.
-
-Another common source of errors is that the text entry for `gpg` isn't set properly. You can fix this by setting the `GPG_TTY` environment variable like so:
-
-    export GPG_TTY=$(tty)
-    
-Add this to your `.profile`, `.bashrc`, `.zshrc` or other settigns file.
-
-### Extra: Use a symmetric key for automated processes
+## Use a symmetric key for automated processes
 
 If you are using continuous integration on a repository with encrypted files,
 you'll need to provide a way for the CI system to unlock them.  An easy, but
 not _most_ secure way is to provide a _symmetric key_.  You can generate
-this by running this in your project directory.
+this by running this in your project directory. This key can always be regenerated
+so do NOT commit it to your repository. 
 
     git-crypt export-key git_crypt_key.key
 
@@ -104,8 +323,40 @@ you'll need to convert it to base64 first.  So run something like:
 to convert this file to base64 data, then paste it in your CI system's environment
 variable field as something like `GIT_CRYPT_KEY64`.
 
+The key can now be removed from your system.
+
+    rm git_crypt_key.key
+
 To use the key later, you'll need (1) `git-crypt` and `gpg` installed in the CI
 system image, and (2) to run these commands after the CI clones your repository:
 
     echo $GIT_ENCRYPT_KEY64 > git_crypt_key.key64 && base64 -d git_crypt_key.key64 > git_crypt_key.key && git-crypt unlock git_crypt_key.key
    
+## Removing sensitive files from git history
+
+AKA What to do if you accidentally committed sensitive files (data, keys, etc.) to your repository either before encryption or our outside the scope of your `.gitattributes` file. 
+
+1) Take a breath.
+2) Make sure your sensitive files are included either in the `.gitattributes` file if you want them encrypted or delete them then add them to your `.gitignore` file. You can add a filter for particular files any where in your repo with `**/MySuperSensitiveFile` see [gitignore documentation](https://git-scm.com/docs/gitignore#_pattern_format)
+4) Install [`git-filter-repo`](https://github.com/newren/git-filter-repo/blob/main/INSTALL.md)
+5) Navigate to your repo's working directory `cd my/project/folder`
+6) Back up your `.git/config` file as certain elements will be removed when we run `git filter-repo`
+7) Run `git filter-repo --invert-paths --path PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA` to remove a sensitive file.
+8) Make sure you've removed everything you want from the repository's history
+  - use `git log -- path/to/file` to see git history for a particular file. **Note** If you've successfully removed the file there won't be any history to display.  
+  - see [`git log`](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History) for more information.   
+9)Check in with collaborators to make sure no one has work on branches in the repo they would like to keep.   
+10) Next you will use `push --force` to overwrite all the history on github and all the branches on your repo. Push your changes to the remote using `git push origin --force --all`. 
+  - You may have to add the origin back into your .git/config file
+11) Use `git push origin --force --tags` to remove sensitive files from any of your tagged releases. 
+12) Follow the instructions [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#fully-removing-the-data-from-github) for contacting github to make sure there aren't any caches of the files on github.
+13) Tell your collaborators to `rebase`,NOT MERGE, any branches created off the old repo history. 
+14) Wait a little bit to make sure that your file remove didn't have unintended side effects then run the following code: 
+```
+git for-each-ref --format="delete %(refname)" refs/original | git update-ref --stdin
+git reflog expire --expire=now --all
+git gc --prune=now
+```
+10) Breathe a sigh of relief. 
+
+

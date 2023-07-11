@@ -10,6 +10,10 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 favicon: "favicon.png"
+params:
+  data_librarian: "[Data Librarian](https://www.ecohealthalliance.org/personnel/collin-schwantes)"
+  data_librarian_appt: "[Schedule a meeting](https://calendar.google.com/calendar/appointments/schedules/AcZssZ3GOwk4nzuezs8t_Ua1IxLW8aXHhyo4_tv1-mIv9nmT4rDkEaQuV7HbwqXervbMiX1ijDN65UZ-)"
+  infrastructure_lead: "[Infrastructure Lead]( https://www.ecohealthalliance.org/personnel/andrew-espira)"
 ---
 
 # Introduction {#introduction .unnumbered}
@@ -21,7 +25,7 @@ Analytics team.
 This is a living document. To make changes, just click the edit button
 (<i class="fa fa-edit"></i>) at the top of the page. It will take you to the
 source editor for the chapter on GitHub, where you can make edits and submit
-your changes.
+your changes. Be sure to commit major [contributions](#contributions) to a new branch and open a pull request. 
 
 In general, we aim to produce sound analyses that are:
 
