@@ -91,7 +91,7 @@ some of the material from Geomputation in R in less depth, and gives you fewer t
 
 - [Quality control](#quality-control)
 - [Assembly](#assembly-of-high-throughput-data)
-- [Alignment](#sequences-alignment)
+- [Alignment](#seqs_aln)
 
 
 
