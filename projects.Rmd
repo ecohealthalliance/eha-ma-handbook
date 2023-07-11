@@ -109,6 +109,7 @@ are some resources for getting started with `targets`
 
 -   A great [introductory video series](https://www.youtube.com/watch?v=pbc6NX1n01Q&list=PLvgdJdJDL-APJqHy5CXs6m4N7hUVp5rb4) (5 30-minute lessons as a YouTubePlaylist)
 
+
 #### Package management with `renv`
 
 We strongly recommend that projects use the `renv` package to manage versions of
