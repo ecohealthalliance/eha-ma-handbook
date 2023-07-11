@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | EHA Modeling &amp; Analytics Handbook</title>
-  <meta name="description" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <title>18 Google Authorization and R | EHA Modeling &amp; Analytics Handbook</title>
+  <meta name="description" content="18 Google Authorization and R | EHA Modeling &amp; Analytics Handbook" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta property="og:title" content="18 Google Authorization and R | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta name="twitter:title" content="18 Google Authorization and R | EHA Modeling &amp; Analytics Handbook" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
-
+<link rel="prev" href="17-cloud-computing-services.html"/>
+<link rel="next" href="19-encryption.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -396,19 +396,220 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="google-authorization-and-r" class="section level1 hasAnchor">
+<h1><span class="header-section-number">18</span> Google Authorization and R<a href="18-google-authorization-and-r.html#google-authorization-and-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>IMPORTANT</strong> DO NOT ADD SENSITIVE FILES TO A GITHUB REPO UNTIL THEY ARE ENCRYPTED!</p>
+<p>EcoHealth Alliance sometimes uses Google Drive, and Google Sheets in particular, to store and collaborate on data. Working with Google Drive-based files in R is relatively painless thanks to the <a href="https://googledrive.tidyverse.org/"><code>googledrive</code></a>, <a href="https://googlesheets4.tidyverse.org/index.html"><code>googlesheets4</code></a>, and <a href="https://gargle.r-lib.org/index.html"><code>gargle</code></a> packages.</p>
+<p>What is less straightforward is working with drive based files without having to manually authenticate your identity. In this chapter, we will walk through the process of creating credentials with API access that can be used in your R project or package. Ultimately, this could allow you to fully automate your Google-centric data pipelines.</p>
+<div id="the-basic-overview" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.1</span> The basic overview:<a href="18-google-authorization-and-r.html#the-basic-overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol start="0" style="list-style-type: decimal">
+<li>Create or store something (sheet, csv, doc, etc.) in Google drive</li>
+<li>Create a <em>Google Cloud project</em> to manage Google services<br />
+</li>
+<li>Enable the appropriate APIs for the project so it can access things like Drive and Sheets.</li>
+<li>Create a <em>service account</em> so that you can access the APIs via credentials from R</li>
+<li>Encrypt credentials then add them to your R project so that you can still use <code>git</code>-based workflows without leaking access to your service account</li>
+<li>Share Google-based resources with the service account and check that credentials work as expected from R</li>
+<li>Add an encryption key to Github as an environment variable so that R can access the resources in automated workflows</li>
+</ol>
+</div>
+<div id="key-terms-1" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.2</span> Key Terms<a href="18-google-authorization-and-r.html#key-terms-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><strong>Authentication</strong> - Confirms the identity of an entity</li>
+<li><strong>Authorization</strong> - Permits an entity to do something
+<ul>
+<li><strong>Auth</strong> - shorthand for authentication or authorization</li>
+</ul></li>
+<li><strong>Key</strong> or <strong>Token</strong>- Computer-generated credentials that allow for authorization and authentication. In the R-Google universe <em>key</em> and <em>token</em> are synonyms, though not all services use this way, at at times okens and keys are communicated over the web using different method. You will see these terms used interchangeably in tutorials.</li>
+<li><strong>Symmetric encryption</strong> - A type of encryption that uses a single key to encrypt and decrypt an object</li>
+<li><strong>Asymmetric encryption</strong> - A type of encryption that uses public and private keys to encrypt and decrypt an object</li>
+<li><strong>Environment variable</strong> - A value stored in a computer’s <em>system environment</em>. In R, this generally means values stored in the <code>.Renviron</code> file, which can be brought into your project using <code>Sys.getenv("Variable_Name")</code> and are very useful for storing sensitive information like tokens and keys.</li>
+<li><strong>Service</strong> - Functionality provided by another system i.e. serving data via an API.</li>
+<li><strong>GCP</strong> - Google cloud platform. Web services from Google.</li>
+</ul>
+</div>
+<div id="before-we-start" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.3</span> Before we start:<a href="18-google-authorization-and-r.html#before-we-start" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><em>Note</em>: The preferred method for adding encryption to projects is via <code>git-crypt</code>. See chapter <a href="19-encryption.html#encryption">19</a> for more on <code>git-crypt</code>.</p>
+<p><em>Credit</em>: This chapter largely follows the<br />
+<a href="https://gargle.r-lib.org/articles/non-interactive-auth.html">non-interactive auth vignette from the Gargle R package</a>, but diverges for package and non-package focused projects.</p>
+<p><em>What about Billing?</em>: Good question. This is not an issue for Google Sheets or Drive APIs but you do need a linked billing account for BigQuery and Maps APIs. If you’re new to GCP as of 29 Sept 2021 you get $300 of credits in the Free Tier. If you use the $300 in credits GCP will ask for consent before billing. Check with the Data Librarian about using and billing arrangements beyond this.</p>
+</div>
+<div id="setup-encryption-tools-on-your-machine" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.4</span> Setup encryption tools on your machine<a href="18-google-authorization-and-r.html#setup-encryption-tools-on-your-machine" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>See chapter <a href="19-encryption.html#encryption">19</a>. This process will take ~30 mins and involves using the command line.</p>
+</div>
+<div id="enable-git-crypt-on-your-repository" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.5</span> Enable git-crypt on your repository<a href="18-google-authorization-and-r.html#enable-git-crypt-on-your-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Enabling git-crypt requires your code to be stored in a git-backed repository. See chapter <a href="12-versioning.html#versioning">12</a> for setting up git repositories.</p>
+<p>Enabling <code>git-crypt</code> happens from the command line. You can access the <a href="https://support.rstudio.com/hc/en-us/articles/115010737148-Using-the-RStudio-Terminal-in-the-RStudio-IDE">command line directly in Rstudio</a>. If you use rstudio projects and the command line in Rstudio, then the terminal should open in the repo you want to encrypt.</p>
+<p>In the command line run:</p>
+<pre><code># check that you are in the directory with the repo
+pwd 
+## /path/to/repo-i-want-to-encrypt
+
+# if you&#39;re in the wrong directory, use cd to navigate to the correct repo
+# cd /path/to/repo-i-want-to-encrypt
+
+git-crypt init
+</code></pre>
+<p>Next you want to tell git-crypt which files should be encrypted. To do this, create a file in the top level directory of your repo called <code>.gitattributes</code>. Here you will list the files and folders you would like to encrypt. Each item should be placed a on separate line. To learn more about pattern matching in the <code>.gitattributes</code> file, see the <a href="https://github.com/AGWA/git-crypt#gitattributes-file">git-crypt read.me</a> and <a href="https://git-scm.com/docs/gitignore#_pattern_format">gitignore manual</a></p>
+<p>Your <code>.gitattributes</code> file might look something like this:</p>
+<pre><code>.env filter=git-crypt diff=git-crypt
+auth/** filter=git-crypt diff=git-crypt
+.gitattributes !filter !diff
+</code></pre>
+<p>The <code>.env</code> file will be used to store environment variables and the <code>auth/</code> folder will be used to store keys. Do NOT encrypt the <code>.gitattributes</code> file. It maybe a good idea to add your google auth key explicitly to the <code>.gitattributes</code> file using this format <code>**/mySecretKey.json</code> so that the key is encrypted independent of the directory it is in.</p>
+<p>Next add yourself and other users who will require access to the encrypted files to the repo. The encryption chapter <a href="19-encryption.html#allow-contributors-access-to-encrypted-files">encryption</a> in the handbook details how to add contributors to the repo.</p>
+<p>Finally, you will have to set up a symmetric key for github actions to use. This key can always be regenerated so there is no reason to store it. Additional detail can
+be found in the encryption chapter <a href="19-encryption.html#use-a-symmetric-key-for-automated-processes">here</a>.</p>
+<p>First, add the git-crypt key to your <code>.gitignore</code> so you don’t accidentally commit it to the repo.</p>
+<pre><code>.Rproj.user
+.Rhistory
+.Rdata
+.httr-oauth
+.DS_Store
+inst/.DS_Store
+git_crypt_key.key
+</code></pre>
+<p>In the command line run:</p>
+<pre><code># create the symmetic key
+git-crypt export-key git_crypt_key.key
+
+# convert it from binary to bas64 so github can use it
+# the file&#39;s contents can now be pasted into a github secret
+# environment variable
+cat git_crypt_key.key | base64 | pbcopy
+</code></pre>
+<p>Paste the key into <a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets">Github’s secret environment variable field</a> as <code>GIT_CRYPT_KEY64</code>.</p>
+<p>Now delete the key file:</p>
+<pre><code># doesn&#39;t have to be done in terminal but you&#39;ve already got it open
+rm -i git_crypt_key.key</code></pre>
+<p>You have now setup asymmetric encryption for human users and symmetric encryption for automations. The next steps involve getting the files you want to encrypt.</p>
+</div>
+<div id="setting-up-non-interactive-authentication-for-google-sheets" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.6</span> Setting up non-interactive authentication for Google sheets<a href="18-google-authorization-and-r.html#setting-up-non-interactive-authentication-for-google-sheets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section, we will walk through setting up credentials that can be used in R to access Google sheets without manual authentication. To achieve non-interactive authorization, we want to either provide a <em>token</em> directly to a service or make a token discoverable for a service. A token is essentially a long password, designed to be exchanged by machines but too long and complexly formatted to be used by people, and often time-limited. Remember that tokens, secrets, and API keys should be stored in a secure fashion (NOT stored in the text of your code or in unencrypted files).</p>
+<p>We are going to follow the recommended (as of 29 September 2021) strategy of providing a <em>service account key</em> directly to handle authorization. A newer approach called “workload identity federation” exists as of writing but is not fully implemented in the <code>gargle</code> package.</p>
+<div id="create-a-google-cloud-platform-project" class="section level3 hasAnchor">
+<h3><span class="header-section-number">18.6.1</span> Create a Google cloud platform project<a href="18-google-authorization-and-r.html#create-a-google-cloud-platform-project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>“Google Cloud projects form the basis for creating, enabling, and using all Google Cloud services including managing APIs, enabling billing, adding and removing collaborators, and managing permissions for Google Cloud resources.” - <a href="https://cloud.google.com/resource-manager/docs/creating-managing-projects"><em>GCP Docs</em></a></p>
+<p>We will use a GCP project to access the Google sheets API via a service account. You do not need a profound understanding of GCP projects to setup a service account.</p>
+<ul>
+<li>Setup/view your <a href="https://console.cloud.Google.com/">Google cloud account</a></li>
+<li>Create a project on Google cloud to hold your credentials <img src="assets/gcp_console.png" alt="gcp console" /> <img src="assets/gcp_create_proj.png" alt="gcp project init" /></li>
+<li>The GCP console is your destination for monitoring and modifying your projects</li>
+</ul>
+</div>
+<div id="enable-apis" class="section level3 hasAnchor">
+<h3><span class="header-section-number">18.6.2</span> Enable APIs<a href="18-google-authorization-and-r.html#enable-apis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>GCP Projects are centered on the idea that a single project will contain a single application. In our case, the application we are creating relies on the Google Sheets API. You can enable API’s for our application to access via the APIs &amp; Services menu item.</p>
+<ul>
+<li>In the left side menu, navigate to APIs &amp; Services &gt; Library <img src="assets/gcp_nav_lib.png" alt="naviate to Library" /></li>
+<li>Choose your api of interest. For this example it is Google sheets. <img src="assets/gcp_find_sheets.png" alt="find sheets" /></li>
+<li>Enable the api of interest. <em>If you need to enable more API’s later you can always come back</em>.<img src="assets/gcp_enable_sheets.png" alt="enable sheets" /></li>
+</ul>
+</div>
+<div id="create-a-service-account" class="section level3 hasAnchor">
+<h3><span class="header-section-number">18.6.3</span> Create a Service Account<a href="18-google-authorization-and-r.html#create-a-service-account" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Service accounts allow applications, like the GCP project we make, to access certain resources they need via authorized API calls. The service account’s access can be limited such that it can only access specific resources in a certain way.</p>
+<p>Importantly, service accounts are not part of the EHA workspace domain. You have to manually share resources like Google sheets with a service account even if you have provided domain-level access.</p>
+<p><a href="https://cloud.google.com/iam/docs/service-accounts">GCP Service Account Docs</a></p>
+<ul>
+<li>Navigate back to your project homepage</li>
+<li>In the left sidebar go to IAM &amp; Admin &gt; Service Accounts <img src="assets/gcp_nav_service.png" alt="gcp_nav_service" /></li>
+<li>Click create service account</li>
+<li>Give it a good name and description <img src="assets/gcp_create_service_acnt.png" alt="gcp_create_service_acnt" /></li>
+<li>For Google sheets, we do not need to assign our account service a role
+<ul>
+<li>Roles can be established to perform tests and otherwise manage the service but are not necessary</li>
+</ul></li>
+<li>Also not necessary to grant user access for this example
+<ul>
+<li>You may have a need for this with more complicated services</li>
+<li>It may also be a good idea to get some redundancy in your workflow <img src="assets/gcp_service_setup.png" alt="gcp_service_setup" /></li>
+</ul></li>
+</ul>
+</div>
+<div id="create-a-key-for-your-service-account" class="section level3 hasAnchor">
+<h3><span class="header-section-number">18.6.4</span> Create a Key for your service account<a href="18-google-authorization-and-r.html#create-a-key-for-your-service-account" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Keys for Google service accounts are stored in JSON files. Remember that this key will hold very sensitive information and we should treat it like a username and password combo.</p>
+<ul>
+<li><p>Click on the appropriate item in the service accounts table. <em>Notice that it says no key</em>.<img src="assets/gcp_nav_key.png" alt="gcp_nav_key" /></p></li>
+<li><p>Click on the keys tab, then click on <strong>ADD KEY</strong> <img src="assets/gcp_add_key.png" alt="gcp_add_key" /></p></li>
+<li><p>Select create new key and download the JSON file. <strong>WARNING:</strong> Do not store this unencrypted key in a shared location (Dropbox, Google Drive, folder connected to a git repository). If you are using the <code>git-crypt</code> workflow, add the file to the “./auth” folder in your project’s working directory. <img src="assets/gcp_get_key.png" alt="gcp_get_key" /></p></li>
+<li><p>You should now see that there is an active key associated with your service account in the GCP project.</p></li>
+</ul>
+</div>
+<div id="share-the-google-drive-resources-of-interest-with-the-service-account" class="section level3 hasAnchor">
+<h3><span class="header-section-number">18.6.5</span> Share the Google drive resources of interest with the service account<a href="18-google-authorization-and-r.html#share-the-google-drive-resources-of-interest-with-the-service-account" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Make sure your sheet is shared with the service account</strong></li>
+<li>Remember that service accounts do not belong the EHA domain so there will be extra prompts when sharing resources.</li>
+</ul>
+</div>
+</div>
+<div id="general-approach-to-securely-managing-keys" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.7</span> General approach to securely managing keys<a href="18-google-authorization-and-r.html#general-approach-to-securely-managing-keys" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This workflow uses the encryption practices laid out in the <a href="19-encryption.html#encryption">encryption chapter</a>. Make sure you have setup your computer with encryption tools
+before proceeding. Reach out to the <a href="https://www.ecohealthalliance.org/personnel/collin-schwantes">Data Librarian</a> with questions.</p>
+<ol style="list-style-type: decimal">
+<li>Unencrypted files storing keys for the Google service account should NOT be stored in shared or public locations (Drive, Dropbox, Github Repo)
+<ul>
+<li>If possible store in an encrypted volume. Keybase, Bitwarden, or other credential management storage systems generally allow you to store files in an encrypted manner.</li>
+</ul></li>
+<li>Files storing keys for the Google service account only ever enter the project working directory after being encrypted or after git-crypt has been initiated and the file is included in the <code>.gitattributes</code> file or stored in an encrypted folder like <code>./auth</code>. See the [encryption chapter][Set up encryption for a repo that did not previously use git-crypt.] for more details</li>
+</ol>
+<div id="provide-a-service-account-key-for-projects" class="section level3 hasAnchor">
+<h3><span class="header-section-number">18.7.1</span> Provide a service account key for projects<a href="18-google-authorization-and-r.html#provide-a-service-account-key-for-projects" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now you have a secret key for the service account and need to securely access it in an R project.</p>
+<p>If you setup <code>git-crypt</code>, make sure the file is saved in an appropriate location (e.g. <code>./auth</code>) and that all the users who need to use the encrypted file are <a href="19-encryption.html#allow-contributors-access-to-encrypted-files">added to the repo</a>.</p>
+<div id="run-your-code-using-encrypted-keys" class="section level4 hasAnchor">
+<h4><span class="header-section-number">18.7.1.1</span> Run your code using encrypted keys<a href="18-google-authorization-and-r.html#run-your-code-using-encrypted-keys" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>For <code>git-crypt</code> users, the file will already be decrypted on your machine. If it isn’t, run <code>git-crypt unlock</code> in the terminal. If that does not work double check that your public key has been added to the repo.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="18-google-authorization-and-r.html#cb56-1"></a>jsonChar &lt;-<span class="st"> </span>readr<span class="op">::</span><span class="kw">read_file</span>(<span class="st">&quot;./auth/myKey.json&quot;</span>)</span>
+<span id="cb56-2"><a href="18-google-authorization-and-r.html#cb56-2"></a></span>
+<span id="cb56-3"><a href="18-google-authorization-and-r.html#cb56-3"></a>googlesheets4<span class="op">::</span><span class="kw">gs4_auth</span>(<span class="dt">path =</span> jsonChar)</span></code></pre></div>
+</div>
+<div id="read-in-your-sheet" class="section level4 hasAnchor">
+<h4><span class="header-section-number">18.7.1.2</span> Read in your sheet<a href="18-google-authorization-and-r.html#read-in-your-sheet" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><em>Make sure your sheet is shared with the service account if it hasn’t been already</em></li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="18-google-authorization-and-r.html#cb57-1"></a>googlesheets4<span class="op">::</span><span class="kw">read_sheet</span>(<span class="st">&quot;https://docs.Google.com/spreadsheets/that/i/definitely/shared/with/the/service-account&quot;</span>)</span></code></pre></div>
+</div>
+<div id="add-environment-variable-to-other-services" class="section level4 hasAnchor">
+<h4><span class="header-section-number">18.7.1.3</span> Add Environment Variable to other services<a href="18-google-authorization-and-r.html#add-environment-variable-to-other-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Non-interactive authentication allows us to automate workflows that involve Google sheets on services like Github Actions. In either case, it is relatively straight forward to securely add our <code>SERVICE_ACCOUNT_PASSWORD</code> environment variables to those services.</p>
+<p>See documentation here:
+- <a href="https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets">Add secrets to Github Actions</a></p>
+</div>
+</div>
+</div>
+<div id="additional-resources-2" class="section level2 hasAnchor">
+<h2><span class="header-section-number">18.8</span> Additional Resources<a href="18-google-authorization-and-r.html#additional-resources-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="google-drive" class="section level3 hasAnchor">
+<h3><span class="header-section-number">18.8.1</span> Google Drive<a href="18-google-authorization-and-r.html#google-drive" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <a href="https://googledrive.tidyverse.org/"><code>googledrive</code></a> package allows you to interact with files stored in Google drive from R. You can download, share, delete, copy, publish and otherwise manipulate files on your drive using this package.</p>
+<p>Package vignettes can be found <a href="https://googledrive.tidyverse.org/articles/index.html">here</a></p>
+</div>
+<div id="google-sheets" class="section level3 hasAnchor">
+<h3><span class="header-section-number">18.8.2</span> Google Sheets<a href="18-google-authorization-and-r.html#google-sheets" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The <a href="https://googlesheets4.tidyverse.org/index.html"><code>googlesheets4</code></a> package allows you to directly interact with Google sheets in R. You can read, write, reformat, create formulas, and otherwise manipulate the sheet of interest.</p>
+<p>Package vignettes can be found <a href="https://googlesheets4.tidyverse.org/articles/index.html">here</a></p>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="17-cloud-computing-services.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="19-encryption.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -440,7 +641,7 @@ gitbook.start({
 "id": 1
 },
 "edit": {
-"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s",
+"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/google-auth.Rmd",
 "text": "Edit this chapter"
 },
 "history": {

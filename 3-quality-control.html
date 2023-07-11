@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | EHA Modeling &amp; Analytics Handbook</title>
-  <meta name="description" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <title>3 Quality control | EHA Modeling &amp; Analytics Handbook</title>
+  <meta name="description" content="3 Quality control | EHA Modeling &amp; Analytics Handbook" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta property="og:title" content="3 Quality control | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta name="twitter:title" content="3 Quality control | EHA Modeling &amp; Analytics Handbook" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
-
+<link rel="prev" href="2-assembly-of-high-throughput-data.html"/>
+<link rel="next" href="4-Contributing.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -396,19 +396,107 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="quality-control" class="section level1 hasAnchor">
+<h1><span class="header-section-number">3</span> Quality control<a href="3-quality-control.html#quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="what-is-quality-control" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.0.1</span> What is quality control?<a href="3-quality-control.html#what-is-quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Quality control is a determinant step that impacts the accuracy of the results obtained from NGS data. This chapter presents the motivations and tools involved in the quality control of NGS data.</p>
+</div>
+<div id="why-is-a-quality-control-step-necessary-in-ngs-data" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.0.2</span> Why is a quality control step necessary in NGS data?<a href="3-quality-control.html#why-is-a-quality-control-step-necessary-in-ngs-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Simple and paired-end reads from NGS technologies are sequenced through complex processes that occur at the atomic scale. In particular, the sequences of the Illumina technology are obtained through a technique called <a href="https://www.illumina.com/science/technology/next-generation-sequencing/sequencing-technology.html">sequencing by synthesis</a>.
+As a consequence of this process, reads could carry complete sequences or fragments of adapters. In addition, the quality of the bases represented by the PHRED score is not homogeneous throughout the sequence, reducing towards the ends of the
+reads, in particular the end 3’. So a step is necessary that removes the technical sequences (adapters), but also the low-quality regions from the reads.
+This process is called <strong>trimming</strong>.</p>
+</div>
+<div id="why-is-a-quality-control-step-important-in-the-processing-of-ngs-data" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.0.3</span> Why is a quality control step important in the processing of NGS data?<a href="3-quality-control.html#why-is-a-quality-control-step-important-in-the-processing-of-ngs-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Improves the quality of the results. The positive impact of the read trimming stage has been <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0085024">demonstrated</a> in the study of genetic expression, variant calling, genome assembly, metagenomics and in general in all areas of knowledge where NGS data are used.
+Trimming the reads increases the number of sequences that are aligned against the reference sequences or decreases the complexity of the assembly graphs saving time and computational resources.</p>
+</div>
+<div id="how-does-the-trimming-process-work" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.0.4</span> How does the trimming process work?<a href="3-quality-control.html#how-does-the-trimming-process-work" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here we describe in a superficial way how the trimming process is performed by the <a href="http://www.usadellab.org/cms/?page=trimmomatic">trimmomatic</a>
+tool. There are two ways to remove adapters from reads. In the simple mode, the adapter sequences are aligned with an allowed mistmach number against the reads. The region in the 5’ region of the alignment is trimming. The second type is the Palindrome mode. The palindrome mode is specifically optimized for the detection of ‘adapter read-through’. When ‘read-through’ occurs, both reads in a pair will consist of
+an equal number of valid bases, followed by contaminating sequence from the ‘opposite’ adapters (figure below). Adapter read-through detection is done by aligning reverse read against forward read of each pair. The region aligned between the adapters represents valid sequences, the remaining sequences are discarded.</p>
+<p>To remove regions of low quality trimmomatic uses a sliding window. This works by scanning from the 5’ end of the read, and removes the 3’ end of the read when the average quality of a group of bases drops below a specified threshold.</p>
+<div class="figure">
+<img src="https://user-images.githubusercontent.com/72785049/212085192-8e8514da-9023-4bbc-9729-8add8111eb03.png" alt="" />
+<p class="caption">image</p>
+</div>
+</div>
+<div id="quality-control-with-trimmomatic" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.0.5</span> Quality control with trimmomatic<a href="3-quality-control.html#quality-control-with-trimmomatic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="documentation" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.0.5.1</span> Documentation<a href="3-quality-control.html#documentation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<ul>
+<li><a href="https://github.com/usadellab/Trimmomatic/tree/main/adapters">Github</a></li>
+<li><a href="http://www.usadellab.org/cms/?page=trimmomatic">Manual</a></li>
+<li><a href="https://doi.org/10.1093/bioinformatics/btu170">Publication</a></li>
+</ul>
+</div>
+<div id="installation-2" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.0.5.2</span> Installation<a href="3-quality-control.html#installation-2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>An easy way to install trimmomatic is with conda</p>
+<pre><code>  conda install -c bioconda trimmomatic
+  </code></pre>
+<p>We are also going to install fastqc</p>
+<pre><code>  conda install -c bioconda fastqc  
+</code></pre>
+</div>
+<div id="execution" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.0.5.3</span> Execution<a href="3-quality-control.html#execution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The following command line removes adapters and trimming #’ regions of low quality pair-end reads in fastq files</p>
+<pre><code>    trimmomatic PE -threads 8 R1.fastq R2.fastq R1_clean.fastq R1_clean_unpaired.fastq R2_clean.fastq R2_clean_unpaired.fastq  ILLUMINACLIP:TruSeq2-PE.fa:2:30:10  LEADING:6 TRAILING:6  SLIDINGWINDOW:4:20 MINLEN:80 2&gt; {log}</code></pre>
+<p>Input files:</p>
+<ul>
+<li>R1.fastq forward reads</li>
+<li>R2.fastq reverse reads</li>
+</ul>
+<p>Output files:</p>
+<ul>
+<li>R1_clean.fastq trimmed forward reads</li>
+<li>R1_clean_unpaired.fastq trimmed forward reads (dropped pair)</li>
+<li>R2_clean.fastq trimmed reverse reads</li>
+<li>R2_clean_unpaired.fastq trimmed reverse reads (dropped pair)</li>
+</ul>
+<pre><code>#### Parameters:
+  
+ - threads number of threats that could be used to execute the command
+ - ILLUMINACLIP:TruSeq2-PE.fa:2:30:10 fasta file containing adapters TruSeq2-PE; the maximum number of mismatches allowed is 2 in the seed alignment; minimum 30 nucleotides must align for PE palindrome read alignment;minimum 10 nucleotides must align between a sequence and an adapter.   
+ - LEADING:6 The minimum quality to retain a base a base is 6 (5&#39;)
+ - TRAILING:6 The minimum quality to retain a base a base is 6 (3&#39;)
+ - SLIDINGWINDOW:4:20 The sliding window size is 4 and and the average quality must be a minimum of 20.
+ - MINLEN: Only reads with a minimum length of 80 nucleotides after trimming are kept.
+</code></pre>
+</div>
+</div>
+<div id="visualization-of-the-quality-of-the-reads" class="section level3 hasAnchor">
+<h3><span class="header-section-number">3.0.6</span> Visualization of the quality of the reads<a href="3-quality-control.html#visualization-of-the-quality-of-the-reads" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After trimming the reads, it is important to check the quality of the reads. A popular tool at this step is <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">fastqc</a> which produces easy to interpret plots about different read quality parameters.</p>
+<div id="execution-1" class="section level4 hasAnchor">
+<h4><span class="header-section-number">3.0.6.1</span> Execution<a href="3-quality-control.html#execution-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<pre><code>fastqc  --threads 8  R1_clean.fastq --outdir=QC
+ </code></pre>
+<pre><code>Input:
+  
+R1_clean.fastq trimmed reads
+  
+Output:
+  
+QC: directory; in this directory fastqc produces html files with the main results of the quality analysis.
+</code></pre>
+
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="2-assembly-of-high-throughput-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-Contributing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -440,7 +528,7 @@ gitbook.start({
 "id": 1
 },
 "edit": {
-"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s",
+"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/Quality_control.Rmd",
 "text": "Edit this chapter"
 },
 "history": {
