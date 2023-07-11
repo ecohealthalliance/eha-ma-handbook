@@ -1,6 +1,6 @@
 fig:bat-data
 fig:unnamed-chunk-1
-sequences-alignment
+seqs_aln
 heredity
 orthologs-and-paralogs
 blast
