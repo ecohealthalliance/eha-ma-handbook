@@ -91,7 +91,11 @@ some of the material from Geomputation in R in less depth, and gives you fewer t
 
 - [Quality control](#quality-control)
 - [Assembly](#assembly-of-high-throughput-data)
-- [Alignment](#seqs_aln)
+- Files and formats in high-throughput sequencing (In development)
+- [Pairwise sequence alignment](#seqs_aln)
+- Read alignment (In development)
+- Multiple Alignment (In development)
+- Variant Identification (In development)
 
 
 
