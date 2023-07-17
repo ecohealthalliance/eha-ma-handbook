@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | EHA Modeling &amp; Analytics Handbook</title>
-  <meta name="description" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <title>8 Airtable | EHA Modeling &amp; Analytics Handbook</title>
+  <meta name="description" content="8 Airtable | EHA Modeling &amp; Analytics Handbook" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta property="og:title" content="8 Airtable | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta name="twitter:title" content="8 Airtable | EHA Modeling &amp; Analytics Handbook" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
-
+<link rel="prev" href="7-data-management.html"/>
+<link rel="next" href="9-versioning.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -444,19 +444,295 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="airtable" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Airtable<a href="8-airtable.html#airtable" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This chapter will provide an overview of Airtable and good practices for designing data models in relational databases.</p>
+<p>For an EHA specific overview of Airtable Enterprise, see this <a href="https://docs.google.com/document/d/1kMbfhWTG7TRMGZmeyByeZCFt5xOaEwLwgVIrbrbk3Vs/edit?usp=sharing">document</a></p>
+<p>Request access to the EHA shared workspaces by contacting the <a href="https://www.ecohealthalliance.org/personnel/collin-schwantes">Data Librarian</a> or <a href="https://www.ecohealthalliance.org/personnel/andrew-espira">Infrastructure Lead</a>.</p>
+<div id="key-terms" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Key Terms<a href="8-airtable.html#key-terms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><strong>Workspace</strong> - A collection of bases</li>
+<li><strong>Base</strong> - A database. Each is identified by the Airtable API via a <code>base id</code></li>
+<li><strong>Table</strong> - A tabular data set within a base. Each table is identified by the Airtable API via the name of the table e.g. “Demo Table”</li>
+<li><strong>Record</strong> - An individual cell within a table. Each record is identified by the Airtable API via a <code>record id</code></li>
+<li><strong>Field</strong> - A property of data in a table</li>
+<li><strong>Views</strong> - A specific way of displaying a table. Default is grid.</li>
+<li><strong>Entity</strong> - Something that either physically or logically exists whose properties are typically stored in a table and composed of data elements.</li>
+<li><strong>Element</strong> - an attribute of a Entity (a field)</li>
+</ul>
+</div>
+<div id="what-is-airtable" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> What is Airtable?<a href="8-airtable.html#what-is-airtable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Airtable provides a cloud hosted spreadsheet-database hybrid platform for collaborative data curation. The platform is designed to provide features of a relational database (SQL-Like) linked records with an easy-to-use spreadsheet interface. What is more, each database provides a data service that can be accessed via a secure application programming interface (API) by authorized users. This combination of features make Airtable an appropriate platform for people conducting data entry as well as people building technical infrastructure.</p>
+</div>
+<div id="when-should-i-use-airtable" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> When should I use Airtable?<a href="8-airtable.html#when-should-i-use-airtable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Use Airtable when you would have multiple tabs in a spreadsheet, when you have hierarchical data, and/or when you want to create collaborative automated workflows in a low code environment.</p>
+<p>While Airtable is good for many things, it is not a good solution for big data. Consider using other systems if you plan to have more than 250,000 records of data in a base.</p>
+<p><strong>Project Management</strong><br />
+Because Airtable is extremely useful and user friendly, there are a plethora of pre-built templates for nearly an project management type task.</p>
+<ul>
+<li><a href="https://www.airtable.com/templates">Airtable Templates</a><br />
+</li>
+<li><a href="https://www.airtable.com/universe">User Contributed Templates</a></li>
+</ul>
+<p>For example, the computational sciences team has had success using Airtable for <a href="https://airtable.com/invite/l?inviteId=inv50tI6Z3ceiLos4&amp;inviteToken=7959000f3c419989a754b762bea01c10c808797a077bbed14b7a4dd67f315516&amp;utm_medium=email&amp;utm_source=product_team&amp;utm_content=transactional-alerts">candidate searches</a>. Airtable allows us to efficiently, independently, and consistently review applications then compare our ratings. We can then sort candidates by average score and reach a consensus on who to follow up with.</p>
+<p><strong>Research Data</strong><br />
+Airtable shines when you have multiple data entities that are linked via common data elements. For example, if you are sampling bats then conducting antibody screening, running multiplex PCR, and keeping physical samples of blood and urine from those bats, you have multiple data entities (bats, antibody test results, PCR test results, and physical samples) that are all linked via common data elements like site and collector.
+What is more, the test results depend on the physical samples and the physical samples depend on the bats. Those common data elements only need to be entered into a single entity (or table) then shared across the other entities in your base using linked elements. Once you have linked elements you no longer have to worry about updating the same piece of information in multiple locations and you can quickly navigate between entities and understand hierarchical relationships.</p>
+<div class="figure"><span style="display:block;" id="fig:bat-data"></span>
+<div id="htmlwidget-bd6a8f0543ebb67dc37c" style="width:672px;height:200px;" class="grViz html-widget "></div>
+<script type="application/json" data-for="htmlwidget-bd6a8f0543ebb67dc37c">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 8.1: Data model for bat sampling example.
+</p>
+</div>
+</div>
+<div id="security-and-access-control" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Security and Access Control<a href="8-airtable.html#security-and-access-control" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Airtable maintains physical and technological security as part of its ISO IEC 27001:2013 and SOC 2 compliance measures. Data are 256-bit encrypted when storing on the server and also when transferring data over the internet. To find vulnerabilities in their software, they run daily, weekly, and monthly scans on different components of their system and regularly commission external penetration tests. They also run a bug bounty program to help identify issues. Their data centers have fire detection and suppression systems, redundant power systems, and strict control for physical access. Because Airtable relies on Amazon Web Services (AWS) for its cloud infrastructure (the same providers used by previous EHA projects), data are geo-redundantly replicated in backups across multiple zones to increase data durability. They also have a team monitoring services at all times. Airtable employees are thoroughly vetted before hiring and continually trained on data protection best practices. Their workstations are secured by using full-disk encryption, automatic locking, and strong password requirements.</p>
+<div id="user--and-administrator-security-features" class="section level3 hasAnchor" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> User- and Administrator Security Features<a href="8-airtable.html#user--and-administrator-security-features" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="access-controls" class="section level4 hasAnchor" number="8.4.1.1">
+<h4><span class="header-section-number">8.4.1.1</span> Access Controls<a href="8-airtable.html#access-controls" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Airtable provides database (referred to as “base”) and workspace administrators with granular controls over who can view, edit, comment, or otherwise modify data at the base, table, and field levels. There are four levels of Airtable user permissions:</p>
+<ul>
+<li><strong>Owner/Creator</strong>: Full administrative control of base<br />
+</li>
+<li><strong>Editor</strong>: Sees full base, create and modify records and views, create and modify view share links<br />
+</li>
+<li><strong>Commenter</strong>: Sees full base, comment on records<br />
+</li>
+<li><strong>Reader</strong>: Sees full base</li>
+</ul>
+<p>Direct access to a base or workspace is granted or removed by base owners and creators to Airtable users. Base owners and creators can control who has access to a base and can control any “share” links created for that base. They may also restrict editing of tables or fields within a base. Any collaborator given direct access to a base at any permission level will be able to duplicate that base and share that data further. It is important that direct access to the base is limited to individuals with a need to curate or analyze the data.</p>
+</div>
+</div>
+<div id="share-links-and-interfaces" class="section level3 hasAnchor" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> Share Links and Interfaces<a href="8-airtable.html#share-links-and-interfaces" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To further restrict access to a base, users can be given indirect access via revocable share links or interfaces.</p>
+<p><a href="https://support.airtable.com/docs/creating-a-base-share-link-or-a-view-share-link">Share links</a> can be customized to prevent users from seeing the full base, prevent duplicating the base, and prevent copying data from the base. The ability to use the link can be password protected, restricted to people with certain email domains, and may be revoked at any time. If there are concerns about data leaks via base or table duplication, inviting people with a need to view the data via share links constrains their ability to extract data from the base.</p>
+<p><a href="https://support.airtable.com/docs/interface-designer-overview">Interfaces</a> are dynamic dashboards built on a limited set of data in an airtable base. Users can explore or even edit data based on the permissions provided by the interface creator. Access can be further tuned by setting up a “current-user filter”. See <a href="https://support.airtable.com/docs/interface-designer-permissions">this guide</a> for more information.</p>
+</div>
+</div>
+<div id="data-in-airtable" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Data in Airtable<a href="8-airtable.html#data-in-airtable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>See <a href="https://support.airtable.com/hc/en-us/articles/115010928147-Airtable-plans">Airtable plan comparison</a> for more information on the size of bases and features available. Information in this section pertains to all plans unless specified.</p>
+<div id="workspaces-bases-tables-fields-records" class="section level3 hasAnchor" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Workspaces, Bases, Tables, Fields, Records<a href="8-airtable.html#workspaces-bases-tables-fields-records" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Airtable uses workspaces, bases, tables, and fields to manage data. A workspace generally pertains to a particular project and contains all bases relevant to that project. Sharing a workspace with someone allows them to see all bases within that workspace.</p>
+<p>Bases are equivalent to databases. They consist of a set of tables that can be linked and allow you to perform some task (e.g. IRB tracking, capturing research data, etc.). Bases can be duplicated and shared across your workspaces and you can share bases with other users.</p>
+<p>Tables are where most of the action happens. Data is entered in tables, tables can be transformed via views into calendars, dashboards, or galleries, and tables can be manipulated via the API. They describe a data entity and are composed of fields. In the bat sampling example, each circle would be a table in the bat sampling base.</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<div id="htmlwidget-2f4bc940b6381df16213" style="width:672px;height:200px;" class="grViz html-widget "></div>
+<script type="application/json" data-for="htmlwidget-2f4bc940b6381df16213">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 8.2: Data model for bat sampling example.
+</p>
+</div>
+<p>Fields represent properties of a data entity. In a spreadsheet view, fields are columns. Airtable allows you to control field types (date, number, text, file attachments, logical, etc.) and paid plans allows you to control who can edit fields. Fields can be linked between tables creating links.</p>
+<p>Records are the individual data points in a table. In a spreadsheet they would be the rows. Records are shaped by the structure you have created in tables and fields. Each record has a URL that can be used to access it programatically or share it.</p>
+</div>
+<div id="views" class="section level3 hasAnchor" number="8.5.2">
+<h3><span class="header-section-number">8.5.2</span> Views<a href="8-airtable.html#views" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In Airtable, tables can be displayed in different views to emphasis different components of the data. Views are great for creating concise presentations of data, especially in sprawling tables. The default view in an table is the grid (spreadsheet) view. All other views will derive from the data entered in this view.</p>
+<p>For more on views, see <a href="https://support.airtable.com/hc/en-us/articles/202624989-Guide-to-views">the guide to views</a>.</p>
+</div>
+<div id="internal-backups-record-history-base-snapshots" class="section level3 hasAnchor" number="8.5.3">
+<h3><span class="header-section-number">8.5.3</span> Internal Backups: Record History, Base Snapshots<a href="8-airtable.html#internal-backups-record-history-base-snapshots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Airtable has system for tracking changes to a base. They provide revision history for individual records (how long those histories are stored varies by plan). Any comments made in the revision history will be stored for the life of the record (on any plan). The current state of an entire base may be captured through snapshots. Should a systemic issue arise, the base can be restored to a snapshot at a later date. Restoring from a snapshot will remove the revision history for a record but comments on that record will be maintained.</p>
+<p>As revision histories are maintained, “deleted” records may be retrieved. In the event of the need to permanently remove data, the revision history of the base may be removed.</p>
+<p>Airtable allows data to be exported as CSVs from individual tables. At this time there is not an Airtable supported base export function.</p>
+</div>
+<div id="importing-data" class="section level3 hasAnchor" number="8.5.4">
+<h3><span class="header-section-number">8.5.4</span> Importing data<a href="8-airtable.html#importing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Data can be imported to Airtable from a number of sources including CSV files, excel, Google sheets, XML, and via copy paste. Airtable will guess what the most appropriate field type is, so make sure the field type is appropriate for the data (e.g. convert from text to date type fields). Certain sources, like Google sheets, can be imported as bases.</p>
+<p>For more on importing data see: <a href="https://support.airtable.com/hc/en-us/sections/200928025-Importing-and-adding-data">Importing and Adding data</a></p>
+</div>
+</div>
+<div id="base-design" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Base Design<a href="8-airtable.html#base-design" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Having a good base design will make using your data easier. Generally, the process looks like this:</p>
+<ol start="0" style="list-style-type: decimal">
+<li>Describe what the database will do and collect use cases</li>
+<li>Determine the roles of various stakeholders</li>
+<li>List out the entities in the database and define their properties</li>
+<li>Map out how the entities fit together (which properties link them)</li>
+<li>Check that the mapping meets the use cases</li>
+<li>Build base in Airtable</li>
+<li>Check that the base meets the use cases</li>
+</ol>
+<p>If you are migrating from spreadsheets, you likely already have an idea of what you need the base to do and a collection of data properties. It is still a good idea to follow the steps outlined above for mapping out entities. You may find that entire sheets can be replaced by views or that the data in one sheet should actually be stored in two different tables.</p>
+<p>Feel free to reach out to the data librarian for questions about base design.</p>
+</div>
+<div id="automating-airtable" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Automating Airtable<a href="8-airtable.html#automating-airtable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Airtable has five main routes for automating processes.</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://support.airtable.com/hc/en-us/articles/360050974153-Automations-overview">Automations</a> - a drag and drop visual programming tool</li>
+<li><a href="https://support.airtable.com/docs/airtable-extensions-overview">Extensions</a> - pre-built applications that perform some task</li>
+<li><a href="https://support.airtable.com/hc/en-us/articles/360043041074-Scripting-app-overview">Scripting</a> - use JavaScript to automate tasks within Airtable</li>
+<li><a href="https://www.airtable.com/developers/apps/guides/getting-started">Blocks</a> - use JavaScript to create custom applications</li>
+<li><a href="https://airtable.com/api">REST API</a> - use whatever programming language you like to automate processes</li>
+</ol>
+<div id="automations-with-drag-and-drop-programing-pro-and-above" class="section level3 hasAnchor" number="8.7.1">
+<h3><span class="header-section-number">8.7.1</span> Automations with Drag and Drop Programing (pro and above)<a href="8-airtable.html#automations-with-drag-and-drop-programing-pro-and-above" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The automations feature within Airtable allows you to visually program routines. Each automation has three basic components:</p>
+<ul>
+<li>Status - controls whether or not the automation will run when the trigger condition is met</li>
+<li>Triggers - condition for automation to run: the creation or change of a record, a scheduled time, or some other external action</li>
+<li>Actions - what the automation will do</li>
+</ul>
+<p><img src="eha-ma-handbook_files/figure-html/actions%20diagram-1.png" width="672" /></p>
+<p>Automations are commonly used to augment the synced tables feature, send notifications, check data quality, and manipulate or create records.</p>
+<p>This automation creates a weekly summary of applicants who applied for a position. Its trigger is time based, then it finds records that match a condition, and finally it generates an email from those records and sends to the appropriate recipients.</p>
+<div class="figure">
+<img src="assets/airtable_Weekly%20Digest.png" alt="" />
+<p class="caption">airtable weekly summary</p>
+</div>
+</div>
+<div id="scripting-and-blocks-pro-plan-and-above" class="section level3 hasAnchor" number="8.7.2">
+<h3><span class="header-section-number">8.7.2</span> Scripting and Blocks (pro plan and above)<a href="8-airtable.html#scripting-and-blocks-pro-plan-and-above" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Scripting uses JavaScript to manipulate a base from within an application in Airtable. Scripting is flexible but has a steep learning curve. The scripting environment Airtable provides can be helpful as it provides code <a href="https://en.wikipedia.org/wiki/Lint_(software)">linting</a>, direct access to documentation, and example scripts to build from. The major drawback to scripting is that scripts live in the base and files are not version controlled.</p>
+<ul>
+<li>There are a LOT of <a href="https://airtable.com/marketplace/category/scripts">pre-written scripts, in a shared “marketplace”</a> to perform automatic actions. Search the marketplace before you start writing bespoke code.</li>
+</ul>
+<p>Blocks are custom applications built in JavaScript and node.js that add to base functionality. They are created in a development environment outside of Airtable then brought back into platform. There are number of <a href="https://www.airtable.com/developers/apps/guides/getting-started">tutorials for getting started with blocks</a>.</p>
+</div>
+</div>
+<div id="using-the-rest-api" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> Using the REST API<a href="8-airtable.html#using-the-rest-api" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>All Airtable bases are automatically accessible to authorized users via a REST API. The list of API accessible bases you have access to can be found here: <a href="https://airtable.com/api" class="uri">https://airtable.com/api</a>. By clicking on a base you will be able to see the full API documentation for that base.</p>
+<div id="scoped-tokens" class="section level3 hasAnchor" number="8.8.1">
+<h3><span class="header-section-number">8.8.1</span> Scoped Tokens<a href="8-airtable.html#scoped-tokens" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>** Remember to save the token in a secure place. Do not store unencrypted tokens on the web (e.g. pushing them to github).</p>
+<p>Airtable is moving to a <a href="https://airtable.com/developers/web/guides/personal-access-tokens">scoped tokens</a> based approach to api access. Scoped personal access tokens allow you to create a token for a specific base with specific permissions - e.g. token has read-only access to a bat sampling base. Using scoped tokens in this way means that if the token is compromised (leaked, stolen, accidentally committed unencrypted to a github repo, etc), you can delete that token to remove any access it might have had and the limited scope means that you know exactly what a person would have been able to access.</p>
+<p>To create a personal access token go here: <a href="https://airtable.com/create/tokens" class="uri">https://airtable.com/create/tokens</a></p>
+<p>Airtable has also deployed <a href="https://airtable.com/developers/web/api/oauth-reference">oauth tokens</a> for all users.</p>
+</div>
+<div id="airtable-and-r" class="section level3 hasAnchor" number="8.8.2">
+<h3><span class="header-section-number">8.8.2</span> Airtable and R<a href="8-airtable.html#airtable-and-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The Airtable REST API can be used via R with the <a href="https://github.com/ecohealthalliance/airtabler">airtabler package</a>. EHA has started a fork of the package that has additional functionality so it is recommended to use that version. The original package design works well for exploring the data. Our extension adds additional functionality to help use <code>airtabler</code> in automations via continuous integration systems like GitHub Actions.</p>
+<pre><code>remotes::install_github(&quot;ecohealthalliance/airtabler&quot;)</code></pre>
+<p>The Airtable API serves up data as JSON, which has a hierarchical structure similar to a list in R. To handle JSON, <code>airtabler</code> uses the <code>jsonlite</code> package. Its helpful to understand how <code>jsonlite</code> handles different JSON structures when working with more complicated Airtable data. See the <code>jsonlite</code> <a href="https://cran.r-project.org/web/packages/jsonlite/vignettes/json-aaquickstart.html">quick-start guide</a> for a basic overview. The <a href="https://purrr.tidyverse.org/"><code>purr</code> package</a> is extremely helpful when dealing with data objects derived from JSON because it facilitates navigating nested data structures.</p>
+<p>The <code>airtabler</code> package provides instructions for setting up access to the Airtable API. You will need to follow those instructions for the following examples to work.</p>
+<p><strong>One to One join</strong></p>
+<pre><code>library(airtabler)
+
+table1  &lt;-  fetch_all(base = &quot;app49bbyLczZxX9PM&quot;,table_name = &quot;One To One&quot;)
+
+table2 &lt;- fetch_all(base = &quot;app49bbyLczZxX9PM&quot;,table_name = &quot;Table 2&quot;)
+
+## Linked records are stored as JSON arrays so they become lists 
+## when part of a data frame. Because each array has a length of 1
+## we can safely unlist the arrays and add them back as to the 
+## data frame.
+
+table1$LinkedRec &lt;- unlist(table1$LinkedRec)
+
+joinedTables &lt;- dplyr::left_join(table1,table2, by = c(&quot;LinkedRec&quot;=&quot;id&quot;))
+
+recordKey &lt;- joinedTables[c(&quot;Name&quot;,&quot;LinkedRec&quot;,&quot;Number&quot;)]
+
+recordKey
+
+</code></pre>
+<p><strong>One to Many Join</strong></p>
+<pre><code>library(airtabler)
+library(dplyr)
+library(purrr)
+
+oneToMany  &lt;-  fetch_all(base = &quot;app49bbyLczZxX9PM&quot;,table_name = &quot;One To Many&quot;)
+
+table2 &lt;- fetch_all(base = &quot;app49bbyLczZxX9PM&quot;,table_name = &quot;Table 2&quot;)
+
+# Depending on how you want to work with the data joins are a 
+# little trickier here. 
+
+## to replace the values but keep the structure
+
+oneToMany$LinkedRecReplace &lt;- purrr::map(oneToMany$LinkedRec, function(x){
+  table2 %&gt;%
+    filter(id %in% x) %&gt;%
+    select(c(&quot;id&quot;,&quot;Number&quot;)) %&gt;% 
+    pull(&quot;Number&quot;)
+})
+
+data.frame(
+  id = unlist(oneToMany$LinkedRec), 
+  label = unlist(oneToMany$LinkedRecReplace)
+)
+</code></pre>
+</div>
+</div>
+<div id="data-management-1" class="section level2 hasAnchor" number="8.9">
+<h2><span class="header-section-number">8.9</span> Data Management<a href="8-airtable.html#data-management-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Because of its flexibility and ease of use, it is extremely important that data
+management for airtable be taken seriously. Unlike most other relational databases,
+the fundamental properties of your base can be changed easily by multiple users
+without warning! Documenting the structure and purpose of your base, as well
+as creating regular external backups could save you from catastrophe.</p>
+<div id="metadata" class="section level3 hasAnchor" number="8.9.1">
+<h3><span class="header-section-number">8.9.1</span> Metadata<a href="8-airtable.html#metadata" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><strong>Structural metadata</strong> - Information about a resource that tells you how its
+put together - e.g. the relationship between a table, field, and automation. With
+the exception of users on the enterprise plan, you must be deliberate about
+creating and maintaining structural metadata for your base.</li>
+</ul>
+<p>Example of Airtable Structural Metadata:
+<iframe class="airtable-embed" src="https://airtable.com/embed/shrsv0CWMSERgUIR8?backgroundColor=gray&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe></p>
+<ul>
+<li><strong>Descriptive metadata</strong> - Information about a resource that makes it easier to
+find and attribute data. This includes things attributes like author, title, description,
+keywords, etc. This table becomes especially important when data are transitioned
+out of airtable, at the end of a project, or if the base will be shared broadly
+with collaborators.</li>
+</ul>
+<p>Example of Airtable Descriptive Metadata:
+<iframe class="airtable-embed" src="https://airtable.com/embed/shrFr7eafWtH4s7ll?backgroundColor=gray&viewControls=on" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe></p>
+<p>To see the template base, follow this <a href="https://airtable.com/invite/l?inviteId=inv5ycCAbIVw1WM3Z&amp;inviteToken=ef7b72e998a0a69d835244f87f88b6b9b6b1094915239ebc93423e1257fcd72b&amp;utm_medium=email&amp;utm_source=product_team&amp;utm_content=transactional-alerts">link</a></p>
+<div id="metadata-for-automations-and-extensions" class="section level4 hasAnchor" number="8.9.1.1">
+<h4><span class="header-section-number">8.9.1.1</span> Metadata for automations and extensions<a href="8-airtable.html#metadata-for-automations-and-extensions" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Automations and extensions live entirely inside airtable. As of August 2022, Airtable introduced a “Manage Fields” tab that provides metadata for a specific table, including any automation dependencies. It is not possible to export those dependency tables or the code used in automations automatically. This makes it extremely important to document any automations and extensions outside your base.</p>
+</div>
+</div>
+<div id="external-backups" class="section level3 hasAnchor" number="8.9.2">
+<h3><span class="header-section-number">8.9.2</span> External Backups<a href="8-airtable.html#external-backups" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>It is a good idea to create regular external backups of airtable data in the event
+that something catastrophic happens to your base or you simply decide you no longer wish
+to use airtable as your data store.Unfortunately, airtable does not provide an
+off the shelf solution for this. Below are three options for extracting all data
+from your base.</p>
+<div id="using-airtabler" class="section level4 hasAnchor" number="8.9.2.1">
+<h4><span class="header-section-number">8.9.2.1</span> Using airtabler<a href="8-airtable.html#using-airtabler" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Using <code>airtabler::air_dump()</code> and <code>airtabler::air_dump_to_csv()</code> functions, you can export all tables to R then create a versioned folder of CSVs.</p>
+<p>See the <a href="https://github.com/ecohealthalliance/airtabler/blob/11f5fb21741c4cf36ece448a8eb92f53c46422f7/vignettes/Generate-Metadata-and-Backup.Rmd">vignette</a> in the <code>airtabler</code> package for generating metadata and creating backups.</p>
+</div>
+<div id="other-open-source-projects" class="section level4 hasAnchor" number="8.9.2.2">
+<h4><span class="header-section-number">8.9.2.2</span> Other Open Source Projects<a href="8-airtable.html#other-open-source-projects" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>UnlyEd - use this template to push airtable backups to AWS S3.</p>
+<ul>
+<li><a href="https://github.com/UnlyEd/airtable-backups-boilerplate" class="uri">https://github.com/UnlyEd/airtable-backups-boilerplate</a></li>
+</ul>
+</div>
+<div id="paid-services" class="section level4 hasAnchor" number="8.9.2.3">
+<h4><span class="header-section-number">8.9.2.3</span> Paid services<a href="8-airtable.html#paid-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Sequin - replicate airtable to postGres database
+- <a href="https://www.sequin.io/sources/airtable" class="uri">https://www.sequin.io/sources/airtable</a></p>
+
+</div>
+</div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="7-data-management.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="9-versioning.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -488,7 +764,7 @@ gitbook.start({
 "id": 1
 },
 "edit": {
-"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s",
+"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/airtable.Rmd",
 "text": "Edit this chapter"
 },
 "history": {

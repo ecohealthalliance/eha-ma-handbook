@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Page not found | EHA Modeling &amp; Analytics Handbook</title>
-  <meta name="description" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <title>16 Encryption | EHA Modeling &amp; Analytics Handbook</title>
+  <meta name="description" content="16 Encryption | EHA Modeling &amp; Analytics Handbook" />
   <meta name="generator" content="bookdown 0.34 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta property="og:title" content="16 Encryption | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Page not found | EHA Modeling &amp; Analytics Handbook" />
+  <meta name="twitter:title" content="16 Encryption | EHA Modeling &amp; Analytics Handbook" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
-
-
+<link rel="prev" href="15-google-authorization-and-r.html"/>
+<link rel="next" href="17-dependencies.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -444,19 +444,307 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="page-not-found" class="section level1">
-<h1>Page not found</h1>
-<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
-<p>You may want to try searching to find the page's new location, or use
-the table of contents to find the page you are looking for.</p>
+<div id="encryption" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">16</span> Encryption<a href="16-encryption.html#encryption" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li><em>How do we share data in git repositories that needs to be secure?</em></li>
+</ul>
+<p>Sometimes we need to store and share secure information, such as passwords or API keys, to
+online service accounts. One of our methods of choice for this is to
+keep these files stored in git/GitHub repositories, but to encrypt them. We
+do this using PGP (Pretty Good Privacy) encryption, implemented by the program
+<a href="https://github.com/AGWA/git-crypt"><code>git-crypt</code></a>. It takes a bit to set up
+but once activated makes sharing secure and seamless.</p>
+<p>The PGP encryption scheme involves making a <em>public</em> key that you share and
+a <em>private</em> key that you use to decrypt data encrypted with your public key.
+We also use <a href="https://keybase.io/">Keybase</a>, a service that helps you publish and
+verify a public key for this purpose.</p>
+<p>Instructions for setting this up are below.</p>
+<div id="set-up-keybase" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> Set up Keybase<a href="16-encryption.html#set-up-keybase" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sign up for <a href="https://keybase.io/">Keybase</a>, and follow the instructions for
+installing it on your computer.</p>
+<p>Note that if you switch computers, you need to have another device associated with the keybase account and/or a copy of your paper key in order to recover your key.<br />
+A <a href="https://www.theguardian.com/technology/2022/mar/19/not-using-password-manager-why-you-should-online-security">password manager</a> (<a href="https://bitwarden.com/">Bitwarden</a>, <a href="https://www.lastpass.com/">LastPass</a>, <a href="https://1password.com/">1Password</a>) would be helpful for securely storing a paper key.</p>
+<div id="installing-keybase-on-linux" class="section level3 hasAnchor" number="16.1.1">
+<h3><span class="header-section-number">16.1.1</span> Installing Keybase on Linux<a href="16-encryption.html#installing-keybase-on-linux" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For installing on linux, first identify the distribution by entering
+the following command into a terminal and noting down the Distributor ID.</p>
+<pre><code>lsb_release -a</code></pre>
+<p>Next identify the architecture via,</p>
+<pre><code>arch</code></pre>
+<p>Follow the instructions to install Keybase on Linux, available <a href="https://keybase.io/docs/the_app/install_linux">here</a>,
+making sure to use the section relevant to the architecture and distribution
+information identified above.</p>
+</div>
+<div id="installing-keybase-on-macos-and-windows" class="section level3 hasAnchor" number="16.1.2">
+<h3><span class="header-section-number">16.1.2</span> Installing Keybase on macOS and Windows<a href="16-encryption.html#installing-keybase-on-macos-and-windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For installing on Windows and macOS, the easiest way is to download and install the
+graphical user interface available from the Keybase
+<a href="https://keybase.io/download">download page</a>. This will also install the necessary
+command line tools.</p>
+<p>You may also use <code>homebrew</code> to install keybase on macOS</p>
+</div>
+</div>
+<div id="install-gpg-and-git-crypt" class="section level2 hasAnchor" number="16.2">
+<h2><span class="header-section-number">16.2</span> Install <code>gpg</code> and <code>git-crypt</code><a href="16-encryption.html#install-gpg-and-git-crypt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>gpg</code> is the program that implements encryption, and <code>git-crypt</code> sets up git
+repos for encrypted sharing using <code>gpg.</code> These are already installed on EHA servers.</p>
+<div id="install-gpg-and-git-crypt-on-macos" class="section level3 hasAnchor" number="16.2.1">
+<h3><span class="header-section-number">16.2.1</span> Install <code>gpg</code> and <code>git-crypt</code> on macOS<a href="16-encryption.html#install-gpg-and-git-crypt-on-macos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Use <a href="https://docs.brew.sh/Installation"><code>homebrew</code></a> to install <code>gpg</code>, <code>git-crypt</code>. You should also install <code>pinentry</code>,
+which is a helper program for entering passwords securely. Run the following in the terminal:</p>
+<pre><code>brew install gpg
+brew install pinentry
+brew install git-crypt</code></pre>
+<p>Homebrew automatically updates when you run it so if you haven’t used it in a while there may be a somewhat lengthy update</p>
+</div>
+<div id="install-gpg-and-git-crypt-on-windows" class="section level3 hasAnchor" number="16.2.2">
+<h3><span class="header-section-number">16.2.2</span> Install <code>gpg</code> and <code>git-crypt</code> on Windows<a href="16-encryption.html#install-gpg-and-git-crypt-on-windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For Windows there are two alternative approaches.</p>
+<div id="using-windows-subsystem-for-linux-wsl" class="section level4 hasAnchor" number="16.2.2.1">
+<h4><span class="header-section-number">16.2.2.1</span> Using Windows Subsystem for Linux (WSL)<a href="16-encryption.html#using-windows-subsystem-for-linux-wsl" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The first approach is to utilize the Windows Subsystem for Linux (WSL). This method requires Windows 10 or higher. You must first install WSL. Do so following this guide: <a href="https://docs.microsoft.com/en-us/windows/wsl/install" class="uri">https://docs.microsoft.com/en-us/windows/wsl/install</a>.</p>
+<p>Once WSL is set up, the necessary packages can be installed through the WSL command line shell. Run the following in the shell:</p>
+<pre><code>sudo apt update
+sudo apt install keybase gpg git-crypt</code></pre>
+</div>
+<div id="using-windows-install-binaries" class="section level4 hasAnchor" number="16.2.2.2">
+<h4><span class="header-section-number">16.2.2.2</span> Using Windows: install binaries<a href="16-encryption.html#using-windows-install-binaries" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The second method is to install pre-compiled Windows binaries for GPG and git-crypt.</p>
+<p>First download a Windows-compatible binary for GPG which can be found (here)<a href="https://gnupg.org/download/" class="uri">https://gnupg.org/download/</a>. The ‘Simple installer for the current GnuPG’ binary on that page is the recommended choice.</p>
+<p>Then install git-crypt by via the following steps:</p>
+<ul>
+<li>Downloading <code>git-crypt-*.exe</code> from <a href="https://github.com/AGWA/git-crypt/releases" class="uri">https://github.com/AGWA/git-crypt/releases</a>.
+<ul>
+<li>This may generate the warning “git-crypt-*.exe is not commonly downloaded and may be dangerous”. Click the up arrow next to ‘Discard’ and select ‘Keep’.</li>
+<li>Even after this the download may fail with the message ‘Failed - Virus detected’. Do not worry this is a false positive. If this occurs, search for ‘Virus &amp; thread protection’ in the task bar and click on ‘Manage settings’ under ‘Virus &amp; thread protection settings’. Once there, turn off “real-time protection” and try downloading again. Please make sure to turn it back on again when done.</li>
+</ul></li>
+<li>Once downloaded, rename the file to <code>gpg-crypt.exe</code>.</li>
+<li>Move the resulting <code>gpg-crypt.exe</code> into a folder recognized by the Windows PATH environment variable. A convenient location is <code>C:\Program Files\Git\cmd\</code>.</li>
+</ul>
+<p>Once Keybase and GPG are installed, the terminal commands related to exporting keys from Keybase into GPG are the same regardless of operating system.</p>
+</div>
+</div>
+</div>
+<div id="create-your-keybase-keys" class="section level2 hasAnchor" number="16.3">
+<h2><span class="header-section-number">16.3</span> Create your Keybase keys<a href="16-encryption.html#create-your-keybase-keys" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you are just starting to use Keybase, you can generate new keys for use on
+your computer using this guide: <a href="https://github.com/pstadler/keybase-gpg-github" class="uri">https://github.com/pstadler/keybase-gpg-github</a>.
+That guide also helps set up using your key to sign GitHub commits, which you
+should do for added security.</p>
+<p>Create a password associated with your keys when asked. You can store
+this in your password manager such as LastPass or BitWarden.
+Once your keys are created, visit your Keybase account at and verify your keys via as
+many other services, devices, or online identities as you want. We suggest
+at least three. It is also a good idea to generate a physical ‘paper key’ and store it in
+a secure location.</p>
+</div>
+<div id="import-your-keys-to-your-local-keychain" class="section level2 hasAnchor" number="16.4">
+<h2><span class="header-section-number">16.4</span> Import your keys to your local keychain<a href="16-encryption.html#import-your-keys-to-your-local-keychain" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you have a Keybase account set and keys already generated, you can now import
+your Keybase keys to use. Instruction are found at <a href="https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/" class="uri">https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/</a>. When followng those instructions, set your keys to maximum trust level.</p>
+</div>
+<div id="configure-gpg" class="section level2 hasAnchor" number="16.5">
+<h2><span class="header-section-number">16.5</span> Configure gpg<a href="16-encryption.html#configure-gpg" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="configure-gpg-on-macos-and-linux" class="section level3 hasAnchor" number="16.5.1">
+<h3><span class="header-section-number">16.5.1</span> Configure gpg on macOS (and Linux)<a href="16-encryption.html#configure-gpg-on-macos-and-linux" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A common source of errors for macOS (and Linux) users is that the text entry for <code>gpg</code> isn’t set properly. This means that <code>gpg</code> and your terminal aren’t speaking the same language. You can fix this by setting the <code>GPG_TTY</code> environment variable in your shell configuration.</p>
+<pre><code>export GPG_TTY=$(tty)</code></pre>
+<p>Adding this to your <code>.profile</code>, <code>.bashrc</code>, <code>.zshrc</code> or other settings files prevents
+having to run the command when you use git-crypt or sign commits. U</p>
+<p>Use a text editor to modify the settings file for your shell. These are set in one of the files <code>~/.profile</code>, <code>~/.bashrc</code>, <code>~/.zshrc</code>. For most macOS users, it is <code>~/.zshrc</code>. Here are instructions using <code>nano</code>, an editor available on most machines.</p>
+<p>In the terminal, run:</p>
+<pre><code>nano ~/.zshrc</code></pre>
+<p>Then, in the nano text editor that comes up, add the following line to the file:</p>
+<pre><code>export GPG_TTY=$(tty)</code></pre>
+<p>In the nano editor, press Ctrl-O to write (“write-Out”) to save your changes, then press Ctrl-X to exit. Alternatively, run the following line in the terminal to change your <code>.zshrc</code> file without using nano or any other editor:</p>
+<pre><code>echo &quot;export GPG_TTY=$(tty)&quot; &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc</code></pre>
+</div>
+<div id="configure-gpg-on-windows" class="section level3 hasAnchor" number="16.5.2">
+<h3><span class="header-section-number">16.5.2</span> Configure gpg on Windows<a href="16-encryption.html#configure-gpg-on-windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Windows needs to inform git of the location of the gpg executable. This can be done by opening cmd or PowerShell and entering the following command:</p>
+<pre><code>git config --global gpg.program &quot;C:\Program Files (x86)\GnuPG\bin\gpg.exe&quot;`</code></pre>
+<p>Note that if GnuPG is installed in a different location the command should be altered to reflect this change.</p>
+</div>
+</div>
+<div id="use-git-crypt-to-unlock-a-repository" class="section level2 hasAnchor" number="16.6">
+<h2><span class="header-section-number">16.6</span> Use git-crypt to unlock a repository<a href="16-encryption.html#use-git-crypt-to-unlock-a-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <a href="https://github.com/AGWA/git-crypt"><code>git-crypt</code> README</a> outlines the basics
+of using <code>git-crypt</code> to encrypted and decrypt files in a git repository.</p>
+<p>First be sure your public key has been added to the repository. To do this, check the
+<code>.git-crypt/keys/default/0</code> folder in the github repo for your public key. If your key is present
+pull or clone the repo then run,</p>
+<pre><code>git-crypt unlock</code></pre>
+<p>from the terminal or command line in the repository folder. If all goes well, congrats! Encryption and decryption for pushing and
+pulling should now happen automatically.</p>
+<div id="troubleshooting" class="section level3 hasAnchor" number="16.6.1">
+<h3><span class="header-section-number">16.6.1</span> Troubleshooting<a href="16-encryption.html#troubleshooting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If <code>git-crypt unlock</code> fails, try the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>Verify that GPG has successfully imported your private key from Keybase by opening a shell and entering
+<code>gpg --list-secret-keys</code>. If no keys are found, follow the <a href="https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/">guide</a> for importing keys. This might fail for mac and linux users if <code>export GPG_TTY=$(tty)</code> is not in your .bashrc or .zshrc.</li>
+<li>Make sure that your GPG private key has actually been added to the repository. Navigate to the <code>~/.git-crypt/keys/default/0/</code> directory on github and look for a file that matches your public key.</li>
+<li>Once your key has been added, pull from the remote to make sure the key is available to your local repository.</li>
+<li>Windows users need to let git know where to find the gpg executable. Double check that the gpg.exe really is in the folder you specified above. If not find it’s location or try re-installing gpg.</li>
+<li>Make sure that GIT <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-gpg-key">knows about your signing key</a></li>
+</ol>
+<!-- This should really come after the unlocking step. More people I think will need to clone and unlock than manage users !-->
+</div>
+</div>
+<div id="managing-which-users-can-decrypt-files-in-a-repository" class="section level2 hasAnchor" number="16.7">
+<h2><span class="header-section-number">16.7</span> Managing which users can decrypt files in a repository<a href="16-encryption.html#managing-which-users-can-decrypt-files-in-a-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you’ve made it this far and you only need to unlock a repository that has already been set up you’re done! The instructions below will help you go further by outlining how to grant access to encrypted files on a repository, add your key to the EHA servers, and to initialize a new repository to use git-crypt.</p>
+<div id="set-up-encryption-for-a-repo-that-did-not-previously-use-git-crypt" class="section level3 hasAnchor" number="16.7.1">
+<h3><span class="header-section-number">16.7.1</span> Set up encryption for a repo that did not previously use git-crypt<a href="16-encryption.html#set-up-encryption-for-a-repo-that-did-not-previously-use-git-crypt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This will initialize the repository and add the default gpg key to git-crypt. Note: adding encryption to a repository will only encrypt files <em>going forward.</em> Any previous versions in the commit history will still be un-encrypted. Best practice is to set up git-crypt first, add relevant file or folder names to the <code>.gitattributes</code> file, and only then add any sensitive files to the repo.</p>
+<pre><code>## In the repo base directory open the terminal or command line and enter:
+
+git-crypt init
+
+## To verify that files are being encrypted run:
+
+git-crypt status
+
+# add your key to git crypt
+git-crypt add-gpg-user YOUR_KEY_HERE
+
+# create .gitattributes file - will tell git crypt what should be encrypted
+touch .gitattributes 
+
+# tell git crypt that .env should be encrypted
+echo &#39;**/.env filter=git-crypt diff=git-crypt&#39; &gt;&gt; .gitattributes 
+
+# may also be a good idea to add **/auth  if you&#39;re going to be 
+# using non-interactive processes with dropbox and google drive
+echo &#39;auth/** filter=git-crypt diff=git-crypt&#39; &gt;&gt; .gitattributes
+
+</code></pre>
+<p>To learn more about pattern matching in the <code>.gitattributes</code> file, see the <a href="https://github.com/AGWA/git-crypt#gitattributes-file">git-crypt read.me</a> and <a href="https://git-scm.com/docs/gitignore#_pattern_format">gitignore manual</a></p>
+<p>Your <code>.gitattributes</code> file might look something like this:</p>
+<pre><code>.env filter=git-crypt diff=git-crypt
+auth/** filter=git-crypt diff=git-crypt
+.gitattributes !filter !diff
+</code></pre>
+</div>
+<div id="allow-contributors-access-to-encrypted-files" class="section level3 hasAnchor" number="16.7.2">
+<h3><span class="header-section-number">16.7.2</span> Allow contributors access to encrypted files<a href="16-encryption.html#allow-contributors-access-to-encrypted-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First add their public key to your keychain. Visit their Keybase profiles (e.g., <a href="https://keybase.io/noamross" class="uri">https://keybase.io/noamross</a>) and click on the key - it will show several ways to import the keys. Two methods are shown below,</p>
+<pre><code># curl + gpg pro tip: import noamross&#39;s keys
+curl https://keybase.io/noamross/pgp_keys.asc | gpg --import
+
+# the Keybase app can push to gpg keychain, too
+keybase pgp pull noamross</code></pre>
+<p>Next edit the key so that it has sufficient trust levels as described in this <a href="https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/">guide</a>.</p>
+<pre><code># in terminal
+
+gpg --list-keys
+
+## Copy the key that matches the individual you want to allow access to ecnrypted files. 
+
+gpg --edit-key &lt;keyID&gt;
+
+# At the gpg&gt; prompt, use uid X to select the user ID you want to mark as trusted,
+# then use the trust command to set the trust level.
+# Use save to exit when you’re done.
+
+.</code></pre>
+<p>Edit that key so that it has sufficient trust levels as described in the above</p>
+<p>Add the key to your git repo (make sure you’re in the right directory)</p>
+<pre><code>## this will automatically commit changes. Note: replace [key] below with the
+appropriate gpg key.
+
+git crypt add-gpg-user [key]
+</code></pre>
+<p>push changes to remote (github)</p>
+<pre><code>git push
+</code></pre>
+<p>remind the added individual to pull these changes down before they try to unlock the repo. The individual who was just added will have to unlock the repo before they can
+access encrypted files.</p>
+<pre><code>git crypt unlock</code></pre>
+<!-- Moved down from up above. This won't apply to everyone and interrupts the main flow of getting git-crypt working. -->
+</div>
+<div id="import-your-keys-to-the-eha-server" class="section level3 hasAnchor" number="16.7.3">
+<h3><span class="header-section-number">16.7.3</span> Import your keys to the EHA server<a href="16-encryption.html#import-your-keys-to-the-eha-server" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You will probably want the ability to decrypt files when working remotely,
+so place them on the EHA server. You can do this by copying over your whole
+<code>gpg</code> keys directory to the server, like so:</p>
+<pre><code>scp -rp ~/.gnupg url.of.server:</code></pre>
+<p>Note that the main EHA analysis servers share user file systems so you only
+have to do this on one of them.</p>
+<p>You may have to edit the file <code>~/.gnupg/gpg-agent.conf</code> on the server. If
+its first line is <code>pinentry-program /usr/local/bin/pinentry-mac</code>, change it to
+<code>pinentry-program /usr/bin/pinentry</code>. Note that it may not exist at all, which
+is fine - it means the program is just using default behavior.</p>
+</div>
+</div>
+<div id="use-a-symmetric-key-for-automated-processes" class="section level2 hasAnchor" number="16.8">
+<h2><span class="header-section-number">16.8</span> Use a symmetric key for automated processes<a href="16-encryption.html#use-a-symmetric-key-for-automated-processes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you are using continuous integration on a repository with encrypted files,
+you’ll need to provide a way for the CI system to unlock them. An easy, but
+not <em>most</em> secure way is to provide a <em>symmetric key</em>. You can generate
+this by running this in your project directory. This key can always be regenerated
+so do NOT commit it to your repository.</p>
+<pre><code>git-crypt export-key git_crypt_key.key</code></pre>
+<p><code>git_crypt_key.key</code> can now be used to decrypt the repository, and you can provide
+it to the CI system as an environment variable. However, since it is binary data,
+you’ll need to convert it to base64 first. So run something like:</p>
+<pre><code>cat git_crypt_key.key | base64 | pbcopy</code></pre>
+<p>to convert this file to base64 data, then paste it in your CI system’s environment
+variable field as something like <code>GIT_CRYPT_KEY64</code>.</p>
+<p>The key can now be removed from your system.</p>
+<pre><code>rm git_crypt_key.key</code></pre>
+<p>To use the key later, you’ll need (1) <code>git-crypt</code> and <code>gpg</code> installed in the CI
+system image, and (2) to run these commands after the CI clones your repository:</p>
+<pre><code>echo $GIT_ENCRYPT_KEY64 &gt; git_crypt_key.key64 &amp;&amp; base64 -d git_crypt_key.key64 &gt; git_crypt_key.key &amp;&amp; git-crypt unlock git_crypt_key.key</code></pre>
+</div>
+<div id="removing-sensitive-files-from-git-history" class="section level2 hasAnchor" number="16.9">
+<h2><span class="header-section-number">16.9</span> Removing sensitive files from git history<a href="16-encryption.html#removing-sensitive-files-from-git-history" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>AKA What to do if you accidentally committed sensitive files (data, keys, etc.) to your repository either before encryption or our outside the scope of your <code>.gitattributes</code> file.</p>
+<ol style="list-style-type: decimal">
+<li>Take a breath.</li>
+<li>Make sure your sensitive files are included either in the <code>.gitattributes</code> file if you want them encrypted or delete them then add them to your <code>.gitignore</code> file. You can add a filter for particular files any where in your repo with <code>**/MySuperSensitiveFile</code> see <a href="https://git-scm.com/docs/gitignore#_pattern_format">gitignore documentation</a></li>
+<li>Install <a href="https://github.com/newren/git-filter-repo/blob/main/INSTALL.md"><code>git-filter-repo</code></a></li>
+<li>Navigate to your repo’s working directory <code>cd my/project/folder</code></li>
+<li>Back up your <code>.git/config</code> file as certain elements will be removed when we run <code>git filter-repo</code></li>
+<li>Run <code>git filter-repo --invert-paths --path PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA</code> to remove a sensitive file.</li>
+<li>Make sure you’ve removed everything you want from the repository’s history</li>
+</ol>
+<ul>
+<li>use <code>git log -- path/to/file</code> to see git history for a particular file. <strong>Note</strong> If you’ve successfully removed the file there won’t be any history to display.<br />
+</li>
+<li>see <a href="https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History"><code>git log</code></a> for more information.<br />
+9)Check in with collaborators to make sure no one has work on branches in the repo they would like to keep.<br />
+</li>
+</ul>
+<ol start="10" style="list-style-type: decimal">
+<li>Next you will use <code>push --force</code> to overwrite all the history on github and all the branches on your repo. Push your changes to the remote using <code>git push origin --force --all</code>.</li>
+</ol>
+<ul>
+<li>You may have to add the origin back into your .git/config file</li>
+</ul>
+<ol start="11" style="list-style-type: decimal">
+<li>Use <code>git push origin --force --tags</code> to remove sensitive files from any of your tagged releases.</li>
+<li>Follow the instructions <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#fully-removing-the-data-from-github">here</a> for contacting github to make sure there aren’t any caches of the files on github.</li>
+<li>Tell your collaborators to <code>rebase</code>,NOT MERGE, any branches created off the old repo history.</li>
+<li>Wait a little bit to make sure that your file remove didn’t have unintended side effects then run the following code:</li>
+</ol>
+<pre><code>git for-each-ref --format=&quot;delete %(refname)&quot; refs/original | git update-ref --stdin
+git reflog expire --expire=now --all
+git gc --prune=now</code></pre>
+<ol start="10" style="list-style-type: decimal">
+<li>Breathe a sigh of relief.</li>
+</ol>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-
+<a href="15-google-authorization-and-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="17-dependencies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -488,7 +776,7 @@ gitbook.start({
 "id": 1
 },
 "edit": {
-"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/%s",
+"link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/encryption.Rmd",
 "text": "Edit this chapter"
 },
 "history": {
