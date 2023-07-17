@@ -47,7 +47,6 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
@@ -59,18 +58,18 @@
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -90,13 +89,13 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -146,29 +145,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="1" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html"><i class="fa fa-check"></i><b>1</b> Sequences alignment</a><ul>
-<li class="chapter" data-level="1.1" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#heredity"><i class="fa fa-check"></i><b>1.1</b> Heredity</a></li>
-<li class="chapter" data-level="1.2" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#orthologs-and-paralogs"><i class="fa fa-check"></i><b>1.2</b> Orthologs and paralogs</a></li>
-<li class="chapter" data-level="1.3" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#blast"><i class="fa fa-check"></i><b>1.3</b> BLAST</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#conda-installation"><i class="fa fa-check"></i><b>1.3.1</b> Conda Installation</a></li>
+<li class="chapter" data-level="1" data-path="1-quality-control.html"><a href="1-quality-control.html"><i class="fa fa-check"></i><b>1</b> Quality control</a>
+<ul>
+<li class="chapter" data-level="1.0.1" data-path="1-quality-control.html"><a href="1-quality-control.html#what-is-quality-control"><i class="fa fa-check"></i><b>1.0.1</b> What is quality control?</a></li>
+<li class="chapter" data-level="1.0.2" data-path="1-quality-control.html"><a href="1-quality-control.html#why-is-a-quality-control-step-necessary-in-ngs-data"><i class="fa fa-check"></i><b>1.0.2</b> Why is a quality control step necessary in NGS data?</a></li>
+<li class="chapter" data-level="1.0.3" data-path="1-quality-control.html"><a href="1-quality-control.html#why-is-a-quality-control-step-important-in-the-processing-of-ngs-data"><i class="fa fa-check"></i><b>1.0.3</b> Why is a quality control step important in the processing of NGS data?</a></li>
+<li class="chapter" data-level="1.0.4" data-path="1-quality-control.html"><a href="1-quality-control.html#how-does-the-trimming-process-work"><i class="fa fa-check"></i><b>1.0.4</b> How does the trimming process work?</a></li>
+<li class="chapter" data-level="1.0.5" data-path="1-quality-control.html"><a href="1-quality-control.html#quality-control-with-trimmomatic"><i class="fa fa-check"></i><b>1.0.5</b> Quality control with trimmomatic</a></li>
+<li class="chapter" data-level="1.0.6" data-path="1-quality-control.html"><a href="1-quality-control.html#visualization-of-the-quality-of-the-reads"><i class="fa fa-check"></i><b>1.0.6</b> Visualization of the quality of the reads</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#install-blast-with-conda"><i class="fa fa-check"></i><b>1.4</b> Install <span>BLAST+</span> with Conda</a></li>
-<li class="chapter" data-level="1.5" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#install-database-reference-sequences"><i class="fa fa-check"></i><b>1.5</b> Install database reference sequences</a><ul>
-<li class="chapter" data-level="1.5.1" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#there-are-different-ways-to-install-the-pre-formatted-blast-databases"><i class="fa fa-check"></i><b>1.5.1</b> There are different ways to install the pre-formatted BLAST databases:</a></li>
-</ul></li>
-<li class="chapter" data-level="1.6" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#pairwise-sequence-alignment"><i class="fa fa-check"></i><b>1.6</b> Pairwise sequence alignment</a><ul>
-<li class="chapter" data-level="1.6.1" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#blastn"><i class="fa fa-check"></i><b>1.6.1</b> BLASTn</a></li>
-<li class="chapter" data-level="1.6.2" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#blastp"><i class="fa fa-check"></i><b>1.6.2</b> BLASTp</a></li>
-<li class="chapter" data-level="1.6.3" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#configuration-files-and-environmental-variables"><i class="fa fa-check"></i><b>1.6.3</b> Configuration files and environmental variables</a></li>
-</ul></li>
-<li class="chapter" data-level="1.7" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#blast-with-high-throughput-data"><i class="fa fa-check"></i><b>1.7</b> BLAST with high-throughput data</a><ul>
-<li class="chapter" data-level="1.7.1" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#installation"><i class="fa fa-check"></i><b>1.7.1</b> Installation</a></li>
-<li class="chapter" data-level="1.7.2" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#add-sequence-database"><i class="fa fa-check"></i><b>1.7.2</b> Add sequence database</a></li>
-<li class="chapter" data-level="1.7.3" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#add-the-job-to-the-queue"><i class="fa fa-check"></i><b>1.7.3</b> Add the job to the queue</a></li>
-<li class="chapter" data-level="1.7.4" data-path="1-seqs_aln.html"><a href="1-seqs_aln.html#run-the-job"><i class="fa fa-check"></i><b>1.7.4</b> Run the job</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="2-assembly-of-high-throughput-data.html"><a href="2-assembly-of-high-throughput-data.html"><i class="fa fa-check"></i><b>2</b> Assembly of high-throughput data</a><ul>
+<li class="chapter" data-level="2" data-path="2-assembly-of-high-throughput-data.html"><a href="2-assembly-of-high-throughput-data.html"><i class="fa fa-check"></i><b>2</b> Assembly of high-throughput data</a>
+<ul>
 <li class="chapter" data-level="2.0.1" data-path="2-assembly-of-high-throughput-data.html"><a href="2-assembly-of-high-throughput-data.html#the-problem"><i class="fa fa-check"></i><b>2.0.1</b> The problem</a></li>
 <li class="chapter" data-level="2.0.2" data-path="2-assembly-of-high-throughput-data.html"><a href="2-assembly-of-high-throughput-data.html#graphs"><i class="fa fa-check"></i><b>2.0.2</b> Graphs</a></li>
 <li class="chapter" data-level="2.0.3" data-path="2-assembly-of-high-throughput-data.html"><a href="2-assembly-of-high-throughput-data.html#bruijn-graph"><i class="fa fa-check"></i><b>2.0.3</b> Bruijn graph</a></li>
@@ -176,17 +163,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.0.5" data-path="2-assembly-of-high-throughput-data.html"><a href="2-assembly-of-high-throughput-data.html#a-formal-presentation-of-de-bruijn-graphs"><i class="fa fa-check"></i><b>2.0.5</b> A formal presentation of de Bruijn graphs</a></li>
 <li class="chapter" data-level="2.0.6" data-path="2-assembly-of-high-throughput-data.html"><a href="2-assembly-of-high-throughput-data.html#megahit"><i class="fa fa-check"></i><b>2.0.6</b> MEGAHIT</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="3-quality-control.html"><a href="3-quality-control.html"><i class="fa fa-check"></i><b>3</b> Quality control</a><ul>
-<li class="chapter" data-level="3.0.1" data-path="3-quality-control.html"><a href="3-quality-control.html#what-is-quality-control"><i class="fa fa-check"></i><b>3.0.1</b> What is quality control?</a></li>
-<li class="chapter" data-level="3.0.2" data-path="3-quality-control.html"><a href="3-quality-control.html#why-is-a-quality-control-step-necessary-in-ngs-data"><i class="fa fa-check"></i><b>3.0.2</b> Why is a quality control step necessary in NGS data?</a></li>
-<li class="chapter" data-level="3.0.3" data-path="3-quality-control.html"><a href="3-quality-control.html#why-is-a-quality-control-step-important-in-the-processing-of-ngs-data"><i class="fa fa-check"></i><b>3.0.3</b> Why is a quality control step important in the processing of NGS data?</a></li>
-<li class="chapter" data-level="3.0.4" data-path="3-quality-control.html"><a href="3-quality-control.html#how-does-the-trimming-process-work"><i class="fa fa-check"></i><b>3.0.4</b> How does the trimming process work?</a></li>
-<li class="chapter" data-level="3.0.5" data-path="3-quality-control.html"><a href="3-quality-control.html#quality-control-with-trimmomatic"><i class="fa fa-check"></i><b>3.0.5</b> Quality control with trimmomatic</a></li>
-<li class="chapter" data-level="3.0.6" data-path="3-quality-control.html"><a href="3-quality-control.html#visualization-of-the-quality-of-the-reads"><i class="fa fa-check"></i><b>3.0.6</b> Visualization of the quality of the reads</a></li>
+<li class="chapter" data-level="3" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html"><i class="fa fa-check"></i><b>3</b> Sequences alignment</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#heredity"><i class="fa fa-check"></i><b>3.1</b> Heredity</a></li>
+<li class="chapter" data-level="3.2" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#orthologs-and-paralogs"><i class="fa fa-check"></i><b>3.2</b> Orthologs and paralogs</a></li>
+<li class="chapter" data-level="3.3" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#blast"><i class="fa fa-check"></i><b>3.3</b> BLAST</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#conda-installation"><i class="fa fa-check"></i><b>3.3.1</b> Conda Installation</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="4-Contributing.html"><a href="4-Contributing.html"><i class="fa fa-check"></i><b>4</b> Contributing</a><ul>
+<li class="chapter" data-level="3.4" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#install-blast-with-conda"><i class="fa fa-check"></i><b>3.4</b> Install BLAST+ with Conda</a></li>
+<li class="chapter" data-level="3.5" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#install-database-reference-sequences"><i class="fa fa-check"></i><b>3.5</b> Install database reference sequences</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#there-are-different-ways-to-install-the-pre-formatted-blast-databases"><i class="fa fa-check"></i><b>3.5.1</b> There are different ways to install the pre-formatted BLAST databases:</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#pairwise-sequence-alignment"><i class="fa fa-check"></i><b>3.6</b> Pairwise sequence alignment</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#blastn"><i class="fa fa-check"></i><b>3.6.1</b> BLASTn</a></li>
+<li class="chapter" data-level="3.6.2" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#blastp"><i class="fa fa-check"></i><b>3.6.2</b> BLASTp</a></li>
+<li class="chapter" data-level="3.6.3" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#configuration-files-and-environmental-variables"><i class="fa fa-check"></i><b>3.6.3</b> Configuration files and environmental variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#blast-with-high-throughput-data"><i class="fa fa-check"></i><b>3.7</b> BLAST with high-throughput data</a>
+<ul>
+<li class="chapter" data-level="3.7.1" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#installation-2"><i class="fa fa-check"></i><b>3.7.1</b> Installation</a></li>
+<li class="chapter" data-level="3.7.2" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#add-sequence-database"><i class="fa fa-check"></i><b>3.7.2</b> Add sequence database</a></li>
+<li class="chapter" data-level="3.7.3" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#add-the-job-to-the-queue"><i class="fa fa-check"></i><b>3.7.3</b> Add the job to the queue</a></li>
+<li class="chapter" data-level="3.7.4" data-path="3-seqs_aln.html"><a href="3-seqs_aln.html#run-the-job"><i class="fa fa-check"></i><b>3.7.4</b> Run the job</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-Contributing.html"><a href="4-Contributing.html"><i class="fa fa-check"></i><b>4</b> Contributing</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="4-Contributing.html"><a href="4-Contributing.html#anatomy-of-a-chapter"><i class="fa fa-check"></i><b>4.1</b> Anatomy of a chapter</a></li>
-<li class="chapter" data-level="4.2" data-path="4-Contributing.html"><a href="4-Contributing.html#workflow-summary"><i class="fa fa-check"></i><b>4.2</b> Workflow Summary</a><ul>
+<li class="chapter" data-level="4.2" data-path="4-Contributing.html"><a href="4-Contributing.html#workflow-summary"><i class="fa fa-check"></i><b>4.2</b> Workflow Summary</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="4-Contributing.html"><a href="4-Contributing.html#for-quick-edits"><i class="fa fa-check"></i><b>4.2.1</b> For quick edits</a></li>
 <li class="chapter" data-level="4.2.2" data-path="4-Contributing.html"><a href="4-Contributing.html#adding-a-chapter"><i class="fa fa-check"></i><b>4.2.2</b> Adding a chapter</a></li>
 <li class="chapter" data-level="4.2.3" data-path="4-Contributing.html"><a href="4-Contributing.html#major-edits"><i class="fa fa-check"></i><b>4.2.3</b> Major edits</a></li>
@@ -197,30 +205,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.6" data-path="4-Contributing.html"><a href="4-Contributing.html#modifying-chapters"><i class="fa fa-check"></i><b>4.6</b> Modifying chapters</a></li>
 <li class="chapter" data-level="4.7" data-path="4-Contributing.html"><a href="4-Contributing.html#additional-resources"><i class="fa fa-check"></i><b>4.7</b> Additional resources</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="5-quickstart-for-computing.html"><a href="5-quickstart-for-computing.html"><i class="fa fa-check"></i><b>5</b> Quickstart for computing</a><ul>
+<li class="chapter" data-level="5" data-path="5-quickstart-for-computing.html"><a href="5-quickstart-for-computing.html"><i class="fa fa-check"></i><b>5</b> Quickstart for computing</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="5-quickstart-for-computing.html"><a href="5-quickstart-for-computing.html#optional"><i class="fa fa-check"></i><b>5.1</b> Optional</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="6-projects.html"><a href="6-projects.html"><i class="fa fa-check"></i><b>6</b> Project Management</a><ul>
+<li class="chapter" data-level="6" data-path="6-projects.html"><a href="6-projects.html"><i class="fa fa-check"></i><b>6</b> Project Management</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="6-projects.html"><a href="6-projects.html#teams-and-work-cycles"><i class="fa fa-check"></i><b>6.1</b> Teams and Work Cycles</a></li>
-<li class="chapter" data-level="6.2" data-path="6-projects.html"><a href="6-projects.html#setup-and-materials-organization"><i class="fa fa-check"></i><b>6.2</b> Setup and materials Organization</a><ul>
+<li class="chapter" data-level="6.2" data-path="6-projects.html"><a href="6-projects.html#setup-and-materials-organization"><i class="fa fa-check"></i><b>6.2</b> Setup and materials Organization</a>
+<ul>
 <li class="chapter" data-level="6.2.1" data-path="6-projects.html"><a href="6-projects.html#code-organization"><i class="fa fa-check"></i><b>6.2.1</b> Code organization</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="7-r.html"><a href="7-r.html"><i class="fa fa-check"></i><b>7</b> R and Reproducible Analysis</a><ul>
+<li class="chapter" data-level="7" data-path="7-r.html"><a href="7-r.html"><i class="fa fa-check"></i><b>7</b> R and Reproducible Analysis</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="7-r.html"><a href="7-r.html#install"><i class="fa fa-check"></i><b>7.1</b> Install</a></li>
 <li class="chapter" data-level="7.2" data-path="7-r.html"><a href="7-r.html#learn"><i class="fa fa-check"></i><b>7.2</b> Learn</a></li>
 <li class="chapter" data-level="7.3" data-path="7-r.html"><a href="7-r.html#additional-resources-1"><i class="fa fa-check"></i><b>7.3</b> Additional Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="8-eha-team-communication.html"><a href="8-eha-team-communication.html"><i class="fa fa-check"></i><b>8</b> EHA Team Communication</a><ul>
+<li class="chapter" data-level="8" data-path="8-eha-team-communication.html"><a href="8-eha-team-communication.html"><i class="fa fa-check"></i><b>8</b> EHA Team Communication</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="8-eha-team-communication.html"><a href="8-eha-team-communication.html#install-1"><i class="fa fa-check"></i><b>8.1</b> Install</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="9-documentation-and-outputs.html"><a href="9-documentation-and-outputs.html"><i class="fa fa-check"></i><b>9</b> Documentation and Outputs</a><ul>
+<li class="chapter" data-level="9" data-path="9-documentation-and-outputs.html"><a href="9-documentation-and-outputs.html"><i class="fa fa-check"></i><b>9</b> Documentation and Outputs</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="9-documentation-and-outputs.html"><a href="9-documentation-and-outputs.html#learn-1"><i class="fa fa-check"></i><b>9.1</b> Learn</a></li>
 <li class="chapter" data-level="9.2" data-path="9-documentation-and-outputs.html"><a href="9-documentation-and-outputs.html#install-2"><i class="fa fa-check"></i><b>9.2</b> Install</a></li>
 <li class="chapter" data-level="9.3" data-path="9-documentation-and-outputs.html"><a href="9-documentation-and-outputs.html#library"><i class="fa fa-check"></i><b>9.3</b> Library</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="10-data-management.html"><a href="10-data-management.html"><i class="fa fa-check"></i><b>10</b> Data Management</a><ul>
-<li class="chapter" data-level="10.1" data-path="10-data-management.html"><a href="10-data-management.html#data-management-plan"><i class="fa fa-check"></i><b>10.1</b> Data Management Plan</a><ul>
+<li class="chapter" data-level="10" data-path="10-data-management.html"><a href="10-data-management.html"><i class="fa fa-check"></i><b>10</b> Data Management</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="10-data-management.html"><a href="10-data-management.html#data-management-plan"><i class="fa fa-check"></i><b>10.1</b> Data Management Plan</a>
+<ul>
 <li class="chapter" data-level="10.1.1" data-path="10-data-management.html"><a href="10-data-management.html#expectations-by-project-phase"><i class="fa fa-check"></i><b>10.1.1</b> Expectations by project phase</a></li>
 <li class="chapter" data-level="10.1.2" data-path="10-data-management.html"><a href="10-data-management.html#using-dmptool-to-create-prepare-your-proposal-data-management-plan"><i class="fa fa-check"></i><b>10.1.2</b> Using DMPTool to create prepare your proposal data Management plan</a></li>
 </ul></li>
@@ -228,120 +244,147 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="10-data-management.html"><a href="10-data-management.html#learn-2"><i class="fa fa-check"></i><b>10.3</b> Learn</a></li>
 <li class="chapter" data-level="10.4" data-path="10-data-management.html"><a href="10-data-management.html#install-3"><i class="fa fa-check"></i><b>10.4</b> Install</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="11-airtable.html"><a href="11-airtable.html"><i class="fa fa-check"></i><b>11</b> Airtable</a><ul>
+<li class="chapter" data-level="11" data-path="11-airtable.html"><a href="11-airtable.html"><i class="fa fa-check"></i><b>11</b> Airtable</a>
+<ul>
 <li class="chapter" data-level="11.1" data-path="11-airtable.html"><a href="11-airtable.html#key-terms"><i class="fa fa-check"></i><b>11.1</b> Key Terms</a></li>
 <li class="chapter" data-level="11.2" data-path="11-airtable.html"><a href="11-airtable.html#what-is-airtable"><i class="fa fa-check"></i><b>11.2</b> What is Airtable?</a></li>
 <li class="chapter" data-level="11.3" data-path="11-airtable.html"><a href="11-airtable.html#when-should-i-use-airtable"><i class="fa fa-check"></i><b>11.3</b> When should I use Airtable?</a></li>
-<li class="chapter" data-level="11.4" data-path="11-airtable.html"><a href="11-airtable.html#security-and-access-control"><i class="fa fa-check"></i><b>11.4</b> Security and Access Control</a><ul>
+<li class="chapter" data-level="11.4" data-path="11-airtable.html"><a href="11-airtable.html#security-and-access-control"><i class="fa fa-check"></i><b>11.4</b> Security and Access Control</a>
+<ul>
 <li class="chapter" data-level="11.4.1" data-path="11-airtable.html"><a href="11-airtable.html#user--and-administrator-security-features"><i class="fa fa-check"></i><b>11.4.1</b> User- and Administrator Security Features</a></li>
 <li class="chapter" data-level="11.4.2" data-path="11-airtable.html"><a href="11-airtable.html#share-links-and-interfaces"><i class="fa fa-check"></i><b>11.4.2</b> Share Links and Interfaces</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="11-airtable.html"><a href="11-airtable.html#data-in-airtable"><i class="fa fa-check"></i><b>11.5</b> Data in Airtable</a><ul>
+<li class="chapter" data-level="11.5" data-path="11-airtable.html"><a href="11-airtable.html#data-in-airtable"><i class="fa fa-check"></i><b>11.5</b> Data in Airtable</a>
+<ul>
 <li class="chapter" data-level="11.5.1" data-path="11-airtable.html"><a href="11-airtable.html#workspaces-bases-tables-fields-records"><i class="fa fa-check"></i><b>11.5.1</b> Workspaces, Bases, Tables, Fields, Records</a></li>
 <li class="chapter" data-level="11.5.2" data-path="11-airtable.html"><a href="11-airtable.html#views"><i class="fa fa-check"></i><b>11.5.2</b> Views</a></li>
 <li class="chapter" data-level="11.5.3" data-path="11-airtable.html"><a href="11-airtable.html#internal-backups-record-history-base-snapshots"><i class="fa fa-check"></i><b>11.5.3</b> Internal Backups: Record History, Base Snapshots</a></li>
 <li class="chapter" data-level="11.5.4" data-path="11-airtable.html"><a href="11-airtable.html#importing-data"><i class="fa fa-check"></i><b>11.5.4</b> Importing data</a></li>
 </ul></li>
 <li class="chapter" data-level="11.6" data-path="11-airtable.html"><a href="11-airtable.html#base-design"><i class="fa fa-check"></i><b>11.6</b> Base Design</a></li>
-<li class="chapter" data-level="11.7" data-path="11-airtable.html"><a href="11-airtable.html#automating-airtable"><i class="fa fa-check"></i><b>11.7</b> Automating Airtable</a><ul>
+<li class="chapter" data-level="11.7" data-path="11-airtable.html"><a href="11-airtable.html#automating-airtable"><i class="fa fa-check"></i><b>11.7</b> Automating Airtable</a>
+<ul>
 <li class="chapter" data-level="11.7.1" data-path="11-airtable.html"><a href="11-airtable.html#automations-with-drag-and-drop-programing-pro-and-above"><i class="fa fa-check"></i><b>11.7.1</b> Automations with Drag and Drop Programing (pro and above)</a></li>
 <li class="chapter" data-level="11.7.2" data-path="11-airtable.html"><a href="11-airtable.html#scripting-and-blocks-pro-plan-and-above"><i class="fa fa-check"></i><b>11.7.2</b> Scripting and Blocks (pro plan and above)</a></li>
 </ul></li>
-<li class="chapter" data-level="11.8" data-path="11-airtable.html"><a href="11-airtable.html#using-the-rest-api"><i class="fa fa-check"></i><b>11.8</b> Using the REST API</a><ul>
+<li class="chapter" data-level="11.8" data-path="11-airtable.html"><a href="11-airtable.html#using-the-rest-api"><i class="fa fa-check"></i><b>11.8</b> Using the REST API</a>
+<ul>
 <li class="chapter" data-level="11.8.1" data-path="11-airtable.html"><a href="11-airtable.html#scoped-tokens"><i class="fa fa-check"></i><b>11.8.1</b> Scoped Tokens</a></li>
 <li class="chapter" data-level="11.8.2" data-path="11-airtable.html"><a href="11-airtable.html#airtable-and-r"><i class="fa fa-check"></i><b>11.8.2</b> Airtable and R</a></li>
 </ul></li>
-<li class="chapter" data-level="11.9" data-path="11-airtable.html"><a href="11-airtable.html#data-management-1"><i class="fa fa-check"></i><b>11.9</b> Data Management</a><ul>
+<li class="chapter" data-level="11.9" data-path="11-airtable.html"><a href="11-airtable.html#data-management-1"><i class="fa fa-check"></i><b>11.9</b> Data Management</a>
+<ul>
 <li class="chapter" data-level="11.9.1" data-path="11-airtable.html"><a href="11-airtable.html#metadata"><i class="fa fa-check"></i><b>11.9.1</b> Metadata</a></li>
 <li class="chapter" data-level="11.9.2" data-path="11-airtable.html"><a href="11-airtable.html#external-backups"><i class="fa fa-check"></i><b>11.9.2</b> External Backups</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="12-versioning.html"><a href="12-versioning.html"><i class="fa fa-check"></i><b>12</b> Version Control, Git and Github</a><ul>
+<li class="chapter" data-level="12" data-path="12-versioning.html"><a href="12-versioning.html"><i class="fa fa-check"></i><b>12</b> Version Control, Git and Github</a>
+<ul>
 <li class="chapter" data-level="12.1" data-path="12-versioning.html"><a href="12-versioning.html#learn-3"><i class="fa fa-check"></i><b>12.1</b> Learn</a></li>
-<li class="chapter" data-level="12.2" data-path="12-versioning.html"><a href="12-versioning.html#install-4"><i class="fa fa-check"></i><b>12.2</b> Install</a><ul>
+<li class="chapter" data-level="12.2" data-path="12-versioning.html"><a href="12-versioning.html#install-4"><i class="fa fa-check"></i><b>12.2</b> Install</a>
+<ul>
 <li class="chapter" data-level="12.2.1" data-path="12-versioning.html"><a href="12-versioning.html#creating-tokens"><i class="fa fa-check"></i><b>12.2.1</b> Creating Tokens</a></li>
 <li class="chapter" data-level="12.2.2" data-path="12-versioning.html"><a href="12-versioning.html#regenerating-tokens"><i class="fa fa-check"></i><b>12.2.2</b> Regenerating Tokens</a></li>
 <li class="chapter" data-level="12.2.3" data-path="12-versioning.html"><a href="12-versioning.html#useful-references"><i class="fa fa-check"></i><b>12.2.3</b> Useful References</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="13-reviewing-analyses-and-code.html"><a href="13-reviewing-analyses-and-code.html"><i class="fa fa-check"></i><b>13</b> Reviewing Analyses and Code</a><ul>
+<li class="chapter" data-level="13" data-path="13-reviewing-analyses-and-code.html"><a href="13-reviewing-analyses-and-code.html"><i class="fa fa-check"></i><b>13</b> Reviewing Analyses and Code</a>
+<ul>
 <li class="chapter" data-level="13.1" data-path="13-reviewing-analyses-and-code.html"><a href="13-reviewing-analyses-and-code.html#learn-4"><i class="fa fa-check"></i><b>13.1</b> Learn</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="14-testing.html"><a href="14-testing.html"><i class="fa fa-check"></i><b>14</b> Testing</a><ul>
+<li class="chapter" data-level="14" data-path="14-testing.html"><a href="14-testing.html"><i class="fa fa-check"></i><b>14</b> Testing</a>
+<ul>
 <li class="chapter" data-level="14.1" data-path="14-testing.html"><a href="14-testing.html#learn-5"><i class="fa fa-check"></i><b>14.1</b> Learn</a></li>
 <li class="chapter" data-level="14.2" data-path="14-testing.html"><a href="14-testing.html#install-5"><i class="fa fa-check"></i><b>14.2</b> Install</a></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="15-high-performance-servers.html"><a href="15-high-performance-servers.html"><i class="fa fa-check"></i><b>15</b> High-Performance Servers</a></li>
-<li class="chapter" data-level="16" data-path="16-odk.html"><a href="16-odk.html"><i class="fa fa-check"></i><b>16</b> Open Data Kit</a><ul>
-<li class="chapter" data-level="16.1" data-path="16-odk.html"><a href="16-odk.html#central"><i class="fa fa-check"></i><b>16.1</b> ODK Central</a><ul>
+<li class="chapter" data-level="16" data-path="16-odk.html"><a href="16-odk.html"><i class="fa fa-check"></i><b>16</b> Open Data Kit</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="16-odk.html"><a href="16-odk.html#central"><i class="fa fa-check"></i><b>16.1</b> ODK Central</a>
+<ul>
 <li class="chapter" data-level="16.1.1" data-path="16-odk.html"><a href="16-odk.html#getting-an-eha-odk-central-account"><i class="fa fa-check"></i><b>16.1.1</b> Getting an EHA ODK Central account</a></li>
 <li class="chapter" data-level="16.1.2" data-path="16-odk.html"><a href="16-odk.html#using-odk-central"><i class="fa fa-check"></i><b>16.1.2</b> Using ODK Central</a></li>
 <li class="chapter" data-level="16.1.3" data-path="16-odk.html"><a href="16-odk.html#setting-up-a-project"><i class="fa fa-check"></i><b>16.1.3</b> Setting up a project</a></li>
 <li class="chapter" data-level="16.1.4" data-path="16-odk.html"><a href="16-odk.html#monitoring-the-progress-of-projects"><i class="fa fa-check"></i><b>16.1.4</b> Monitoring the progress of projects</a></li>
 <li class="chapter" data-level="16.1.5" data-path="16-odk.html"><a href="16-odk.html#retrieving-data"><i class="fa fa-check"></i><b>16.1.5</b> Retrieving Data</a></li>
 </ul></li>
-<li class="chapter" data-level="16.2" data-path="16-odk.html"><a href="16-odk.html#collect"><i class="fa fa-check"></i><b>16.2</b> ODK Collect</a><ul>
+<li class="chapter" data-level="16.2" data-path="16-odk.html"><a href="16-odk.html#collect"><i class="fa fa-check"></i><b>16.2</b> ODK Collect</a>
+<ul>
 <li class="chapter" data-level="16.2.1" data-path="16-odk.html"><a href="16-odk.html#installing-odk-collect"><i class="fa fa-check"></i><b>16.2.1</b> Installing ODK Collect</a></li>
 <li class="chapter" data-level="16.2.2" data-path="16-odk.html"><a href="16-odk.html#connecting-to-a-server"><i class="fa fa-check"></i><b>16.2.2</b> Connecting to a server</a></li>
 </ul></li>
-<li class="chapter" data-level="16.3" data-path="16-odk.html"><a href="16-odk.html#other-useful-odk-collect-configurations"><i class="fa fa-check"></i><b>16.3</b> Other useful ODK Collect configurations</a><ul>
+<li class="chapter" data-level="16.3" data-path="16-odk.html"><a href="16-odk.html#other-useful-odk-collect-configurations"><i class="fa fa-check"></i><b>16.3</b> Other useful ODK Collect configurations</a>
+<ul>
 <li class="chapter" data-level="16.3.1" data-path="16-odk.html"><a href="16-odk.html#language-settings"><i class="fa fa-check"></i><b>16.3.1</b> Language settings</a></li>
 <li class="chapter" data-level="16.3.2" data-path="16-odk.html"><a href="16-odk.html#localizing-odk-collect"><i class="fa fa-check"></i><b>16.3.2</b> Localizing ODK Collect</a></li>
 </ul></li>
 <li class="chapter" data-level="16.4" data-path="16-odk.html"><a href="16-odk.html#xlsform"><i class="fa fa-check"></i><b>16.4</b> XLSForm</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="17-cloud-computing-services.html"><a href="17-cloud-computing-services.html"><i class="fa fa-check"></i><b>17</b> Cloud Computing Services</a><ul>
-<li class="chapter" data-level="17.1" data-path="17-cloud-computing-services.html"><a href="17-cloud-computing-services.html#setting-up-amazon-credentials"><i class="fa fa-check"></i><b>17.1</b> Setting up Amazon Credentials</a><ul>
+<li class="chapter" data-level="17" data-path="17-cloud-computing-services.html"><a href="17-cloud-computing-services.html"><i class="fa fa-check"></i><b>17</b> Cloud Computing Services</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="17-cloud-computing-services.html"><a href="17-cloud-computing-services.html#setting-up-amazon-credentials"><i class="fa fa-check"></i><b>17.1</b> Setting up Amazon Credentials</a>
+<ul>
 <li class="chapter" data-level="17.1.1" data-path="17-cloud-computing-services.html"><a href="17-cloud-computing-services.html#generate-an-access-key"><i class="fa fa-check"></i><b>17.1.1</b> Generate an access key</a></li>
 <li class="chapter" data-level="17.1.2" data-path="17-cloud-computing-services.html"><a href="17-cloud-computing-services.html#create-a-credentials-file"><i class="fa fa-check"></i><b>17.1.2</b> Create a credentials file</a></li>
 <li class="chapter" data-level="17.1.3" data-path="17-cloud-computing-services.html"><a href="17-cloud-computing-services.html#test-your-key"><i class="fa fa-check"></i><b>17.1.3</b> Test your Key</a></li>
 <li class="chapter" data-level="17.1.4" data-path="17-cloud-computing-services.html"><a href="17-cloud-computing-services.html#alternate-credentialing-method"><i class="fa fa-check"></i><b>17.1.4</b> Alternate credentialing method</a></li>
 </ul></li>
-<li class="chapter" data-level="17.2" data-path="17-cloud-computing-services.html"><a href="17-cloud-computing-services.html#using-amazon-s3-storage-from-r"><i class="fa fa-check"></i><b>17.2</b> Using Amazon S3 Storage from R</a><ul>
+<li class="chapter" data-level="17.2" data-path="17-cloud-computing-services.html"><a href="17-cloud-computing-services.html#using-amazon-s3-storage-from-r"><i class="fa fa-check"></i><b>17.2</b> Using Amazon S3 Storage from R</a>
+<ul>
 <li class="chapter" data-level="17.2.1" data-path="17-cloud-computing-services.html"><a href="17-cloud-computing-services.html#save-objects-from-s3-to-your-machine"><i class="fa fa-check"></i><b>17.2.1</b> Save objects from S3 to your machine</a></li>
 <li class="chapter" data-level="17.2.2" data-path="17-cloud-computing-services.html"><a href="17-cloud-computing-services.html#upload-objects-from-your-machine-to-s3"><i class="fa fa-check"></i><b>17.2.2</b> Upload objects from your machine to S3</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html"><i class="fa fa-check"></i><b>18</b> Google Authorization and R</a><ul>
+<li class="chapter" data-level="18" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html"><i class="fa fa-check"></i><b>18</b> Google Authorization and R</a>
+<ul>
 <li class="chapter" data-level="18.1" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#the-basic-overview"><i class="fa fa-check"></i><b>18.1</b> The basic overview:</a></li>
 <li class="chapter" data-level="18.2" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#key-terms-1"><i class="fa fa-check"></i><b>18.2</b> Key Terms</a></li>
 <li class="chapter" data-level="18.3" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#before-we-start"><i class="fa fa-check"></i><b>18.3</b> Before we start:</a></li>
 <li class="chapter" data-level="18.4" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#setup-encryption-tools-on-your-machine"><i class="fa fa-check"></i><b>18.4</b> Setup encryption tools on your machine</a></li>
 <li class="chapter" data-level="18.5" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#enable-git-crypt-on-your-repository"><i class="fa fa-check"></i><b>18.5</b> Enable git-crypt on your repository</a></li>
-<li class="chapter" data-level="18.6" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#setting-up-non-interactive-authentication-for-google-sheets"><i class="fa fa-check"></i><b>18.6</b> Setting up non-interactive authentication for Google sheets</a><ul>
+<li class="chapter" data-level="18.6" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#setting-up-non-interactive-authentication-for-google-sheets"><i class="fa fa-check"></i><b>18.6</b> Setting up non-interactive authentication for Google sheets</a>
+<ul>
 <li class="chapter" data-level="18.6.1" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#create-a-google-cloud-platform-project"><i class="fa fa-check"></i><b>18.6.1</b> Create a Google cloud platform project</a></li>
 <li class="chapter" data-level="18.6.2" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#enable-apis"><i class="fa fa-check"></i><b>18.6.2</b> Enable APIs</a></li>
 <li class="chapter" data-level="18.6.3" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#create-a-service-account"><i class="fa fa-check"></i><b>18.6.3</b> Create a Service Account</a></li>
 <li class="chapter" data-level="18.6.4" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#create-a-key-for-your-service-account"><i class="fa fa-check"></i><b>18.6.4</b> Create a Key for your service account</a></li>
 <li class="chapter" data-level="18.6.5" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#share-the-google-drive-resources-of-interest-with-the-service-account"><i class="fa fa-check"></i><b>18.6.5</b> Share the Google drive resources of interest with the service account</a></li>
 </ul></li>
-<li class="chapter" data-level="18.7" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#general-approach-to-securely-managing-keys"><i class="fa fa-check"></i><b>18.7</b> General approach to securely managing keys</a><ul>
+<li class="chapter" data-level="18.7" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#general-approach-to-securely-managing-keys"><i class="fa fa-check"></i><b>18.7</b> General approach to securely managing keys</a>
+<ul>
 <li class="chapter" data-level="18.7.1" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#provide-a-service-account-key-for-projects"><i class="fa fa-check"></i><b>18.7.1</b> Provide a service account key for projects</a></li>
 </ul></li>
-<li class="chapter" data-level="18.8" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#additional-resources-2"><i class="fa fa-check"></i><b>18.8</b> Additional Resources</a><ul>
+<li class="chapter" data-level="18.8" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#additional-resources-2"><i class="fa fa-check"></i><b>18.8</b> Additional Resources</a>
+<ul>
 <li class="chapter" data-level="18.8.1" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#google-drive"><i class="fa fa-check"></i><b>18.8.1</b> Google Drive</a></li>
 <li class="chapter" data-level="18.8.2" data-path="18-google-authorization-and-r.html"><a href="18-google-authorization-and-r.html#google-sheets"><i class="fa fa-check"></i><b>18.8.2</b> Google Sheets</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="19-encryption.html"><a href="19-encryption.html"><i class="fa fa-check"></i><b>19</b> Encryption</a><ul>
-<li class="chapter" data-level="19.1" data-path="19-encryption.html"><a href="19-encryption.html#set-up-keybase"><i class="fa fa-check"></i><b>19.1</b> Set up Keybase</a><ul>
+<li class="chapter" data-level="19" data-path="19-encryption.html"><a href="19-encryption.html"><i class="fa fa-check"></i><b>19</b> Encryption</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="19-encryption.html"><a href="19-encryption.html#set-up-keybase"><i class="fa fa-check"></i><b>19.1</b> Set up Keybase</a>
+<ul>
 <li class="chapter" data-level="19.1.1" data-path="19-encryption.html"><a href="19-encryption.html#installing-keybase-on-linux"><i class="fa fa-check"></i><b>19.1.1</b> Installing Keybase on Linux</a></li>
 <li class="chapter" data-level="19.1.2" data-path="19-encryption.html"><a href="19-encryption.html#installing-keybase-on-macos-and-windows"><i class="fa fa-check"></i><b>19.1.2</b> Installing Keybase on macOS and Windows</a></li>
 </ul></li>
-<li class="chapter" data-level="19.2" data-path="19-encryption.html"><a href="19-encryption.html#install-gpg-and-git-crypt"><i class="fa fa-check"></i><b>19.2</b> Install <code>gpg</code> and <code>git-crypt</code></a><ul>
+<li class="chapter" data-level="19.2" data-path="19-encryption.html"><a href="19-encryption.html#install-gpg-and-git-crypt"><i class="fa fa-check"></i><b>19.2</b> Install <code>gpg</code> and <code>git-crypt</code></a>
+<ul>
 <li class="chapter" data-level="19.2.1" data-path="19-encryption.html"><a href="19-encryption.html#install-gpg-and-git-crypt-on-macos"><i class="fa fa-check"></i><b>19.2.1</b> Install <code>gpg</code> and <code>git-crypt</code> on macOS</a></li>
 <li class="chapter" data-level="19.2.2" data-path="19-encryption.html"><a href="19-encryption.html#install-gpg-and-git-crypt-on-windows"><i class="fa fa-check"></i><b>19.2.2</b> Install <code>gpg</code> and <code>git-crypt</code> on Windows</a></li>
 </ul></li>
 <li class="chapter" data-level="19.3" data-path="19-encryption.html"><a href="19-encryption.html#create-your-keybase-keys"><i class="fa fa-check"></i><b>19.3</b> Create your Keybase keys</a></li>
 <li class="chapter" data-level="19.4" data-path="19-encryption.html"><a href="19-encryption.html#import-your-keys-to-your-local-keychain"><i class="fa fa-check"></i><b>19.4</b> Import your keys to your local keychain</a></li>
-<li class="chapter" data-level="19.5" data-path="19-encryption.html"><a href="19-encryption.html#configure-gpg"><i class="fa fa-check"></i><b>19.5</b> Configure gpg</a><ul>
+<li class="chapter" data-level="19.5" data-path="19-encryption.html"><a href="19-encryption.html#configure-gpg"><i class="fa fa-check"></i><b>19.5</b> Configure gpg</a>
+<ul>
 <li class="chapter" data-level="19.5.1" data-path="19-encryption.html"><a href="19-encryption.html#configure-gpg-on-macos-and-linux"><i class="fa fa-check"></i><b>19.5.1</b> Configure gpg on macOS (and Linux)</a></li>
 <li class="chapter" data-level="19.5.2" data-path="19-encryption.html"><a href="19-encryption.html#configure-gpg-on-windows"><i class="fa fa-check"></i><b>19.5.2</b> Configure gpg on Windows</a></li>
 </ul></li>
-<li class="chapter" data-level="19.6" data-path="19-encryption.html"><a href="19-encryption.html#use-git-crypt-to-unlock-a-repository"><i class="fa fa-check"></i><b>19.6</b> Use git-crypt to unlock a repository</a><ul>
+<li class="chapter" data-level="19.6" data-path="19-encryption.html"><a href="19-encryption.html#use-git-crypt-to-unlock-a-repository"><i class="fa fa-check"></i><b>19.6</b> Use git-crypt to unlock a repository</a>
+<ul>
 <li class="chapter" data-level="19.6.1" data-path="19-encryption.html"><a href="19-encryption.html#troubleshooting"><i class="fa fa-check"></i><b>19.6.1</b> Troubleshooting</a></li>
 </ul></li>
-<li class="chapter" data-level="19.7" data-path="19-encryption.html"><a href="19-encryption.html#managing-which-users-can-decrypt-files-in-a-repository"><i class="fa fa-check"></i><b>19.7</b> Managing which users can decrypt files in a repository</a><ul>
+<li class="chapter" data-level="19.7" data-path="19-encryption.html"><a href="19-encryption.html#managing-which-users-can-decrypt-files-in-a-repository"><i class="fa fa-check"></i><b>19.7</b> Managing which users can decrypt files in a repository</a>
+<ul>
 <li class="chapter" data-level="19.7.1" data-path="19-encryption.html"><a href="19-encryption.html#set-up-encryption-for-a-repo-that-did-not-previously-use-git-crypt"><i class="fa fa-check"></i><b>19.7.1</b> Set up encryption for a repo that did not previously use git-crypt</a></li>
 <li class="chapter" data-level="19.7.2" data-path="19-encryption.html"><a href="19-encryption.html#allow-contributors-access-to-encrypted-files"><i class="fa fa-check"></i><b>19.7.2</b> Allow contributors access to encrypted files</a></li>
 <li class="chapter" data-level="19.7.3" data-path="19-encryption.html"><a href="19-encryption.html#import-your-keys-to-the-eha-server"><i class="fa fa-check"></i><b>19.7.3</b> Import your keys to the EHA server</a></li>
@@ -350,7 +393,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.9" data-path="19-encryption.html"><a href="19-encryption.html#removing-sensitive-files-from-git-history"><i class="fa fa-check"></i><b>19.9</b> Removing sensitive files from git history</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="20-dependencies.html"><a href="20-dependencies.html"><i class="fa fa-check"></i><b>20</b> Dependency Management</a></li>
-<li class="chapter" data-level="21" data-path="21-statistical-methods.html"><a href="21-statistical-methods.html"><i class="fa fa-check"></i><b>21</b> Statistical Methods</a><ul>
+<li class="chapter" data-level="21" data-path="21-statistical-methods.html"><a href="21-statistical-methods.html"><i class="fa fa-check"></i><b>21</b> Statistical Methods</a>
+<ul>
 <li class="chapter" data-level="21.1" data-path="21-statistical-methods.html"><a href="21-statistical-methods.html#multivariate-regression"><i class="fa fa-check"></i><b>21.1</b> Multivariate Regression</a></li>
 <li class="chapter" data-level="21.2" data-path="21-statistical-methods.html"><a href="21-statistical-methods.html#networks"><i class="fa fa-check"></i><b>21.2</b> Networks</a></li>
 <li class="chapter" data-level="21.3" data-path="21-statistical-methods.html"><a href="21-statistical-methods.html#bioinformatics-and-sequence-analysis"><i class="fa fa-check"></i><b>21.3</b> Bioinformatics and Sequence Analysis</a></li>
@@ -359,12 +403,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="21.6" data-path="21-statistical-methods.html"><a href="21-statistical-methods.html#phylogenetics"><i class="fa fa-check"></i><b>21.6</b> Phylogenetics</a></li>
 </ul></li>
 <li class="chapter" data-level="22" data-path="22-data-sources.html"><a href="22-data-sources.html"><i class="fa fa-check"></i><b>22</b> Data Sources</a></li>
-<li class="chapter" data-level="23" data-path="23-references.html"><a href="23-references.html"><i class="fa fa-check"></i><b>23</b> References</a><ul>
+<li class="chapter" data-level="23" data-path="23-references.html"><a href="23-references.html"><i class="fa fa-check"></i><b>23</b> References</a>
+<ul>
 <li class="chapter" data-level="23.1" data-path="23-references.html"><a href="23-references.html#converting-paperpile-citations-in-google-docs-to-endnote-citations-in-ms-word"><i class="fa fa-check"></i><b>23.1</b> Converting Paperpile Citations in Google Docs to Endnote Citations in MS Word</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html"><i class="fa fa-check"></i><b>24</b> Training Resources and Plans</a><ul>
+<li class="chapter" data-level="24" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html"><i class="fa fa-check"></i><b>24</b> Training Resources and Plans</a>
+<ul>
 <li class="chapter" data-level="24.1" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#training-plan-components"><i class="fa fa-check"></i><b>24.1</b> Training plan components</a></li>
-<li class="chapter" data-level="24.2" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#training-plans"><i class="fa fa-check"></i><b>24.2</b> Training Plans</a><ul>
+<li class="chapter" data-level="24.2" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#training-plans"><i class="fa fa-check"></i><b>24.2</b> Training Plans</a>
+<ul>
 <li class="chapter" data-level="24.2.1" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#better-managing-data"><i class="fa fa-check"></i><b>24.2.1</b> Better Managing Data</a></li>
 <li class="chapter" data-level="24.2.2" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#version-control-and-git"><i class="fa fa-check"></i><b>24.2.2</b> Version Control and Git</a></li>
 <li class="chapter" data-level="24.2.3" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#reproducible-reporting"><i class="fa fa-check"></i><b>24.2.3</b> Reproducible reporting</a></li>
@@ -376,7 +423,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="24.3" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#metagenomics"><i class="fa fa-check"></i><b>24.3</b> Metagenomics</a></li>
 </ul></li>
-<li class="chapter" data-level="25" data-path="25-help.html"><a href="25-help.html"><i class="fa fa-check"></i><b>25</b> Getting Help</a><ul>
+<li class="chapter" data-level="25" data-path="25-help.html"><a href="25-help.html"><i class="fa fa-check"></i><b>25</b> Getting Help</a>
+<ul>
 <li class="chapter" data-level="25.1" data-path="25-help.html"><a href="25-help.html#minimal-reproducible-examples---helping-others-help-you"><i class="fa fa-check"></i><b>25.1</b> Minimal reproducible examples - helping others help you</a></li>
 </ul></li>
 </ul>
@@ -396,7 +444,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="cloud-computing-services" class="section level1 hasAnchor">
+<div id="cloud-computing-services" class="section level1 hasAnchor" number="17">
 <h1><span class="header-section-number">17</span> Cloud Computing Services<a href="17-cloud-computing-services.html#cloud-computing-services" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <ul>
 <li><em>What if my data files are too big to hold in Github?</em></li>
@@ -410,11 +458,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>All resources used on AWS need to be tagged with a project:PROJECTNAME tag in order to assign costs to the appropriate EHA projects.</li>
 <li>Be judicious with AWS service usage. It is easy to run up costs.</li>
 </ul>
-<div id="setting-up-amazon-credentials" class="section level2 hasAnchor">
+<div id="setting-up-amazon-credentials" class="section level2 hasAnchor" number="17.1">
 <h2><span class="header-section-number">17.1</span> Setting up Amazon Credentials<a href="17-cloud-computing-services.html#setting-up-amazon-credentials" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To connect to AWS via program like R, you will net to set up an access access credientials.</p>
 <p>Once you’ve gotten your credentials, log on to <a href="ehatek.signin.aws.amazon.com/console/">ehatek.signin.aws.amazon.com/console/</a>. <code>ehatek</code> should be already entered in the “Account ID or alias” field. You will be asked to change your password after the first time you log on.</p>
-<div id="generate-an-access-key" class="section level3 hasAnchor">
+<div id="generate-an-access-key" class="section level3 hasAnchor" number="17.1.1">
 <h3><span class="header-section-number">17.1.1</span> Generate an access key<a href="17-cloud-computing-services.html#generate-an-access-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Navigate to your IAM (Identity and Access Management) page to generate an access key.</p>
 <p><img src="assets/AWS-IAM-1.png" /></p>
@@ -425,7 +473,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Your access key will have a <code>key ID</code> - a long string of letters and numbers - and a <code>*~*secret*~* access key</code> - a longer string of letters and numbers. Press “show” and hang onto it somewhere until you are sure your <code>~/.aws/credentials</code> file is working as intended. <strong>Don’t share your secret key with anyone</strong>.</p>
 <p>If you lose it before you use it, you can delete your and make another one. <em>Deleting</em> a key is different from making a key <em>inactive</em> - you might reach your access key limit pretty quickly, so you’ll probably have to do the former if you have keys that you don’t use.</p>
 </div>
-<div id="create-a-credentials-file" class="section level3 hasAnchor">
+<div id="create-a-credentials-file" class="section level3 hasAnchor" number="17.1.2">
 <h3><span class="header-section-number">17.1.2</span> Create a credentials file<a href="17-cloud-computing-services.html#create-a-credentials-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Open a blank text file in a text editor and paste your key ID and secret key as follows. It will look like this:</p>
 <pre><code>[default]
@@ -435,95 +483,95 @@ aws_default_region = us-east-1&quot;</code></pre>
 <p>Replace <code>your_key_id</code> and <code>your_secret_access_key</code> with the values you see in the AWS browser.</p>
 <p>Create a folder called <code>~/.aws</code>, and put the <code>credentials</code> file in it.</p>
 <p>(<strong>YES</strong>, currently, you need that trailing <code>"</code> after <code>us-east-1</code> if you want to include the AWS_DEFAULT_REGION in your credentials file, because the <code>aws.signature</code> is using a strange parser.) If you get errors related to the AWS default region, you can delete that line and set it locally inside your R environment like this:</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="17-cloud-computing-services.html#cb43-1"></a><span class="kw">Sys.setenv</span>(<span class="st">&quot;AWS_DEFAULT_REGION&quot;</span> =<span class="st"> &quot;us-east-1&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="17-cloud-computing-services.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="st">&quot;AWS_DEFAULT_REGION&quot;</span> <span class="ot">=</span> <span class="st">&quot;us-east-1&quot;</span>)</span></code></pre></div>
 </div>
-<div id="test-your-key" class="section level3 hasAnchor">
+<div id="test-your-key" class="section level3 hasAnchor" number="17.1.3">
 <h3><span class="header-section-number">17.1.3</span> Test your Key<a href="17-cloud-computing-services.html#test-your-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Open an R session to make sure your credentials file works.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="17-cloud-computing-services.html#cb44-1"></a><span class="co"># install the AWS packages if you need them</span></span>
-<span id="cb44-2"><a href="17-cloud-computing-services.html#cb44-2"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(aws.s3)) devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;cloudyr/aws.s3&quot;</span>)</span>
-<span id="cb44-3"><a href="17-cloud-computing-services.html#cb44-3"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(aws.signature)) devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;cloudyr/aws.signature&quot;</span>)</span>
-<span id="cb44-4"><a href="17-cloud-computing-services.html#cb44-4"></a></span>
-<span id="cb44-5"><a href="17-cloud-computing-services.html#cb44-5"></a><span class="kw">library</span>(aws.s3)</span>
-<span id="cb44-6"><a href="17-cloud-computing-services.html#cb44-6"></a></span>
-<span id="cb44-7"><a href="17-cloud-computing-services.html#cb44-7"></a><span class="co"># load credentials from your credentials file</span></span>
-<span id="cb44-8"><a href="17-cloud-computing-services.html#cb44-8"></a>aws.signature<span class="op">::</span><span class="kw">use_credentials</span>()</span>
-<span id="cb44-9"><a href="17-cloud-computing-services.html#cb44-9"></a></span>
-<span id="cb44-10"><a href="17-cloud-computing-services.html#cb44-10"></a><span class="co"># check list of aws S3 buckets</span></span>
-<span id="cb44-11"><a href="17-cloud-computing-services.html#cb44-11"></a><span class="kw">head</span>(aws.s3<span class="op">::</span><span class="kw">bucketlist</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="17-cloud-computing-services.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install the AWS packages if you need them</span></span>
+<span id="cb44-2"><a href="17-cloud-computing-services.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(aws.s3)) devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;cloudyr/aws.s3&quot;</span>)</span>
+<span id="cb44-3"><a href="17-cloud-computing-services.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(aws.signature)) devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;cloudyr/aws.signature&quot;</span>)</span>
+<span id="cb44-4"><a href="17-cloud-computing-services.html#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-5"><a href="17-cloud-computing-services.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(aws.s3)</span>
+<span id="cb44-6"><a href="17-cloud-computing-services.html#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="17-cloud-computing-services.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="co"># load credentials from your credentials file</span></span>
+<span id="cb44-8"><a href="17-cloud-computing-services.html#cb44-8" aria-hidden="true" tabindex="-1"></a>aws.signature<span class="sc">::</span><span class="fu">use_credentials</span>()</span>
+<span id="cb44-9"><a href="17-cloud-computing-services.html#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-10"><a href="17-cloud-computing-services.html#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="co"># check list of aws S3 buckets</span></span>
+<span id="cb44-11"><a href="17-cloud-computing-services.html#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(aws.s3<span class="sc">::</span><span class="fu">bucketlist</span>())</span></code></pre></div>
 <p>If you get a ‘403 Forbidden’ error, your credentials aren’t working.</p>
 </div>
-<div id="alternate-credentialing-method" class="section level3 hasAnchor">
+<div id="alternate-credentialing-method" class="section level3 hasAnchor" number="17.1.4">
 <h3><span class="header-section-number">17.1.4</span> Alternate credentialing method<a href="17-cloud-computing-services.html#alternate-credentialing-method" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>If you have Done Your Googles and are still having trouble setting your AWS credentials, you can set them in your <code>.Renviron</code> file. The advantage of using an <code>~/.aws/credentials</code> file is that your key will then work across all platforms - R, Python, the command line, etc. However, if you’re only connecting to AWS through R, having your key in your <code>.Renviron</code> will be enough.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="17-cloud-computing-services.html#cb45-1"></a><span class="co"># If you don&#39;t know how to find your .Renviron file, do the following to open it:  </span></span>
-<span id="cb45-2"><a href="17-cloud-computing-services.html#cb45-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">require</span>(usethis)) <span class="kw">install.packages</span>(<span class="st">&quot;usethis&quot;</span>)</span>
-<span id="cb45-3"><a href="17-cloud-computing-services.html#cb45-3"></a>usethis<span class="op">::</span><span class="kw">edit_r_environ</span>()</span>
-<span id="cb45-4"><a href="17-cloud-computing-services.html#cb45-4"></a></span>
-<span id="cb45-5"><a href="17-cloud-computing-services.html#cb45-5"></a><span class="co"># add the following to your .Renviron, replacing your_key_id and your_secret_access_key with their actual values. Save your .Renviron and restart R.</span></span>
-<span id="cb45-6"><a href="17-cloud-computing-services.html#cb45-6"></a><span class="st">&quot;AWS_ACCESS_KEY_ID&quot;</span> =<span class="st"> </span>your_key_id</span>
-<span id="cb45-7"><a href="17-cloud-computing-services.html#cb45-7"></a><span class="st">&quot;AWS_SECRET_ACCESS_KEY&quot;</span> =<span class="st"> </span>your_secret_access_key</span>
-<span id="cb45-8"><a href="17-cloud-computing-services.html#cb45-8"></a><span class="st">&quot;AWS_DEFAULT_REGION&quot;</span> =<span class="st"> </span>us<span class="op">-</span>east<span class="dv">-1</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="17-cloud-computing-services.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If you don&#39;t know how to find your .Renviron file, do the following to open it:  </span></span>
+<span id="cb45-2"><a href="17-cloud-computing-services.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(usethis)) <span class="fu">install.packages</span>(<span class="st">&quot;usethis&quot;</span>)</span>
+<span id="cb45-3"><a href="17-cloud-computing-services.html#cb45-3" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span>
+<span id="cb45-4"><a href="17-cloud-computing-services.html#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-5"><a href="17-cloud-computing-services.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="co"># add the following to your .Renviron, replacing your_key_id and your_secret_access_key with their actual values. Save your .Renviron and restart R.</span></span>
+<span id="cb45-6"><a href="17-cloud-computing-services.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;AWS_ACCESS_KEY_ID&quot;</span> <span class="ot">=</span> your_key_id</span>
+<span id="cb45-7"><a href="17-cloud-computing-services.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;AWS_SECRET_ACCESS_KEY&quot;</span> <span class="ot">=</span> your_secret_access_key</span>
+<span id="cb45-8"><a href="17-cloud-computing-services.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;AWS_DEFAULT_REGION&quot;</span> <span class="ot">=</span> us<span class="sc">-</span>east<span class="dv">-1</span></span></code></pre></div>
 <p>After you restart R, test that your credentials are working with <code>aws.s3::bucketlist()</code>.</p>
 </div>
 </div>
-<div id="using-amazon-s3-storage-from-r" class="section level2 hasAnchor">
+<div id="using-amazon-s3-storage-from-r" class="section level2 hasAnchor" number="17.2">
 <h2><span class="header-section-number">17.2</span> Using Amazon S3 Storage from R<a href="17-cloud-computing-services.html#using-amazon-s3-storage-from-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Above, you used <code>bucketlist</code> above to list all the buckets associated with your account. To look at everything inside a specific bucket, use <code>get_bucket</code>.</p>
 <p>Note that Amazon <strong>charges per Gigabyte for downloading and uploading files.</strong> Use things as needed for your project, but don’t get crazy and put a file download inside a for loop that you’re running a thousand times a day.</p>
 <p>To test privacy privileges are working are intended, we’ll use a very small private bucket with ~4 KB in it - Two small subsets of the Social Security Administration’s baby names dataset from the <code>babynames</code> package.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="17-cloud-computing-services.html#cb46-1"></a><span class="co"># check list of aws S3 buckets</span></span>
-<span id="cb46-2"><a href="17-cloud-computing-services.html#cb46-2"></a><span class="kw">bucketlist</span>()</span>
-<span id="cb46-3"><a href="17-cloud-computing-services.html#cb46-3"></a></span>
-<span id="cb46-4"><a href="17-cloud-computing-services.html#cb46-4"></a><span class="co"># aws.s3::bucketlist()</span></span>
-<span id="cb46-5"><a href="17-cloud-computing-services.html#cb46-5"></a>pb &lt;-<span class="st"> &quot;eha-ma-practice-bucket&quot;</span></span>
-<span id="cb46-6"><a href="17-cloud-computing-services.html#cb46-6"></a>b &lt;-<span class="st"> </span><span class="kw">get_bucket</span>(pb)</span></code></pre></div>
-<div id="save-objects-from-s3-to-your-machine" class="section level3 hasAnchor">
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="17-cloud-computing-services.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check list of aws S3 buckets</span></span>
+<span id="cb46-2"><a href="17-cloud-computing-services.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bucketlist</span>()</span>
+<span id="cb46-3"><a href="17-cloud-computing-services.html#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-4"><a href="17-cloud-computing-services.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="co"># aws.s3::bucketlist()</span></span>
+<span id="cb46-5"><a href="17-cloud-computing-services.html#cb46-5" aria-hidden="true" tabindex="-1"></a>pb <span class="ot">&lt;-</span> <span class="st">&quot;eha-ma-practice-bucket&quot;</span></span>
+<span id="cb46-6"><a href="17-cloud-computing-services.html#cb46-6" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">get_bucket</span>(pb)</span></code></pre></div>
+<div id="save-objects-from-s3-to-your-machine" class="section level3 hasAnchor" number="17.2.1">
 <h3><span class="header-section-number">17.2.1</span> Save objects from S3 to your machine<a href="17-cloud-computing-services.html#save-objects-from-s3-to-your-machine" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One of the main reasons we use Amazon S3 is to make sure everyone is working with the same large data files. Usually, you’ll download the large files you need one time and keep them on your local machine for analyses. This can be done with <code>save_object</code>. Wrapping <code>save_object</code> in an <code>if()</code> clause checks to see if the dataset exists first before downloading.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="17-cloud-computing-services.html#cb47-1"></a><span class="co"># make a data folder if this is the first dataset you&#39;re downloading into this project</span></span>
-<span id="cb47-2"><a href="17-cloud-computing-services.html#cb47-2"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) {</span>
-<span id="cb47-3"><a href="17-cloud-computing-services.html#cb47-3"></a>  <span class="kw">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span>
-<span id="cb47-4"><a href="17-cloud-computing-services.html#cb47-4"></a>}</span>
-<span id="cb47-5"><a href="17-cloud-computing-services.html#cb47-5"></a></span>
-<span id="cb47-6"><a href="17-cloud-computing-services.html#cb47-6"></a><span class="co"># save the babynames_subset.csv object (b[[1]]) into local memory</span></span>
-<span id="cb47-7"><a href="17-cloud-computing-services.html#cb47-7"></a><span class="cf">if</span>(<span class="op">!</span><span class="kw">file.exists</span>(<span class="st">&quot;data/babynames_subset.csv&quot;</span>)) {</span>
-<span id="cb47-8"><a href="17-cloud-computing-services.html#cb47-8"></a>  <span class="kw">save_object</span>(<span class="dt">object =</span> b[[<span class="dv">1</span>]], <span class="dt">bucket =</span> pb, <span class="dt">file =</span> <span class="st">&quot;data/babynames_subset.csv&quot;</span>)</span>
-<span id="cb47-9"><a href="17-cloud-computing-services.html#cb47-9"></a>}</span>
-<span id="cb47-10"><a href="17-cloud-computing-services.html#cb47-10"></a></span>
-<span id="cb47-11"><a href="17-cloud-computing-services.html#cb47-11"></a><span class="kw">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="17-cloud-computing-services.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make a data folder if this is the first dataset you&#39;re downloading into this project</span></span>
+<span id="cb47-2"><a href="17-cloud-computing-services.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="st">&quot;data&quot;</span>)) {</span>
+<span id="cb47-3"><a href="17-cloud-computing-services.html#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span>
+<span id="cb47-4"><a href="17-cloud-computing-services.html#cb47-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb47-5"><a href="17-cloud-computing-services.html#cb47-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-6"><a href="17-cloud-computing-services.html#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="co"># save the babynames_subset.csv object (b[[1]]) into local memory</span></span>
+<span id="cb47-7"><a href="17-cloud-computing-services.html#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">&quot;data/babynames_subset.csv&quot;</span>)) {</span>
+<span id="cb47-8"><a href="17-cloud-computing-services.html#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">save_object</span>(<span class="at">object =</span> b[[<span class="dv">1</span>]], <span class="at">bucket =</span> pb, <span class="at">file =</span> <span class="st">&quot;data/babynames_subset.csv&quot;</span>)</span>
+<span id="cb47-9"><a href="17-cloud-computing-services.html#cb47-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb47-10"><a href="17-cloud-computing-services.html#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-11"><a href="17-cloud-computing-services.html#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dir</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
 <p><code>babynames_subset.csv</code> is now in your <code>data</code> directory.You can then read it into memory as you would normally.</p>
 </div>
-<div id="upload-objects-from-your-machine-to-s3" class="section level3 hasAnchor">
+<div id="upload-objects-from-your-machine-to-s3" class="section level3 hasAnchor" number="17.2.2">
 <h3><span class="header-section-number">17.2.2</span> Upload objects from your machine to S3<a href="17-cloud-computing-services.html#upload-objects-from-your-machine-to-s3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>To <code>put</code> a file from your computer back into the bucket, use <code>put_object</code>. This will be less common than downloading and saving objects <em>from</em> S3 - as a general rule, we want everyone working with the same versions of large datasets. If you’ve made a large rasterfile that your colleagues will use, you can upload it,</p>
 <p>In this example, we’ll make a change to the <code>babynames_subset</code> and save it as a new file (<code>babynames_subset2</code>).</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="17-cloud-computing-services.html#cb48-1"></a>babynames_subset2 &lt;-<span class="st"> </span>babynames_subset <span class="op">%&gt;%</span></span>
-<span id="cb48-2"><a href="17-cloud-computing-services.html#cb48-2"></a><span class="st">    </span><span class="kw">group_by</span>(name) <span class="op">%&gt;%</span></span>
-<span id="cb48-3"><a href="17-cloud-computing-services.html#cb48-3"></a><span class="st">    </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">sum</span>(n)) <span class="op">%&gt;%</span></span>
-<span id="cb48-4"><a href="17-cloud-computing-services.html#cb48-4"></a><span class="st">    </span><span class="kw">filter</span>(n <span class="op">&lt;</span><span class="st"> </span><span class="dv">100</span>)</span>
-<span id="cb48-5"><a href="17-cloud-computing-services.html#cb48-5"></a></span>
-<span id="cb48-6"><a href="17-cloud-computing-services.html#cb48-6"></a><span class="co"># save to csv</span></span>
-<span id="cb48-7"><a href="17-cloud-computing-services.html#cb48-7"></a><span class="kw">write.csv</span>(babynames_subset2, <span class="dt">file =</span> <span class="st">&quot;data/babynames_subset2.csv&quot;</span>, <span class="dt">row.names =</span> <span class="ot">FALSE</span>)</span>
-<span id="cb48-8"><a href="17-cloud-computing-services.html#cb48-8"></a></span>
-<span id="cb48-9"><a href="17-cloud-computing-services.html#cb48-9"></a><span class="co"># check whether an object with this name is in the bucket, and if it isn&#39;t, put it in there</span></span>
-<span id="cb48-10"><a href="17-cloud-computing-services.html#cb48-10"></a><span class="cf">if</span>(<span class="op">!</span>(<span class="st">&quot;babynames_subset2.csv&quot;</span> <span class="op">%in%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">pull</span>(<span class="kw">get_bucket_df</span>(pb), <span class="st">&quot;Key&quot;</span>) ) {</span>
-<span id="cb48-11"><a href="17-cloud-computing-services.html#cb48-11"></a>  <span class="kw">put_object</span>(<span class="dt">file =</span> <span class="st">&quot;data/babynames_subset2.csv&quot;</span>, <span class="dt">object =</span> <span class="st">&quot;babynames_subset2.csv&quot;</span>, <span class="dt">bucket =</span> pb, <span class="dt">acl =</span> <span class="st">&quot;private&quot;</span>)</span>
-<span id="cb48-12"><a href="17-cloud-computing-services.html#cb48-12"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="17-cloud-computing-services.html#cb48-1" aria-hidden="true" tabindex="-1"></a>babynames_subset2 <span class="ot">&lt;-</span> babynames_subset <span class="sc">%&gt;%</span></span>
+<span id="cb48-2"><a href="17-cloud-computing-services.html#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(name) <span class="sc">%&gt;%</span></span>
+<span id="cb48-3"><a href="17-cloud-computing-services.html#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">sum</span>(n)) <span class="sc">%&gt;%</span></span>
+<span id="cb48-4"><a href="17-cloud-computing-services.html#cb48-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(n <span class="sc">&lt;</span> <span class="dv">100</span>)</span>
+<span id="cb48-5"><a href="17-cloud-computing-services.html#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-6"><a href="17-cloud-computing-services.html#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="co"># save to csv</span></span>
+<span id="cb48-7"><a href="17-cloud-computing-services.html#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(babynames_subset2, <span class="at">file =</span> <span class="st">&quot;data/babynames_subset2.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb48-8"><a href="17-cloud-computing-services.html#cb48-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-9"><a href="17-cloud-computing-services.html#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co"># check whether an object with this name is in the bucket, and if it isn&#39;t, put it in there</span></span>
+<span id="cb48-10"><a href="17-cloud-computing-services.html#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span>(<span class="st">&quot;babynames_subset2.csv&quot;</span> <span class="sc">%in%</span> dplyr<span class="sc">::</span><span class="fu">pull</span>(<span class="fu">get_bucket_df</span>(pb), <span class="st">&quot;Key&quot;</span>) ) {</span>
+<span id="cb48-11"><a href="17-cloud-computing-services.html#cb48-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">put_object</span>(<span class="at">file =</span> <span class="st">&quot;data/babynames_subset2.csv&quot;</span>, <span class="at">object =</span> <span class="st">&quot;babynames_subset2.csv&quot;</span>, <span class="at">bucket =</span> pb, <span class="at">acl =</span> <span class="st">&quot;private&quot;</span>)</span>
+<span id="cb48-12"><a href="17-cloud-computing-services.html#cb48-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>So now we have a data frame in memory called <code>babynames_subset2</code> and a .csv in the AWS <code>eha-ma-practice-bucket</code> called <code>babynames_subset2.csv</code>. We’ll pull the AWS csv back into memory to make sure they’re the same.</p>
 <p>To do this, we have to first copy over <code>babynames_subset2</code> to a new object in memory and remove it so that when we load the version from AWS, it doesn’t overwrite it.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="17-cloud-computing-services.html#cb49-1"></a>babynames_subset_R &lt;-<span class="st"> </span>babynames_subset2</span>
-<span id="cb49-2"><a href="17-cloud-computing-services.html#cb49-2"></a><span class="kw">rm</span>(babynames_subset2)</span>
-<span id="cb49-3"><a href="17-cloud-computing-services.html#cb49-3"></a></span>
-<span id="cb49-4"><a href="17-cloud-computing-services.html#cb49-4"></a><span class="co"># save the .csv object using &quot;save_object&quot;</span></span>
-<span id="cb49-5"><a href="17-cloud-computing-services.html#cb49-5"></a>tmp =<span class="st"> </span><span class="kw">tempdir</span>()</span>
-<span id="cb49-6"><a href="17-cloud-computing-services.html#cb49-6"></a>file =<span class="st"> </span><span class="kw">paste0</span>(tmp, <span class="st">&quot;/babynames_subset2.csv&quot;</span>)</span>
-<span id="cb49-7"><a href="17-cloud-computing-services.html#cb49-7"></a><span class="kw">save_object</span>(<span class="st">&quot;babynames_subset2.csv&quot;</span>, <span class="dt">bucket =</span> pb, <span class="dt">file =</span> file)</span>
-<span id="cb49-8"><a href="17-cloud-computing-services.html#cb49-8"></a></span>
-<span id="cb49-9"><a href="17-cloud-computing-services.html#cb49-9"></a><span class="co"># read the csv file into memory</span></span>
-<span id="cb49-10"><a href="17-cloud-computing-services.html#cb49-10"></a>babynames_subset2 &lt;-<span class="st"> </span><span class="kw">read_csv</span>(file)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="17-cloud-computing-services.html#cb49-1" aria-hidden="true" tabindex="-1"></a>babynames_subset_R <span class="ot">&lt;-</span> babynames_subset2</span>
+<span id="cb49-2"><a href="17-cloud-computing-services.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(babynames_subset2)</span>
+<span id="cb49-3"><a href="17-cloud-computing-services.html#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="17-cloud-computing-services.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="co"># save the .csv object using &quot;save_object&quot;</span></span>
+<span id="cb49-5"><a href="17-cloud-computing-services.html#cb49-5" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">=</span> <span class="fu">tempdir</span>()</span>
+<span id="cb49-6"><a href="17-cloud-computing-services.html#cb49-6" aria-hidden="true" tabindex="-1"></a>file <span class="ot">=</span> <span class="fu">paste0</span>(tmp, <span class="st">&quot;/babynames_subset2.csv&quot;</span>)</span>
+<span id="cb49-7"><a href="17-cloud-computing-services.html#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="fu">save_object</span>(<span class="st">&quot;babynames_subset2.csv&quot;</span>, <span class="at">bucket =</span> pb, <span class="at">file =</span> file)</span>
+<span id="cb49-8"><a href="17-cloud-computing-services.html#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="17-cloud-computing-services.html#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co"># read the csv file into memory</span></span>
+<span id="cb49-10"><a href="17-cloud-computing-services.html#cb49-10" aria-hidden="true" tabindex="-1"></a>babynames_subset2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(file)</span></code></pre></div>
 <p>Finally, we can check that the object in memory and the .csv in AWS are the same.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="17-cloud-computing-services.html#cb50-1"></a>assertthat<span class="op">::</span><span class="kw">are_equal</span>(babynames_subset_R, babynames_subset2)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="17-cloud-computing-services.html#cb50-1" aria-hidden="true" tabindex="-1"></a>assertthat<span class="sc">::</span><span class="fu">are_equal</span>(babynames_subset_R, babynames_subset2)</span></code></pre></div>
 
 </div>
 </div>
