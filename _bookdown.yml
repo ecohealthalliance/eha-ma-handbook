@@ -1,7 +1,4 @@
 rmd_files:
-    - "Quality_control.Rmd"
-    - "Assembly.Rmd"
-    - "Alignment.Rmd"
     - "index.Rmd"
     - "contribute-a-chapter.Rmd"
     - "quickstart.Rmd"
@@ -21,6 +18,9 @@ rmd_files:
     - "encryption.Rmd"
     - "dependencies.Rmd"
     - "stats-methods.Rmd"
+    - "Quality_control.Rmd"
+    - "Assembly.Rmd"
+    - "Alignment.Rmd"
     - "data-sources.Rmd"
     - "references.Rmd"
     - "training-resources-and-plans.Rmd"
