@@ -64,6 +64,7 @@ Data management activities, but not necessarily infrastructure, are an allowable
 
 - Look for funder requirements and use funder specific templates for DMPs. If no template exists, use the EHA Minimal Data Management Plan or create one based on funder requirements.
 - Think about how you might make data Findable, Accessible, Interoperable and Reproducible (FAIR)
+    - use the [re3data](https://www.re3data.org/) data repository catalog to find identify a potential archive for your data 
 - Establish expectations for data sharing and outputs with collaborators and PIs. These discussions should begin early at the same time as discussing project responsibilities and budget.
 - Consider what tools you will use throughout the lifecycle of your data 
 - Consider how data collection, analysis and management tasks will be divided among collaborators
@@ -150,6 +151,7 @@ structuring data makes interoperability between tools easier.
   - [NIH Data Sharing learning Resources](https://sharing.nih.gov/about/learning)
   - [Condensed NIH DMSP Guidance Resources](https://osf.io/uadxr/)
 -   [NSF Bio DMP Guidance](https://www.nsf.gov/bio/biodmp.jsp)
+-   [EHA Repo with additional DMP Resources](https://github.com/ecohealthalliance/data-mgmt-plan)
 -   Read Hadley Wickham's [tidy data
     paper](http://vita.had.co.nz/papers/tidy-data.pdf) for the general concept.
     Note the *packages* in this paper are out of date, but the structures and
