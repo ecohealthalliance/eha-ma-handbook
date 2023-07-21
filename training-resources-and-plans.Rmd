@@ -2,8 +2,8 @@
 
 ***This section under revision as we consider alternate resources.***
 
-If you are planning on spending significant time improving your data science and modeling skills, you will want to create a _training plan_.  A training plan is required if you
-would like to use EHA's Data Camp account.  Data Camp provides excellent modular courses comprised of both video and interactive, automatically graded exercises to learn data science and coding.  
+If you are planning on spending significant time improving your data science and modeling skills, you will want to create a _training plan_.  
+
 
 ## Training plan components
 
@@ -24,16 +24,33 @@ provide you with a Data Camp subscription for the period you need it.
 
 ## Training Plans
 
-These are some suggestions for assembling resources and courses into training plans.  This is of course a small fraction of the many learning and teaching resources available, including [many more Data Camp courses](https://www.datacamp.com/courses).  Consult your peers, supervisor, and the **\#data-sci-discuss** Slack channel to find courses or resources on the topics you require. If you use a new resource or course, please add to to this page so others can learn from your impressions of it!
+These are some suggestions for assembling resources and courses into training plans.  This is of course a small fraction of the many learning and teaching resources available.  Consult your peers, supervisor, and the **\#data-sci-discuss** Slack channel to find courses or resources on the topics you require. If you use a new resource or course, please add to to this page so others can learn from your impressions of it!
+
+### Introductory Programming materials
+
+- [Hands-On Programming with R](https://rstudio-education.github.io/hopr/starting.html): An introduction to R for non-programmers with a focus on project based learning. 
+
+- [Introduction to R](https://cengel.github.io/R-intro/): This introduction is designed to get you familiar with R quickly. It covers the basicsand explains how to work with common data types in R. 
+
+- [Eloquent Javascript](https://eloquentjavascript.net/index.html) A project based book that will take you from the basics to creating websites. For R users, the chapter on data structures is especially helpful for understanding JSON and `jsonlite`. 
+
 
 ### Better Managing Data
 
--  [DataCamp: Introduction to the Tidyverse](https://www.datacamp.com/courses/introduction-to-the-tidyverse) (4 hours) will get you started immediately working with data in R, and puts the following items in context.  It's a good introduction for everyone with little to no experience.  If you have _no_ experience, including no EHA workshop, take [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r), as well (4 hours, though there will be some redundancy).  
+- [Johns Hopkins Introduction to the Tidyverse](https://jhudatascience.org/tidyversecourse/intro.html) This chapter focuses on the foundational concept of tidy data. That is rectangular data where one row = one observation, all variables are store in their own column, and all cells have a value, even if that value is NA. 
+ 
 
 -  If you are mostly working in spreadhseets but collaborating with R or Python users, or just trying to organize a lot of spreadsheet data for your projects, work through the [Data Carpentry lesson on spreadsheet organization](http://www.datacarpentry.org/spreadsheet-ecology-lesson/) (~2 hours) and
 read [Hadley Wickham's paper on tidy data](https://www.jstatsoft.org/article/view/v059i10) (~1 hour)
 
-- Both [DataCamp: Importing Data in R (Part 1)](https://www.datacamp.com/courses/importing-data-in-r-part-1), (3 hours) and  [DataCamp: Cleaning Data in R](https://www.datacamp.com/courses/cleaning-data-in-r) (4 hours) will be useful if you are doing a database aggregation or building project.
+-  [Importing Data](https://intro2r.com/importing-data.html) provides a good overview of basic data imports while  [R4DS: Import](https://r4ds.hadley.nz/import.html) demonstrates how to properly import more complex data types. 
+
+- AIRTABLE DATA
+- ODK DATA
+
+
+- [Reading and writing spatial data with `terra`](https://rspatial.org/spatial/5-files.html) This chapter goes over ingesting spatial data with the `terra` package in R.
+- [Geographic Data in R](https://r.geocompx.org/spatial-class.html) This chapter discusses geographic data classes in R and the `sf`, `sp`, and `terra` packages. 
 
 ### Version Control and Git
 
