@@ -197,12 +197,12 @@ converting-paperpile-citations-in-google-docs-to-endnote-citations-in-ms-word
 training-resources-and-plans
 training-plan-components
 training-plans
+introductory-programming-materials
 better-managing-data
 version-control-and-git
 reproducible-reporting
 improving-your-statistical-fundamentals
 improving-your-data-visualization
-r-programming
 map-making-and-geospatial-analysis-in-r
 bioinformatics
 metagenomics
