@@ -56,35 +56,35 @@ read [Hadley Wickham's paper on tidy data](https://www.jstatsoft.org/article/vie
 
 - Read through and work through the examples in [Happy Git with R](http://happygitwithr.com/).
 
--  There is a Data Camp course [Introduction to Git for Data Science](https://www.datacamp.com/courses/introduction-to-git-for-data-science) (4 hours).  This is a more detailed  introduction that teaches you more about _how_ git works and features
-we use less in our workflow.  It may be appropriate once you have jumped into a project
-that uses git more elaborately.
+-  Atlassian has a nice [collection of git tutorials](https://www.atlassian.com/git/tutorials) for beginners and advanced users. 
 
 ### Reproducible reporting
 
--   [Reporting with R Markdown](https://www.datacamp.com/courses/reporting-with-r-markdown) (3 hours) covers making the reproducible reports some teams like for rapid iteration.  Take this if you are writing an Emerging Disease Insights report, and if you team is using R Markdown for communication.
+-   [Reports with R Markdown](https://epirhandbook.com/en/reports-with-r-markdown.html) covers making the reproducible reports from the basics to parameterization.  
+
+- This chapter provides an [overview of using `targets` in R Markdown](https://books.ropensci.org/targets/literate-programming.html#r-markdown-targets).
 
 ### Improving Your Statistical Fundamentals
 
-- [DataCamp: Introduction to Data](https://www.datacamp.com/courses/introduction-to-data) (4 hours) is a good starter course you have not much or any training in statistics in school and want to get familiar with the language and concepts.
+<!-- - [DataCamp: Introduction to Data](https://www.datacamp.com/courses/introduction-to-data) (4 hours) is a good starter course you have not much or any training in statistics in school and want to get familiar with the language and concepts. -->
 
-- [DataCamp: Foundations of Probability in R](https://www.datacamp.com/courses/foundations-of-probability-in-r) (4 hours) covers many of the important concepts that those doing Bayesian model work at EHA discuss.  Take this if you are just getting started interacting with or reading this work and you don't have a probability background.
+<!-- - [DataCamp: Foundations of Probability in R](https://www.datacamp.com/courses/foundations-of-probability-in-r) (4 hours) covers many of the important concepts that those doing Bayesian model work at EHA discuss.  Take this if you are just getting started interacting with or reading this work and you don't have a probability background. -->
 
 - [Statistical Rethinking: A Bayesian Course](https://xcelab.net/rm/statistical-rethinking/). This is an excellent book [and video lecture series](https://www.youtube.com/playlist?list=PLDcUM9US4XdM9_N6XUUFrhghGJ4K25bFc) that gives builds great foundations for doing many types of modeling.  Prerequisites are Intermediate R, some experience with linear regression and probability (for which the DataCamp course above is a good basis).  This course has about 19 hours of video.  We recommend 2-3 months for going through the book, video, and exercises.
 
 ### Improving your data visualization
 
--  [Data Visualization with ggplot2 (Parts 1 + 2)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1) (5 + 5 hours).  These will take you much further than the basic visualization you learn in Intro to the Tidyverse.  Take them if you aren't able to make the plots you need based on the knowledge you learn in that.  Part 3 covers
-   topics not generally needed.
+<!-- -  [Data Visualization with ggplot2 (Parts 1 + 2)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1) (5 + 5 hours).  These will take you much further than the basic visualization you learn in Intro to the Tidyverse.  Take them if you aren't able to make the plots you need based on the knowledge you learn in that.  Part 3 covers -->
+<!--    topics not generally needed. -->
    
 -   [Fundamentals of Data Visualization](http://serialmentor.com/dataviz/) by Claus Wilke is an excellent guide to making high-quality figures, focusing more on design than mechanics of programming. R code is available for all of its examples.  If you feel you have a solid
 grasp of **ggplot2** but want to improve the quality of your figures, we recommend reading this e-book, and using the accompanying code in [its GitHub repository](https://github.com/clauswilke/dataviz) to reproduce figures. 
 
-### R Programming
+<!-- ### R Programming -->
 
--   [DataCamp: Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) is a good place to back up a bit to fill in concepts if you are missing things to help understand other course sequences. 
+<!-- -   [DataCamp: Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) is a good place to back up a bit to fill in concepts if you are missing things to help understand other course sequences.  -->
 
--   [DataCamp: Intermediate R](https://www.datacamp.com/courses/intermediate-r) (6 hours) or [DataCamp: Writing Functions in R](https://www.datacamp.com/courses/writing-functions-in-r)/ (4 hours) are both good courses to improve your skills if you find yourself managing a more complex workflow or working on an R package with someone at EHA. 
+<!-- -   [DataCamp: Intermediate R](https://www.datacamp.com/courses/intermediate-r) (6 hours) or [DataCamp: Writing Functions in R](https://www.datacamp.com/courses/writing-functions-in-r)/ (4 hours) are both good courses to improve your skills if you find yourself managing a more complex workflow or working on an R package with someone at EHA.  -->
 
 ### Map-making and geospatial analysis in R
 
