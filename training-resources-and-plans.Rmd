@@ -2,15 +2,15 @@
 
 ***This section under revision as we consider alternate resources.***
 
-If you are planning on spending significant time improving your data science and modeling skills, you will want to create a _training plan_.  A training plan is required if you
-would like to use EHA's Data Camp account.  Data Camp provides excellent modular courses comprised of both video and interactive, automatically graded exercises to learn data science and coding.  
+If you are planning on spending significant time improving your data science and modeling skills, you will want to create a _training plan_.  
+
 
 ## Training plan components
 
 -  A description of your goals for the training plans and to which EHA projects
    and activities you will apply your skills
 -  A list of courses/tutorials your plan to complete
--  The total time the courses will take to complete.  We find the estimated times of Data Camp courses are roughly accurrate. 
+-  The total time the courses will take to complete.  We find the estimated times of Data Camp courses are roughly accurate. 
 -  The time frame over which you expect to complete them
 -  The name of a _peer learner_.  You should have a peer learner at EcoHealth who will be a partner over the course of your training.  This may be someone working on a similar training plan or someone with knowledge of the material already.  They should play some or all of these roles:
     -   Accountability: Your peer learner should know about your training plan and its time frame, and check in on how you are doing.
@@ -24,57 +24,75 @@ provide you with a Data Camp subscription for the period you need it.
 
 ## Training Plans
 
-These are some suggestions for assembling resources and courses into training plans.  This is of course a small fraction of the many learning and teaching resources available, including [many more Data Camp courses](https://www.datacamp.com/courses).  Consult your peers, supervisor, and the **\#data-sci-discuss** Slack channel to find courses or resources on the topics you require. If you use a new resource or course, please add to to this page so others can learn from your impressions of it!
+These are some suggestions for assembling resources and courses into training plans.  This is of course a small fraction of the many learning and teaching resources available.  Consult your peers, supervisor, and the **\#data-sci-discuss** Slack channel to find courses or resources on the topics you require. If you use a new resource or course, please add to to this page so others can learn from your impressions of it!
+
+### Introductory Programming materials
+
+- [Hands-On Programming with R](https://rstudio-education.github.io/hopr/starting.html): An introduction to R for non-programmers with a focus on project based learning. 
+
+- [Introduction to R](https://cengel.github.io/R-intro/): This introduction is designed to get you familiar with R quickly. It covers the basics and explains how to work with common data types in R. 
+
+- [Eloquent Javascript](https://eloquentjavascript.net/index.html) A project based book that will take you from the basics to creating websites. For R users, the chapter on data structures is especially helpful for understanding JSON and `jsonlite`. 
+
 
 ### Better Managing Data
 
--  [DataCamp: Introduction to the Tidyverse](https://www.datacamp.com/courses/introduction-to-the-tidyverse) (4 hours) will get you started immediately working with data in R, and puts the following items in context.  It's a good introduction for everyone with little to no experience.  If you have _no_ experience, including no EHA workshop, take [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r), as well (4 hours, though there will be some redundancy).  
+- [Johns Hopkins Introduction to the Tidyverse](https://jhudatascience.org/tidyversecourse/intro.html) This chapter focuses on the foundational concept of tidy data. That is rectangular data where one row = one observation, all variables are store in their own column, and all cells have a value, even if that value is NA. 
+ 
 
--  If you are mostly working in spreadhseets but collaborating with R or Python users, or just trying to organize a lot of spreadsheet data for your projects, work through the [Data Carpentry lesson on spreadsheet organization](http://www.datacarpentry.org/spreadsheet-ecology-lesson/) (~2 hours) and
+-  If you are mostly working in spreadsheets but collaborating with R or Python users, or just trying to organize a lot of spreadsheet data for your projects, work through the [Data Carpentry lesson on spreadsheet organization](http://www.datacarpentry.org/spreadsheet-ecology-lesson/) (~2 hours) and
 read [Hadley Wickham's paper on tidy data](https://www.jstatsoft.org/article/view/v059i10) (~1 hour)
 
-- Both [DataCamp: Importing Data in R (Part 1)](https://www.datacamp.com/courses/importing-data-in-r-part-1), (3 hours) and  [DataCamp: Cleaning Data in R](https://www.datacamp.com/courses/cleaning-data-in-r) (4 hours) will be useful if you are doing a database aggregation or building project.
+-  [Importing Data](https://intro2r.com/importing-data.html) provides a good overview of basic data imports while  [R4DS: Import](https://r4ds.hadley.nz/import.html) demonstrates how to properly import more complex data types. 
+
+- [AIRTABLE DATA](#airtable) - see chapter on Airtable
+
+- [ODK DATA](#odk) - see chapter on ODK
+
+
+- [Reading and writing spatial data with `terra`](https://rspatial.org/spatial/5-files.html) This chapter goes over ingesting spatial data with the `terra` package in R.
+- [Geographic Data in R](https://r.geocompx.org/spatial-class.html) This chapter discusses geographic data classes in R and the `sf`, `sp`, and `terra` packages. 
 
 ### Version Control and Git
 
 - Read through and work through the examples in [Happy Git with R](http://happygitwithr.com/).
 
--  There is a Data Camp course [Introduction to Git for Data Science](https://www.datacamp.com/courses/introduction-to-git-for-data-science) (4 hours).  This is a more detailed  introduction that teaches you more about _how_ git works and features
-we use less in our workflow.  It may be appropriate once you have jumped into a project
-that uses git more elaborately.
+-  Atlassian has a nice [collection of git tutorials](https://www.atlassian.com/git/tutorials) for beginners and advanced users. 
 
 ### Reproducible reporting
 
--   [Reporting with R Markdown](https://www.datacamp.com/courses/reporting-with-r-markdown) (3 hours) covers making the reproducible reports some teams like for rapid iteration.  Take this if you are writing an Emerging Disease Insights report, and if you team is using R Markdown for communication.
+-   [Reports with R Markdown](https://epirhandbook.com/en/reports-with-r-markdown.html) covers making the reproducible reports from the basics to parameterization.  
+
+- This chapter provides an [overview of using `targets` in R Markdown](https://books.ropensci.org/targets/literate-programming.html#r-markdown-targets).
 
 ### Improving Your Statistical Fundamentals
 
-- [DataCamp: Introduction to Data](https://www.datacamp.com/courses/introduction-to-data) (4 hours) is a good starter course you have not much or any training in statistics in school and want to get familiar with the language and concepts.
+<!-- - [DataCamp: Introduction to Data](https://www.datacamp.com/courses/introduction-to-data) (4 hours) is a good starter course you have not much or any training in statistics in school and want to get familiar with the language and concepts. -->
 
-- [DataCamp: Foundations of Probability in R](https://www.datacamp.com/courses/foundations-of-probability-in-r) (4 hours) covers many of the important concepts that those doing Bayesian model work at EHA discuss.  Take this if you are just getting started interacting with or reading this work and you don't have a probability background.
+<!-- - [DataCamp: Foundations of Probability in R](https://www.datacamp.com/courses/foundations-of-probability-in-r) (4 hours) covers many of the important concepts that those doing Bayesian model work at EHA discuss.  Take this if you are just getting started interacting with or reading this work and you don't have a probability background. -->
 
 - [Statistical Rethinking: A Bayesian Course](https://xcelab.net/rm/statistical-rethinking/). This is an excellent book [and video lecture series](https://www.youtube.com/playlist?list=PLDcUM9US4XdM9_N6XUUFrhghGJ4K25bFc) that gives builds great foundations for doing many types of modeling.  Prerequisites are Intermediate R, some experience with linear regression and probability (for which the DataCamp course above is a good basis).  This course has about 19 hours of video.  We recommend 2-3 months for going through the book, video, and exercises.
 
 ### Improving your data visualization
 
--  [Data Visualization with ggplot2 (Parts 1 + 2)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1) (5 + 5 hours).  These will take you much further than the basic visualization you learn in Intro to the Tidyverse.  Take them if you aren't able to make the plots you need based on the knowledge you learn in that.  Part 3 covers
-   topics not generally needed.
+<!-- -  [Data Visualization with ggplot2 (Parts 1 + 2)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1) (5 + 5 hours).  These will take you much further than the basic visualization you learn in Intro to the Tidyverse.  Take them if you aren't able to make the plots you need based on the knowledge you learn in that.  Part 3 covers -->
+<!--    topics not generally needed. -->
    
 -   [Fundamentals of Data Visualization](http://serialmentor.com/dataviz/) by Claus Wilke is an excellent guide to making high-quality figures, focusing more on design than mechanics of programming. R code is available for all of its examples.  If you feel you have a solid
 grasp of **ggplot2** but want to improve the quality of your figures, we recommend reading this e-book, and using the accompanying code in [its GitHub repository](https://github.com/clauswilke/dataviz) to reproduce figures. 
 
-### R Programming
+<!-- ### R Programming -->
 
--   [DataCamp: Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) is a good place to back up a bit to fill in concepts if you are missing things to help understand other course sequences. 
+<!-- -   [DataCamp: Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) is a good place to back up a bit to fill in concepts if you are missing things to help understand other course sequences.  -->
 
--   [DataCamp: Intermediate R](https://www.datacamp.com/courses/intermediate-r) (6 hours) or [DataCamp: Writing Functions in R](https://www.datacamp.com/courses/writing-functions-in-r)/ (4 hours) are both good courses to improve your skills if you find yourself managing a more complex workflow or working on an R package with someone at EHA. 
+<!-- -   [DataCamp: Intermediate R](https://www.datacamp.com/courses/intermediate-r) (6 hours) or [DataCamp: Writing Functions in R](https://www.datacamp.com/courses/writing-functions-in-r)/ (4 hours) are both good courses to improve your skills if you find yourself managing a more complex workflow or working on an R package with someone at EHA.  -->
 
 ### Map-making and geospatial analysis in R
 
 -   [Geocomputation in R](https://geocompr.robinlovelace.net/) is a comprehensive guide for understanding geographic data, mapping, and conducting spatial analysis in R. Likely, the most relevant chapters for your purposes are 1-8, 10-11. A chapter might take you 1-3 hours to work through, depending on how in depth you want to get and the number of exercises that you complete.
 
 -  DataCamp also has courses on spatial analysis using R, notably [Spatial Analysis in R with sf and raster](https://www.datacamp.com/courses/spatial-analysis-in-r-with-sf-and-raster) (4 hours).  It covers
-some of the material from Geomputation in R in less depth, and gives you fewer tools for hooking into the multiple geospatial data systems available in R.  Take this if you are more time-limited and are going to do less in terms of spatial statistics.
+some of the material from Geocomputation in R in less depth, and gives you fewer tools for hooking into the multiple geospatial data systems available in R.  Take this if you are more time-limited and are going to do less in terms of spatial statistics.
 
 - Data Carpentry has a [course on using R for spatial data](https://datacarpentry.org/geospatial-workshop/).  Like other \*Carpentry lessons its designed as a workshop lesson plan but can be self-taught. It presumes very little R knowledge at all, and includes stuff like setting a project in RStudio.  This is a good place to start people or students with little R experience to get them making maps right away.  If you just want to get a quick feel for R spatial data types, jump into Chapter 3.
 
