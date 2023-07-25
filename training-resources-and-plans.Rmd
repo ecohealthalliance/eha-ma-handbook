@@ -45,8 +45,9 @@ read [Hadley Wickham's paper on tidy data](https://www.jstatsoft.org/article/vie
 
 -  [Importing Data](https://intro2r.com/importing-data.html) provides a good overview of basic data imports while  [R4DS: Import](https://r4ds.hadley.nz/import.html) demonstrates how to properly import more complex data types. 
 
-- AIRTABLE DATA
-- ODK DATA
+- [AIRTABLE DATA](#airtable) - see chapter on Airtable
+
+- [ODK DATA](#odk) - see chapter on ODK
 
 
 - [Reading and writing spatial data with `terra`](https://rspatial.org/spatial/5-files.html) This chapter goes over ingesting spatial data with the `terra` package in R.
