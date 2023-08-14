@@ -198,6 +198,32 @@ gpg --list-keys
 - Move private key to encrypted storage locations (e.g. keybase and 1password)
 - Delete the private key from your machine to avoid leaks
 
+### How do I recover my gpg key from a file?
+
+First download the key from one of your back up locations.
+
+Then run the following commands:
+
+```
+# import the key
+gpg --import prv.key
+
+# list keys to get public {KEY}
+
+gpg --list-keys
+
+# set the trust level
+
+gpg --edit-key {KEY} trust quit
+  # enter 5<RETURN> (I trust ultimately)
+  # enter y<RETURN> (Really set this key to ultimate trust - Yes)
+
+# list keys to check that your key is trusted
+
+gpg --list-keys
+
+```
+
 ## Use git-crypt to unlock a repository
 
 The [`git-crypt` README](https://github.com/AGWA/git-crypt) outlines the basics
