@@ -22,7 +22,7 @@ Sign up for [Keybase](https://keybase.io/), and follow the instructions for
 installing it on your computer.
 
 Note that if you switch computers, you need to have another device associated with the  keybase account and/or a copy of your paper key in order to recover your key.  
-A [password manager](https://www.theguardian.com/technology/2022/mar/19/not-using-password-manager-why-you-should-online-security) ([Bitwarden](https://bitwarden.com/), [LastPass](https://www.lastpass.com/), [1Password](https://1password.com/)) would be helpful for securely storing a paper key. 
+A [password manager](https://www.theguardian.com/technology/2022/mar/19/not-using-password-manager-why-you-should-online-security) like [1Password](https://team-ecohealthalliance.1password.com/signin)) - EHA provides account, ([Bitwarden](https://bitwarden.com/) would be helpful for securely storing a paper key. 
 
 
 ### Installing Keybase on Linux
@@ -106,7 +106,7 @@ That guide also helps set up using your key to sign GitHub commits, which you
 should do for added security.
 
 Create a password associated with your keys when asked.  You can store
-this in your password manager such as LastPass or BitWarden.
+this in your password manager such as [1Password](https://team-ecohealthalliance.1password.com/signin) or BitWarden.
 Once your keys are created, visit your Keybase account at and verify your keys via as
 many other services, devices, or online identities as you want.  We suggest
 at least three. It is also a good idea to generate a physical 'paper key' and store it in
@@ -160,6 +160,69 @@ git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"`
 
 Note that if GnuPG is installed in a different location the command should be altered to reflect this change. 
 
+
+## Backing up and Recovering GPG Keys
+
+GPG private keys are stored locally and vulnerable to loss in the event of a problem with a user's local machine. There are two potential ways to do this, and a belt-and-suspenders approach is best:
+
+1) Use [KeyBase](https://keybase.io/)  to host an encrypted version of the key. 
+
+![host private key on keybase](assets/gpg_keybase_host_private_key.png)
+
+2) Store a copy of your private key in [1Password](https://team-ecohealthalliance.1password.com/signin)
+![Store an encrypted File in 1password](assets/gpg_1password_store_file.png)
+
+
+### How do I save a key?
+
+- First, do not commit the private key to github. Consider adding `prv.key` to the `.gitignore` file.
+
+- Run the following commands to export public and private keys to file:
+
+```
+# Get list of keys on your machine. Replace USER NAME with the name associated with a listed key. 
+
+gpg --list-keys
+
+# Save private key to a file -- DO NOT COMMIT TO GITHUB
+# You will prompted to enter your GPG password - its the same
+# password you would enter to sign commits
+
+ gpg --export-secret-key -a USER NAME > prv.key
+
+# Save public key to a file
+ gpg --export -a USER NAME > pub.key
+ 
+```
+
+- Move private key to encrypted storage locations (e.g. keybase and 1password)
+- Delete the private key from your machine to avoid leaks
+
+### How do I recover my gpg key from a file?
+
+First download the key from one of your back up locations.
+
+Then run the following commands:
+
+```
+# import the key
+gpg --import prv.key
+
+# list keys to get public {KEY}
+
+gpg --list-keys
+
+# set the trust level
+
+gpg --edit-key {KEY} trust quit
+  # enter 5<RETURN> (I trust ultimately)
+  # enter y<RETURN> (Really set this key to ultimate trust - Yes)
+
+# list keys to check that your key is trusted
+
+gpg --list-keys
+
+```
 
 ## Use git-crypt to unlock a repository
 
