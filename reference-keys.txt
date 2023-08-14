@@ -133,6 +133,9 @@ import-your-keys-to-your-local-keychain
 configure-gpg
 configure-gpg-on-macos-and-linux
 configure-gpg-on-windows
+backing-up-and-recovering-gpg-keys
+how-do-i-save-a-key
+how-do-i-recover-my-gpg-key-from-a-file
 use-git-crypt-to-unlock-a-repository
 troubleshooting
 managing-which-users-can-decrypt-files-in-a-repository
