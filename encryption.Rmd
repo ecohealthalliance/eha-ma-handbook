@@ -161,6 +161,43 @@ git config --global gpg.program "C:\Program Files (x86)\GnuPG\bin\gpg.exe"`
 Note that if GnuPG is installed in a different location the command should be altered to reflect this change. 
 
 
+## Backing up and Recovering GPG Keys
+
+GPG private keys are stored locally and vulnerable to loss in the event of a problem with a user's local machine. There are two potential ways to do this, and a belt-and-suspenders approach is best:
+
+1) Use [KeyBase](https://keybase.io/)  to host an encrypted version of the key. 
+
+![host private key on keybase](assets/gpg_keybase_host_private_key.png)
+
+2) Store a copy of your private key in [1Password](https://team-ecohealthalliance.1password.com/signin)
+![Store an encrypted File in 1password](assets/gpg_1password_store_file.png)
+
+
+### How do I save a key?
+
+- First, do not commit the private key to github. Consider adding `prv.key` to the `.gitignore` file.
+
+- Run the following commands to export public and private keys to file:
+
+```
+# Get list of keys on your machine. Replace USER NAME with the name associated with a listed key. 
+
+gpg --list-keys
+
+# Save private key to a file -- DO NOT COMMIT TO GITHUB
+# You will prompted to enter your GPG password - its the same
+# password you would enter to sign commits
+
+ gpg --export-secret-key -a USER NAME > prv.key
+
+# Save public key to a file
+ gpg --export -a USER NAME > pub.key
+ 
+```
+
+- Move private key to encrypted storage locations (e.g. keybase and 1password)
+- Delete the private key from your machine to avoid leaks
+
 ## Use git-crypt to unlock a repository
 
 The [`git-crypt` README](https://github.com/AGWA/git-crypt) outlines the basics
