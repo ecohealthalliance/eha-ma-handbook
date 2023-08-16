@@ -10,17 +10,17 @@ If you are planning on spending significant time improving your data science and
 -  A description of your goals for the training plans and to which EHA projects
    and activities you will apply your skills
 -  A list of courses/tutorials your plan to complete
--  The total time the courses will take to complete.  We find the estimated times of Data Camp courses are roughly accurate. 
+-  The total time the courses will take to complete. 
 -  The time frame over which you expect to complete them
 -  The name of a _peer learner_.  You should have a peer learner at EcoHealth who will be a partner over the course of your training.  This may be someone working on a similar training plan or someone with knowledge of the material already.  They should play some or all of these roles:
     -   Accountability: Your peer learner should know about your training plan and its time frame, and check in on how you are doing.
     -   Co-learning: Your learning peer and you may want to schedule times to watch course
         videos and complete exercises together
-    -   Review: Especially for materials without automating like Data Camp, your peer learner should be able to look at your work and provide feedback
+    -   Review: Especially for materials without automating, your peer learner should be able to look at your work and provide feedback
     -   Motivation:  Your peer learner should make your training fun and tell you that you rock. 
 
 When your supervisor signs off on your training plan, contact Megan Walsh to
-provide you with a Data Camp subscription for the period you need it.
+provide you with any subscriptions for the period you need them.
 
 ## Training Plans
 
@@ -70,8 +70,18 @@ read [Hadley Wickham's paper on tidy data](https://www.jstatsoft.org/article/vie
 <!-- - [DataCamp: Introduction to Data](https://www.datacamp.com/courses/introduction-to-data) (4 hours) is a good starter course you have not much or any training in statistics in school and want to get familiar with the language and concepts. -->
 
 <!-- - [DataCamp: Foundations of Probability in R](https://www.datacamp.com/courses/foundations-of-probability-in-r) (4 hours) covers many of the important concepts that those doing Bayesian model work at EHA discuss.  Take this if you are just getting started interacting with or reading this work and you don't have a probability background. -->
+- [Probability, Statistics, and Data: A fresh approach using R](https://mathstat.slu.edu/~speegle/_book/)
+A breadth first approach to probability and statistics that assumes minimal familiarity with calculus. 
+The book includes data sets that require cleaning and wrangling before they can be
+used for analysis and relies on simulations to demonstrate important concepts. 
 
-- [Statistical Rethinking: A Bayesian Course](https://xcelab.net/rm/statistical-rethinking/). This is an excellent book [and video lecture series](https://www.youtube.com/playlist?list=PLDcUM9US4XdM9_N6XUUFrhghGJ4K25bFc) that gives builds great foundations for doing many types of modeling.  Prerequisites are Intermediate R, some experience with linear regression and probability (for which the DataCamp course above is a good basis).  This course has about 19 hours of video.  We recommend 2-3 months for going through the book, video, and exercises.
+- [An Introduction to Probability and Simulation](https://bookdown.org/kevin_davisross/probsim-book/) This book covers concepts in Probability and Simulation. It encourages users to use
+code notebooks (google colab, Jupyter, etc) to work through problems.  
+
+- [Foundations of Probability in R](https://rpubs.com/trombleydc/extra_credit_11_6_2017). 
+A short self guided course on probability and distributions. 
+
+- [Statistical Rethinking: A Bayesian Course](https://xcelab.net/rm/statistical-rethinking/). This is an excellent book [and video lecture series](https://www.youtube.com/playlist?list=PLDcUM9US4XdM9_N6XUUFrhghGJ4K25bFc) that gives builds great foundations for doing many types of modeling.  Prerequisites are Intermediate R, some experience with linear regression and probability.  This course has about 19 hours of video.  We recommend 2-3 months for going through the book, video, and exercises.
 
 ### Improving your data visualization
 
@@ -81,9 +91,9 @@ read [Hadley Wickham's paper on tidy data](https://www.jstatsoft.org/article/vie
 -   [Fundamentals of Data Visualization](http://serialmentor.com/dataviz/) by Claus Wilke is an excellent guide to making high-quality figures, focusing more on design than mechanics of programming. R code is available for all of its examples.  If you feel you have a solid
 grasp of **ggplot2** but want to improve the quality of your figures, we recommend reading this e-book, and using the accompanying code in [its GitHub repository](https://github.com/clauswilke/dataviz) to reproduce figures. 
 
-<!-- ### R Programming -->
+ ### R Programming 
 
-<!-- -   [DataCamp: Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) is a good place to back up a bit to fill in concepts if you are missing things to help understand other course sequences.  -->
+[Advanced R: Functions](https://adv-r.hadley.nz/functions.html) "In this chapter, you’ll learn how to turn  informal, working knowledge [of functions] into more rigorous, theoretical understanding." 
 
 <!-- -   [DataCamp: Intermediate R](https://www.datacamp.com/courses/intermediate-r) (6 hours) or [DataCamp: Writing Functions in R](https://www.datacamp.com/courses/writing-functions-in-r)/ (4 hours) are both good courses to improve your skills if you find yourself managing a more complex workflow or working on an R package with someone at EHA.  -->
 
@@ -91,8 +101,8 @@ grasp of **ggplot2** but want to improve the quality of your figures, we recomme
 
 -   [Geocomputation in R](https://geocompr.robinlovelace.net/) is a comprehensive guide for understanding geographic data, mapping, and conducting spatial analysis in R. Likely, the most relevant chapters for your purposes are 1-8, 10-11. A chapter might take you 1-3 hours to work through, depending on how in depth you want to get and the number of exercises that you complete.
 
--  DataCamp also has courses on spatial analysis using R, notably [Spatial Analysis in R with sf and raster](https://www.datacamp.com/courses/spatial-analysis-in-r-with-sf-and-raster) (4 hours).  It covers
-some of the material from Geocomputation in R in less depth, and gives you fewer tools for hooking into the multiple geospatial data systems available in R.  Take this if you are more time-limited and are going to do less in terms of spatial statistics.
+<!-- -  DataCamp also has courses on spatial analysis using R, notably [Spatial Analysis in R with sf and raster](https://www.datacamp.com/courses/spatial-analysis-in-r-with-sf-and-raster) (4 hours).  It covers -->
+<!-- some of the material from Geocomputation in R in less depth, and gives you fewer tools for hooking into the multiple geospatial data systems available in R.  Take this if you are more time-limited and are going to do less in terms of spatial statistics. -->
 
 - Data Carpentry has a [course on using R for spatial data](https://datacarpentry.org/geospatial-workshop/).  Like other \*Carpentry lessons its designed as a workshop lesson plan but can be self-taught. It presumes very little R knowledge at all, and includes stuff like setting a project in RStudio.  This is a good place to start people or students with little R experience to get them making maps right away.  If you just want to get a quick feel for R spatial data types, jump into Chapter 3.
 
