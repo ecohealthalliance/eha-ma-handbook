@@ -35,7 +35,7 @@ some experience in it, but some good starting points are:
 -   [Cheatsheets](https://www.rstudio.com/resources/cheatsheets/) from RStudio
     are a useful references for a number of things.
 
-[DataCamp courses](https://www.datacamp.com/onboarding/learn?from=home&technology=r) are also potentially useful.
+[Dataquest courses](https://www.dataquest.io/path/data-analyst-r/) are also potentially useful.
 If you feel they would match your learning style and needs, discuss EHA purchasing a subscription for you with your supervisor.
 
 These resources are largely about the mechanics of programming in R, rather

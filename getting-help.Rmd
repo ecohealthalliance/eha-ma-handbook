@@ -32,11 +32,14 @@ Also, outside EHA:
     R](https://stackoverflow.com/questions/tagged/r?sort=newest&pagesize=50).
 -   [R-Weekly](https://rweekly.org/) publishes a useful weekly newsletter on new
     R developments, packages, and publications.
--   The [\#rstats hashtag](https://twitter.com/hashtag/rstats) on Twitter is a
+-   The [\#rstats hashtag](https://twitter.com/hashtag/rstats) on Mastodon and X (formerly Twitter) is a
     good place for news and short questions, and general ranting.
+-   The [Big Book of R](https://www.bigbookofr.com/) provides a comprehensive 
+    catalog of books on R (~350 different books across many topics).  
 
 If there's a course, workshop, or conference you want to attend to improve these
-skills, speak with your supervisor, we can often support this.  [DataCamp courses](https://www.datacamp.com/onboarding/learn?from=home&technology=r) are also potentially useful.
+skills, speak with your supervisor, we can often support this. [Dataquest](https://www.dataquest.io/) provides high quality
+courses that help build data science and statistical skill sets. 
 If you feel they would match your learning style and needs, discuss EHA purchasing a subscription for you with your supervisor.
 
 ## Minimal reproducible examples - helping others help you
