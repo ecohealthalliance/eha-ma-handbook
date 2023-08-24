@@ -41,15 +41,15 @@ airtable
 key-terms
 what-is-airtable
 when-should-i-use-airtable
-security-and-access-control
+security-access-control-and-data-durability
 user--and-administrator-security-features
 access-controls
 share-links-and-interfaces
 data-in-airtable
 workspaces-bases-tables-fields-records
 views
-internal-backups-record-history-base-snapshots
-importing-data
+internal-backups-record-history-base-snapshots-and-duplication
+importing-datad
 base-design
 automating-airtable
 automations-with-drag-and-drop-programing-pro-and-above
@@ -62,6 +62,7 @@ metadata
 metadata-for-automations-and-extensions
 external-backups
 using-airtabler
+manually-downloading-csvs
 other-open-source-projects
 paid-services
 versioning

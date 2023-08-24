@@ -204,7 +204,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.1" data-path="8-airtable.html"><a href="8-airtable.html#key-terms"><i class="fa fa-check"></i><b>8.1</b> Key Terms</a></li>
 <li class="chapter" data-level="8.2" data-path="8-airtable.html"><a href="8-airtable.html#what-is-airtable"><i class="fa fa-check"></i><b>8.2</b> What is Airtable?</a></li>
 <li class="chapter" data-level="8.3" data-path="8-airtable.html"><a href="8-airtable.html#when-should-i-use-airtable"><i class="fa fa-check"></i><b>8.3</b> When should I use Airtable?</a></li>
-<li class="chapter" data-level="8.4" data-path="8-airtable.html"><a href="8-airtable.html#security-and-access-control"><i class="fa fa-check"></i><b>8.4</b> Security and Access Control</a>
+<li class="chapter" data-level="8.4" data-path="8-airtable.html"><a href="8-airtable.html#security-access-control-and-data-durability"><i class="fa fa-check"></i><b>8.4</b> Security, Access Control, and Data Durability</a>
 <ul>
 <li class="chapter" data-level="8.4.1" data-path="8-airtable.html"><a href="8-airtable.html#user--and-administrator-security-features"><i class="fa fa-check"></i><b>8.4.1</b> User- and Administrator Security Features</a></li>
 <li class="chapter" data-level="8.4.2" data-path="8-airtable.html"><a href="8-airtable.html#share-links-and-interfaces"><i class="fa fa-check"></i><b>8.4.2</b> Share Links and Interfaces</a></li>
@@ -213,8 +213,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="8.5.1" data-path="8-airtable.html"><a href="8-airtable.html#workspaces-bases-tables-fields-records"><i class="fa fa-check"></i><b>8.5.1</b> Workspaces, Bases, Tables, Fields, Records</a></li>
 <li class="chapter" data-level="8.5.2" data-path="8-airtable.html"><a href="8-airtable.html#views"><i class="fa fa-check"></i><b>8.5.2</b> Views</a></li>
-<li class="chapter" data-level="8.5.3" data-path="8-airtable.html"><a href="8-airtable.html#internal-backups-record-history-base-snapshots"><i class="fa fa-check"></i><b>8.5.3</b> Internal Backups: Record History, Base Snapshots</a></li>
-<li class="chapter" data-level="8.5.4" data-path="8-airtable.html"><a href="8-airtable.html#importing-data"><i class="fa fa-check"></i><b>8.5.4</b> Importing data</a></li>
+<li class="chapter" data-level="8.5.3" data-path="8-airtable.html"><a href="8-airtable.html#internal-backups-record-history-base-snapshots-and-duplication"><i class="fa fa-check"></i><b>8.5.3</b> Internal Backups: Record History, Base Snapshots and Duplication</a></li>
+<li class="chapter" data-level="8.5.4" data-path="8-airtable.html"><a href="8-airtable.html#importing-datad"><i class="fa fa-check"></i><b>8.5.4</b> Importing datad</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="8-airtable.html"><a href="8-airtable.html#base-design"><i class="fa fa-check"></i><b>8.6</b> Base Design</a></li>
 <li class="chapter" data-level="8.7" data-path="8-airtable.html"><a href="8-airtable.html#automating-airtable"><i class="fa fa-check"></i><b>8.7</b> Automating Airtable</a>
@@ -487,15 +487,15 @@ Because Airtable is extremely useful and user friendly, there are a plethora of 
 Airtable shines when you have multiple data entities that are linked via common data elements. For example, if you are sampling bats then conducting antibody screening, running multiplex PCR, and keeping physical samples of blood and urine from those bats, you have multiple data entities (bats, antibody test results, PCR test results, and physical samples) that are all linked via common data elements like site and collector.
 What is more, the test results depend on the physical samples and the physical samples depend on the bats. Those common data elements only need to be entered into a single entity (or table) then shared across the other entities in your base using linked elements. Once you have linked elements you no longer have to worry about updating the same piece of information in multiple locations and you can quickly navigate between entities and understand hierarchical relationships.</p>
 <div class="figure"><span style="display:block;" id="fig:bat-data"></span>
-<div id="htmlwidget-a6b7ae54dfbfacf141a3" style="width:672px;height:200px;" class="grViz html-widget "></div>
-<script type="application/json" data-for="htmlwidget-a6b7ae54dfbfacf141a3">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e1726c6e37719214bd24" style="width:672px;height:200px;" class="grViz html-widget "></div>
+<script type="application/json" data-for="htmlwidget-e1726c6e37719214bd24">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 8.1: Data model for bat sampling example.
 </p>
 </div>
 </div>
-<div id="security-and-access-control" class="section level2 hasAnchor" number="8.4">
-<h2><span class="header-section-number">8.4</span> Security and Access Control<a href="8-airtable.html#security-and-access-control" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="security-access-control-and-data-durability" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Security, Access Control, and Data Durability<a href="8-airtable.html#security-access-control-and-data-durability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Airtable maintains physical and technological security as part of its ISO IEC 27001:2013 and SOC 2 compliance measures. Data are 256-bit encrypted when storing on the server and also when transferring data over the internet. To find vulnerabilities in their software, they run daily, weekly, and monthly scans on different components of their system and regularly commission external penetration tests. They also run a bug bounty program to help identify issues. Their data centers have fire detection and suppression systems, redundant power systems, and strict control for physical access. Because Airtable relies on Amazon Web Services (AWS) for its cloud infrastructure (the same providers used by previous EHA projects), data are geo-redundantly replicated in backups across multiple zones to increase data durability. They also have a team monitoring services at all times. Airtable employees are thoroughly vetted before hiring and continually trained on data protection best practices. Their workstations are secured by using full-disk encryption, automatic locking, and strong password requirements.</p>
 <div id="user--and-administrator-security-features" class="section level3 hasAnchor" number="8.4.1">
 <h3><span class="header-section-number">8.4.1</span> User- and Administrator Security Features<a href="8-airtable.html#user--and-administrator-security-features" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -530,8 +530,8 @@ Figure 8.1: Data model for bat sampling example.
 <p>Bases are equivalent to databases. They consist of a set of tables that can be linked and allow you to perform some task (e.g. IRB tracking, capturing research data, etc.). Bases can be duplicated and shared across your workspaces and you can share bases with other users.</p>
 <p>Tables are where most of the action happens. Data is entered in tables, tables can be transformed via views into calendars, dashboards, or galleries, and tables can be manipulated via the API. They describe a data entity and are composed of fields. In the bat sampling example, each circle would be a table in the bat sampling base.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<div id="htmlwidget-ae524dad23dde6041e89" style="width:672px;height:200px;" class="grViz html-widget "></div>
-<script type="application/json" data-for="htmlwidget-ae524dad23dde6041e89">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1c97733dc78ec01cc87f" style="width:672px;height:200px;" class="grViz html-widget "></div>
+<script type="application/json" data-for="htmlwidget-1c97733dc78ec01cc87f">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 8.2: Data model for bat sampling example.
 </p>
@@ -544,14 +544,15 @@ Figure 8.2: Data model for bat sampling example.
 <p>In Airtable, tables can be displayed in different views to emphasis different components of the data. Views are great for creating concise presentations of data, especially in sprawling tables. The default view in an table is the grid (spreadsheet) view. All other views will derive from the data entered in this view.</p>
 <p>For more on views, see <a href="https://support.airtable.com/hc/en-us/articles/202624989-Guide-to-views">the guide to views</a>.</p>
 </div>
-<div id="internal-backups-record-history-base-snapshots" class="section level3 hasAnchor" number="8.5.3">
-<h3><span class="header-section-number">8.5.3</span> Internal Backups: Record History, Base Snapshots<a href="8-airtable.html#internal-backups-record-history-base-snapshots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="internal-backups-record-history-base-snapshots-and-duplication" class="section level3 hasAnchor" number="8.5.3">
+<h3><span class="header-section-number">8.5.3</span> Internal Backups: Record History, Base Snapshots and Duplication<a href="8-airtable.html#internal-backups-record-history-base-snapshots-and-duplication" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Airtable has system for tracking changes to a base. They provide revision history for individual records (how long those histories are stored varies by plan). Any comments made in the revision history will be stored for the life of the record (on any plan). The current state of an entire base may be captured through snapshots. Should a systemic issue arise, the base can be restored to a snapshot at a later date. Restoring from a snapshot will remove the revision history for a record but comments on that record will be maintained.</p>
-<p>As revision histories are maintained, “deleted” records may be retrieved. In the event of the need to permanently remove data, the revision history of the base may be removed.</p>
-<p>Airtable allows data to be exported as CSVs from individual tables. At this time there is not an Airtable supported base export function.</p>
+<p>As revision histories are maintained, “deleted” data may be retrieved. In the event of the need to permanently remove data, the revision history of the base may be removed.</p>
+<p>Additionally, you can duplicate a base. This is similar to taking a snapshot except that if the original base is deleted, the duplicated base will persist.</p>
+<p>See the <a href="8-airtable.html#external-backups">external backups section</a> for saving data outside airtable.</p>
 </div>
-<div id="importing-data" class="section level3 hasAnchor" number="8.5.4">
-<h3><span class="header-section-number">8.5.4</span> Importing data<a href="8-airtable.html#importing-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="importing-datad" class="section level3 hasAnchor" number="8.5.4">
+<h3><span class="header-section-number">8.5.4</span> Importing datad<a href="8-airtable.html#importing-datad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Data can be imported to Airtable from a number of sources including CSV files, excel, Google sheets, XML, and via copy paste. Airtable will guess what the most appropriate field type is, so make sure the field type is appropriate for the data (e.g. convert from text to date type fields). Certain sources, like Google sheets, can be imported as bases.</p>
 <p>For more on importing data see: <a href="https://support.airtable.com/hc/en-us/sections/200928025-Importing-and-adding-data">Importing and Adding data</a></p>
 </div>
@@ -715,15 +716,22 @@ from your base.</p>
 <p>Using <code>airtabler::air_dump()</code> and <code>airtabler::air_dump_to_csv()</code> functions, you can export all tables to R then create a versioned folder of CSVs.</p>
 <p>See the <a href="https://github.com/ecohealthalliance/airtabler/blob/11f5fb21741c4cf36ece448a8eb92f53c46422f7/vignettes/Generate-Metadata-and-Backup.Rmd">vignette</a> in the <code>airtabler</code> package for generating metadata and creating backups.</p>
 </div>
-<div id="other-open-source-projects" class="section level4 hasAnchor" number="8.9.2.2">
-<h4><span class="header-section-number">8.9.2.2</span> Other Open Source Projects<a href="8-airtable.html#other-open-source-projects" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="manually-downloading-csvs" class="section level4 hasAnchor" number="8.9.2.2">
+<h4><span class="header-section-number">8.9.2.2</span> Manually downloading CSVs<a href="8-airtable.html#manually-downloading-csvs" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Airtable allows you to <a href="https://support.airtable.com/docs/getting-started-with-airtable-views#:~:text=You%20can%20export%20all%20of,our%20web%20and%20desktop%20applications">manually download data as a CSV</a> from each table. When
+downloading data, make sure you are in the right view. At this time (24 August 2023)
+there is no “export base to CSVs” feature built into airtable so all tables must
+be downloaded separately.</p>
+</div>
+<div id="other-open-source-projects" class="section level4 hasAnchor" number="8.9.2.3">
+<h4><span class="header-section-number">8.9.2.3</span> Other Open Source Projects<a href="8-airtable.html#other-open-source-projects" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>UnlyEd - use this template to push airtable backups to AWS S3.</p>
 <ul>
 <li><a href="https://github.com/UnlyEd/airtable-backups-boilerplate" class="uri">https://github.com/UnlyEd/airtable-backups-boilerplate</a></li>
 </ul>
 </div>
-<div id="paid-services" class="section level4 hasAnchor" number="8.9.2.3">
-<h4><span class="header-section-number">8.9.2.3</span> Paid services<a href="8-airtable.html#paid-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="paid-services" class="section level4 hasAnchor" number="8.9.2.4">
+<h4><span class="header-section-number">8.9.2.4</span> Paid services<a href="8-airtable.html#paid-services" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Sequin - replicate airtable to postGres database
 - <a href="https://www.sequin.io/sources/airtable" class="uri">https://www.sequin.io/sources/airtable</a></p>
 
