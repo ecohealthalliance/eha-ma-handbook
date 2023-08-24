@@ -79,7 +79,7 @@ digraph bat_sampling {
 ```  
 
 
-## Security and Access Control
+## Security, Access Control, and Data Durability
 
 Airtable maintains physical and technological security as part of its ISO IEC 27001:2013 and SOC 2 compliance measures.  Data are 256-bit encrypted when storing on the server and also when transferring data over the internet. To find vulnerabilities in their software, they run daily, weekly, and monthly scans on different components of their system and regularly commission external penetration tests. They also run a bug bounty program to help identify issues. Their data centers have fire detection and suppression systems, redundant power systems, and strict control for physical access. Because Airtable relies on Amazon Web Services (AWS) for its cloud infrastructure (the same providers used by previous EHA projects), data are geo-redundantly replicated in backups across multiple zones to increase data durability. They also have a team monitoring services at all times. Airtable employees are thoroughly vetted before hiring and continually trained on data protection best practices. Their workstations are secured by using full-disk encryption, automatic locking, and strong password requirements.  
 
@@ -130,15 +130,17 @@ In Airtable, tables can be displayed in different views to emphasis different co
 
 For more on views, see [the guide to views](https://support.airtable.com/hc/en-us/articles/202624989-Guide-to-views).
 
-### Internal Backups: Record History, Base Snapshots
+### Internal Backups: Record History, Base Snapshots and Duplication
 
 Airtable has system for tracking changes to a base. They provide revision history for individual records (how long those histories are stored varies by plan). Any comments made in the revision history will be stored for the life of the record (on any plan). The current state of an entire base may be captured through snapshots. Should a systemic issue arise, the base can be restored to a snapshot at a later date. Restoring from a snapshot will remove the revision history for a record but comments on that record will be maintained.   
 
-As revision histories are maintained, "deleted" records may be retrieved.  In the event of the need to permanently remove data, the revision history of the base may be removed. 
+As revision histories are maintained, "deleted" data may be retrieved.  In the event of the need to permanently remove data, the revision history of the base may be removed. 
 
-Airtable allows data to be exported as CSVs from individual tables. At this time there is not an Airtable supported base export function. 
+Additionally, you can duplicate a base. This is similar to taking a snapshot except that if the original base is deleted, the duplicated base will persist.
 
-### Importing data
+See the [external backups section](#external-backups) for saving data outside airtable.
+
+### Importing datad
 
 Data can be imported to Airtable from a number of sources including CSV files, excel, Google sheets, XML, and via copy paste. Airtable will guess what the most appropriate field type is, so make sure the field type is appropriate for the data (e.g. convert from text to date type fields). Certain sources, like Google sheets, can be imported as bases. 
 
@@ -342,12 +344,20 @@ to use airtable as your data store.Unfortunately, airtable does not provide an
 off the shelf solution for this. Below are three options for extracting all data
 from your base. 
 
+
+
 #### Using airtabler
 
 Using `airtabler::air_dump()` and `airtabler::air_dump_to_csv()` functions, you can export all tables to R then create a versioned folder of CSVs. 
 
 See the [vignette](https://github.com/ecohealthalliance/airtabler/blob/11f5fb21741c4cf36ece448a8eb92f53c46422f7/vignettes/Generate-Metadata-and-Backup.Rmd) in the `airtabler` package for generating metadata and creating backups. 
 
+#### Manually downloading CSVs
+
+Airtable allows you to [manually download data as a CSV](https://support.airtable.com/docs/getting-started-with-airtable-views#:~:text=You%20can%20export%20all%20of,our%20web%20and%20desktop%20applications) from each table. When
+downloading data, make sure you are in the right view. At this time (24 August 2023) 
+there is no "export base to CSVs" feature built into airtable so all tables must
+be downloaded separately. 
 
 #### Other Open Source Projects
 
