@@ -97,6 +97,8 @@ Data management activities, but not necessarily infrastructure, are an allowable
 - Check that data storage locations and methods are well described and linked 
 - Check that necessary stakeholders are identified 
 - Check that appropriate privacy and security measures are working as expected 
+- Add any publications or research outputs are  to DMP outputs
+    - DOI's can be assigned to code, datasets, and published articles
 - Check that your data products and code meet the needs of your proposed long term storage solution
 - `r params$data_librarian_appt` with the `r params$data_librarian`
 
