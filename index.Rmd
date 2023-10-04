@@ -19,8 +19,7 @@ params:
 # Introduction {#introduction .unnumbered}
 
 This handbook describes best practices and guidelines for project management,
-organization, modeling and and programming we aim for our on the EHA Modeling &
-Analytics team.
+organization, modeling and programming we aim for at EHA.
 
 This is a living document. To make changes, just click the edit button
 (<i class="fa fa-edit"></i>) at the top of the page. It will take you to the
