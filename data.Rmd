@@ -83,6 +83,7 @@ Data management activities, but not necessarily infrastructure, are an allowable
     - Think about how measurements and primary data sets will be stored
     - Think about how statistical models and derived products will be produced and stored
     - Consider where data will be stored long term, how it will be accessed, and by whom
+    - Determine backup strategy and setup backups
 - Think about how you will store artifacts of analysis
     - Where will your code live? Who will be able to access it?  
     - If you're using spreadsheets with formulas, proprietary software or other methods analyzing data, how will you make that workflow reproducible?
@@ -143,6 +144,34 @@ Data management activities, but not necessarily infrastructure, are an allowable
 We aim to generally work in a **tidy data** framework. This approach to
 structuring data makes interoperability between tools easier.
 
+## Backups
+
+Cloud based storage solutions like google drive, dropbox, and aws S3 (used in airtable
+and ODK) are extremely reliable. Nevertheless, it is a good practice to have a
+backup of critical research objects like datasets and code. 
+
+### What do we envision these backups being used for? 
+
+Backups should protect against catastrophic loss of data. Catastrophic loss includes things like losing access to a service (either because the system is down or we cut ties), deletion of a dataset, or deletion of key tables. Backups may be cycled to save on space (e.g. backs are deleted after a certain period of time). In the event of catastrophic loss, it should be possible to restore or reconstitute a dataset from one of these backups. 
+
+The snapshot and revision history in features in cloud storage should be sufficient for "time travel" type backups. 
+
+###  What counts as a back-up? 
+
+A  backup is any copy or representation of the data stored outside of the cloud storage system that allows users to recover the data stored in the system and allows the  structure of the full dataset to be reconstructed (e.g. can restore relationships
+in airtable bases).  
+
+**Criteria**: 
+1. Data are stored outside the service
+2. Data are properly documented with a data dictionary and other metadata
+3. Data can serve as a replacement in established research workflows 
+
+Some groups may already have versioned backups of data outside of a given service that are not necessarily pulling the whole database but are capturing essential data. Ultimately, if this type of backup is sufficient to meet research goals that is fine.
+
+Some other groups may have a single source of truth that is split across multiple databases/workspaces. Priority should be given to the single source of truth. E.g. 
+A central laboratory database consolidates data from several countries (USA, Canada, and Mexico). Country level mirrors of the database are created (e.g. just the data from the USA) to provide access to the data for that user group. Those country level mirrors 
+do not need to be backed up unless they are being modified in a way that is not
+reflected in the central database. 
 
 
 ## Learn

@@ -361,11 +361,11 @@
       "Version": "0.2.1.042",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteUsername": "ropenscilabs",
-      "RemoteRepo": "deposits",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "b17bd0ec5b8a04cacbbb68e95441bab168624d12",
       "RemoteHost": "api.github.com",
+      "RemoteUsername": "rOpenSciLabs",
+      "RemoteRepo": "deposits",
+      "RemoteRef": "main",
+      "RemoteSha": "b17bd0ec5b8a04cacbbb68e95441bab168624d12",
       "Requirements": [
         "R6",
         "checkmate",
@@ -378,7 +378,7 @@
         "withr",
         "xml2"
       ],
-      "Hash": "3a2d92b4cd2e22d174b7f3682dbe9aad"
+      "Hash": "23ab06c831fabd7c1b3624a29312c3e3"
     },
     "digest": {
       "Package": "digest",
