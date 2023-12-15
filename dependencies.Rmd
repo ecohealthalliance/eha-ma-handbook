@@ -21,6 +21,7 @@ are portable?*
 
 -   R package installation can be especially tricky on Mac computers with [Apple Silicon](https://support.apple.com/en-us/HT211814). Below are some steps to get 
     package install set ups.
+    
 1. Install the R compilation tool chain https://mac.thecoatlessprofessor.com/macrtools/. If any issues with FORTRAN, follow instructions for downloading FORTRAN compiler here for Apple silicon Macs: <https://mac.r-project.org/tools/>
 
 2. Install gcc `brew install gcc`. This requires having brew set up. 
@@ -29,10 +30,12 @@ are portable?*
 
 4. Create `~/.R/Makevars` and insert the following. This will need to be updated depending on gcc version. 
 
+```
 CXX14FLAGS += -O3 -arch arm64 -ftemplate-depth-256
 FC = /opt/homebrew/Cellar/gcc/13.2.0/bin/gfortran
 F77 = /opt/homebrew/Cellar/gcc/13.2.0/bin/gfortran
 FLIBS = -L/opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/13
+```
 
 5. RStudio may have a bug in accessing the correct terminal path. The workaround is to copy your terminal path (`echo $PATH`) into `.Renviron` per instructions here: <https://community.rstudio.com/t/how-to-get-rstudio-ide-to-use-the-correct-terminal-path-in-mac-os-x/131528/6>
 
