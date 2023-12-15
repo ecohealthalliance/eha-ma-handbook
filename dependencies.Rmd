@@ -19,4 +19,26 @@ are portable?*
     our packages to be up to [rOpenSci
     standards](https://github.com/ropensci/onboarding).
 
+-   R package installation can be especially tricky on Mac computers with [Apple Silicon](https://support.apple.com/en-us/HT211814). Below are some steps to get 
+    package install set ups.
+1. Install the R compilation tool chain https://mac.thecoatlessprofessor.com/macrtools/. If any issues with FORTRAN, follow instructions for downloading FORTRAN compiler here for Apple silicon Macs: <https://mac.r-project.org/tools/>
+
+2. Install gcc `brew install gcc`. This requires having brew set up. 
+
+3. Make sure homebrew is in terminal path. Add it by `export PATH=$PATH:/opt/homebrew/bin`.
+
+4. Create `~/.R/Makevars` and insert the following. This will need to be updated depending on gcc version. 
+
+CXX14FLAGS += -O3 -arch arm64 -ftemplate-depth-256
+FC = /opt/homebrew/Cellar/gcc/13.2.0/bin/gfortran
+F77 = /opt/homebrew/Cellar/gcc/13.2.0/bin/gfortran
+FLIBS = -L/opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/13
+
+5. RStudio may have a bug in accessing the correct terminal path. The workaround is to copy your terminal path (`echo $PATH`) into `.Renviron` per instructions here: <https://community.rstudio.com/t/how-to-get-rstudio-ide-to-use-the-correct-terminal-path-in-mac-os-x/131528/6>
+
+6. Some packages may need additional help for R to find the correct paths. For `units`:
+`remotes::install_version(package = "units", 
+                         version = "0.8-5", 
+                         configure.args = "--with-udunits2-lib=/opt/homebrew/Cellar/udunits/2.2.28/lib --with-udunits2-include=/opt/homebrew/Cellar/udunits/2.2.28/include")`
+
 
