@@ -1,22 +1,18 @@
 # Dependency Management {#dependencies}
 
-*How do I make sure that all my software and configurations needed for a project
-are portable?*
+*How do I make sure that all my software and configurations needed for a projects are portable?*
 
--   [Packrat](https://rstudio.github.io/packrat/) or
-    [checkpoint](https://CRAN.R-project.org/package=checkpoint) to fix R package
-    versions.
--   [Docker](https://www.docker.com/) for everything
+
+- [renv](https://rstudio.github.io/renv/articles/renv.html) captures package versions and sources as well as R version. `renv` also records python versions and virtual environments for projects that used both languages. 
+    - The [capsule](https://github.com/MilesMcBain/capsule) package can be useful when you want version control/depedency management but not the full weight of `renv`. Sometimes, `renv` can be an impediment for smaller and highly collaborative projects, that is where capsule can be useful. Ultimately, capsule will allow to setup `renv` for a project when it gets to a stable state.  
+
+-   [Docker](https://www.docker.com/) allows you to create virtual machines, meaning you can capture all system dependencies in addition to the dependencies captured in `renv`. It works for essentially any programming language and is extremely flexible. 
+    - [UseR 2022 Docker workshop](https://github.com/rsangole/user2022-r-for-docker/tree/main)
     -   [A lesson in user Docker for an R
-        project](http://ropenscilabs.github.io/r-docker-tutorial/)
--   Makefiles can automate a complex, multipart project. Here's [a lesson on
-    them from Software Carpentry](http://swcarpentry.github.io/make-novice/)
+project](http://ropenscilabs.github.io/r-docker-tutorial/)
+-   Makefiles can automate a complex, multipart project. Here's [a lesson on them from Software Carpentry](http://swcarpentry.github.io/make-novice/)
 
--   R packages can be a useful project output. We have some in-house R packages
-    to provide access to internal data and generate reports, and may be
-    developing more for external audiences. Hadley Wickham's [R Packages
-    Book](http://r-pkgs.had.co.nz/) provides guidance for these, and we expect
-    our packages to be up to [rOpenSci
-    standards](https://github.com/ropensci/onboarding).
+-   R packages can be a useful project output. We have some in-house R packages to provide access to internal data and generate reports, and may be developing more for external audiences. Hadley Wickham's [R Packages Book](http://r-pkgs.had.co.nz/) provides guidance for these, and we expect our packages to be up to [rOpenSci standards](https://github.com/ropensci/onboarding).
 
 
+Historically some projects used [Packrat](https://rstudio.github.io/packrat/) or [checkpoint](https://CRAN.R-project.org/package=checkpoint) to fix R package versions. These systems have been superceded by `renv`.
