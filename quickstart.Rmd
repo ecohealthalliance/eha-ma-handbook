@@ -9,7 +9,7 @@ Office, etc), M&A members should do the following:
     supervisor suggests or are associated with projects you are assigned to.
     (Don't forget **\#random** and **\#out-of-office-fun**!)
 -   If you don't already have one, sign up for an account on
-    [GitHub](https://github.com/). Provide Noam with your username so as to add
+    [GitHub](https://github.com/). Provide the Data Librarian with your username so as to add
     you to the EcoHealth Alliance team. If you already have a GitHub account
     using a personal email, [add your EHA email to your
     account](https://github.com/settings/emails) and [set up custom routing to
