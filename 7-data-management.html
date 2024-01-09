@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7 Data Management | EHA Modeling &amp; Analytics Handbook</title>
   <meta name="description" content="7 Data Management | EHA Modeling &amp; Analytics Handbook" />
-  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7 Data Management | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
@@ -50,7 +50,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.10/grViz.js"></script>
@@ -196,8 +196,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.2" data-path="7-data-management.html"><a href="7-data-management.html#using-dmptool-to-create-prepare-your-proposal-data-management-plan"><i class="fa fa-check"></i><b>7.1.2</b> Using DMPTool to create prepare your proposal data Management plan</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="7-data-management.html"><a href="7-data-management.html#notes-on-data-management"><i class="fa fa-check"></i><b>7.2</b> Notes on data management</a></li>
-<li class="chapter" data-level="7.3" data-path="7-data-management.html"><a href="7-data-management.html#learn-2"><i class="fa fa-check"></i><b>7.3</b> Learn</a></li>
-<li class="chapter" data-level="7.4" data-path="7-data-management.html"><a href="7-data-management.html#install-3"><i class="fa fa-check"></i><b>7.4</b> Install</a></li>
+<li class="chapter" data-level="7.3" data-path="7-data-management.html"><a href="7-data-management.html#backups"><i class="fa fa-check"></i><b>7.3</b> Backups</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="7-data-management.html"><a href="7-data-management.html#what-do-we-envision-these-backups-being-used-for"><i class="fa fa-check"></i><b>7.3.1</b> What do we envision these backups being used for?</a></li>
+<li class="chapter" data-level="7.3.2" data-path="7-data-management.html"><a href="7-data-management.html#what-counts-as-a-back-up"><i class="fa fa-check"></i><b>7.3.2</b> What counts as a back-up?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="7-data-management.html"><a href="7-data-management.html#learn-2"><i class="fa fa-check"></i><b>7.4</b> Learn</a></li>
+<li class="chapter" data-level="7.5" data-path="7-data-management.html"><a href="7-data-management.html#install-3"><i class="fa fa-check"></i><b>7.5</b> Install</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="8-airtable.html"><a href="8-airtable.html"><i class="fa fa-check"></i><b>8</b> Airtable</a>
 <ul>
@@ -352,7 +357,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.9" data-path="16-encryption.html"><a href="16-encryption.html#use-a-symmetric-key-for-automated-processes"><i class="fa fa-check"></i><b>16.9</b> Use a symmetric key for automated processes</a></li>
 <li class="chapter" data-level="16.10" data-path="16-encryption.html"><a href="16-encryption.html#removing-sensitive-files-from-git-history"><i class="fa fa-check"></i><b>16.10</b> Removing sensitive files from git history</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="17-dependencies.html"><a href="17-dependencies.html"><i class="fa fa-check"></i><b>17</b> Dependency Management</a></li>
+<li class="chapter" data-level="17" data-path="17-dependencies.html"><a href="17-dependencies.html"><i class="fa fa-check"></i><b>17</b> Dependency Management</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="17-dependencies.html"><a href="17-dependencies.html#gcc-and-mac-silicon"><i class="fa fa-check"></i><b>17.1</b> GCC and mac silicon</a></li>
+<li class="chapter" data-level="17.2" data-path="17-dependencies.html"><a href="17-dependencies.html#section"><i class="fa fa-check"></i><b>17.2</b> </a></li>
+</ul></li>
 <li class="chapter" data-level="18" data-path="18-statistical-methods.html"><a href="18-statistical-methods.html"><i class="fa fa-check"></i><b>18</b> Statistical Methods</a>
 <ul>
 <li class="chapter" data-level="18.1" data-path="18-statistical-methods.html"><a href="18-statistical-methods.html#multivariate-regression"><i class="fa fa-check"></i><b>18.1</b> Multivariate Regression</a></li>
@@ -550,6 +559,7 @@ Data management activities, but not necessarily infrastructure, are an allowable
 <li>Think about how measurements and primary data sets will be stored</li>
 <li>Think about how statistical models and derived products will be produced and stored</li>
 <li>Consider where data will be stored long term, how it will be accessed, and by whom</li>
+<li>Determine backup strategy and setup backups</li>
 </ul></li>
 <li>Think about how you will store artifacts of analysis
 <ul>
@@ -628,8 +638,33 @@ distributing data internally and externally.</li>
 <p>We aim to generally work in a <strong>tidy data</strong> framework. This approach to
 structuring data makes interoperability between tools easier.</p>
 </div>
-<div id="learn-2" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Learn<a href="7-data-management.html#learn-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="backups" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Backups<a href="7-data-management.html#backups" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Cloud based storage solutions like google drive, dropbox, and aws S3 (used in airtable
+and ODK) are extremely reliable. Nevertheless, it is a good practice to have a
+backup of critical research objects like datasets and code.</p>
+<div id="what-do-we-envision-these-backups-being-used-for" class="section level3 hasAnchor" number="7.3.1">
+<h3><span class="header-section-number">7.3.1</span> What do we envision these backups being used for?<a href="7-data-management.html#what-do-we-envision-these-backups-being-used-for" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Backups should protect against catastrophic loss of data. Catastrophic loss includes things like losing access to a service (either because the system is down or we cut ties), deletion of a dataset, or deletion of key tables. Backups may be cycled to save on space (e.g. backs are deleted after a certain period of time). In the event of catastrophic loss, it should be possible to restore or reconstitute a dataset from one of these backups.</p>
+<p>The snapshot and revision history in features in cloud storage should be sufficient for “time travel” type backups.</p>
+</div>
+<div id="what-counts-as-a-back-up" class="section level3 hasAnchor" number="7.3.2">
+<h3><span class="header-section-number">7.3.2</span> What counts as a back-up?<a href="7-data-management.html#what-counts-as-a-back-up" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A backup is any copy or representation of the data stored outside of the cloud storage system that allows users to recover the data stored in the system and allows the structure of the full dataset to be reconstructed (e.g. can restore relationships
+in airtable bases).</p>
+<p><strong>Criteria</strong>:
+1. Data are stored outside the service
+2. Data are properly documented with a data dictionary and other metadata
+3. Data can serve as a replacement in established research workflows</p>
+<p>Some groups may already have versioned backups of data outside of a given service that are not necessarily pulling the whole database but are capturing essential data. Ultimately, if this type of backup is sufficient to meet research goals that is fine.</p>
+<p>Some other groups may have a single source of truth that is split across multiple databases/workspaces. Priority should be given to the single source of truth. E.g.
+A central laboratory database consolidates data from several countries (USA, Canada, and Mexico). Country level mirrors of the database are created (e.g. just the data from the USA) to provide access to the data for that user group. Those country level mirrors
+do not need to be backed up unless they are being modified in a way that is not
+reflected in the central database.</p>
+</div>
+</div>
+<div id="learn-2" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Learn<a href="7-data-management.html#learn-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Watch M3 on <a href="https://airtable.com/appwlxIzmQx5njRtQ/tbledVCO9MRKkK9MW/viwfFq11zdwCbBT83/recNVSuG2ApgfYkbl?blocks=hide">Data Management Plans</a></li>
 <li>Read California Digital Library guidance on <a href="https://dmptool.org/general_guidance">Data Management Plans</a></li>
@@ -657,8 +692,8 @@ post</a>
 is nice, too.</li>
 </ul>
 </div>
-<div id="install-3" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> Install<a href="7-data-management.html#install-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="install-3" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Install<a href="7-data-management.html#install-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Get the
 <a href="https://cran.r-project.org/web/packages/tidyverse/index.html"><strong>tidyverse</strong></a>
 package for R using <code>install.packages("tidyverse")</code>. This will install several

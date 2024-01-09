@@ -35,6 +35,9 @@ data-management-plan
 expectations-by-project-phase
 using-dmptool-to-create-prepare-your-proposal-data-management-plan
 notes-on-data-management
+backups
+what-do-we-envision-these-backups-being-used-for
+what-counts-as-a-back-up
 learn-2
 install-3
 airtable
@@ -146,6 +149,8 @@ import-your-keys-to-the-eha-server
 use-a-symmetric-key-for-automated-processes
 removing-sensitive-files-from-git-history
 dependencies
+gcc-and-mac-silicon
+section
 statistical-methods
 multivariate-regression
 networks

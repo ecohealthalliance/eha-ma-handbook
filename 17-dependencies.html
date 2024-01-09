@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>17 Dependency Management | EHA Modeling &amp; Analytics Handbook</title>
   <meta name="description" content="17 Dependency Management | EHA Modeling &amp; Analytics Handbook" />
-  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="17 Dependency Management | EHA Modeling &amp; Analytics Handbook" />
   <meta property="og:type" content="book" />
@@ -50,7 +50,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.10/grViz.js"></script>
@@ -196,8 +196,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.1.2" data-path="7-data-management.html"><a href="7-data-management.html#using-dmptool-to-create-prepare-your-proposal-data-management-plan"><i class="fa fa-check"></i><b>7.1.2</b> Using DMPTool to create prepare your proposal data Management plan</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="7-data-management.html"><a href="7-data-management.html#notes-on-data-management"><i class="fa fa-check"></i><b>7.2</b> Notes on data management</a></li>
-<li class="chapter" data-level="7.3" data-path="7-data-management.html"><a href="7-data-management.html#learn-2"><i class="fa fa-check"></i><b>7.3</b> Learn</a></li>
-<li class="chapter" data-level="7.4" data-path="7-data-management.html"><a href="7-data-management.html#install-3"><i class="fa fa-check"></i><b>7.4</b> Install</a></li>
+<li class="chapter" data-level="7.3" data-path="7-data-management.html"><a href="7-data-management.html#backups"><i class="fa fa-check"></i><b>7.3</b> Backups</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="7-data-management.html"><a href="7-data-management.html#what-do-we-envision-these-backups-being-used-for"><i class="fa fa-check"></i><b>7.3.1</b> What do we envision these backups being used for?</a></li>
+<li class="chapter" data-level="7.3.2" data-path="7-data-management.html"><a href="7-data-management.html#what-counts-as-a-back-up"><i class="fa fa-check"></i><b>7.3.2</b> What counts as a back-up?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="7-data-management.html"><a href="7-data-management.html#learn-2"><i class="fa fa-check"></i><b>7.4</b> Learn</a></li>
+<li class="chapter" data-level="7.5" data-path="7-data-management.html"><a href="7-data-management.html#install-3"><i class="fa fa-check"></i><b>7.5</b> Install</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="8-airtable.html"><a href="8-airtable.html"><i class="fa fa-check"></i><b>8</b> Airtable</a>
 <ul>
@@ -352,7 +357,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.9" data-path="16-encryption.html"><a href="16-encryption.html#use-a-symmetric-key-for-automated-processes"><i class="fa fa-check"></i><b>16.9</b> Use a symmetric key for automated processes</a></li>
 <li class="chapter" data-level="16.10" data-path="16-encryption.html"><a href="16-encryption.html#removing-sensitive-files-from-git-history"><i class="fa fa-check"></i><b>16.10</b> Removing sensitive files from git history</a></li>
 </ul></li>
-<li class="chapter" data-level="17" data-path="17-dependencies.html"><a href="17-dependencies.html"><i class="fa fa-check"></i><b>17</b> Dependency Management</a></li>
+<li class="chapter" data-level="17" data-path="17-dependencies.html"><a href="17-dependencies.html"><i class="fa fa-check"></i><b>17</b> Dependency Management</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="17-dependencies.html"><a href="17-dependencies.html#gcc-and-mac-silicon"><i class="fa fa-check"></i><b>17.1</b> GCC and mac silicon</a></li>
+<li class="chapter" data-level="17.2" data-path="17-dependencies.html"><a href="17-dependencies.html#section"><i class="fa fa-check"></i><b>17.2</b> </a></li>
+</ul></li>
 <li class="chapter" data-level="18" data-path="18-statistical-methods.html"><a href="18-statistical-methods.html"><i class="fa fa-check"></i><b>18</b> Statistical Methods</a>
 <ul>
 <li class="chapter" data-level="18.1" data-path="18-statistical-methods.html"><a href="18-statistical-methods.html#multivariate-regression"><i class="fa fa-check"></i><b>18.1</b> Multivariate Regression</a></li>
@@ -451,27 +460,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="dependencies" class="section level1 hasAnchor" number="17">
 <h1><span class="header-section-number">17</span> Dependency Management<a href="17-dependencies.html#dependencies" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><em>How do I make sure that all my software and configurations needed for a project
-are portable?</em></p>
+<p><em>How do I make sure that all my software and configurations needed for a projects are portable?</em></p>
 <ul>
-<li><p><a href="https://rstudio.github.io/packrat/">Packrat</a> or
-<a href="https://CRAN.R-project.org/package=checkpoint">checkpoint</a> to fix R package
-versions.</p></li>
-<li><p><a href="https://www.docker.com/">Docker</a> for everything</p>
+<li><p><a href="https://rstudio.github.io/renv/articles/renv.html">renv</a> captures package versions and sources as well as R version. <code>renv</code> also records python versions and virtual environments for projects that used both languages.</p>
 <ul>
+<li>The <a href="https://github.com/MilesMcBain/capsule">capsule</a> package can be useful when you want version control/depedency management but not the full weight of <code>renv</code>. Sometimes, <code>renv</code> can be an impediment for smaller and highly collaborative projects, that is where capsule can be useful. Ultimately, capsule will allow to setup <code>renv</code> for a project when it gets to a stable state.</li>
+</ul></li>
+<li><p><a href="https://www.docker.com/">Docker</a> allows you to create virtual machines, meaning you can capture all system dependencies in addition to the dependencies captured in <code>renv</code>. It works for essentially any programming language and is extremely flexible.</p>
+<ul>
+<li><a href="https://github.com/rsangole/user2022-r-for-docker/tree/main">UseR 2022 Docker workshop</a></li>
 <li><a href="http://ropenscilabs.github.io/r-docker-tutorial/">A lesson in user Docker for an R
 project</a></li>
 </ul></li>
-<li><p>Makefiles can automate a complex, multipart project. Here’s <a href="http://swcarpentry.github.io/make-novice/">a lesson on
-them from Software Carpentry</a></p></li>
-<li><p>R packages can be a useful project output. We have some in-house R packages
-to provide access to internal data and generate reports, and may be
-developing more for external audiences. Hadley Wickham’s <a href="http://r-pkgs.had.co.nz/">R Packages
-Book</a> provides guidance for these, and we expect
-our packages to be up to <a href="https://github.com/ropensci/onboarding">rOpenSci
-standards</a>.</p></li>
+<li><p>Makefiles can automate a complex, multipart project. Here’s <a href="http://swcarpentry.github.io/make-novice/">a lesson on them from Software Carpentry</a></p></li>
+<li><p>R packages can be a useful project output. We have some in-house R packages to provide access to internal data and generate reports, and may be developing more for external audiences. Hadley Wickham’s <a href="http://r-pkgs.had.co.nz/">R Packages Book</a> provides guidance for these, and we expect our packages to be up to <a href="https://github.com/ropensci/onboarding">rOpenSci standards</a>.</p></li>
 </ul>
+<div id="gcc-and-mac-silicon" class="section level2 hasAnchor" number="17.1">
+<h2><span class="header-section-number">17.1</span> GCC and mac silicon<a href="17-dependencies.html#gcc-and-mac-silicon" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>R package installation can be especially tricky on Mac computers with <a href="https://support.apple.com/en-us/HT211814">Apple Silicon</a>. Below are some steps to get
+package install set ups.</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li><p>Install the R compilation tool chain <a href="https://mac.thecoatlessprofessor.com/macrtools/" class="uri">https://mac.thecoatlessprofessor.com/macrtools/</a>. If any issues with FORTRAN, follow instructions for downloading FORTRAN compiler here for Apple silicon Macs: <a href="https://mac.r-project.org/tools/" class="uri">https://mac.r-project.org/tools/</a></p></li>
+<li><p>Install gcc <code>brew install gcc</code>. This requires having brew set up.</p></li>
+<li><p>Make sure homebrew is in terminal path. Add it by <code>export PATH=$PATH:/opt/homebrew/bin</code>.</p></li>
+<li><p>Create <code>~/.R/Makevars</code> and insert the following. This will need to be updated depending on gcc version.</p></li>
+</ol>
+<pre><code>CXX14FLAGS += -O3 -arch arm64 -ftemplate-depth-256
+FC = /opt/homebrew/Cellar/gcc/13.2.0/bin/gfortran
+F77 = /opt/homebrew/Cellar/gcc/13.2.0/bin/gfortran
+FLIBS = -L/opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/13</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li><p>RStudio may have a bug in accessing the correct terminal path. The workaround is to copy your terminal path (<code>echo $PATH</code>) into <code>.Renviron</code> per instructions here: <a href="https://community.rstudio.com/t/how-to-get-rstudio-ide-to-use-the-correct-terminal-path-in-mac-os-x/131528/6" class="uri">https://community.rstudio.com/t/how-to-get-rstudio-ide-to-use-the-correct-terminal-path-in-mac-os-x/131528/6</a></p></li>
+<li><p>Some packages may need additional help for R to find the correct paths. For <code>units</code>:
+<code>remotes::install_version(package = "units",                           version = "0.8-5",                           configure.args = "--with-udunits2-lib=/opt/homebrew/Cellar/udunits/2.2.28/lib --with-udunits2-include=/opt/homebrew/Cellar/udunits/2.2.28/include")</code></p></li>
+</ol>
+</div>
+<div id="section" class="section level2" number="17.2">
+<h2><span class="header-section-number">17.2</span> </h2>
+<p>Historically some projects used <a href="https://rstudio.github.io/packrat/">Packrat</a> or <a href="https://CRAN.R-project.org/package=checkpoint">checkpoint</a> to fix R package versions. These systems have been superceded by <code>renv</code>.</p>
 
+</div>
 </div>
             </section>
 
