@@ -6,4 +6,5 @@ sudo apt-get update && sudo apt-get install -y --no-install-recommends \
           libgdal-dev \
           libgeos-dev \
           libproj-dev \
-          libglpk-dev
+          libglpk-dev \
+          libgit2-dev

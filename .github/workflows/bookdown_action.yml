@@ -32,8 +32,8 @@ jobs:
 # look into how this impacts build 
       - uses: r-lib/actions/setup-renv@v2
 
-      - name: Install libgit2
-        run: sudo apt install libgit2-dev
+      # - name: Install libgit2
+      #   run: sudo apt install libgit2-dev
         
       - name: Cache bookdown results
         uses: actions/cache@v2
