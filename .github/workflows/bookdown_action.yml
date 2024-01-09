@@ -49,8 +49,9 @@ jobs:
           key: r-${{ hashFiles('DESCRIPTION') }}
           restore-keys: r-
       
-      - name: Install dependencies
-        run: Rscript -e 'install.packages("remotes")' -e 'remotes::install_deps(dependencies = TRUE)'
+      ## do we need this step given that we are using renv??
+      # - name: Install dependencies
+      #   run: Rscript -e 'install.packages("remotes")' -e 'remotes::install_deps(dependencies = TRUE)'
       # should we build bookdown::gitbook vs default?
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
