@@ -14,5 +14,17 @@ project](http://ropenscilabs.github.io/r-docker-tutorial/)
 
 -   R packages can be a useful project output. We have some in-house R packages to provide access to internal data and generate reports, and may be developing more for external audiences. Hadley Wickham's [R Packages Book](http://r-pkgs.had.co.nz/) provides guidance for these, and we expect our packages to be up to [rOpenSci standards](https://github.com/ropensci/onboarding).
 
+##  GCC and mac silicon
 
+For some reason mac computers with mac silicon (e.g. M2 chip) have issues with 
+c compilers. Use the following to ensure your mac knows which c compiler to use.
+
+```
+CXX14FLAGS += -O3 -arch arm64 -ftemplate-depth-256
+FC = /opt/homebrew/Cellar/gcc/13.2.0/bin/gfortran
+F77 = /opt/homebrew/Cellar/gcc/13.2.0/bin/gfortran
+FLIBS = -L/opt/homebrew/Cellar/gcc/13.2.0/lib/gcc/13
+```
+
+##
 Historically some projects used [Packrat](https://rstudio.github.io/packrat/) or [checkpoint](https://CRAN.R-project.org/package=checkpoint) to fix R package versions. These systems have been superceded by `renv`.
