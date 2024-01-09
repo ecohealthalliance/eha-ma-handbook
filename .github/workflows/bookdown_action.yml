@@ -31,6 +31,10 @@ jobs:
       - name: Install libgit2
         run: sudo apt install libgit2-dev
         
+      - name: Install system dependencies
+        run: |
+          sh sys_deps/sys_deps.sh
+        
       - name: Cache bookdown results
         uses: actions/cache@v2
         with:
