@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -471,9 +471,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="graphs" class="section level3 hasAnchor" number="20.0.2">
 <h3><span class="header-section-number">20.0.2</span> Graphs<a href="20-assembly-of-high-throughput-data.html#graphs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A solution to the assembly problem is represented by graphs. Graphs are a mathematical notion that is widely applied to various biological, ecological, and evolutionary problems. Formally, a graph is a mathematical structure composed of nodes and vertices. The nodes are related to each other by the vertices. Figure 2 is an example of a graph; in this example, numbers are found at the nodes, while the vertices represent relationships between these nodes.</p>
-<div class="figure">
-<img src="https://user-images.githubusercontent.com/72785049/224148769-76f54213-ebe3-4bb3-958d-4abbc8b7fecc.png" alt="" />
-<p class="caption">image</p>
+<div class="float">
+<img src="https://user-images.githubusercontent.com/72785049/224148769-76f54213-ebe3-4bb3-958d-4abbc8b7fecc.png" alt="image" />
+<div class="figcaption">image</div>
 </div>
 <p>Figure 2. Graph</p>
 <p><a href="https://en.wikipedia.org/wiki/Graph_theory" class="uri">https://en.wikipedia.org/wiki/Graph_theory</a></p>
@@ -527,9 +527,9 @@ Figure 3. Overlap between reads. Nucleotides shared between reads are in bold.</
 <h3><span class="header-section-number">20.0.5</span> A formal presentation of de Bruijn graphs<a href="20-assembly-of-high-throughput-data.html#a-formal-presentation-of-de-bruijn-graphs" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The de Bruijn graphs represent an important advance in the assembly of genomes. The first bacterial genomes and the <a href="https://doi.org/10.1038/35057062">human genome</a> were assembled with a different strategy. In this strategy, the nodes represented the reads and the edges represented the overlap (shared sequence) between the nodes. This strategy was developed for the relatively long sequences obtained with the Sanger technology. In this approach, the genomes were assembled by finding a Hamiltonian path in the graph. A <a href="https://doi.org/10.1007/BF01188580">Hamiltonian path</a> is defined by visiting each of the nodes once, returning to the starting point or initial node. This method involves aligning each of the reads against all other reads. This last point is the main limitation of this strategy; from the computational point of view, this is an NP-Complete problem. This means that the time required to align all the reads in an assembly is polynomially related to the number of reads. Therefore the assembly of genomes from millions of short reads with the Hamiltonian cycle is not tractable.</p>
 <p>In response to this major limitation, in the early 2000s, <a href="https://doi.org/10.1073/pnas.171285098">Pevzner</a> proposed de Bruijn graphs as a practical solution to assembling genomes from millions of short reads. So far an intuitive introduction to de Bruijn graphs has been made, now some formalization is necessary. We will assume that our de Bruijn graph is directed and connected, this means that the edges have a direction when relating two different nodes and that each node could be reached by another node, respectively (Figure below). We will also assume that our graph is balanced, this means that the number of edges that arrive at a node (indegree) is equal to the number of edges that left this same node (outdegree), and that this is true for all the nodes of the graph. <a href="https://scholarlycommons.pacific.edu/euler-works/53/">Euler</a> showed that there is a unique solution (unique path), in which each of the edges of a graph is visited once from an initial point. This unique solution represents the genome. The de Bruijn graph represents a major advance in the assembly of genomes because, unlike the Hamiltonian solution, the Eulerian path does not imply the alignment of the reads. Although a plausible solution, the Eulerian cycle presents certain limitations, of which the most important is the memory size required for the storage of the graph. In addition, sequencing errors and biological variability and repeats prevent, in many cases, obtaining a single genomic sequence. Currently, there are different software that apply the algorithmic concepts of the Eulerian cycle to assemble genomes from different types of high-throughput sequences. Megahit, which is an example of this kind of software, will be presented below. But first, we will discuss a bit about the importance of the size of the k-mer.</p>
-<div class="figure">
-<img src="https://user-images.githubusercontent.com/72785049/231560711-c1fe6161-6619-4fe8-8785-a8959745b13f.png" alt="" />
-<p class="caption">image</p>
+<div class="float">
+<img src="https://user-images.githubusercontent.com/72785049/231560711-c1fe6161-6619-4fe8-8785-a8959745b13f.png" alt="image" />
+<div class="figcaption">image</div>
 </div>
 <p><a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://www.cs.jhu.edu/~langmea/resources/lecture_notes/assembly_dbg.pdf">A de Bruijn graph, directed, connected, and balanced</a></p>
 </div>

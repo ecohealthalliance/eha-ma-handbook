@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -496,8 +496,8 @@ Because Airtable is extremely useful and user friendly, there are a plethora of 
 Airtable shines when you have multiple data entities that are linked via common data elements. For example, if you are sampling bats then conducting antibody screening, running multiplex PCR, and keeping physical samples of blood and urine from those bats, you have multiple data entities (bats, antibody test results, PCR test results, and physical samples) that are all linked via common data elements like site and collector.
 What is more, the test results depend on the physical samples and the physical samples depend on the bats. Those common data elements only need to be entered into a single entity (or table) then shared across the other entities in your base using linked elements. Once you have linked elements you no longer have to worry about updating the same piece of information in multiple locations and you can quickly navigate between entities and understand hierarchical relationships.</p>
 <div class="figure"><span style="display:block;" id="fig:bat-data"></span>
-<div id="htmlwidget-62ab9e3bb12984571e9d" style="width:672px;height:200px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-62ab9e3bb12984571e9d">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-dc4f0054ff5f71eb965e" style="width:672px;height:200px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dc4f0054ff5f71eb965e">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 8.1: Data model for bat sampling example.
 </p>
@@ -539,8 +539,8 @@ Figure 8.1: Data model for bat sampling example.
 <p>Bases are equivalent to databases. They consist of a set of tables that can be linked and allow you to perform some task (e.g. IRB tracking, capturing research data, etc.). Bases can be duplicated and shared across your workspaces and you can share bases with other users.</p>
 <p>Tables are where most of the action happens. Data is entered in tables, tables can be transformed via views into calendars, dashboards, or galleries, and tables can be manipulated via the API. They describe a data entity and are composed of fields. In the bat sampling example, each circle would be a table in the bat sampling base.</p>
 <div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<div id="htmlwidget-82df875cd287b0da686b" style="width:672px;height:200px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-82df875cd287b0da686b">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b9491d917aa45310c3e2" style="width:672px;height:200px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b9491d917aa45310c3e2">{"x":{"diagram":"\ndigraph bat_sampling {\n\n  # a \"graph\" statement\n  graph [overlap = true, nodesep = .5, ranksep = .25, compound = true, color = MediumAquamarine, fontsize = 10, rankdir = LR]\n\n  # \"node\" styling\n  node [shape = circle,\n        fixedsize = true,\n        width = 1,\n        fontname = Helvetica,\n        style = filled,\n        fillcolor = MediumAquamarine]\n        \n  a [label = \"Collector\"]\n  b [label = \"Site\"]\n  c [label = \"Bat\"]\n  d [label = \"Antibody\ntest result\"]\n  e [label = \"PCR\ntest result\"]\n  f [label = \"Physical\nsample\"]\n  \n  edge [color = grey, \n        arrowhead = none,\n        arrowtail = none,\n        penwidth = 3]\n \n a -> c [label = \"Collected by\"]\n b -> c [label = \"Collected at\"]\n c -> f [label = \"Collected from\"]\n f -> d [label = \"Derived from\"]\n f -> e [label = \"Derived from\"]\n \n}\n  \n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 8.2: Data model for bat sampling example.
 </p>
@@ -602,9 +602,9 @@ Figure 8.2: Data model for bat sampling example.
 <p><img src="eha-ma-handbook_files/figure-html/actions%20diagram-1.png" width="672" /></p>
 <p>Automations are commonly used to augment the synced tables feature, send notifications, check data quality, and manipulate or create records.</p>
 <p>This automation creates a weekly summary of applicants who applied for a position. Its trigger is time based, then it finds records that match a condition, and finally it generates an email from those records and sends to the appropriate recipients.</p>
-<div class="figure">
-<img src="assets/airtable_Weekly%20Digest.png" alt="" />
-<p class="caption">airtable weekly summary</p>
+<div class="float">
+<img src="assets/airtable_Weekly%20Digest.png" alt="airtable weekly summary" />
+<div class="figcaption">airtable weekly summary</div>
 </div>
 </div>
 <div id="scripting-and-blocks-pro-plan-and-above" class="section level3 hasAnchor" number="8.7.2">

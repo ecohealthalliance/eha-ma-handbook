@@ -59,7 +59,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -482,9 +482,9 @@ Trimming the reads increases the number of sequences that are aligned against th
 tool. There are two ways to remove adapters from reads. In the simple mode, the adapter sequences are aligned with an allowed mistmach number against the reads. The region in the 5’ region of the alignment is trimming. The second type is the Palindrome mode. The palindrome mode is specifically optimized for the detection of ‘adapter read-through’. When ‘read-through’ occurs, both reads in a pair will consist of
 an equal number of valid bases, followed by contaminating sequence from the ‘opposite’ adapters (figure below). Adapter read-through detection is done by aligning reverse read against forward read of each pair. The region aligned between the adapters represents valid sequences, the remaining sequences are discarded.</p>
 <p>To remove regions of low quality trimmomatic uses a sliding window. This works by scanning from the 5’ end of the read, and removes the 3’ end of the read when the average quality of a group of bases drops below a specified threshold.</p>
-<div class="figure">
-<img src="https://user-images.githubusercontent.com/72785049/212085192-8e8514da-9023-4bbc-9729-8add8111eb03.png" alt="" />
-<p class="caption">image</p>
+<div class="float">
+<img src="https://user-images.githubusercontent.com/72785049/212085192-8e8514da-9023-4bbc-9729-8add8111eb03.png" alt="image" />
+<div class="figcaption">image</div>
 </div>
 </div>
 <div id="quality-control-with-trimmomatic" class="section level3 hasAnchor" number="19.0.5">
