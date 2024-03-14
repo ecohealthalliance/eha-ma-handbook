@@ -373,18 +373,21 @@ If you are using continuous integration on a repository with encrypted files,
 you'll need to provide a way for the CI system to unlock them.  An easy, but
 not _most_ secure way is to provide a _symmetric key_.  You can generate
 this by running this in your project directory. This key can always be regenerated
-so do NOT commit it to your repository. 
+so do NOT commit it to your repository. In fact, it may be a good idea to add
+the key to your `.gitignore`. 
 
     git-crypt export-key git_crypt_key.key
 
 `git_crypt_key.key` can now be used to decrypt the repository, and you can provide
 it to the CI system as an environment variable.  However, since it is binary data,
-you'll need to convert it to base64 first.  So run something like:
+you'll need to convert it to base64 first.  
+
+To copy the key out of the `git_crypt_key.key`, run :
 
     cat git_crypt_key.key | base64 | pbcopy
 
-to convert this file to base64 data, then paste it in your CI system's environment
-variable field as something like `GIT_CRYPT_KEY64`.
+Then create a variable in your CI system's environment
+called `GIT_CRYPT_KEY64` and paste the `git_crypt_key` value there. For github actions, see this [article on adding repository secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions). 
 
 The key can now be removed from your system.
 
@@ -394,7 +397,10 @@ To use the key later, you'll need (1) `git-crypt` and `gpg` installed in the CI
 system image, and (2) to run these commands after the CI clones your repository:
 
     echo $GIT_ENCRYPT_KEY64 > git_crypt_key.key64 && base64 -d git_crypt_key.key64 > git_crypt_key.key && git-crypt unlock git_crypt_key.key
-   
+    
+
+* Note that encryption and this step of "unlocking" the repo are **NOT** included in the EHA [container-template](https://github.com/ecohealthalliance/container-template) repository.
+
 ## Removing sensitive files from git history
 
 AKA What to do if you accidentally committed sensitive files (data, keys, etc.) to your repository either before encryption or our outside the scope of your `.gitattributes` file. 
