@@ -355,7 +355,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.8.3" data-path="16-encryption.html"><a href="16-encryption.html#import-your-keys-to-the-eha-server"><i class="fa fa-check"></i><b>16.8.3</b> Import your keys to the EHA server</a></li>
 </ul></li>
 <li class="chapter" data-level="16.9" data-path="16-encryption.html"><a href="16-encryption.html#use-a-symmetric-key-for-automated-processes"><i class="fa fa-check"></i><b>16.9</b> Use a symmetric key for automated processes</a></li>
-<li class="chapter" data-level="16.10" data-path="16-encryption.html"><a href="16-encryption.html#removing-sensitive-files-from-git-history"><i class="fa fa-check"></i><b>16.10</b> Removing sensitive files from git history</a></li>
+<li class="chapter" data-level="16.10" data-path="16-encryption.html"><a href="16-encryption.html#unlocking-encrypted-repos-with-a-symmetric-key"><i class="fa fa-check"></i><b>16.10</b> Unlocking encrypted repos with a Symmetric key</a></li>
+<li class="chapter" data-level="16.11" data-path="16-encryption.html"><a href="16-encryption.html#removing-sensitive-files-from-git-history"><i class="fa fa-check"></i><b>16.11</b> Removing sensitive files from git history</a></li>
 </ul></li>
 <li class="chapter" data-level="17" data-path="17-dependencies.html"><a href="17-dependencies.html"><i class="fa fa-check"></i><b>17</b> Dependency Management</a>
 <ul>
@@ -778,8 +779,31 @@ system image, and (2) to run these commands after the CI clones your repository:
 <li>Note that encryption and this step of “unlocking” the repo are <strong>NOT</strong> included in the EHA <a href="https://github.com/ecohealthalliance/container-template">container-template</a> repository.</li>
 </ul>
 </div>
-<div id="removing-sensitive-files-from-git-history" class="section level2 hasAnchor" number="16.10">
-<h2><span class="header-section-number">16.10</span> Removing sensitive files from git history<a href="16-encryption.html#removing-sensitive-files-from-git-history" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="unlocking-encrypted-repos-with-a-symmetric-key" class="section level2 hasAnchor" number="16.10">
+<h2><span class="header-section-number">16.10</span> Unlocking encrypted repos with a Symmetric key<a href="16-encryption.html#unlocking-encrypted-repos-with-a-symmetric-key" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Danger zone</strong>. This method makes key leak more likely and should be avoided.
+Once a key leaks, there is no method for rotating keys, so the leaked key
+would have to be scrubbed from the git history and a new key put in its place.</p>
+<p>Only share keys via secure methods like <a href="https://blog.1password.com/1password-file-document-sharing/">1password</a> or <a href="https://bitwarden.com/products/send/">bitwarden</a>.</p>
+<p>Sometimes its necessary to pass a symmetric key directly to a collaborator.</p>
+<p>Make sure <code>git_crypt_key.key</code> is in your <code>.gitignore</code>.</p>
+<p>In terminal, run the following code:</p>
+<pre><code>## create key
+git-crypt export-key git_crypt_key.key
+
+## test key
+git-crypt lock
+
+git-crypt status
+## try opening an encrypted file - it should error out
+
+git-crypt unlock git_crypt_key.key
+## try opening an encrypted file, it should work as expected. </code></pre>
+<p>Send the file securely to your Collaborator. Your collaborator should run:</p>
+<pre><code>git-crypt unlock git_crypt_key.key</code></pre>
+</div>
+<div id="removing-sensitive-files-from-git-history" class="section level2 hasAnchor" number="16.11">
+<h2><span class="header-section-number">16.11</span> Removing sensitive files from git history<a href="16-encryption.html#removing-sensitive-files-from-git-history" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>AKA What to do if you accidentally committed sensitive files (data, keys, etc.) to your repository either before encryption or our outside the scope of your <code>.gitattributes</code> file.</p>
 <ol style="list-style-type: decimal">
 <li>Take a breath.</li>
