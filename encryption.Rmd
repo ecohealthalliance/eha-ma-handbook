@@ -401,6 +401,40 @@ system image, and (2) to run these commands after the CI clones your repository:
 
 * Note that encryption and this step of "unlocking" the repo are **NOT** included in the EHA [container-template](https://github.com/ecohealthalliance/container-template) repository.
 
+## Unlocking encrypted repos with a Symmetric key
+
+**Danger zone**. This method makes key leak more likely and should be avoided. 
+Once a key leaks, there is no method for rotating keys, so the leaked key 
+would have to be scrubbed from the git history and a new key put in its place. 
+
+Only share keys via secure methods like [1password](https://blog.1password.com/1password-file-document-sharing/) or [bitwarden](https://bitwarden.com/products/send/). 
+
+Sometimes its necessary to pass a symmetric key directly to a collaborator. 
+
+Make sure `git_crypt_key.key` is in your `.gitignore`. 
+
+In terminal, run the following code:
+
+```
+## create key
+git-crypt export-key git_crypt_key.key
+
+## test key
+git-crypt lock
+
+git-crypt status
+## try opening an encrypted file - it should error out
+
+git-crypt unlock git_crypt_key.key
+## try opening an encrypted file, it should work as expected. 
+```
+
+Send the file securely to your Collaborator. Your collaborator should run:
+
+```
+git-crypt unlock git_crypt_key.key
+```
+
 ## Removing sensitive files from git history
 
 AKA What to do if you accidentally committed sensitive files (data, keys, etc.) to your repository either before encryption or our outside the scope of your `.gitattributes` file. 
