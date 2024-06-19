@@ -1,7 +1,7 @@
 Package: eha-ma-handbook
 Type: Website
 Title: EHA Modeling & Analytics Handbook
-Version: 0.0.1
+Version: 1.0.1
 Imports:
   git2r,
   bookdown,
