@@ -1,7 +1,5 @@
 fig:bat-data
 fig:unnamed-chunk-1
-handbook-notice-archival-pending
-what-this-means
 the-handbook
 Contributing
 anatomy-of-a-chapter
