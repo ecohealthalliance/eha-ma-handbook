@@ -27,9 +27,7 @@ What This Means:
 - This handbook is now in a final, static state
 - No new content, corrections, or methodology updates will be implemented
 - The handbook will remain accessible for reference purposes
-  
-This handbook describes best practices and guidelines for project management,
-organization, modeling and programming we aim for at EHA.
+
 
 ## The Handbook
 
