@@ -18,11 +18,11 @@ params:
 
 # Introduction {#introduction .unnumbered}
 
-## ⚠️ HANDBOOK NOTICE: ARCHIVAL PENDING ⚠️
+⚠️ HANDBOOK NOTICE: ARCHIVAL PENDING ⚠️
 
 **IMPORTANT:** The EcoHealth Alliance Modeling and Analytics Handbook is being archived. No further updates or revisions will be made to this document at this time.
 
-### What This Means
+What This Means:
 
 - This handbook is now in a final, static state
 - No new content, corrections, or methodology updates will be implemented
