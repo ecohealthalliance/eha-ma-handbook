@@ -16,20 +16,22 @@ params:
   infrastructure_lead: "[Infrastructure Lead]( https://www.ecohealthalliance.org/personnel/andrew-espira)"
 ---
 
-# ⚠️ HANDBOOK NOTICE: ARCHIVAL PENDING ⚠️
+# Introduction {#introduction .unnumbered}
+
+## ⚠️ HANDBOOK NOTICE: ARCHIVAL PENDING ⚠️
 
 **IMPORTANT:** The EcoHealth Alliance Modeling and Analytics Handbook is being archived. No further updates or revisions will be made to this document at this time.
 
-## What This Means
+### What This Means
 
 - This handbook is now in a final, static state
 - No new content, corrections, or methodology updates will be implemented
 - The handbook will remain accessible for reference purposes
-
-# Introduction {#introduction .unnumbered}
-
+  
 This handbook describes best practices and guidelines for project management,
 organization, modeling and programming we aim for at EHA.
+
+## The Handbook
 
 This is a living document. To make changes, just click the edit button
 (<i class="fa fa-edit"></i>) at the top of the page. It will take you to the
