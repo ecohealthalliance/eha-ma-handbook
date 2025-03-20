@@ -16,6 +16,10 @@ Development may continue in community forks. To find active forks:
 2. Look for forks with recent commit activity
 3. Review the [Forks tab](../../network/members) for potential continuations
 
+## Questions?
+
+Please contact Aleksei Chmura <chmura@ecohealthalliance.org> or the PI involved with this project.
+
 
 #  EcoHealth Alliance Modeling and Analytics Handbook
 
