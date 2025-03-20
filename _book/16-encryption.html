@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>16 Encryption | EHA Modeling &amp; Analytics Handbook</title>
+  <meta name="description" content="16 Encryption | EHA Modeling &amp; Analytics Handbook" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="16 Encryption | EHA Modeling &amp; Analytics Handbook" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="ecohealthalliance/eha-ma-handbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="16 Encryption | EHA Modeling &amp; Analytics Handbook" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<link rel="prev" href="15-google-authorization-and-r.html"/>
+<link rel="next" href="17-dependencies.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.11/grViz.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="http://www.ecohealthalliance.org" target="_blank"><img src="assets/eha_logo.png" style="max-width: 100%"></a></li>
+<li><a href="./" style="text-align:center"><strong>Modeling & Analytics Handbook</strong><a/></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#handbook-notice-archival-pending"><i class="fa fa-check"></i><b>0.1</b> ⚠️ HANDBOOK NOTICE: ARCHIVAL PENDING ⚠️</a>
+<ul>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#what-this-means"><i class="fa fa-check"></i><b>0.1.1</b> What This Means</a></li>
+</ul></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#the-handbook"><i class="fa fa-check"></i><b>0.2</b> The Handbook</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-Contributing.html"><a href="1-Contributing.html"><i class="fa fa-check"></i><b>1</b> Contributing</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="1-Contributing.html"><a href="1-Contributing.html#anatomy-of-a-chapter"><i class="fa fa-check"></i><b>1.1</b> Anatomy of a chapter</a></li>
+<li class="chapter" data-level="1.2" data-path="1-Contributing.html"><a href="1-Contributing.html#workflow-summary"><i class="fa fa-check"></i><b>1.2</b> Workflow Summary</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="1-Contributing.html"><a href="1-Contributing.html#for-quick-edits"><i class="fa fa-check"></i><b>1.2.1</b> For quick edits</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1-Contributing.html"><a href="1-Contributing.html#adding-a-chapter"><i class="fa fa-check"></i><b>1.2.2</b> Adding a chapter</a></li>
+<li class="chapter" data-level="1.2.3" data-path="1-Contributing.html"><a href="1-Contributing.html#major-edits"><i class="fa fa-check"></i><b>1.2.3</b> Major edits</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="1-Contributing.html"><a href="1-Contributing.html#git-based-workflows"><i class="fa fa-check"></i><b>1.3</b> Git based workflows</a></li>
+<li class="chapter" data-level="1.4" data-path="1-Contributing.html"><a href="1-Contributing.html#working-with-rmarkdown-in-the-bookdown-framework"><i class="fa fa-check"></i><b>1.4</b> Working with rmarkdown in the bookdown framework</a></li>
+<li class="chapter" data-level="1.5" data-path="1-Contributing.html"><a href="1-Contributing.html#review"><i class="fa fa-check"></i><b>1.5</b> Review</a></li>
+<li class="chapter" data-level="1.6" data-path="1-Contributing.html"><a href="1-Contributing.html#modifying-chapters"><i class="fa fa-check"></i><b>1.6</b> Modifying chapters</a></li>
+<li class="chapter" data-level="1.7" data-path="1-Contributing.html"><a href="1-Contributing.html#additional-resources"><i class="fa fa-check"></i><b>1.7</b> Additional resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-quickstart-for-computing.html"><a href="2-quickstart-for-computing.html"><i class="fa fa-check"></i><b>2</b> Quickstart for computing</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="2-quickstart-for-computing.html"><a href="2-quickstart-for-computing.html#optional"><i class="fa fa-check"></i><b>2.1</b> Optional</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-projects.html"><a href="3-projects.html"><i class="fa fa-check"></i><b>3</b> Project Management</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3-projects.html"><a href="3-projects.html#teams-and-work-cycles"><i class="fa fa-check"></i><b>3.1</b> Teams and Work Cycles</a></li>
+<li class="chapter" data-level="3.2" data-path="3-projects.html"><a href="3-projects.html#setup-and-materials-organization"><i class="fa fa-check"></i><b>3.2</b> Setup and materials Organization</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="3-projects.html"><a href="3-projects.html#code-organization"><i class="fa fa-check"></i><b>3.2.1</b> Code organization</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-r.html"><a href="4-r.html"><i class="fa fa-check"></i><b>4</b> R and Reproducible Analysis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4-r.html"><a href="4-r.html#install"><i class="fa fa-check"></i><b>4.1</b> Install</a></li>
+<li class="chapter" data-level="4.2" data-path="4-r.html"><a href="4-r.html#learn"><i class="fa fa-check"></i><b>4.2</b> Learn</a></li>
+<li class="chapter" data-level="4.3" data-path="4-r.html"><a href="4-r.html#additional-resources-1"><i class="fa fa-check"></i><b>4.3</b> Additional Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-eha-team-communication.html"><a href="5-eha-team-communication.html"><i class="fa fa-check"></i><b>5</b> EHA Team Communication</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="5-eha-team-communication.html"><a href="5-eha-team-communication.html#install-1"><i class="fa fa-check"></i><b>5.1</b> Install</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-documentation-and-outputs.html"><a href="6-documentation-and-outputs.html"><i class="fa fa-check"></i><b>6</b> Documentation and Outputs</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="6-documentation-and-outputs.html"><a href="6-documentation-and-outputs.html#learn-1"><i class="fa fa-check"></i><b>6.1</b> Learn</a></li>
+<li class="chapter" data-level="6.2" data-path="6-documentation-and-outputs.html"><a href="6-documentation-and-outputs.html#install-2"><i class="fa fa-check"></i><b>6.2</b> Install</a></li>
+<li class="chapter" data-level="6.3" data-path="6-documentation-and-outputs.html"><a href="6-documentation-and-outputs.html#library"><i class="fa fa-check"></i><b>6.3</b> Library</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="7-data-management.html"><a href="7-data-management.html"><i class="fa fa-check"></i><b>7</b> Data Management</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="7-data-management.html"><a href="7-data-management.html#data-management-plan"><i class="fa fa-check"></i><b>7.1</b> Data Management Plan</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="7-data-management.html"><a href="7-data-management.html#expectations-by-project-phase"><i class="fa fa-check"></i><b>7.1.1</b> Expectations by project phase</a></li>
+<li class="chapter" data-level="7.1.2" data-path="7-data-management.html"><a href="7-data-management.html#using-dmptool-to-create-prepare-your-proposal-data-management-plan"><i class="fa fa-check"></i><b>7.1.2</b> Using DMPTool to create prepare your proposal data Management plan</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="7-data-management.html"><a href="7-data-management.html#notes-on-data-management"><i class="fa fa-check"></i><b>7.2</b> Notes on data management</a></li>
+<li class="chapter" data-level="7.3" data-path="7-data-management.html"><a href="7-data-management.html#backups"><i class="fa fa-check"></i><b>7.3</b> Backups</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="7-data-management.html"><a href="7-data-management.html#what-do-we-envision-these-backups-being-used-for"><i class="fa fa-check"></i><b>7.3.1</b> What do we envision these backups being used for?</a></li>
+<li class="chapter" data-level="7.3.2" data-path="7-data-management.html"><a href="7-data-management.html#what-counts-as-a-back-up"><i class="fa fa-check"></i><b>7.3.2</b> What counts as a back-up?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="7-data-management.html"><a href="7-data-management.html#learn-2"><i class="fa fa-check"></i><b>7.4</b> Learn</a></li>
+<li class="chapter" data-level="7.5" data-path="7-data-management.html"><a href="7-data-management.html#install-3"><i class="fa fa-check"></i><b>7.5</b> Install</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="8-airtable.html"><a href="8-airtable.html"><i class="fa fa-check"></i><b>8</b> Airtable</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="8-airtable.html"><a href="8-airtable.html#key-terms"><i class="fa fa-check"></i><b>8.1</b> Key Terms</a></li>
+<li class="chapter" data-level="8.2" data-path="8-airtable.html"><a href="8-airtable.html#what-is-airtable"><i class="fa fa-check"></i><b>8.2</b> What is Airtable?</a></li>
+<li class="chapter" data-level="8.3" data-path="8-airtable.html"><a href="8-airtable.html#when-should-i-use-airtable"><i class="fa fa-check"></i><b>8.3</b> When should I use Airtable?</a></li>
+<li class="chapter" data-level="8.4" data-path="8-airtable.html"><a href="8-airtable.html#security-access-control-and-data-durability"><i class="fa fa-check"></i><b>8.4</b> Security, Access Control, and Data Durability</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="8-airtable.html"><a href="8-airtable.html#user--and-administrator-security-features"><i class="fa fa-check"></i><b>8.4.1</b> User- and Administrator Security Features</a></li>
+<li class="chapter" data-level="8.4.2" data-path="8-airtable.html"><a href="8-airtable.html#share-links-and-interfaces"><i class="fa fa-check"></i><b>8.4.2</b> Share Links and Interfaces</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="8-airtable.html"><a href="8-airtable.html#data-in-airtable"><i class="fa fa-check"></i><b>8.5</b> Data in Airtable</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="8-airtable.html"><a href="8-airtable.html#workspaces-bases-tables-fields-records"><i class="fa fa-check"></i><b>8.5.1</b> Workspaces, Bases, Tables, Fields, Records</a></li>
+<li class="chapter" data-level="8.5.2" data-path="8-airtable.html"><a href="8-airtable.html#views"><i class="fa fa-check"></i><b>8.5.2</b> Views</a></li>
+<li class="chapter" data-level="8.5.3" data-path="8-airtable.html"><a href="8-airtable.html#internal-backups-record-history-base-snapshots-and-duplication"><i class="fa fa-check"></i><b>8.5.3</b> Internal Backups: Record History, Base Snapshots and Duplication</a></li>
+<li class="chapter" data-level="8.5.4" data-path="8-airtable.html"><a href="8-airtable.html#importing-datad"><i class="fa fa-check"></i><b>8.5.4</b> Importing datad</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="8-airtable.html"><a href="8-airtable.html#base-design"><i class="fa fa-check"></i><b>8.6</b> Base Design</a></li>
+<li class="chapter" data-level="8.7" data-path="8-airtable.html"><a href="8-airtable.html#automating-airtable"><i class="fa fa-check"></i><b>8.7</b> Automating Airtable</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="8-airtable.html"><a href="8-airtable.html#automations-with-drag-and-drop-programing-pro-and-above"><i class="fa fa-check"></i><b>8.7.1</b> Automations with Drag and Drop Programing (pro and above)</a></li>
+<li class="chapter" data-level="8.7.2" data-path="8-airtable.html"><a href="8-airtable.html#scripting-and-blocks-pro-plan-and-above"><i class="fa fa-check"></i><b>8.7.2</b> Scripting and Blocks (pro plan and above)</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="8-airtable.html"><a href="8-airtable.html#using-the-rest-api"><i class="fa fa-check"></i><b>8.8</b> Using the REST API</a>
+<ul>
+<li class="chapter" data-level="8.8.1" data-path="8-airtable.html"><a href="8-airtable.html#scoped-tokens"><i class="fa fa-check"></i><b>8.8.1</b> Scoped Tokens</a></li>
+<li class="chapter" data-level="8.8.2" data-path="8-airtable.html"><a href="8-airtable.html#airtable-and-r"><i class="fa fa-check"></i><b>8.8.2</b> Airtable and R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="8-airtable.html"><a href="8-airtable.html#data-management-1"><i class="fa fa-check"></i><b>8.9</b> Data Management</a>
+<ul>
+<li class="chapter" data-level="8.9.1" data-path="8-airtable.html"><a href="8-airtable.html#metadata"><i class="fa fa-check"></i><b>8.9.1</b> Metadata</a></li>
+<li class="chapter" data-level="8.9.2" data-path="8-airtable.html"><a href="8-airtable.html#external-backups"><i class="fa fa-check"></i><b>8.9.2</b> External Backups</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="9-versioning.html"><a href="9-versioning.html"><i class="fa fa-check"></i><b>9</b> Version Control, Git and Github</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="9-versioning.html"><a href="9-versioning.html#learn-3"><i class="fa fa-check"></i><b>9.1</b> Learn</a></li>
+<li class="chapter" data-level="9.2" data-path="9-versioning.html"><a href="9-versioning.html#install-4"><i class="fa fa-check"></i><b>9.2</b> Install</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="9-versioning.html"><a href="9-versioning.html#creating-tokens"><i class="fa fa-check"></i><b>9.2.1</b> Creating Tokens</a></li>
+<li class="chapter" data-level="9.2.2" data-path="9-versioning.html"><a href="9-versioning.html#regenerating-tokens"><i class="fa fa-check"></i><b>9.2.2</b> Regenerating Tokens</a></li>
+<li class="chapter" data-level="9.2.3" data-path="9-versioning.html"><a href="9-versioning.html#useful-references"><i class="fa fa-check"></i><b>9.2.3</b> Useful References</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="10-reviewing-analyses-and-code.html"><a href="10-reviewing-analyses-and-code.html"><i class="fa fa-check"></i><b>10</b> Reviewing Analyses and Code</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="10-reviewing-analyses-and-code.html"><a href="10-reviewing-analyses-and-code.html#learn-4"><i class="fa fa-check"></i><b>10.1</b> Learn</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="11-testing.html"><a href="11-testing.html"><i class="fa fa-check"></i><b>11</b> Testing</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="11-testing.html"><a href="11-testing.html#learn-5"><i class="fa fa-check"></i><b>11.1</b> Learn</a></li>
+<li class="chapter" data-level="11.2" data-path="11-testing.html"><a href="11-testing.html#install-5"><i class="fa fa-check"></i><b>11.2</b> Install</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="12-high-performance-servers.html"><a href="12-high-performance-servers.html"><i class="fa fa-check"></i><b>12</b> High-Performance Servers</a></li>
+<li class="chapter" data-level="13" data-path="13-odk.html"><a href="13-odk.html"><i class="fa fa-check"></i><b>13</b> Open Data Kit</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="13-odk.html"><a href="13-odk.html#central"><i class="fa fa-check"></i><b>13.1</b> ODK Central</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="13-odk.html"><a href="13-odk.html#getting-an-eha-odk-central-account"><i class="fa fa-check"></i><b>13.1.1</b> Getting an EHA ODK Central account</a></li>
+<li class="chapter" data-level="13.1.2" data-path="13-odk.html"><a href="13-odk.html#using-odk-central"><i class="fa fa-check"></i><b>13.1.2</b> Using ODK Central</a></li>
+<li class="chapter" data-level="13.1.3" data-path="13-odk.html"><a href="13-odk.html#setting-up-a-project"><i class="fa fa-check"></i><b>13.1.3</b> Setting up a project</a></li>
+<li class="chapter" data-level="13.1.4" data-path="13-odk.html"><a href="13-odk.html#monitoring-the-progress-of-projects"><i class="fa fa-check"></i><b>13.1.4</b> Monitoring the progress of projects</a></li>
+<li class="chapter" data-level="13.1.5" data-path="13-odk.html"><a href="13-odk.html#retrieving-data"><i class="fa fa-check"></i><b>13.1.5</b> Retrieving Data</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="13-odk.html"><a href="13-odk.html#collect"><i class="fa fa-check"></i><b>13.2</b> ODK Collect</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="13-odk.html"><a href="13-odk.html#installing-odk-collect"><i class="fa fa-check"></i><b>13.2.1</b> Installing ODK Collect</a></li>
+<li class="chapter" data-level="13.2.2" data-path="13-odk.html"><a href="13-odk.html#connecting-to-a-server"><i class="fa fa-check"></i><b>13.2.2</b> Connecting to a server</a></li>
+</ul></li>
+<li class="chapter" data-level="13.3" data-path="13-odk.html"><a href="13-odk.html#other-useful-odk-collect-configurations"><i class="fa fa-check"></i><b>13.3</b> Other useful ODK Collect configurations</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="13-odk.html"><a href="13-odk.html#language-settings"><i class="fa fa-check"></i><b>13.3.1</b> Language settings</a></li>
+<li class="chapter" data-level="13.3.2" data-path="13-odk.html"><a href="13-odk.html#localizing-odk-collect"><i class="fa fa-check"></i><b>13.3.2</b> Localizing ODK Collect</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="13-odk.html"><a href="13-odk.html#xlsform"><i class="fa fa-check"></i><b>13.4</b> XLSForm</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="14-cloud-computing-services.html"><a href="14-cloud-computing-services.html"><i class="fa fa-check"></i><b>14</b> Cloud Computing Services</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="14-cloud-computing-services.html"><a href="14-cloud-computing-services.html#setting-up-amazon-credentials"><i class="fa fa-check"></i><b>14.1</b> Setting up Amazon Credentials</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="14-cloud-computing-services.html"><a href="14-cloud-computing-services.html#generate-an-access-key"><i class="fa fa-check"></i><b>14.1.1</b> Generate an access key</a></li>
+<li class="chapter" data-level="14.1.2" data-path="14-cloud-computing-services.html"><a href="14-cloud-computing-services.html#create-a-credentials-file"><i class="fa fa-check"></i><b>14.1.2</b> Create a credentials file</a></li>
+<li class="chapter" data-level="14.1.3" data-path="14-cloud-computing-services.html"><a href="14-cloud-computing-services.html#test-your-key"><i class="fa fa-check"></i><b>14.1.3</b> Test your Key</a></li>
+<li class="chapter" data-level="14.1.4" data-path="14-cloud-computing-services.html"><a href="14-cloud-computing-services.html#alternate-credentialing-method"><i class="fa fa-check"></i><b>14.1.4</b> Alternate credentialing method</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="14-cloud-computing-services.html"><a href="14-cloud-computing-services.html#using-amazon-s3-storage-from-r"><i class="fa fa-check"></i><b>14.2</b> Using Amazon S3 Storage from R</a>
+<ul>
+<li class="chapter" data-level="14.2.1" data-path="14-cloud-computing-services.html"><a href="14-cloud-computing-services.html#save-objects-from-s3-to-your-machine"><i class="fa fa-check"></i><b>14.2.1</b> Save objects from S3 to your machine</a></li>
+<li class="chapter" data-level="14.2.2" data-path="14-cloud-computing-services.html"><a href="14-cloud-computing-services.html#upload-objects-from-your-machine-to-s3"><i class="fa fa-check"></i><b>14.2.2</b> Upload objects from your machine to S3</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html"><i class="fa fa-check"></i><b>15</b> Google Authorization and R</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#the-basic-overview"><i class="fa fa-check"></i><b>15.1</b> The basic overview:</a></li>
+<li class="chapter" data-level="15.2" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#key-terms-1"><i class="fa fa-check"></i><b>15.2</b> Key Terms</a></li>
+<li class="chapter" data-level="15.3" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#before-we-start"><i class="fa fa-check"></i><b>15.3</b> Before we start:</a></li>
+<li class="chapter" data-level="15.4" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#setup-encryption-tools-on-your-machine"><i class="fa fa-check"></i><b>15.4</b> Setup encryption tools on your machine</a></li>
+<li class="chapter" data-level="15.5" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#enable-git-crypt-on-your-repository"><i class="fa fa-check"></i><b>15.5</b> Enable git-crypt on your repository</a></li>
+<li class="chapter" data-level="15.6" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#setting-up-non-interactive-authentication-for-google-sheets"><i class="fa fa-check"></i><b>15.6</b> Setting up non-interactive authentication for Google sheets</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#create-a-google-cloud-platform-project"><i class="fa fa-check"></i><b>15.6.1</b> Create a Google cloud platform project</a></li>
+<li class="chapter" data-level="15.6.2" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#enable-apis"><i class="fa fa-check"></i><b>15.6.2</b> Enable APIs</a></li>
+<li class="chapter" data-level="15.6.3" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#create-a-service-account"><i class="fa fa-check"></i><b>15.6.3</b> Create a Service Account</a></li>
+<li class="chapter" data-level="15.6.4" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#create-a-key-for-your-service-account"><i class="fa fa-check"></i><b>15.6.4</b> Create a Key for your service account</a></li>
+<li class="chapter" data-level="15.6.5" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#share-the-google-drive-resources-of-interest-with-the-service-account"><i class="fa fa-check"></i><b>15.6.5</b> Share the Google drive resources of interest with the service account</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#general-approach-to-securely-managing-keys"><i class="fa fa-check"></i><b>15.7</b> General approach to securely managing keys</a>
+<ul>
+<li class="chapter" data-level="15.7.1" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#provide-a-service-account-key-for-projects"><i class="fa fa-check"></i><b>15.7.1</b> Provide a service account key for projects</a></li>
+</ul></li>
+<li class="chapter" data-level="15.8" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#additional-resources-2"><i class="fa fa-check"></i><b>15.8</b> Additional Resources</a>
+<ul>
+<li class="chapter" data-level="15.8.1" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#google-drive"><i class="fa fa-check"></i><b>15.8.1</b> Google Drive</a></li>
+<li class="chapter" data-level="15.8.2" data-path="15-google-authorization-and-r.html"><a href="15-google-authorization-and-r.html#google-sheets"><i class="fa fa-check"></i><b>15.8.2</b> Google Sheets</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="16-encryption.html"><a href="16-encryption.html"><i class="fa fa-check"></i><b>16</b> Encryption</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="16-encryption.html"><a href="16-encryption.html#set-up-keybase"><i class="fa fa-check"></i><b>16.1</b> Set up Keybase</a>
+<ul>
+<li class="chapter" data-level="16.1.1" data-path="16-encryption.html"><a href="16-encryption.html#installing-keybase-on-linux"><i class="fa fa-check"></i><b>16.1.1</b> Installing Keybase on Linux</a></li>
+<li class="chapter" data-level="16.1.2" data-path="16-encryption.html"><a href="16-encryption.html#installing-keybase-on-macos-and-windows"><i class="fa fa-check"></i><b>16.1.2</b> Installing Keybase on macOS and Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="16-encryption.html"><a href="16-encryption.html#install-gpg-and-git-crypt"><i class="fa fa-check"></i><b>16.2</b> Install <code>gpg</code> and <code>git-crypt</code></a>
+<ul>
+<li class="chapter" data-level="16.2.1" data-path="16-encryption.html"><a href="16-encryption.html#install-gpg-and-git-crypt-on-macos"><i class="fa fa-check"></i><b>16.2.1</b> Install <code>gpg</code> and <code>git-crypt</code> on macOS</a></li>
+<li class="chapter" data-level="16.2.2" data-path="16-encryption.html"><a href="16-encryption.html#install-gpg-and-git-crypt-on-windows"><i class="fa fa-check"></i><b>16.2.2</b> Install <code>gpg</code> and <code>git-crypt</code> on Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="16-encryption.html"><a href="16-encryption.html#create-your-keybase-keys"><i class="fa fa-check"></i><b>16.3</b> Create your Keybase keys</a></li>
+<li class="chapter" data-level="16.4" data-path="16-encryption.html"><a href="16-encryption.html#import-your-keys-to-your-local-keychain"><i class="fa fa-check"></i><b>16.4</b> Import your keys to your local keychain</a></li>
+<li class="chapter" data-level="16.5" data-path="16-encryption.html"><a href="16-encryption.html#configure-gpg"><i class="fa fa-check"></i><b>16.5</b> Configure gpg</a>
+<ul>
+<li class="chapter" data-level="16.5.1" data-path="16-encryption.html"><a href="16-encryption.html#configure-gpg-on-macos-and-linux"><i class="fa fa-check"></i><b>16.5.1</b> Configure gpg on macOS (and Linux)</a></li>
+<li class="chapter" data-level="16.5.2" data-path="16-encryption.html"><a href="16-encryption.html#configure-gpg-on-windows"><i class="fa fa-check"></i><b>16.5.2</b> Configure gpg on Windows</a></li>
+</ul></li>
+<li class="chapter" data-level="16.6" data-path="16-encryption.html"><a href="16-encryption.html#backing-up-and-recovering-gpg-keys"><i class="fa fa-check"></i><b>16.6</b> Backing up and Recovering GPG Keys</a>
+<ul>
+<li class="chapter" data-level="16.6.1" data-path="16-encryption.html"><a href="16-encryption.html#how-do-i-save-a-key"><i class="fa fa-check"></i><b>16.6.1</b> How do I save a key?</a></li>
+<li class="chapter" data-level="16.6.2" data-path="16-encryption.html"><a href="16-encryption.html#how-do-i-recover-my-gpg-key-from-a-file"><i class="fa fa-check"></i><b>16.6.2</b> How do I recover my gpg key from a file?</a></li>
+</ul></li>
+<li class="chapter" data-level="16.7" data-path="16-encryption.html"><a href="16-encryption.html#use-git-crypt-to-unlock-a-repository"><i class="fa fa-check"></i><b>16.7</b> Use git-crypt to unlock a repository</a>
+<ul>
+<li class="chapter" data-level="16.7.1" data-path="16-encryption.html"><a href="16-encryption.html#troubleshooting"><i class="fa fa-check"></i><b>16.7.1</b> Troubleshooting</a></li>
+</ul></li>
+<li class="chapter" data-level="16.8" data-path="16-encryption.html"><a href="16-encryption.html#managing-which-users-can-decrypt-files-in-a-repository"><i class="fa fa-check"></i><b>16.8</b> Managing which users can decrypt files in a repository</a>
+<ul>
+<li class="chapter" data-level="16.8.1" data-path="16-encryption.html"><a href="16-encryption.html#set-up-encryption-for-a-repo-that-did-not-previously-use-git-crypt"><i class="fa fa-check"></i><b>16.8.1</b> Set up encryption for a repo that did not previously use git-crypt</a></li>
+<li class="chapter" data-level="16.8.2" data-path="16-encryption.html"><a href="16-encryption.html#allow-contributors-access-to-encrypted-files"><i class="fa fa-check"></i><b>16.8.2</b> Allow contributors access to encrypted files</a></li>
+<li class="chapter" data-level="16.8.3" data-path="16-encryption.html"><a href="16-encryption.html#import-your-keys-to-the-eha-server"><i class="fa fa-check"></i><b>16.8.3</b> Import your keys to the EHA server</a></li>
+</ul></li>
+<li class="chapter" data-level="16.9" data-path="16-encryption.html"><a href="16-encryption.html#use-a-symmetric-key-for-automated-processes"><i class="fa fa-check"></i><b>16.9</b> Use a symmetric key for automated processes</a></li>
+<li class="chapter" data-level="16.10" data-path="16-encryption.html"><a href="16-encryption.html#unlocking-encrypted-repos-with-a-symmetric-key"><i class="fa fa-check"></i><b>16.10</b> Unlocking encrypted repos with a Symmetric key</a></li>
+<li class="chapter" data-level="16.11" data-path="16-encryption.html"><a href="16-encryption.html#removing-sensitive-files-from-git-history"><i class="fa fa-check"></i><b>16.11</b> Removing sensitive files from git history</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="17-dependencies.html"><a href="17-dependencies.html"><i class="fa fa-check"></i><b>17</b> Dependency Management</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="17-dependencies.html"><a href="17-dependencies.html#gcc-and-mac-silicon"><i class="fa fa-check"></i><b>17.1</b> GCC and mac silicon</a></li>
+<li class="chapter" data-level="17.2" data-path="17-dependencies.html"><a href="17-dependencies.html#section"><i class="fa fa-check"></i><b>17.2</b> </a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="18-statistical-methods.html"><a href="18-statistical-methods.html"><i class="fa fa-check"></i><b>18</b> Statistical Methods</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="18-statistical-methods.html"><a href="18-statistical-methods.html#multivariate-regression"><i class="fa fa-check"></i><b>18.1</b> Multivariate Regression</a></li>
+<li class="chapter" data-level="18.2" data-path="18-statistical-methods.html"><a href="18-statistical-methods.html#networks"><i class="fa fa-check"></i><b>18.2</b> Networks</a></li>
+<li class="chapter" data-level="18.3" data-path="18-statistical-methods.html"><a href="18-statistical-methods.html#bioinformatics-and-sequence-analysis"><i class="fa fa-check"></i><b>18.3</b> Bioinformatics and Sequence Analysis</a></li>
+<li class="chapter" data-level="18.4" data-path="18-statistical-methods.html"><a href="18-statistical-methods.html#species-distribution-modeling"><i class="fa fa-check"></i><b>18.4</b> Species Distribution Modeling</a></li>
+<li class="chapter" data-level="18.5" data-path="18-statistical-methods.html"><a href="18-statistical-methods.html#epidemic-simulation-and-fitting"><i class="fa fa-check"></i><b>18.5</b> Epidemic Simulation and Fitting</a></li>
+<li class="chapter" data-level="18.6" data-path="18-statistical-methods.html"><a href="18-statistical-methods.html#phylogenetics"><i class="fa fa-check"></i><b>18.6</b> Phylogenetics</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="19-quality-control.html"><a href="19-quality-control.html"><i class="fa fa-check"></i><b>19</b> Quality control</a>
+<ul>
+<li class="chapter" data-level="19.0.1" data-path="19-quality-control.html"><a href="19-quality-control.html#what-is-quality-control"><i class="fa fa-check"></i><b>19.0.1</b> What is quality control?</a></li>
+<li class="chapter" data-level="19.0.2" data-path="19-quality-control.html"><a href="19-quality-control.html#why-is-a-quality-control-step-necessary-in-ngs-data"><i class="fa fa-check"></i><b>19.0.2</b> Why is a quality control step necessary in NGS data?</a></li>
+<li class="chapter" data-level="19.0.3" data-path="19-quality-control.html"><a href="19-quality-control.html#why-is-a-quality-control-step-important-in-the-processing-of-ngs-data"><i class="fa fa-check"></i><b>19.0.3</b> Why is a quality control step important in the processing of NGS data?</a></li>
+<li class="chapter" data-level="19.0.4" data-path="19-quality-control.html"><a href="19-quality-control.html#how-does-the-trimming-process-work"><i class="fa fa-check"></i><b>19.0.4</b> How does the trimming process work?</a></li>
+<li class="chapter" data-level="19.0.5" data-path="19-quality-control.html"><a href="19-quality-control.html#quality-control-with-trimmomatic"><i class="fa fa-check"></i><b>19.0.5</b> Quality control with trimmomatic</a></li>
+<li class="chapter" data-level="19.0.6" data-path="19-quality-control.html"><a href="19-quality-control.html#visualization-of-the-quality-of-the-reads"><i class="fa fa-check"></i><b>19.0.6</b> Visualization of the quality of the reads</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="20-assembly-of-high-throughput-data.html"><a href="20-assembly-of-high-throughput-data.html"><i class="fa fa-check"></i><b>20</b> Assembly of high-throughput data</a>
+<ul>
+<li class="chapter" data-level="20.0.1" data-path="20-assembly-of-high-throughput-data.html"><a href="20-assembly-of-high-throughput-data.html#the-problem"><i class="fa fa-check"></i><b>20.0.1</b> The problem</a></li>
+<li class="chapter" data-level="20.0.2" data-path="20-assembly-of-high-throughput-data.html"><a href="20-assembly-of-high-throughput-data.html#graphs"><i class="fa fa-check"></i><b>20.0.2</b> Graphs</a></li>
+<li class="chapter" data-level="20.0.3" data-path="20-assembly-of-high-throughput-data.html"><a href="20-assembly-of-high-throughput-data.html#bruijn-graph"><i class="fa fa-check"></i><b>20.0.3</b> Bruijn graph</a></li>
+<li class="chapter" data-level="20.0.4" data-path="20-assembly-of-high-throughput-data.html"><a href="20-assembly-of-high-throughput-data.html#contigs"><i class="fa fa-check"></i><b>20.0.4</b> Contigs</a></li>
+<li class="chapter" data-level="20.0.5" data-path="20-assembly-of-high-throughput-data.html"><a href="20-assembly-of-high-throughput-data.html#a-formal-presentation-of-de-bruijn-graphs"><i class="fa fa-check"></i><b>20.0.5</b> A formal presentation of de Bruijn graphs</a></li>
+<li class="chapter" data-level="20.0.6" data-path="20-assembly-of-high-throughput-data.html"><a href="20-assembly-of-high-throughput-data.html#megahit"><i class="fa fa-check"></i><b>20.0.6</b> MEGAHIT</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html"><i class="fa fa-check"></i><b>21</b> Sequences alignment</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#heredity"><i class="fa fa-check"></i><b>21.1</b> Heredity</a></li>
+<li class="chapter" data-level="21.2" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#orthologs-and-paralogs"><i class="fa fa-check"></i><b>21.2</b> Orthologs and paralogs</a></li>
+<li class="chapter" data-level="21.3" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#blast"><i class="fa fa-check"></i><b>21.3</b> BLAST</a>
+<ul>
+<li class="chapter" data-level="21.3.1" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#conda-installation"><i class="fa fa-check"></i><b>21.3.1</b> Conda Installation</a></li>
+</ul></li>
+<li class="chapter" data-level="21.4" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#install-blast-with-conda"><i class="fa fa-check"></i><b>21.4</b> Install BLAST+ with Conda</a></li>
+<li class="chapter" data-level="21.5" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#install-database-reference-sequences"><i class="fa fa-check"></i><b>21.5</b> Install database reference sequences</a>
+<ul>
+<li class="chapter" data-level="21.5.1" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#there-are-different-ways-to-install-the-pre-formatted-blast-databases"><i class="fa fa-check"></i><b>21.5.1</b> There are different ways to install the pre-formatted BLAST databases:</a></li>
+</ul></li>
+<li class="chapter" data-level="21.6" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#pairwise-sequence-alignment"><i class="fa fa-check"></i><b>21.6</b> Pairwise sequence alignment</a>
+<ul>
+<li class="chapter" data-level="21.6.1" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#blastn"><i class="fa fa-check"></i><b>21.6.1</b> BLASTn</a></li>
+<li class="chapter" data-level="21.6.2" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#blastp"><i class="fa fa-check"></i><b>21.6.2</b> BLASTp</a></li>
+<li class="chapter" data-level="21.6.3" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#configuration-files-and-environmental-variables"><i class="fa fa-check"></i><b>21.6.3</b> Configuration files and environmental variables</a></li>
+</ul></li>
+<li class="chapter" data-level="21.7" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#blast-with-high-throughput-data"><i class="fa fa-check"></i><b>21.7</b> BLAST with high-throughput data</a>
+<ul>
+<li class="chapter" data-level="21.7.1" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#installation-2"><i class="fa fa-check"></i><b>21.7.1</b> Installation</a></li>
+<li class="chapter" data-level="21.7.2" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#add-sequence-database"><i class="fa fa-check"></i><b>21.7.2</b> Add sequence database</a></li>
+<li class="chapter" data-level="21.7.3" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#add-the-job-to-the-queue"><i class="fa fa-check"></i><b>21.7.3</b> Add the job to the queue</a></li>
+<li class="chapter" data-level="21.7.4" data-path="21-seqs_aln.html"><a href="21-seqs_aln.html#run-the-job"><i class="fa fa-check"></i><b>21.7.4</b> Run the job</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="22-data-sources.html"><a href="22-data-sources.html"><i class="fa fa-check"></i><b>22</b> Data Sources</a></li>
+<li class="chapter" data-level="23" data-path="23-references.html"><a href="23-references.html"><i class="fa fa-check"></i><b>23</b> References</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="23-references.html"><a href="23-references.html#converting-paperpile-citations-in-google-docs-to-endnote-citations-in-ms-word"><i class="fa fa-check"></i><b>23.1</b> Converting Paperpile Citations in Google Docs to Endnote Citations in MS Word</a></li>
+</ul></li>
+<li class="chapter" data-level="24" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html"><i class="fa fa-check"></i><b>24</b> Training Resources and Plans</a>
+<ul>
+<li class="chapter" data-level="24.1" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#training-plan-components"><i class="fa fa-check"></i><b>24.1</b> Training plan components</a></li>
+<li class="chapter" data-level="24.2" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#training-plans"><i class="fa fa-check"></i><b>24.2</b> Training Plans</a>
+<ul>
+<li class="chapter" data-level="24.2.1" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#introductory-programming-materials"><i class="fa fa-check"></i><b>24.2.1</b> Introductory Programming materials</a></li>
+<li class="chapter" data-level="24.2.2" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#better-managing-data"><i class="fa fa-check"></i><b>24.2.2</b> Better Managing Data</a></li>
+<li class="chapter" data-level="24.2.3" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#version-control-and-git"><i class="fa fa-check"></i><b>24.2.3</b> Version Control and Git</a></li>
+<li class="chapter" data-level="24.2.4" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#reproducible-reporting"><i class="fa fa-check"></i><b>24.2.4</b> Reproducible reporting</a></li>
+<li class="chapter" data-level="24.2.5" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#improving-your-statistical-fundamentals"><i class="fa fa-check"></i><b>24.2.5</b> Improving Your Statistical Fundamentals</a></li>
+<li class="chapter" data-level="24.2.6" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#improving-your-data-visualization"><i class="fa fa-check"></i><b>24.2.6</b> Improving your data visualization</a></li>
+<li class="chapter" data-level="24.2.7" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#map-making-and-geospatial-analysis-in-r"><i class="fa fa-check"></i><b>24.2.7</b> Map-making and geospatial analysis in R</a></li>
+<li class="chapter" data-level="24.2.8" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#bioinformatics"><i class="fa fa-check"></i><b>24.2.8</b> Bioinformatics</a></li>
+</ul></li>
+<li class="chapter" data-level="24.3" data-path="24-training-resources-and-plans.html"><a href="24-training-resources-and-plans.html#metagenomics"><i class="fa fa-check"></i><b>24.3</b> Metagenomics</a></li>
+</ul></li>
+<li class="chapter" data-level="25" data-path="25-help.html"><a href="25-help.html"><i class="fa fa-check"></i><b>25</b> Getting Help</a>
+<ul>
+<li class="chapter" data-level="25.1" data-path="25-help.html"><a href="25-help.html#minimal-reproducible-examples---helping-others-help-you"><i class="fa fa-check"></i><b>25.1</b> Minimal reproducible examples - helping others help you</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">EHA Modeling &amp; Analytics Handbook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="encryption" class="section level1 hasAnchor" number="16">
+<h1><span class="header-section-number">16</span> Encryption<a href="16-encryption.html#encryption" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li><em>How do we share data in git repositories that needs to be secure?</em></li>
+</ul>
+<p>Sometimes we need to store and share secure information, such as passwords or API keys, to
+online service accounts. One of our methods of choice for this is to
+keep these files stored in git/GitHub repositories, but to encrypt them. We
+do this using PGP (Pretty Good Privacy) encryption, implemented by the program
+<a href="https://github.com/AGWA/git-crypt"><code>git-crypt</code></a>. It takes a bit to set up
+but once activated makes sharing secure and seamless.</p>
+<p>The PGP encryption scheme involves making a <em>public</em> key that you share and
+a <em>private</em> key that you use to decrypt data encrypted with your public key.
+We also use <a href="https://keybase.io/">Keybase</a>, a service that helps you publish and
+verify a public key for this purpose.</p>
+<p>Instructions for setting this up are below.</p>
+<div id="set-up-keybase" class="section level2 hasAnchor" number="16.1">
+<h2><span class="header-section-number">16.1</span> Set up Keybase<a href="16-encryption.html#set-up-keybase" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Sign up for <a href="https://keybase.io/">Keybase</a>, and follow the instructions for
+installing it on your computer.</p>
+<p>Note that if you switch computers, you need to have another device associated with the keybase account and/or a copy of your paper key in order to recover your key.<br />
+A <a href="https://www.theguardian.com/technology/2022/mar/19/not-using-password-manager-why-you-should-online-security">password manager</a> like <a href="https://team-ecohealthalliance.1password.com/signin">1Password</a>) - EHA provides account, (<a href="https://bitwarden.com/">Bitwarden</a> would be helpful for securely storing a paper key.</p>
+<div id="installing-keybase-on-linux" class="section level3 hasAnchor" number="16.1.1">
+<h3><span class="header-section-number">16.1.1</span> Installing Keybase on Linux<a href="16-encryption.html#installing-keybase-on-linux" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For installing on linux, first identify the distribution by entering
+the following command into a terminal and noting down the Distributor ID.</p>
+<pre><code>lsb_release -a</code></pre>
+<p>Next identify the architecture via,</p>
+<pre><code>arch</code></pre>
+<p>Follow the instructions to install Keybase on Linux, available <a href="https://keybase.io/docs/the_app/install_linux">here</a>,
+making sure to use the section relevant to the architecture and distribution
+information identified above.</p>
+</div>
+<div id="installing-keybase-on-macos-and-windows" class="section level3 hasAnchor" number="16.1.2">
+<h3><span class="header-section-number">16.1.2</span> Installing Keybase on macOS and Windows<a href="16-encryption.html#installing-keybase-on-macos-and-windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For installing on Windows and macOS, the easiest way is to download and install the
+graphical user interface available from the Keybase
+<a href="https://keybase.io/download">download page</a>. This will also install the necessary
+command line tools.</p>
+<p>You may also use <code>homebrew</code> to install keybase on macOS</p>
+</div>
+</div>
+<div id="install-gpg-and-git-crypt" class="section level2 hasAnchor" number="16.2">
+<h2><span class="header-section-number">16.2</span> Install <code>gpg</code> and <code>git-crypt</code><a href="16-encryption.html#install-gpg-and-git-crypt" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><code>gpg</code> is the program that implements encryption, and <code>git-crypt</code> sets up git
+repos for encrypted sharing using <code>gpg.</code> These are already installed on EHA servers.</p>
+<div id="install-gpg-and-git-crypt-on-macos" class="section level3 hasAnchor" number="16.2.1">
+<h3><span class="header-section-number">16.2.1</span> Install <code>gpg</code> and <code>git-crypt</code> on macOS<a href="16-encryption.html#install-gpg-and-git-crypt-on-macos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Use <a href="https://docs.brew.sh/Installation"><code>homebrew</code></a> to install <code>gpg</code>, <code>git-crypt</code>. You should also install <code>pinentry</code>,
+which is a helper program for entering passwords securely. Run the following in the terminal:</p>
+<pre><code>brew install gpg
+brew install pinentry
+brew install git-crypt</code></pre>
+<p>Homebrew automatically updates when you run it so if you haven’t used it in a while there may be a somewhat lengthy update</p>
+</div>
+<div id="install-gpg-and-git-crypt-on-windows" class="section level3 hasAnchor" number="16.2.2">
+<h3><span class="header-section-number">16.2.2</span> Install <code>gpg</code> and <code>git-crypt</code> on Windows<a href="16-encryption.html#install-gpg-and-git-crypt-on-windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For Windows there are two alternative approaches.</p>
+<div id="using-windows-subsystem-for-linux-wsl" class="section level4 hasAnchor" number="16.2.2.1">
+<h4><span class="header-section-number">16.2.2.1</span> Using Windows Subsystem for Linux (WSL)<a href="16-encryption.html#using-windows-subsystem-for-linux-wsl" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The first approach is to utilize the Windows Subsystem for Linux (WSL). This method requires Windows 10 or higher. You must first install WSL. Do so following this guide: <a href="https://docs.microsoft.com/en-us/windows/wsl/install" class="uri">https://docs.microsoft.com/en-us/windows/wsl/install</a>.</p>
+<p>Once WSL is set up, the necessary packages can be installed through the WSL command line shell. Run the following in the shell:</p>
+<pre><code>sudo apt update
+sudo apt install keybase gpg git-crypt</code></pre>
+</div>
+<div id="using-windows-install-binaries" class="section level4 hasAnchor" number="16.2.2.2">
+<h4><span class="header-section-number">16.2.2.2</span> Using Windows: install binaries<a href="16-encryption.html#using-windows-install-binaries" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The second method is to install pre-compiled Windows binaries for GPG and git-crypt.</p>
+<p>First download a Windows-compatible binary for GPG which can be found (here)<a href="https://gnupg.org/download/" class="uri">https://gnupg.org/download/</a>. The ‘Simple installer for the current GnuPG’ binary on that page is the recommended choice.</p>
+<p>Then install git-crypt by via the following steps:</p>
+<ul>
+<li>Downloading <code>git-crypt-*.exe</code> from <a href="https://github.com/AGWA/git-crypt/releases" class="uri">https://github.com/AGWA/git-crypt/releases</a>.
+<ul>
+<li>This may generate the warning “git-crypt-*.exe is not commonly downloaded and may be dangerous”. Click the up arrow next to ‘Discard’ and select ‘Keep’.</li>
+<li>Even after this the download may fail with the message ‘Failed - Virus detected’. Do not worry this is a false positive. If this occurs, search for ‘Virus &amp; thread protection’ in the task bar and click on ‘Manage settings’ under ‘Virus &amp; thread protection settings’. Once there, turn off “real-time protection” and try downloading again. Please make sure to turn it back on again when done.</li>
+</ul></li>
+<li>Once downloaded, rename the file to <code>gpg-crypt.exe</code>.</li>
+<li>Move the resulting <code>gpg-crypt.exe</code> into a folder recognized by the Windows PATH environment variable. A convenient location is <code>C:\Program Files\Git\cmd\</code>.</li>
+</ul>
+<p>Once Keybase and GPG are installed, the terminal commands related to exporting keys from Keybase into GPG are the same regardless of operating system.</p>
+</div>
+</div>
+</div>
+<div id="create-your-keybase-keys" class="section level2 hasAnchor" number="16.3">
+<h2><span class="header-section-number">16.3</span> Create your Keybase keys<a href="16-encryption.html#create-your-keybase-keys" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you are just starting to use Keybase, you can generate new keys for use on
+your computer using this guide: <a href="https://github.com/pstadler/keybase-gpg-github" class="uri">https://github.com/pstadler/keybase-gpg-github</a>.
+That guide also helps set up using your key to sign GitHub commits, which you
+should do for added security.</p>
+<p>Create a password associated with your keys when asked. You can store
+this in your password manager such as <a href="https://team-ecohealthalliance.1password.com/signin">1Password</a> or BitWarden.
+Once your keys are created, visit your Keybase account at and verify your keys via as
+many other services, devices, or online identities as you want. We suggest
+at least three. It is also a good idea to generate a physical ‘paper key’ and store it in
+a secure location.</p>
+</div>
+<div id="import-your-keys-to-your-local-keychain" class="section level2 hasAnchor" number="16.4">
+<h2><span class="header-section-number">16.4</span> Import your keys to your local keychain<a href="16-encryption.html#import-your-keys-to-your-local-keychain" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you have a Keybase account set and keys already generated, you can now import
+your Keybase keys to use. Instruction are found at <a href="https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/" class="uri">https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/</a>. When followng those instructions, set your keys to maximum trust level.</p>
+</div>
+<div id="configure-gpg" class="section level2 hasAnchor" number="16.5">
+<h2><span class="header-section-number">16.5</span> Configure gpg<a href="16-encryption.html#configure-gpg" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="configure-gpg-on-macos-and-linux" class="section level3 hasAnchor" number="16.5.1">
+<h3><span class="header-section-number">16.5.1</span> Configure gpg on macOS (and Linux)<a href="16-encryption.html#configure-gpg-on-macos-and-linux" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A common source of errors for macOS (and Linux) users is that the text entry for <code>gpg</code> isn’t set properly. This means that <code>gpg</code> and your terminal aren’t speaking the same language. You can fix this by setting the <code>GPG_TTY</code> environment variable in your shell configuration.</p>
+<pre><code>export GPG_TTY=$(tty)</code></pre>
+<p>Adding this to your <code>.profile</code>, <code>.bashrc</code>, <code>.zshrc</code> or other settings files prevents
+having to run the command when you use git-crypt or sign commits. U</p>
+<p>Use a text editor to modify the settings file for your shell. These are set in one of the files <code>~/.profile</code>, <code>~/.bashrc</code>, <code>~/.zshrc</code>. For most macOS users, it is <code>~/.zshrc</code>. Here are instructions using <code>nano</code>, an editor available on most machines.</p>
+<p>In the terminal, run:</p>
+<pre><code>nano ~/.zshrc</code></pre>
+<p>Then, in the nano text editor that comes up, add the following line to the file:</p>
+<pre><code>export GPG_TTY=$(tty)</code></pre>
+<p>In the nano editor, press Ctrl-O to write (“write-Out”) to save your changes, then press Ctrl-X to exit. Alternatively, run the following line in the terminal to change your <code>.zshrc</code> file without using nano or any other editor:</p>
+<pre><code>echo &quot;export GPG_TTY=$(tty)&quot; &gt;&gt; ~/.zshrc &amp;&amp; source ~/.zshrc</code></pre>
+</div>
+<div id="configure-gpg-on-windows" class="section level3 hasAnchor" number="16.5.2">
+<h3><span class="header-section-number">16.5.2</span> Configure gpg on Windows<a href="16-encryption.html#configure-gpg-on-windows" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Windows needs to inform git of the location of the gpg executable. This can be done by opening cmd or PowerShell and entering the following command:</p>
+<pre><code>git config --global gpg.program &quot;C:\Program Files (x86)\GnuPG\bin\gpg.exe&quot;`</code></pre>
+<p>Note that if GnuPG is installed in a different location the command should be altered to reflect this change.</p>
+</div>
+</div>
+<div id="backing-up-and-recovering-gpg-keys" class="section level2 hasAnchor" number="16.6">
+<h2><span class="header-section-number">16.6</span> Backing up and Recovering GPG Keys<a href="16-encryption.html#backing-up-and-recovering-gpg-keys" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>GPG private keys are stored locally and vulnerable to loss in the event of a problem with a user’s local machine. There are two potential ways to do this, and a belt-and-suspenders approach is best:</p>
+<ol style="list-style-type: decimal">
+<li>Use <a href="https://keybase.io/">KeyBase</a> to host an encrypted version of the key.</li>
+</ol>
+<div class="float">
+<img src="assets/gpg_keybase_host_private_key.png" alt="host private key on keybase" />
+<div class="figcaption">host private key on keybase</div>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li>Store a copy of your private key in <a href="https://team-ecohealthalliance.1password.com/signin">1Password</a>
+<img src="assets/gpg_1password_store_file.png" alt="Store an encrypted File in 1password" /></li>
+</ol>
+<div id="how-do-i-save-a-key" class="section level3 hasAnchor" number="16.6.1">
+<h3><span class="header-section-number">16.6.1</span> How do I save a key?<a href="16-encryption.html#how-do-i-save-a-key" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p>First, do not commit the private key to github. Consider adding <code>prv.key</code> to the <code>.gitignore</code> file.</p></li>
+<li><p>Run the following commands to export public and private keys to file:</p></li>
+</ul>
+<pre><code># Get list of keys on your machine. Replace USER NAME with the name associated with a listed key. 
+
+gpg --list-keys
+
+# Save private key to a file -- DO NOT COMMIT TO GITHUB
+# You will prompted to enter your GPG password - its the same
+# password you would enter to sign commits
+
+ gpg --export-secret-key -a USER NAME &gt; prv.key
+
+# Save public key to a file
+ gpg --export -a USER NAME &gt; pub.key
+ </code></pre>
+<ul>
+<li>Move private key to encrypted storage locations (e.g. keybase and 1password)</li>
+<li>Delete the private key from your machine to avoid leaks</li>
+</ul>
+</div>
+<div id="how-do-i-recover-my-gpg-key-from-a-file" class="section level3 hasAnchor" number="16.6.2">
+<h3><span class="header-section-number">16.6.2</span> How do I recover my gpg key from a file?<a href="16-encryption.html#how-do-i-recover-my-gpg-key-from-a-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First download the key from one of your back up locations.</p>
+<p>Then run the following commands:</p>
+<pre><code># import the key
+gpg --import prv.key
+
+# list keys to get public {KEY}
+
+gpg --list-keys
+
+# set the trust level
+
+gpg --edit-key {KEY} trust quit
+  # enter 5&lt;RETURN&gt; (I trust ultimately)
+  # enter y&lt;RETURN&gt; (Really set this key to ultimate trust - Yes)
+
+# list keys to check that your key is trusted
+
+gpg --list-keys
+</code></pre>
+</div>
+</div>
+<div id="use-git-crypt-to-unlock-a-repository" class="section level2 hasAnchor" number="16.7">
+<h2><span class="header-section-number">16.7</span> Use git-crypt to unlock a repository<a href="16-encryption.html#use-git-crypt-to-unlock-a-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <a href="https://github.com/AGWA/git-crypt"><code>git-crypt</code> README</a> outlines the basics
+of using <code>git-crypt</code> to encrypted and decrypt files in a git repository.</p>
+<p>First be sure your public key has been added to the repository. To do this, check the
+<code>.git-crypt/keys/default/0</code> folder in the github repo for your public key. If your key is present
+pull or clone the repo then run,</p>
+<pre><code>git-crypt unlock</code></pre>
+<p>from the terminal or command line in the repository folder. If all goes well, congrats! Encryption and decryption for pushing and
+pulling should now happen automatically.</p>
+<div id="troubleshooting" class="section level3 hasAnchor" number="16.7.1">
+<h3><span class="header-section-number">16.7.1</span> Troubleshooting<a href="16-encryption.html#troubleshooting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>If <code>git-crypt unlock</code> fails, try the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>Verify that GPG has successfully imported your private key from Keybase by opening a shell and entering
+<code>gpg --list-secret-keys</code>. If no keys are found, follow the <a href="https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/">guide</a> for importing keys. This might fail for mac and linux users if <code>export GPG_TTY=$(tty)</code> is not in your .bashrc or .zshrc.</li>
+<li>Make sure that your GPG private key has actually been added to the repository. Navigate to the <code>~/.git-crypt/keys/default/0/</code> directory on github and look for a file that matches your public key.</li>
+<li>Once your key has been added, pull from the remote to make sure the key is available to your local repository.</li>
+<li>Windows users need to let git know where to find the gpg executable. Double check that the gpg.exe really is in the folder you specified above. If not find it’s location or try re-installing gpg.</li>
+<li>Make sure that GIT <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-gpg-key">knows about your signing key</a></li>
+</ol>
+<!-- This should really come after the unlocking step. More people I think will need to clone and unlock than manage users !-->
+</div>
+</div>
+<div id="managing-which-users-can-decrypt-files-in-a-repository" class="section level2 hasAnchor" number="16.8">
+<h2><span class="header-section-number">16.8</span> Managing which users can decrypt files in a repository<a href="16-encryption.html#managing-which-users-can-decrypt-files-in-a-repository" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you’ve made it this far and you only need to unlock a repository that has already been set up you’re done! The instructions below will help you go further by outlining how to grant access to encrypted files on a repository, add your key to the EHA servers, and to initialize a new repository to use git-crypt.</p>
+<div id="set-up-encryption-for-a-repo-that-did-not-previously-use-git-crypt" class="section level3 hasAnchor" number="16.8.1">
+<h3><span class="header-section-number">16.8.1</span> Set up encryption for a repo that did not previously use git-crypt<a href="16-encryption.html#set-up-encryption-for-a-repo-that-did-not-previously-use-git-crypt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This will initialize the repository and add the default gpg key to git-crypt. Note: adding encryption to a repository will only encrypt files <em>going forward.</em> Any previous versions in the commit history will still be un-encrypted. Best practice is to set up git-crypt first, add relevant file or folder names to the <code>.gitattributes</code> file, and only then add any sensitive files to the repo.</p>
+<pre><code>## In the repo base directory open the terminal or command line and enter:
+
+git-crypt init
+
+## To verify that files are being encrypted run:
+
+git-crypt status
+
+# add your key to git crypt
+git-crypt add-gpg-user YOUR_KEY_HERE
+
+# create .gitattributes file - will tell git crypt what should be encrypted
+touch .gitattributes 
+
+# tell git crypt that .env should be encrypted
+echo &#39;**/.env filter=git-crypt diff=git-crypt&#39; &gt;&gt; .gitattributes 
+
+# may also be a good idea to add **/auth  if you&#39;re going to be 
+# using non-interactive processes with dropbox and google drive
+echo &#39;auth/** filter=git-crypt diff=git-crypt&#39; &gt;&gt; .gitattributes
+
+</code></pre>
+<p>To learn more about pattern matching in the <code>.gitattributes</code> file, see the <a href="https://github.com/AGWA/git-crypt#gitattributes-file">git-crypt read.me</a> and <a href="https://git-scm.com/docs/gitignore#_pattern_format">gitignore manual</a></p>
+<p>Your <code>.gitattributes</code> file might look something like this:</p>
+<pre><code>.env filter=git-crypt diff=git-crypt
+auth/** filter=git-crypt diff=git-crypt
+.gitattributes !filter !diff
+</code></pre>
+</div>
+<div id="allow-contributors-access-to-encrypted-files" class="section level3 hasAnchor" number="16.8.2">
+<h3><span class="header-section-number">16.8.2</span> Allow contributors access to encrypted files<a href="16-encryption.html#allow-contributors-access-to-encrypted-files" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First add their public key to your keychain. Visit their Keybase profiles (e.g., <a href="https://keybase.io/noamross" class="uri">https://keybase.io/noamross</a>) and click on the key - it will show several ways to import the keys. Two methods are shown below,</p>
+<pre><code># curl + gpg pro tip: import noamross&#39;s keys
+curl https://keybase.io/noamross/pgp_keys.asc | gpg --import
+
+# the Keybase app can push to gpg keychain, too
+keybase pgp pull noamross</code></pre>
+<p>Next edit the key so that it has sufficient trust levels as described in this <a href="https://blog.scottlowe.org/2017/09/06/using-keybase-gpg-macos/">guide</a>.</p>
+<pre><code># in terminal
+
+gpg --list-keys
+
+## Copy the key that matches the individual you want to allow access to ecnrypted files. 
+
+gpg --edit-key &lt;keyID&gt;
+
+# At the gpg&gt; prompt, use uid X to select the user ID you want to mark as trusted,
+# then use the trust command to set the trust level.
+# Use save to exit when you’re done.
+
+.</code></pre>
+<p>Edit that key so that it has sufficient trust levels as described in the above</p>
+<p>Add the key to your git repo (make sure you’re in the right directory)</p>
+<pre><code>## this will automatically commit changes. Note: replace [key] below with the
+appropriate gpg key.
+
+git crypt add-gpg-user [key]
+</code></pre>
+<p>push changes to remote (github)</p>
+<pre><code>git push
+</code></pre>
+<p>remind the added individual to pull these changes down before they try to unlock the repo. The individual who was just added will have to unlock the repo before they can
+access encrypted files.</p>
+<pre><code>git crypt unlock</code></pre>
+<!-- Moved down from up above. This won't apply to everyone and interrupts the main flow of getting git-crypt working. -->
+</div>
+<div id="import-your-keys-to-the-eha-server" class="section level3 hasAnchor" number="16.8.3">
+<h3><span class="header-section-number">16.8.3</span> Import your keys to the EHA server<a href="16-encryption.html#import-your-keys-to-the-eha-server" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You will probably want the ability to decrypt files when working remotely,
+so place them on the EHA server. You can do this by copying over your whole
+<code>gpg</code> keys directory to the server, like so:</p>
+<pre><code>scp -rp ~/.gnupg url.of.server:</code></pre>
+<p>Note that the main EHA analysis servers share user file systems so you only
+have to do this on one of them.</p>
+<p>You may have to edit the file <code>~/.gnupg/gpg-agent.conf</code> on the server. If
+its first line is <code>pinentry-program /usr/local/bin/pinentry-mac</code>, change it to
+<code>pinentry-program /usr/bin/pinentry</code>. Note that it may not exist at all, which
+is fine - it means the program is just using default behavior.</p>
+</div>
+</div>
+<div id="use-a-symmetric-key-for-automated-processes" class="section level2 hasAnchor" number="16.9">
+<h2><span class="header-section-number">16.9</span> Use a symmetric key for automated processes<a href="16-encryption.html#use-a-symmetric-key-for-automated-processes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you are using continuous integration on a repository with encrypted files,
+you’ll need to provide a way for the CI system to unlock them. An easy, but
+not <em>most</em> secure way is to provide a <em>symmetric key</em>. You can generate
+this by running this in your project directory. This key can always be regenerated
+so do NOT commit it to your repository. In fact, it may be a good idea to add
+the key to your <code>.gitignore</code>.</p>
+<pre><code>git-crypt export-key git_crypt_key.key</code></pre>
+<p><code>git_crypt_key.key</code> can now be used to decrypt the repository, and you can provide
+it to the CI system as an environment variable. However, since it is binary data,
+you’ll need to convert it to base64 first.</p>
+<p>To copy the key out of the <code>git_crypt_key.key</code>, run :</p>
+<pre><code>cat git_crypt_key.key | base64 | pbcopy</code></pre>
+<p>Then create a variable in your CI system’s environment
+called <code>GIT_CRYPT_KEY64</code> and paste the <code>git_crypt_key</code> value there. For github actions, see this <a href="https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions">article on adding repository secrets</a>.</p>
+<p>The key can now be removed from your system.</p>
+<pre><code>rm git_crypt_key.key</code></pre>
+<p>To use the key later, you’ll need (1) <code>git-crypt</code> and <code>gpg</code> installed in the CI
+system image, and (2) to run these commands after the CI clones your repository:</p>
+<pre><code>echo $GIT_ENCRYPT_KEY64 &gt; git_crypt_key.key64 &amp;&amp; base64 -d git_crypt_key.key64 &gt; git_crypt_key.key &amp;&amp; git-crypt unlock git_crypt_key.key</code></pre>
+<ul>
+<li>Note that encryption and this step of “unlocking” the repo are <strong>NOT</strong> included in the EHA <a href="https://github.com/ecohealthalliance/container-template">container-template</a> repository.</li>
+</ul>
+</div>
+<div id="unlocking-encrypted-repos-with-a-symmetric-key" class="section level2 hasAnchor" number="16.10">
+<h2><span class="header-section-number">16.10</span> Unlocking encrypted repos with a Symmetric key<a href="16-encryption.html#unlocking-encrypted-repos-with-a-symmetric-key" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Danger zone</strong>. This method makes key leak more likely and should be avoided.
+Once a key leaks, there is no method for rotating keys, so the leaked key
+would have to be scrubbed from the git history and a new key put in its place.</p>
+<p>Only share keys via secure methods like <a href="https://blog.1password.com/1password-file-document-sharing/">1password</a> or <a href="https://bitwarden.com/products/send/">bitwarden</a>.</p>
+<p>Sometimes its necessary to pass a symmetric key directly to a collaborator.</p>
+<p>Make sure <code>git_crypt_key.key</code> is in your <code>.gitignore</code>.</p>
+<p>In terminal, run the following code:</p>
+<pre><code>## create key
+git-crypt export-key git_crypt_key.key
+
+## test key
+git-crypt lock
+
+git-crypt status
+## try opening an encrypted file - it should error out
+
+git-crypt unlock git_crypt_key.key
+## try opening an encrypted file, it should work as expected. </code></pre>
+<p>Send the file securely to your Collaborator. Your collaborator should run:</p>
+<pre><code>git-crypt unlock git_crypt_key.key</code></pre>
+</div>
+<div id="removing-sensitive-files-from-git-history" class="section level2 hasAnchor" number="16.11">
+<h2><span class="header-section-number">16.11</span> Removing sensitive files from git history<a href="16-encryption.html#removing-sensitive-files-from-git-history" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>AKA What to do if you accidentally committed sensitive files (data, keys, etc.) to your repository either before encryption or our outside the scope of your <code>.gitattributes</code> file.</p>
+<ol style="list-style-type: decimal">
+<li>Take a breath.</li>
+<li>Make sure your sensitive files are included either in the <code>.gitattributes</code> file if you want them encrypted or delete them then add them to your <code>.gitignore</code> file. You can add a filter for particular files any where in your repo with <code>**/MySuperSensitiveFile</code> see <a href="https://git-scm.com/docs/gitignore#_pattern_format">gitignore documentation</a></li>
+<li>Install <a href="https://github.com/newren/git-filter-repo/blob/main/INSTALL.md"><code>git-filter-repo</code></a></li>
+<li>Navigate to your repo’s working directory <code>cd my/project/folder</code></li>
+<li>Back up your <code>.git/config</code> file as certain elements will be removed when we run <code>git filter-repo</code></li>
+<li>Run <code>git filter-repo --invert-paths --path PATH-TO-YOUR-FILE-WITH-SENSITIVE-DATA</code> to remove a sensitive file.</li>
+<li>Make sure you’ve removed everything you want from the repository’s history</li>
+</ol>
+<ul>
+<li>use <code>git log -- path/to/file</code> to see git history for a particular file. <strong>Note</strong> If you’ve successfully removed the file there won’t be any history to display.<br />
+</li>
+<li>see <a href="https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History"><code>git log</code></a> for more information.<br />
+9)Check in with collaborators to make sure no one has work on branches in the repo they would like to keep.<br />
+</li>
+</ul>
+<ol start="10" style="list-style-type: decimal">
+<li>Next you will use <code>push --force</code> to overwrite all the history on github and all the branches on your repo. Push your changes to the remote using <code>git push origin --force --all</code>.</li>
+</ol>
+<ul>
+<li>You may have to add the origin back into your .git/config file</li>
+</ul>
+<ol start="11" style="list-style-type: decimal">
+<li>Use <code>git push origin --force --tags</code> to remove sensitive files from any of your tagged releases.</li>
+<li>Follow the instructions <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository#fully-removing-the-data-from-github">here</a> for contacting github to make sure there aren’t any caches of the files on github.</li>
+<li>Tell your collaborators to <code>rebase</code>,NOT MERGE, any branches created off the old repo history.</li>
+<li>Wait a little bit to make sure that your file remove didn’t have unintended side effects then run the following code:</li>
+</ol>
+<pre><code>git for-each-ref --format=&quot;delete %(refname)&quot; refs/original | git update-ref --stdin
+git reflog expire --expire=now --all
+git gc --prune=now</code></pre>
+<ol start="10" style="list-style-type: decimal">
+<li>Breathe a sigh of relief.</li>
+</ol>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="15-google-authorization-and-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="17-dependencies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": true,
+    "facebook": false,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2,
+    "id": 1
+  },
+  "edit": {
+    "link": "https://github.com/ecohealthalliance/eha-ma-handbook/edit/master/encryption.Rmd",
+    "text": "Edit this chapter"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "section",
+    "scroll_highlight": true
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

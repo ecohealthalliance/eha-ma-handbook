@@ -1,0 +1,31 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+.book.font-family-1 {
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#header {
+  text-align:center !important;
+}
+.title {
+  font-size: 2.5em !important;
+}
+
+.subtitle {
+  font-size: 1.2em !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+}
